@@ -6,6 +6,7 @@ description = "Stringmol artificial chemistry, reimplemented from a written spec
 license = "GPL-3.0-or-later"
 
 [dependencies]
+flate2 = "1"
 
 [profile.release]
 opt-level = 3

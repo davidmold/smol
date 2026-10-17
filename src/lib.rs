@@ -1,10 +1,13 @@
 //! Stringmol, reimplemented from the written specification.
 
 pub mod align;
+pub mod config;
+pub mod output;
 pub mod reaction;
 pub mod rng;
 mod score_table;
 pub mod symbols;
+pub mod world;
 
 use align::{bind_prob, Align, Aligner};
 use symbols::{complement, Table};
