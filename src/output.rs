@@ -114,8 +114,8 @@ pub fn write_checkpoint(dir: &Path, w: &World, config_text: &str) -> std::io::Re
         let bond = match &m.bond {
             Bond::Free => "F".to_string(),
             Bond::Passive { partner } => format!("P {partner}"),
-            Bond::Active { partner, ptr, sp_act, sp_pas } => format!(
-                "A {partner} {sp_act} {sp_pas} {} {} {} {} {} {} {} {} {} {} {} {}",
+            Bond::Active { partner, ptr, sp_act, sp_pas, p0, copied } => format!(
+                "A {partner} {sp_act} {sp_pas} {} {} {} {} {} {} {} {} {} {} {} {} {p0:e} {copied}",
                 ptr.pos[0][0], ptr.pos[0][1], ptr.pos[1][0], ptr.pos[1][1],
                 ptr.pos[2][0], ptr.pos[2][1], ptr.pos[3][0], ptr.pos[3][1],
                 ptr.side[0], ptr.side[1], ptr.side[2], ptr.side[3]

@@ -16,6 +16,7 @@ pub struct Stats {
     pub ended: u64,
     pub products: u64,
     pub pair_decays: u64,
+    pub displacements: u64,
     pub instr: u64,
 }
 
@@ -23,7 +24,8 @@ pub struct Stats {
 pub enum Bond {
     Free,
     /// The executing molecule: its partner, pointers, and both species at binding time.
-    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32 },
+    /// p0: binding probability when the bond formed; copied: `=` instructions run since.
+    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32, p0: f32, copied: u32 },
     Passive { partner: usize },
 }
 
@@ -59,6 +61,9 @@ pub struct World {
     pub compat_partner: bool,
     pub decay_independent: bool,
     pub encounter_turn: bool,
+    pub displace: bool,
+    pub displace_k: f64,
+    pub displace_rate: f64,
     pub chem: ChemParams,
     pub stats: Stats,
     tab: Table,
@@ -88,6 +93,9 @@ impl World {
             compat_partner: cfg.compat_partner,
             decay_independent: cfg.decay_independent,
             encounter_turn: cfg.encounter_turn,
+            displace: cfg.displace,
+            displace_k: cfg.displace_k,
+            displace_rate: cfg.displace_rate,
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             stats: Stats::default(),
             tab: Table::new(),
@@ -264,7 +272,7 @@ impl World {
         self.rng.next_f64() < self.decay
     }
 
-    fn act_free(&mut self, idx: usize, now: u64, _obs: &mut dyn Observer) {
+    fn act_free(&mut self, idx: usize, now: u64, obs: &mut dyn Observer) {
         if self.roll_decay() {
             self.remove(idx);
             return;
@@ -277,7 +285,8 @@ impl World {
             let g = self.grid[self.cell(nx, ny)];
             if g != 0 {
                 let j = (g - 1) as usize;
-                if self.mols[j].bond == Bond::Free && self.acted[j] < now {
+                let free = self.mols[j].bond == Bond::Free;
+                if (free && self.acted[j] < now) || (!free && self.displace) {
                     cand[n] = j;
                     n += 1;
                 }
@@ -292,7 +301,8 @@ impl World {
         } else {
             cand[self.rng.below(n)]
         };
-        if self.encounter_turn {
+        let busy = self.mols[b].bond != Bond::Free;
+        if self.encounter_turn && !busy {
             self.acted[b] = now; // an encounter uses up the partner's turn, bound or not
         }
         self.stats.encounters += 1;
@@ -302,7 +312,26 @@ impl World {
         let sw = self.al.align(&self.comp, self.mols[b].strand.seq(), &self.tab);
         let p = bind_prob(&sw, self.bindlen);
         let rno = self.rng.next_f64() as f32;
-        if rno >= p {
+        if busy {
+            // strand displacement: the newcomer must bind, and the old bond must give way.
+            // The old bond starts at its formation probability p0 and hardens as its copy
+            // grows; after DISPLACE_K copy instructions it can no longer be broken into.
+            let (oa, op) = self.pair_of(b).unwrap();
+            let (p0, copied, sa, sp) = match self.mols[oa].bond {
+                Bond::Active { p0, copied, sp_act, sp_pas, .. } => (p0, copied, sp_act, sp_pas),
+                _ => unreachable!(),
+            };
+            let soft = (1.0 - copied as f64 / self.displace_k).max(0.0);
+            let take = self.displace_rate * p as f64 * (1.0 - p0 as f64) * soft;
+            if (rno as f64) >= take {
+                return;
+            }
+            let other = if b == oa { op } else { oa };
+            self.release(oa, sa, sp, obs);
+            self.release(op, sa, sp, obs);
+            self.acted[other] = now;
+            self.stats.displacements += 1;
+        } else if rno >= p {
             return;
         }
         let (act, pas, act_idx, pas_idx) = if sw.s1 >= sw.s2 { (idx, b, sw.s1, sw.s2) } else { (b, idx, sw.s2, sw.s1) };
@@ -312,7 +341,7 @@ impl World {
         if sp_act == sp_pas {
             self.stats.kin_binds += 1;
         }
-        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas };
+        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0 };
         self.mols[pas].bond = Bond::Passive { partner: act };
     }
 
@@ -351,6 +380,15 @@ impl World {
             Bond::Active { ptr, .. } => ptr.clone(),
             _ => unreachable!(),
         };
+        if self.displace {
+            let at = ptr.pos[crate::reaction::I][ptr.side[crate::reaction::I]];
+            let c = if ptr.side[crate::reaction::I] == 1 { self.mols[act].strand.at(at) } else { self.mols[pas].strand.at(at) };
+            if c == b'=' {
+                if let Bond::Active { copied, .. } = &mut self.mols[act].bond {
+                    *copied += 1;
+                }
+            }
+        }
         let (own, partner) = two_mut(&mut self.mols, act, pas);
         let mut ctx = Ctx {
             tab: &self.tab,
@@ -453,13 +491,14 @@ impl World {
                 "F" => Bond::Free,
                 "P" => Bond::Passive { partner: p[6].parse().unwrap() },
                 "A" => {
-                    let n: Vec<usize> = p[6..].iter().map(|v| v.parse().unwrap()).collect();
+                    let n: Vec<usize> = p[6..21].iter().map(|v| v.parse().unwrap()).collect();
                     let mut ptr = Pointers::default();
                     for k in 0..4 {
                         ptr.pos[k] = [n[3 + 2 * k], n[4 + 2 * k]];
                         ptr.side[k] = n[11 + k];
                     }
-                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32 }
+                    let (p0, copied) = if p.len() > 21 { (p[21].parse().unwrap(), p[22].parse().unwrap()) } else { (0.0, 0) };
+                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32, p0, copied }
                 }
                 b => return Err(format!("bad bond {b}")),
             };

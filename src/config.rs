@@ -25,6 +25,12 @@ pub struct Config {
     pub decay_independent: bool,
     /// A failed encounter also uses up the partner's turn (old rule; default 0 = it does not).
     pub encounter_turn: bool,
+    /// Strand displacement (design note): a free molecule may break into a reaction.
+    pub displace: bool,
+    /// Copy instructions after which a reaction can no longer be broken into.
+    pub displace_k: f64,
+    /// Overall scale on the displacement probability.
+    pub displace_rate: f64,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -108,6 +114,9 @@ impl Config {
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,
+            displace: num("DISPLACE", 0.0)? != 0.0,
+            displace_k: num("DISPLACE_K", 10.0)?,
+            displace_rate: num("DISPLACE_RATE", 1.0)?,
             agents,
             raw,
         })
