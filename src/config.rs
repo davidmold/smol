@@ -23,7 +23,7 @@ pub struct Config {
     /// Decay in pairs. Default (as the old code): one roll per pair, both die.
     /// DECAY_INDEPENDENT 1: each member rolls; a decaying molecule dies, its partner is freed.
     pub decay_independent: bool,
-    /// An encounter uses up the partner's turn (default 1, as the old code).
+    /// A failed encounter also uses up the partner's turn (old rule; default 0 = it does not).
     pub encounter_turn: bool,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
@@ -107,7 +107,7 @@ impl Config {
             bindlen: num("BINDLEN", 0.0)? as usize,
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
-            encounter_turn: num("ENCOUNTER_TURN", 1.0)? != 0.0,
+            encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,
             agents,
             raw,
         })
