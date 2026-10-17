@@ -20,8 +20,9 @@ pub struct Config {
     pub bindlen: usize,
     /// Old partner choice: always the first free neighbour in scan order (quirk 1).
     pub compat_partner: bool,
-    /// Old decay: one roll per pair, and both die (quirk 3).
-    pub compat_decay: bool,
+    /// Decay in pairs. Default (as the old code): one roll per pair, both die.
+    /// DECAY_INDEPENDENT 1: each member rolls; a decaying molecule dies, its partner is freed.
+    pub decay_independent: bool,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -103,7 +104,7 @@ impl Config {
             keep_ckpt: num("KEEPCKPT", 3.0)? as usize,
             bindlen: num("BINDLEN", 0.0)? as usize,
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
-            compat_decay: num("COMPAT_DECAY", 0.0)? != 0.0,
+            decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             agents,
             raw,
         })

@@ -45,7 +45,7 @@ pub struct World {
     pub decay: f64,
     pub bindlen: usize,
     pub compat_partner: bool,
-    pub compat_decay: bool,
+    pub decay_independent: bool,
     pub chem: ChemParams,
     tab: Table,
     al: Aligner,
@@ -72,7 +72,7 @@ impl World {
             decay: cfg.decay,
             bindlen: cfg.bindlen,
             compat_partner: cfg.compat_partner,
-            compat_decay: cfg.compat_decay,
+            decay_independent: cfg.decay_independent,
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             tab: Table::new(),
             al: Aligner::new(),
@@ -299,15 +299,15 @@ impl World {
             Bond::Active { sp_act, sp_pas, .. } => (sp_act, sp_pas),
             _ => unreachable!(),
         };
-        if self.compat_decay {
-            // old rule: one roll for the pair, both die
+        if !self.decay_independent {
+            // baseline (old) rule: one roll for the pair, both die
             if self.roll_decay() {
                 self.remove(drawn);
                 self.remove(other);
                 return;
             }
         } else {
-        // spec quirk 3: each member rolls; a decaying molecule dies, its partner is freed
+        // DECAY_INDEPENDENT: each member rolls; a decaying molecule dies, its partner is freed
         let d_drawn = self.roll_decay();
         let d_other = self.roll_decay();
         if d_drawn || d_other {
