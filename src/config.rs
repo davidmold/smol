@@ -18,6 +18,10 @@ pub struct Config {
     pub ckpt_every: u64,
     pub keep_ckpt: usize,
     pub bindlen: usize,
+    /// Old partner choice: always the first free neighbour in scan order (quirk 1).
+    pub compat_partner: bool,
+    /// Old decay: one roll per pair, and both die (quirk 3).
+    pub compat_decay: bool,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -98,6 +102,8 @@ impl Config {
             ckpt_every: num("CKPTEVERY", 50_000.0)? as u64,
             keep_ckpt: num("KEEPCKPT", 3.0)? as usize,
             bindlen: num("BINDLEN", 0.0)? as usize,
+            compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
+            compat_decay: num("COMPAT_DECAY", 0.0)? != 0.0,
             agents,
             raw,
         })

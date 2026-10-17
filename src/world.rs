@@ -44,6 +44,8 @@ pub struct World {
     pub rng: Xoshiro,
     pub decay: f64,
     pub bindlen: usize,
+    pub compat_partner: bool,
+    pub compat_decay: bool,
     pub chem: ChemParams,
     tab: Table,
     al: Aligner,
@@ -69,6 +71,8 @@ impl World {
             rng: Xoshiro::new(cfg.seed),
             decay: cfg.decay,
             bindlen: cfg.bindlen,
+            compat_partner: cfg.compat_partner,
+            compat_decay: cfg.compat_decay,
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             tab: Table::new(),
             al: Aligner::new(),
@@ -158,6 +162,23 @@ impl World {
         out
     }
 
+    /// The old code's neighbour scan order: x offset outer, y offset inner, -1..=1.
+    fn scan_order(&self, x: usize, y: usize) -> [(usize, usize); 8] {
+        let (gx, gy) = (self.gx, self.gy);
+        let mut out = [(0, 0); 8];
+        let mut k = 0;
+        for dx in [gx - 1, 0, 1] {
+            for dy in [gy - 1, 0, 1] {
+                if dx == 0 && dy == 0 {
+                    continue;
+                }
+                out[k] = ((x + dx) % gx, (y + dy) % gy);
+                k += 1;
+            }
+        }
+        out
+    }
+
     /// End a molecule's reaction from its side: it becomes free, and its species is
     /// re-read from its (possibly changed) sequence.
     fn release(&mut self, idx: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
@@ -235,7 +256,8 @@ impl World {
         let (x, y) = (self.mols[idx].x, self.mols[idx].y);
         let mut cand = [0usize; 8];
         let mut n = 0;
-        for (nx, ny) in self.neighbours(x, y) {
+        let cells = if self.compat_partner { self.scan_order(x, y) } else { self.neighbours(x, y) };
+        for (nx, ny) in cells {
             let g = self.grid[self.cell(nx, ny)];
             if g != 0 {
                 let j = (g - 1) as usize;
@@ -248,7 +270,12 @@ impl World {
         if n == 0 {
             return;
         }
-        let b = cand[self.rng.below(n)];
+        let b = if self.compat_partner {
+            self.rng.next_f64(); // the old code drew a number it then ignored
+            cand[0]
+        } else {
+            cand[self.rng.below(n)]
+        };
         self.acted[b] = now; // an encounter uses up the partner's turn, bound or not
         self.comp.clear();
         let a_seq = self.mols[idx].strand.seq();
@@ -272,6 +299,14 @@ impl World {
             Bond::Active { sp_act, sp_pas, .. } => (sp_act, sp_pas),
             _ => unreachable!(),
         };
+        if self.compat_decay {
+            // old rule: one roll for the pair, both die
+            if self.roll_decay() {
+                self.remove(drawn);
+                self.remove(other);
+                return;
+            }
+        } else {
         // spec quirk 3: each member rolls; a decaying molecule dies, its partner is freed
         let d_drawn = self.roll_decay();
         let d_other = self.roll_decay();
@@ -284,6 +319,7 @@ impl World {
                 }
             }
             return;
+        }
         }
         // one instruction of the active's program
         let mut ptr = match &self.mols[act].bond {
