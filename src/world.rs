@@ -7,6 +7,18 @@ use crate::rng::{Rng, Xoshiro};
 use crate::symbols::{complement, Table};
 use std::collections::HashMap;
 
+/// Event counters, reset by whoever reads them.
+#[derive(Clone, Debug, Default)]
+pub struct Stats {
+    pub encounters: u64,
+    pub binds: u64,
+    pub kin_binds: u64,
+    pub ended: u64,
+    pub products: u64,
+    pub pair_decays: u64,
+    pub instr: u64,
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub enum Bond {
     Free,
@@ -46,7 +58,9 @@ pub struct World {
     pub bindlen: usize,
     pub compat_partner: bool,
     pub decay_independent: bool,
+    pub encounter_turn: bool,
     pub chem: ChemParams,
+    pub stats: Stats,
     tab: Table,
     al: Aligner,
     acted: Vec<u64>,
@@ -73,7 +87,9 @@ impl World {
             bindlen: cfg.bindlen,
             compat_partner: cfg.compat_partner,
             decay_independent: cfg.decay_independent,
+            encounter_turn: cfg.encounter_turn,
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
+            stats: Stats::default(),
             tab: Table::new(),
             al: Aligner::new(),
             acted: Vec::new(),
@@ -276,7 +292,10 @@ impl World {
         } else {
             cand[self.rng.below(n)]
         };
-        self.acted[b] = now; // an encounter uses up the partner's turn, bound or not
+        if self.encounter_turn {
+            self.acted[b] = now; // an encounter uses up the partner's turn, bound or not
+        }
+        self.stats.encounters += 1;
         self.comp.clear();
         let a_seq = self.mols[idx].strand.seq();
         self.comp.extend(a_seq.iter().map(|&c| complement(c)));
@@ -288,6 +307,11 @@ impl World {
         }
         let (act, pas, act_idx, pas_idx) = if sw.s1 >= sw.s2 { (idx, b, sw.s1, sw.s2) } else { (b, idx, sw.s2, sw.s1) };
         let (sp_act, sp_pas) = (self.mols[act].species, self.mols[pas].species);
+        self.stats.binds += 1;
+        self.acted[b] = now;
+        if sp_act == sp_pas {
+            self.stats.kin_binds += 1;
+        }
         self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas };
         self.mols[pas].bond = Bond::Passive { partner: act };
     }
@@ -302,6 +326,7 @@ impl World {
         if !self.decay_independent {
             // baseline (old) rule: one roll for the pair, both die
             if self.roll_decay() {
+                self.stats.pair_decays += 1;
                 self.remove(drawn);
                 self.remove(other);
                 return;
@@ -341,6 +366,8 @@ impl World {
         if let Bond::Active { ptr: p, .. } = &mut self.mols[act].bond {
             *p = ptr;
         }
+        self.stats.instr += 1;
+        self.stats.products += self.products.len() as u64;
         let products = std::mem::take(&mut self.products);
         for seq in products.iter() {
             self.place_product(seq.clone(), act, sp_act, sp_pas, obs);
@@ -349,6 +376,7 @@ impl World {
         match out {
             Outcome::Continue => {}
             Outcome::Ended => {
+                self.stats.ended += 1;
                 self.release(act, sp_act, sp_pas, obs);
                 self.release(pas, sp_act, sp_pas, obs);
             }

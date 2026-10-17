@@ -98,7 +98,12 @@ fn main() {
         if t % 1000 == 0 {
             let n = world.count();
             let bound = world.mols.iter().filter(|m| m.alive && m.bond != Bond::Free).count();
-            println!("Step {t} done, number of molecules is {n}, nbound = {bound}, {:.0} steps/s", t as f64 / start.elapsed().as_secs_f64().max(1e-9));
+            let st = std::mem::take(&mut world.stats);
+            println!(
+                "Step {t} done, number of molecules is {n}, nbound = {bound}, {:.0} steps/s | enc {} bind {} kin {} ended {} prod {} pairdecay {} instr {}",
+                t as f64 / start.elapsed().as_secs_f64().max(1e-9),
+                st.encounters, st.binds, st.kin_binds, st.ended, st.products, st.pair_decays, st.instr
+            );
         }
         if world.count() == 0 {
             out.popdy(&world).unwrap();
