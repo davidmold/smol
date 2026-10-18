@@ -32,6 +32,7 @@ fn main() {
         .position(|a| a == "--mutate")
         .map(|i| args[i + 1].parse().unwrap())
         .unwrap_or(0.0);
+    let bind_t: f64 = args.iter().position(|a| a == "--bind-t").map(|i| args[i + 1].parse().unwrap()).unwrap_or(0.0);
     let text = std::fs::read_to_string(&args[1]).expect("pairs file");
     let mols: Vec<(String, Vec<u8>)> = text
         .split_whitespace()
@@ -61,7 +62,7 @@ fn main() {
 
     for x in &mols {
         for y in &mols {
-            let (p, sw) = smol::bind_probability(&x.1, &y.1, 0, ctx.al, &tab);
+            let (p, sw) = smol::bind_probability_rule(&x.1, &y.1, 0, bind_t, ctx.al, &tab);
             // old set_exec: the molecule whose alignment starts later is active
             let (act_is_x, act_idx, pas_idx) = if sw.s1 >= sw.s2 { (true, sw.s1, sw.s2) } else { (false, sw.s2, sw.s1) };
             let (an, pn) = if act_is_x { (&x.0, &y.0) } else { (&y.0, &x.0) };

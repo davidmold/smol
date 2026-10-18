@@ -18,6 +18,8 @@ pub struct Config {
     pub ckpt_every: u64,
     pub keep_ckpt: usize,
     pub bindlen: usize,
+    /// > 0: absolute-score binding rule with this scale (see align::bind_prob_rule)
+    pub bind_t: f64,
     /// Old partner choice: always the first free neighbour in scan order (quirk 1).
     pub compat_partner: bool,
     /// Decay in pairs. Default (as the old code): one roll per pair, both die.
@@ -113,6 +115,7 @@ impl Config {
             ckpt_every: num("CKPTEVERY", 50_000.0)? as u64,
             keep_ckpt: num("KEEPCKPT", 3.0)? as usize,
             bindlen: num("BINDLEN", 0.0)? as usize,
+            bind_t: num("BIND_T", 0.0)?,
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,

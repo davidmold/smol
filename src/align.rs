@@ -105,9 +105,20 @@ impl Aligner {
 
 /// Binding probability (spec: Binding, step 3). `bindlen` 0 is the old rule.
 pub fn bind_prob(al: &Align, bindlen: usize) -> f32 {
+    bind_prob_rule(al, bindlen, 0.0)
+}
+
+/// `bind_t` > 0 selects the absolute-score rule (BIND_T): P = 1 - exp(-score / bind_t), so
+/// every extra matching symbol adds stability, like duplex free energy. The l <= 2 cut-off
+/// is kept. `bind_t` 0 is the old length-normalised rule.
+pub fn bind_prob_rule(al: &Align, bindlen: usize, bind_t: f64) -> f32 {
     let l = al.len();
     if l <= 2 {
         return 0.0;
+    }
+    if bind_t > 0.0 {
+        let s = (al.score as f64).max(0.0);
+        return (1.0 - (-s / bind_t).exp()) as f32;
     }
     let lb = l.max(bindlen) as f64 - 1.124;
     let s: f32 = if (al.score as f64) < lb { al.score } else { lb as f32 };

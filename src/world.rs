@@ -1,6 +1,6 @@
 //! The world: grid, molecules, binding, the timestep (spec: The world, Binding, One timestep).
 
-use crate::align::{bind_prob, Aligner};
+use crate::align::{bind_prob_rule, Aligner};
 use crate::config::Config;
 use crate::reaction::{exec_step, ChemParams, Ctx, Outcome, Pointers, Strand};
 use crate::rng::{Rng, Xoshiro};
@@ -60,6 +60,7 @@ pub struct World {
     pub rng: Xoshiro,
     pub decay: f64,
     pub bindlen: usize,
+    pub bind_t: f64,
     pub compat_partner: bool,
     pub decay_independent: bool,
     pub encounter_turn: bool,
@@ -95,6 +96,7 @@ impl World {
             rng: Xoshiro::new(cfg.seed),
             decay: cfg.decay,
             bindlen: cfg.bindlen,
+            bind_t: cfg.bind_t,
             compat_partner: cfg.compat_partner,
             decay_independent: cfg.decay_independent,
             encounter_turn: cfg.encounter_turn,
@@ -317,7 +319,7 @@ impl World {
         let a_seq = self.mols[idx].strand.seq();
         self.comp.extend(a_seq.iter().map(|&c| complement(c)));
         let sw = self.al.align(&self.comp, self.mols[b].strand.seq(), &self.tab);
-        let p = bind_prob(&sw, self.bindlen);
+        let p = bind_prob_rule(&sw, self.bindlen, self.bind_t);
         let rno = self.rng.next_f64() as f32;
         if busy {
             // strand displacement: the newcomer must bind, and the old bond must give way.
