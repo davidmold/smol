@@ -80,7 +80,7 @@ function render(runs) {
     rs.forEach(r => c[r.status]++);
     const fin = c.done + c.extinct;
     const maxS = Math.max(...rs.map(r => r.nsteps || 1000000));
-    const sw = Object.entries(rs[0].conf || {}).filter(([k]) => !['NSTEPS', 'DECAY', 'MUTATE'].includes(k)).map(([k, v]) => `${k} ${v}`).join(' · ') || 'baseline rules';
+    const sw = rs[0].desc || Object.entries(rs[0].conf || {}).filter(([k]) => !['NSTEPS', 'DECAY', 'MUTATE'].includes(k)).map(([k, v]) => `${k} ${v}`).join(' · ') || 'baseline rules';
     const lines = rs.map(r => spark(r.series, 220, 60, maxN, maxS, COL[r.status], 1)).join('');
     out += `<section class="cond ${open.has(cond) ? 'open' : ''}" data-c="${esc(cond)}">
       <div class="chead">

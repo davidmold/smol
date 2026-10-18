@@ -83,8 +83,17 @@ def parse_run(path):
     return r
 
 
+def descriptions():
+    p = os.path.join(A.runs, "conditions.json")
+    try:
+        return json.load(open(p))
+    except Exception:
+        return {}
+
+
 def all_runs():
     out = []
+    desc = descriptions()
     for cond in sorted(os.listdir(A.runs)):
         cdir = os.path.join(A.runs, cond)
         if not os.path.isdir(cdir):
@@ -93,7 +102,7 @@ def all_runs():
             p = os.path.join(cdir, seed)
             if os.path.isdir(p):
                 r = parse_run(p)
-                r.update(cond=cond, seed=seed)
+                r.update(cond=cond, seed=seed, desc=desc.get(cond, ""))
                 out.append(r)
     return out
 
