@@ -75,7 +75,10 @@ function render(runs) {
   const main = document.getElementById('main');
   const maxN = Math.max(1000, ...runs.map(r => Math.max(0, ...r.series.map(p => p[1]))));
   let out = '';
-  for (const [cond, rs] of Object.entries(by)) {
+  const rank = c => c === 'pr0' ? '0' : c.startsWith('disp') ? '1' + c : '2' + c;
+  const conds = Object.keys(by).sort((a, b) => rank(a).localeCompare(rank(b), undefined, { numeric: true }));
+  for (const cond of conds) {
+    const rs = by[cond];
     const c = { running: 0, done: 0, extinct: 0, pending: 0, stopped: 0 };
     rs.forEach(r => c[r.status]++);
     const fin = c.done + c.extinct;
