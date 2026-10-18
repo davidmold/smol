@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>smol runs</title>
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ink: #1d1d1b; --quiet: #6b6a65; --line: #e4e2dc;
+  --run: #2f6fdf; --done: #1f8a5b; --ext: #c2412d; --pend: #a8a49a; --stop: #b7791f;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141518; --panel: #1c1e22; --ink: #ecebe7; --quiet: #9a988f; --line: #2c2f34;
+          --run: #6aa1ff; --done: #4fc08d; --ext: #ff7a5c; --pend: #6d6a62; --stop: #e0a347; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 20px 24px 8px; }
+h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
+.meta { color: var(--quiet); font-size: 12.5px; }
+main { padding: 8px 24px 40px; display: grid; gap: 16px; }
+.cond { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.chead { display: grid; grid-template-columns: minmax(180px, 1fr) 260px 220px; gap: 16px; padding: 14px 16px; align-items: center; cursor: pointer; }
+@media (max-width: 760px) { .chead { grid-template-columns: 1fr; } }
+.cname { font-weight: 650; font-size: 15px; }
+.switches { font-family: var(--mono); font-size: 11.5px; color: var(--quiet); margin-top: 2px; }
+.counts { display: flex; gap: 12px; font-size: 12.5px; flex-wrap: wrap; }
+.counts b { font-variant-numeric: tabular-nums; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: 0; }
+.surv { font-size: 12.5px; color: var(--quiet); margin-top: 6px; }
+.bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; display: flex; margin-top: 4px; }
+.bar span { display: block; height: 100%; }
+svg.over { width: 100%; height: 60px; display: block; }
+.runs { border-top: 1px solid var(--line); display: none; }
+.cond.open .runs { display: block; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; font-weight: 500; color: var(--quiet); font-size: 12px; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+tr.r:hover { background: color-mix(in srgb, var(--run) 7%, transparent); cursor: pointer; }
+.pill { font-size: 11.5px; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.prog { width: 120px; height: 5px; background: var(--line); border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 8px; }
+.prog span { display: block; height: 100%; background: var(--quiet); }
+svg.spark { width: 180px; height: 26px; display: block; }
+.num { text-align: right; }
+.hint { color: var(--quiet); font-size: 12px; padding: 0 24px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>smol runs</h1>
+  <span class="meta" id="meta">loading…</span>
+</header>
+<p class="hint">Click a condition to list its runs; click a run to open its grid viewer (built on first open, which can take a little while for long runs). Refreshes every 30 s.</p>
+<main id="main"></main>
+<script>
+const COL = { running: 'var(--run)', done: 'var(--done)', extinct: 'var(--ext)', pending: 'var(--pend)', stopped: 'var(--stop)' };
+const LABEL = { running: 'running', done: 'reached end', extinct: 'extinct', pending: 'waiting', stopped: 'stopped' };
+const open = new Set(JSON.parse(localStorageGet('openConds') || '[]'));
+function localStorageGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function localStorageSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+const fmt = n => n.toLocaleString();
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function spark(series, w, h, maxN, maxS, color, width) {
+  if (!series.length) return '';
+  const X = s => (s / maxS) * w, Y = n => h - 1 - (n / maxN) * (h - 2);
+  return `<path d="${series.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join('')}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linejoin="round"/>`;
+}
+
+function render(runs) {
+  const by = {};
+  for (const r of runs) (by[r.cond] = by[r.cond] || []).push(r);
+  const main = document.getElementById('main');
+  const maxN = Math.max(1000, ...runs.map(r => Math.max(0, ...r.series.map(p => p[1]))));
+  let out = '';
+  for (const [cond, rs] of Object.entries(by)) {
+    const c = { running: 0, done: 0, extinct: 0, pending: 0, stopped: 0 };
+    rs.forEach(r => c[r.status]++);
+    const fin = c.done + c.extinct;
+    const maxS = Math.max(...rs.map(r => r.nsteps || 1000000));
+    const sw = Object.entries(rs[0].conf || {}).filter(([k]) => !['NSTEPS', 'DECAY', 'MUTATE'].includes(k)).map(([k, v]) => `${k} ${v}`).join(' · ') || 'baseline rules';
+    const lines = rs.map(r => spark(r.series, 220, 60, maxN, maxS, COL[r.status], 1)).join('');
+    out += `<section class="cond ${open.has(cond) ? 'open' : ''}" data-c="${esc(cond)}">
+      <div class="chead">
+        <div><div class="cname">${esc(cond)}</div><div class="switches">${esc(sw)}</div></div>
+        <div>
+          <div class="counts">${['running', 'done', 'extinct', 'pending', 'stopped'].filter(k => c[k]).map(k => `<span><i class="dot" style="background:${COL[k]}"></i><b>${c[k]}</b> ${LABEL[k]}</span>`).join('')}</div>
+          <div class="bar"><span style="width:${100 * c.done / rs.length}%;background:var(--done)"></span><span style="width:${100 * c.extinct / rs.length}%;background:var(--ext)"></span><span style="width:${100 * c.running / rs.length}%;background:var(--run)"></span></div>
+          <div class="surv">${fin ? `${Math.round(100 * c.done / fin)}% of finished runs reached the end (${c.done} of ${fin})` : 'no finished runs yet'}</div>
+        </div>
+        <svg class="over" viewBox="0 0 220 60" preserveAspectRatio="none" aria-label="population of every run">${lines}</svg>
+      </div>
+      <div class="runs"><table>
+        <thead><tr><th>run</th><th>status</th><th>progress</th><th class="num">molecules</th><th class="num">bound</th><th>population</th></tr></thead>
+        <tbody>${rs.map(r => `<tr class="r" data-run="${esc(cond + '/' + r.seed)}">
+          <td>${esc(r.seed)}</td>
+          <td><span class="pill" style="color:${COL[r.status]}">${LABEL[r.status]}</span></td>
+          <td><span class="prog"><span style="width:${Math.min(100, 100 * r.step / (r.nsteps || 1))}%"></span></span>${fmt(r.step)}</td>
+          <td class="num">${fmt(r.n)}</td><td class="num">${fmt(r.bound)}</td>
+          <td><svg class="spark" viewBox="0 0 180 26" preserveAspectRatio="none">${spark(r.series, 180, 26, maxN, r.nsteps || 1000000, COL[r.status], 1.25)}</svg></td>
+        </tr>`).join('')}</tbody></table></div>
+    </section>`;
+  }
+  main.innerHTML = out || '<p>No runs found.</p>';
+  main.querySelectorAll('.chead').forEach(h => h.onclick = () => {
+    const s = h.parentElement, k = s.dataset.c;
+    s.classList.toggle('open');
+    s.classList.contains('open') ? open.add(k) : open.delete(k);
+    localStorageSet('openConds', JSON.stringify([...open]));
+  });
+  main.querySelectorAll('tr.r').forEach(t => t.onclick = () => window.open('/viewer?run=' + encodeURIComponent(t.dataset.run), '_blank'));
+  const live = runs.filter(r => r.status === 'running').length;
+  document.getElementById('meta').textContent = `${runs.length} runs · ${live} running · updated ${new Date().toLocaleTimeString()}`;
+}
+
+async function tick() {
+  try { render(await (await fetch('/api/runs')).json()); }
+  catch (e) { document.getElementById('meta').textContent = 'could not reach the server: ' + e; }
+}
+tick();
+setInterval(tick, 30000);
+</script>
+</body>
+</html>
