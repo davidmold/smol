@@ -35,6 +35,9 @@ pub struct Config {
     pub displace_rate: f64,
     /// On displacement, undo the abandoned reaction's writes to both strands.
     pub displace_restore: bool,
+    /// Two-sided reactions: the passive also runs its own code, one instruction after the
+    /// active's each step.
+    pub twosided: bool,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -123,6 +126,7 @@ impl Config {
             displace_k: num("DISPLACE_K", 10.0)?,
             displace_rate: num("DISPLACE_RATE", 1.0)?,
             displace_restore: num("DISPLACE_RESTORE", 0.0)? != 0.0,
+            twosided: num("TWOSIDED", 0.0)? != 0.0,
             agents,
             raw,
         })

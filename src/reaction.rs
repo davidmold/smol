@@ -102,6 +102,19 @@ pub struct Ctx<'a> {
     pub other: Vec<u8>,
 }
 
+/// After the other side of a two-sided reaction changed a string, pull this side's pointers
+/// that now point past an end back to it (the old rewind_bad_ptrs rule).
+pub fn clamp_ptrs(p: &mut Pointers, own_len: usize, partner_len: usize) {
+    for k in 0..4 {
+        if p.pos[k][1] > own_len {
+            p.pos[k][1] = own_len;
+        }
+        if p.pos[k][0] > partner_len {
+            p.pos[k][0] = partner_len;
+        }
+    }
+}
+
 fn label_len(s: &Strand, at: usize) -> usize {
     let mut n = 0;
     while is_letter(s.at(at + 1 + n)) {

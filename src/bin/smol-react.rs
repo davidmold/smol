@@ -9,7 +9,7 @@
 //! discards N draws first, to line up with draws the old code spent while loading.
 
 use smol::align::Aligner;
-use smol::reaction::{exec_step, ChemParams, Ctx, Outcome, Pointers, Strand};
+use smol::reaction::{clamp_ptrs, exec_step, ChemParams, Ctx, Outcome, Pointers, Strand};
 use smol::rng::{Mt19937, Rng, Xoshiro};
 use smol::symbols::Table;
 use std::io::Write;
@@ -33,6 +33,8 @@ fn main() {
         .map(|i| args[i + 1].parse().unwrap())
         .unwrap_or(0.0);
     let bind_t: f64 = args.iter().position(|a| a == "--bind-t").map(|i| args[i + 1].parse().unwrap()).unwrap_or(0.0);
+    let twosided = args.iter().any(|a| a == "--twosided");
+    let trace = args.iter().any(|a| a == "--trace");
     let text = std::fs::read_to_string(&args[1]).expect("pairs file");
     let mols: Vec<(String, Vec<u8>)> = text
         .split_whitespace()
@@ -69,12 +71,30 @@ fn main() {
             let mut own = Strand::new(if act_is_x { &x.1 } else { &y.1 }, params.maxl);
             let mut partner = Strand::new(if act_is_x { &y.1 } else { &x.1 }, params.maxl);
             let mut ptr = Pointers::at_bind(act_idx, pas_idx);
+            let mut pptr = Pointers::at_bind(pas_idx, act_idx);
             let mut products = Vec::new();
+            let mut pprods: Vec<Vec<u8>> = Vec::new();
             let mut steps = 0;
             let mut end = "ran out of steps";
+            let mut end_by_pas = false;
             while steps < maxsteps {
-                let o = exec_step(&mut ptr, &mut own, &mut partner, &mut ctx, rng.as_mut(), &mut products);
+                let mut o = exec_step(&mut ptr, &mut own, &mut partner, &mut ctx, rng.as_mut(), &mut products);
+                if twosided && o == Outcome::Continue {
+                    clamp_ptrs(&mut pptr, partner.len(), own.len());
+                    o = match exec_step(&mut pptr, &mut partner, &mut own, &mut ctx, rng.as_mut(), &mut pprods) {
+                        Outcome::Ended => { end_by_pas = true; Outcome::Ended }
+                        Outcome::ActiveDestroyed => Outcome::PassiveDestroyed,
+                        Outcome::PassiveDestroyed => Outcome::ActiveDestroyed,
+                        c => c,
+                    };
+                    clamp_ptrs(&mut ptr, own.len(), partner.len());
+                }
                 steps += 1;
+                if trace && (steps <= 400 && steps % 20 == 0 || steps % 1000 == 0) {
+                    eprintln!("  t={steps} act len {} I{:?} R{:?} W{:?} | pas len {} I{:?} R{:?} W{:?}", own.len(),
+                        (ptr.side[0], ptr.pos[0][ptr.side[0]]), (ptr.side[1], ptr.pos[1][ptr.side[1]]), (ptr.side[2], ptr.pos[2][ptr.side[2]]),
+                        partner.len(), (pptr.side[0], pptr.pos[0][pptr.side[0]]), (pptr.side[1], pptr.pos[1][pptr.side[1]]), (pptr.side[2], pptr.pos[2][pptr.side[2]]));
+                }
                 match o {
                     Outcome::Continue => {}
                     Outcome::Ended => {
@@ -97,10 +117,16 @@ fn main() {
                 x.0, y.0, p, an, pn, steps, end
             )
             .unwrap();
+            if end_by_pas {
+                writeln!(out, "      (ended by the passive)").unwrap();
+            }
             for s in &products {
                 writeln!(out, "      -> product {:<10} {}", ident(s), String::from_utf8_lossy(s)).unwrap();
             }
-            if products.is_empty() {
+            for s in &pprods {
+                writeln!(out, "      -> passive made {:<10} {}", ident(s), String::from_utf8_lossy(s)).unwrap();
+            }
+            if products.is_empty() && pprods.is_empty() {
                 writeln!(out, "      -> no product").unwrap();
             }
         }

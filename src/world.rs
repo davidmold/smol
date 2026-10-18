@@ -2,7 +2,7 @@
 
 use crate::align::{bind_prob_rule, Aligner};
 use crate::config::Config;
-use crate::reaction::{exec_step, ChemParams, Ctx, Outcome, Pointers, Strand};
+use crate::reaction::{clamp_ptrs, exec_step, ChemParams, Ctx, Outcome, Pointers, Strand};
 use crate::rng::{Rng, Xoshiro};
 use crate::symbols::{complement, Table};
 use std::collections::HashMap;
@@ -19,6 +19,10 @@ pub struct Stats {
     pub displacements: u64,
     /// displacements after which a strand differed from its state at bind time
     pub disp_damaged: u64,
+    /// products made by the passive side (TWOSIDED)
+    pub pas_products: u64,
+    /// reactions ended by the passive side (TWOSIDED)
+    pub pas_ended: u64,
     pub instr: u64,
 }
 
@@ -27,7 +31,8 @@ pub enum Bond {
     Free,
     /// The executing molecule: its partner, pointers, and both species at binding time.
     /// p0: binding probability when the bond formed; copied: `=` instructions run since.
-    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32, p0: f32, copied: u32 },
+    /// pptr: the passive's own pointers when reactions are two-sided.
+    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32, p0: f32, copied: u32, pptr: Option<Pointers> },
     Passive { partner: usize },
 }
 
@@ -68,6 +73,7 @@ pub struct World {
     pub displace_k: f64,
     pub displace_rate: f64,
     pub displace_restore: bool,
+    pub twosided: bool,
     /// strands of each active and its passive at bind time (DISPLACE only; not checkpointed)
     snap: HashMap<usize, (Vec<u8>, Vec<u8>)>,
     pub chem: ChemParams,
@@ -104,6 +110,7 @@ impl World {
             displace_k: cfg.displace_k,
             displace_rate: cfg.displace_rate,
             displace_restore: cfg.displace_restore,
+            twosided: cfg.twosided,
             snap: HashMap::new(),
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             stats: Stats::default(),
@@ -360,7 +367,8 @@ impl World {
         if sp_act == sp_pas {
             self.stats.kin_binds += 1;
         }
-        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0 };
+        let pptr = if self.twosided { Some(Pointers::at_bind(pas_idx, act_idx)) } else { None };
+        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0, pptr };
         self.mols[pas].bond = Bond::Passive { partner: act };
         if self.displace {
             let v = (self.mols[act].strand.seq().to_vec(), self.mols[pas].strand.seq().to_vec());
@@ -434,6 +442,66 @@ impl World {
             self.place_product(seq.clone(), act, sp_act, sp_pas, obs);
         }
         self.products = products;
+        if out == Outcome::Continue && self.twosided {
+            self.passive_turn(act, pas, sp_act, sp_pas, obs);
+            return;
+        }
+        self.finish(out, act, pas, sp_act, sp_pas, obs);
+    }
+
+    /// TWOSIDED: one instruction of the passive's own program, seen from its side (its own
+    /// string is side 1). The active's pointers are pulled back if the passive cut a string.
+    fn passive_turn(&mut self, act: usize, pas: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+        let (alen, plen) = (self.mols[act].strand.len(), self.mols[pas].strand.len());
+        let mut pptr = match &mut self.mols[act].bond {
+            Bond::Active { ptr, pptr: Some(pp), .. } => {
+                clamp_ptrs(ptr, alen, plen);
+                let mut q = pp.clone();
+                clamp_ptrs(&mut q, plen, alen);
+                q
+            }
+            _ => unreachable!(),
+        };
+        let (own, partner) = two_mut(&mut self.mols, pas, act);
+        let mut ctx = Ctx {
+            tab: &self.tab,
+            al: &mut self.al,
+            params: self.chem,
+            label: std::mem::take(&mut self.label),
+            other: std::mem::take(&mut self.other),
+        };
+        self.products.clear();
+        let out = exec_step(&mut pptr, &mut own.strand, &mut partner.strand, &mut ctx, &mut self.rng, &mut self.products);
+        self.label = ctx.label;
+        self.other = ctx.other;
+        let (alen, plen) = (self.mols[act].strand.len(), self.mols[pas].strand.len());
+        if let Bond::Active { ptr, pptr: Some(pp), .. } = &mut self.mols[act].bond {
+            *pp = pptr;
+            clamp_ptrs(ptr, alen, plen);
+        }
+        self.stats.instr += 1;
+        self.stats.products += self.products.len() as u64;
+        self.stats.pas_products += self.products.len() as u64;
+        let products = std::mem::take(&mut self.products);
+        for seq in products.iter() {
+            // the passive is the copier here
+            self.place_product(seq.clone(), pas, sp_pas, sp_act, obs);
+        }
+        self.products = products;
+        // map the passive's view back onto the pair
+        let out = match out {
+            Outcome::Continue => Outcome::Continue,
+            Outcome::Ended => {
+                self.stats.pas_ended += 1;
+                Outcome::Ended
+            }
+            Outcome::ActiveDestroyed => Outcome::PassiveDestroyed,
+            Outcome::PassiveDestroyed => Outcome::ActiveDestroyed,
+        };
+        self.finish(out, act, pas, sp_act, sp_pas, obs);
+    }
+
+    fn finish(&mut self, out: Outcome, act: usize, pas: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
         match out {
             Outcome::Continue => {}
             Outcome::Ended => {
@@ -521,7 +589,7 @@ impl World {
                         ptr.side[k] = n[11 + k];
                     }
                     let (p0, copied) = if p.len() > 21 { (p[21].parse().unwrap(), p[22].parse().unwrap()) } else { (0.0, 0) };
-                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32, p0, copied }
+                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32, p0, copied, pptr: parse_pptr(&p) }
                 }
                 b => return Err(format!("bad bond {b}")),
             };
@@ -541,4 +609,18 @@ impl World {
         w.free_slots = free[1..].iter().map(|&v| v as usize).collect();
         Ok(w)
     }
+}
+
+/// Optional passive pointers on a checkpoint A line: 8 positions and 4 sides after p0, copied.
+fn parse_pptr(p: &[&str]) -> Option<Pointers> {
+    if p.len() < 35 {
+        return None;
+    }
+    let n: Vec<usize> = p[23..35].iter().map(|v| v.parse().unwrap()).collect();
+    let mut q = Pointers::default();
+    for k in 0..4 {
+        q.pos[k] = [n[2 * k], n[2 * k + 1]];
+        q.side[k] = n[8 + k];
+    }
+    Some(q)
 }
