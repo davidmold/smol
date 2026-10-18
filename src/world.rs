@@ -17,6 +17,8 @@ pub struct Stats {
     pub products: u64,
     pub pair_decays: u64,
     pub displacements: u64,
+    /// displacements after which a strand differed from its state at bind time
+    pub disp_damaged: u64,
     pub instr: u64,
 }
 
@@ -64,6 +66,9 @@ pub struct World {
     pub displace: bool,
     pub displace_k: f64,
     pub displace_rate: f64,
+    pub displace_restore: bool,
+    /// strands of each active and its passive at bind time (DISPLACE only; not checkpointed)
+    snap: HashMap<usize, (Vec<u8>, Vec<u8>)>,
     pub chem: ChemParams,
     pub stats: Stats,
     tab: Table,
@@ -96,6 +101,8 @@ impl World {
             displace: cfg.displace,
             displace_k: cfg.displace_k,
             displace_rate: cfg.displace_rate,
+            displace_restore: cfg.displace_restore,
+            snap: HashMap::new(),
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             stats: Stats::default(),
             tab: Table::new(),
@@ -327,6 +334,16 @@ impl World {
                 return;
             }
             let other = if b == oa { op } else { oa };
+            if let Some((sa0, sp0)) = self.snap.remove(&oa) {
+                if self.mols[oa].strand.seq() != &sa0[..] || self.mols[op].strand.seq() != &sp0[..] {
+                    self.stats.disp_damaged += 1;
+                    if self.displace_restore {
+                        let maxl = self.chem.maxl;
+                        self.mols[oa].strand = Strand::new(&sa0, maxl);
+                        self.mols[op].strand = Strand::new(&sp0, maxl);
+                    }
+                }
+            }
             self.release(oa, sa, sp, obs);
             self.release(op, sa, sp, obs);
             self.acted[other] = now;
@@ -343,6 +360,10 @@ impl World {
         }
         self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0 };
         self.mols[pas].bond = Bond::Passive { partner: act };
+        if self.displace {
+            let v = (self.mols[act].strand.seq().to_vec(), self.mols[pas].strand.seq().to_vec());
+            self.snap.insert(act, v);
+        }
     }
 
     fn act_pair(&mut self, drawn: usize, act: usize, pas: usize, now: u64, obs: &mut dyn Observer) {
