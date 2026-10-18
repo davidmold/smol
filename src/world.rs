@@ -23,6 +23,8 @@ pub struct Stats {
     pub pas_products: u64,
     /// reactions ended by the passive side (TWOSIDED)
     pub pas_ended: u64,
+    /// STRANDCOPY: unfinished nascent strands released when a reaction ended
+    pub unfinished: u64,
     pub instr: u64,
 }
 
@@ -32,7 +34,8 @@ pub enum Bond {
     /// The executing molecule: its partner, pointers, and both species at binding time.
     /// p0: binding probability when the bond formed; copied: `=` instructions run since.
     /// pptr: the passive's own pointers when reactions are two-sided.
-    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32, p0: f32, copied: u32, pptr: Option<Pointers> },
+    /// nas, pnas: the active's and passive's nascent strands (STRANDCOPY).
+    Active { partner: usize, ptr: Pointers, sp_act: u32, sp_pas: u32, p0: f32, copied: u32, pptr: Option<Pointers>, nas: Vec<u8>, pnas: Vec<u8> },
     Passive { partner: usize },
 }
 
@@ -74,6 +77,7 @@ pub struct World {
     pub displace_rate: f64,
     pub displace_restore: bool,
     pub twosided: bool,
+    pub strandcopy: bool,
     /// strands of each active and its passive at bind time (DISPLACE only; not checkpointed)
     snap: HashMap<usize, (Vec<u8>, Vec<u8>)>,
     pub chem: ChemParams,
@@ -111,6 +115,7 @@ impl World {
             displace_rate: cfg.displace_rate,
             displace_restore: cfg.displace_restore,
             twosided: cfg.twosided,
+            strandcopy: cfg.strandcopy,
             snap: HashMap::new(),
             chem: ChemParams { maxl: cfg.maxl, mutate: cfg.mutate, compat_deletion_skip: false },
             stats: Stats::default(),
@@ -353,6 +358,7 @@ impl World {
                     }
                 }
             }
+            self.flush_nascent(oa, op, sa, sp, obs);
             self.release(oa, sa, sp, obs);
             self.release(op, sa, sp, obs);
             self.acted[other] = now;
@@ -368,7 +374,7 @@ impl World {
             self.stats.kin_binds += 1;
         }
         let pptr = if self.twosided { Some(Pointers::at_bind(pas_idx, act_idx)) } else { None };
-        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0, pptr };
+        self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0, pptr, nas: Vec::new(), pnas: Vec::new() };
         self.mols[pas].bond = Bond::Passive { partner: act };
         if self.displace {
             let v = (self.mols[act].strand.seq().to_vec(), self.mols[pas].strand.seq().to_vec());
@@ -420,6 +426,7 @@ impl World {
                 }
             }
         }
+        let nascent = self.take_nascent(act, false);
         let (own, partner) = two_mut(&mut self.mols, act, pas);
         let mut ctx = Ctx {
             tab: &self.tab,
@@ -427,13 +434,18 @@ impl World {
             params: self.chem,
             label: std::mem::take(&mut self.label),
             other: std::mem::take(&mut self.other),
+            nascent,
         };
         self.products.clear();
         let out = exec_step(&mut ptr, &mut own.strand, &mut partner.strand, &mut ctx, &mut self.rng, &mut self.products);
         self.label = ctx.label;
         self.other = ctx.other;
-        if let Bond::Active { ptr: p, .. } = &mut self.mols[act].bond {
+        let nascent = ctx.nascent;
+        if let Bond::Active { ptr: p, nas, .. } = &mut self.mols[act].bond {
             *p = ptr;
+            if let Some(n) = nascent {
+                *nas = n;
+            }
         }
         self.stats.instr += 1;
         self.stats.products += self.products.len() as u64;
@@ -462,6 +474,7 @@ impl World {
             }
             _ => unreachable!(),
         };
+        let nascent = self.take_nascent(act, true);
         let (own, partner) = two_mut(&mut self.mols, pas, act);
         let mut ctx = Ctx {
             tab: &self.tab,
@@ -469,15 +482,20 @@ impl World {
             params: self.chem,
             label: std::mem::take(&mut self.label),
             other: std::mem::take(&mut self.other),
+            nascent,
         };
         self.products.clear();
         let out = exec_step(&mut pptr, &mut own.strand, &mut partner.strand, &mut ctx, &mut self.rng, &mut self.products);
         self.label = ctx.label;
         self.other = ctx.other;
+        let nascent = ctx.nascent;
         let (alen, plen) = (self.mols[act].strand.len(), self.mols[pas].strand.len());
-        if let Bond::Active { ptr, pptr: Some(pp), .. } = &mut self.mols[act].bond {
+        if let Bond::Active { ptr, pptr: Some(pp), pnas, .. } = &mut self.mols[act].bond {
             *pp = pptr;
             clamp_ptrs(ptr, alen, plen);
+            if let Some(n) = nascent {
+                *pnas = n;
+            }
         }
         self.stats.instr += 1;
         self.stats.products += self.products.len() as u64;
@@ -501,7 +519,44 @@ impl World {
         self.finish(out, act, pas, sp_act, sp_pas, obs);
     }
 
+    /// STRANDCOPY: move a side's nascent strand out of the bond for one instruction.
+    fn take_nascent(&mut self, act: usize, passive: bool) -> Option<Vec<u8>> {
+        if !self.strandcopy {
+            return None;
+        }
+        match &mut self.mols[act].bond {
+            Bond::Active { nas, pnas, .. } => Some(std::mem::take(if passive { pnas } else { nas })),
+            _ => unreachable!(),
+        }
+    }
+
+    /// STRANDCOPY: when a reaction ends, whatever each side had built so far is released as a
+    /// product next to its builder (an unfinished copy dissociates).
+    fn flush_nascent(&mut self, act: usize, pas: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+        if !self.strandcopy {
+            return;
+        }
+        let (n, pn) = match &mut self.mols[act].bond {
+            Bond::Active { nas, pnas, .. } => (std::mem::take(nas), std::mem::take(pnas)),
+            _ => return,
+        };
+        if !n.is_empty() {
+            self.stats.products += 1;
+            self.stats.unfinished += 1;
+            self.place_product(n, act, sp_act, sp_pas, obs);
+        }
+        if !pn.is_empty() {
+            self.stats.products += 1;
+            self.stats.unfinished += 1;
+            self.stats.pas_products += 1;
+            self.place_product(pn, pas, sp_pas, sp_act, obs);
+        }
+    }
+
     fn finish(&mut self, out: Outcome, act: usize, pas: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+        if out != Outcome::Continue {
+            self.flush_nascent(act, pas, sp_act, sp_pas, obs);
+        }
         match out {
             Outcome::Continue => {}
             Outcome::Ended => {
@@ -589,7 +644,7 @@ impl World {
                         ptr.side[k] = n[11 + k];
                     }
                     let (p0, copied) = if p.len() > 21 { (p[21].parse().unwrap(), p[22].parse().unwrap()) } else { (0.0, 0) };
-                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32, p0, copied, pptr: parse_pptr(&p) }
+                    Bond::Active { partner: n[0], ptr, sp_act: n[1] as u32, sp_pas: n[2] as u32, p0, copied, pptr: parse_pptr(&p), nas: parse_tag(&p, "n="), pnas: parse_tag(&p, "pn=") }
                 }
                 b => return Err(format!("bad bond {b}")),
             };
@@ -612,7 +667,12 @@ impl World {
 }
 
 /// Optional passive pointers on a checkpoint A line: 8 positions and 4 sides after p0, copied.
+fn parse_tag(p: &[&str], tag: &str) -> Vec<u8> {
+    p.iter().find_map(|t| t.strip_prefix(tag)).map(|v| if v == "-" { Vec::new() } else { v.as_bytes().to_vec() }).unwrap_or_default()
+}
+
 fn parse_pptr(p: &[&str]) -> Option<Pointers> {
+    let p: Vec<&str> = p.iter().copied().filter(|t| !t.starts_with("n=") && !t.starts_with("pn=")).collect();
     if p.len() < 35 {
         return None;
     }

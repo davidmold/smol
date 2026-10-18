@@ -35,6 +35,7 @@ fn main() {
     let bind_t: f64 = args.iter().position(|a| a == "--bind-t").map(|i| args[i + 1].parse().unwrap()).unwrap_or(0.0);
     let twosided = args.iter().any(|a| a == "--twosided");
     let trace = args.iter().any(|a| a == "--trace");
+    let strand = args.iter().any(|a| a == "--strand");
     let text = std::fs::read_to_string(&args[1]).expect("pairs file");
     let mols: Vec<(String, Vec<u8>)> = text
         .split_whitespace()
@@ -51,7 +52,7 @@ fn main() {
     let tab = Table::new();
     let mut al = Aligner::new();
     let params = ChemParams { maxl: 2000, mutate, compat_deletion_skip: compat };
-    let mut ctx = Ctx { tab: &tab, al: &mut al, params, label: Vec::new(), other: Vec::new() };
+    let mut ctx = Ctx { tab: &tab, al: &mut al, params, label: Vec::new(), other: Vec::new(), nascent: None };
     let out = std::io::stdout();
     let mut out = out.lock();
 
@@ -74,14 +75,20 @@ fn main() {
             let mut pptr = Pointers::at_bind(pas_idx, act_idx);
             let mut products = Vec::new();
             let mut pprods: Vec<Vec<u8>> = Vec::new();
+            let (mut nas, mut pnas): (Vec<u8>, Vec<u8>) = (Vec::new(), Vec::new());
             let mut steps = 0;
             let mut end = "ran out of steps";
             let mut end_by_pas = false;
             while steps < maxsteps {
+                if strand { ctx.nascent = Some(std::mem::take(&mut nas)); }
                 let mut o = exec_step(&mut ptr, &mut own, &mut partner, &mut ctx, rng.as_mut(), &mut products);
+                if let Some(n) = ctx.nascent.take() { nas = n; }
                 if twosided && o == Outcome::Continue {
                     clamp_ptrs(&mut pptr, partner.len(), own.len());
-                    o = match exec_step(&mut pptr, &mut partner, &mut own, &mut ctx, rng.as_mut(), &mut pprods) {
+                    if strand { ctx.nascent = Some(std::mem::take(&mut pnas)); }
+                    let po = exec_step(&mut pptr, &mut partner, &mut own, &mut ctx, rng.as_mut(), &mut pprods);
+                    if let Some(n) = ctx.nascent.take() { pnas = n; }
+                    o = match po {
                         Outcome::Ended => { end_by_pas = true; Outcome::Ended }
                         Outcome::ActiveDestroyed => Outcome::PassiveDestroyed,
                         Outcome::PassiveDestroyed => Outcome::ActiveDestroyed,
@@ -117,6 +124,12 @@ fn main() {
                 x.0, y.0, p, an, pn, steps, end
             )
             .unwrap();
+            let unfinished = (nas.len(), pnas.len());
+            if !nas.is_empty() { products.push(std::mem::take(&mut nas)); }
+            if !pnas.is_empty() { pprods.push(std::mem::take(&mut pnas)); }
+            if strand && (unfinished.0 > 0 || unfinished.1 > 0) {
+                writeln!(out, "      (unfinished strands released: active {} passive {})", unfinished.0, unfinished.1).unwrap();
+            }
             if end_by_pas {
                 writeln!(out, "      (ended by the passive)").unwrap();
             }

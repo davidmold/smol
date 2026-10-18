@@ -100,6 +100,9 @@ pub struct Ctx<'a> {
     pub params: ChemParams,
     pub label: Vec<u8>,
     pub other: Vec<u8>,
+    /// STRANDCOPY: the executing molecule's nascent copy strand. `=` appends to it instead of
+    /// writing at W, and `%` releases it as a product. None = the old in-place copying.
+    pub nascent: Option<Vec<u8>>,
 }
 
 /// After the other side of a two-sided reaction changed a string, pull this side's pointers
@@ -221,7 +224,7 @@ pub fn exec_step(
             p.set(I, newip);
         }
         b'=' => return copy(p, own, partner, ctx, rng),
-        b'%' => return cleave(p, own, partner, products),
+        b'%' => return cleave(p, own, partner, products, &mut ctx.nascent),
         0 | b'}' => return Outcome::Ended,
         _ => p.bump(I, 1),
     }
@@ -230,6 +233,9 @@ pub fn exec_step(
 
 fn copy(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &mut Ctx, rng: &mut dyn Rng) -> Outcome {
     let maxl = ctx.params.maxl;
+    if ctx.nascent.is_some() {
+        return copy_nascent(p, own, partner, ctx, rng);
+    }
     if p.get(W) >= maxl || p.get(R) >= maxl {
         p.bump(I, 1);
         return Outcome::Ended;
@@ -272,7 +278,15 @@ fn copy(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &mut Ctx,
     Outcome::Continue
 }
 
-fn cleave(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, products: &mut Vec<Vec<u8>>) -> Outcome {
+fn cleave(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, products: &mut Vec<Vec<u8>>, nascent: &mut Option<Vec<u8>>) -> Outcome {
+    // STRANDCOPY: a cut releases the strand being built; with nothing built it cuts at F as before
+    if let Some(n) = nascent.as_mut() {
+        if !n.is_empty() {
+            products.push(std::mem::take(n));
+            p.bump(I, 1);
+            return Outcome::Continue;
+        }
+    }
     let fs = p.side[F];
     let fpos = p.get(F);
     let site = if fs == 1 { &mut *own } else { &mut *partner };
@@ -317,6 +331,49 @@ fn cleave(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, products: &m
         }
         if plen == 0 {
             return Outcome::PassiveDestroyed;
+        }
+    }
+    p.bump(I, 1);
+    Outcome::Continue
+}
+
+/// STRANDCOPY `=`: append the symbol under R (with the same mutation draws as in-place copying)
+/// to the nascent strand. Neither string in the reaction changes.
+fn copy_nascent(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &mut Ctx, rng: &mut dyn Rng) -> Outcome {
+    let maxl = ctx.params.maxl;
+    let n = ctx.nascent.as_mut().unwrap();
+    if n.len() >= maxl || p.get(R) >= maxl {
+        p.bump(I, 1);
+        return Outcome::Ended;
+    }
+    // a template has to be another molecule: with R on the executor's own string, `=` does nothing
+    if p.side[R] == 1 {
+        p.bump(I, 1);
+        return Outcome::Continue;
+    }
+    let _ = own;
+    let ch = partner.at(p.get(R));
+    if ch != 0 {
+        let m = ctx.params.mutate;
+        let rno = rng.next_f64() as f32;
+        if rno < m {
+            let r2 = rng.next_f64() as f32;
+            if r2 < 0.5 {
+                n.push(ch);
+                let k = ((rng.next_f64() as f32) * NSYM as f32) as usize;
+                n.push(KEY[k.min(NSYM - 1)]);
+            }
+            p.bump(R, 1);
+        } else {
+            let out = if rno < m + m {
+                let nb = neighbours(ch, ctx.tab);
+                let r3 = rng.next_f64() as f32;
+                if (2.0f32 * r3).ceil() as usize <= 1 { nb[0] } else { nb[1] }
+            } else {
+                ch
+            };
+            n.push(out);
+            p.bump(R, 1);
         }
     }
     p.bump(I, 1);

@@ -38,6 +38,8 @@ pub struct Config {
     /// Two-sided reactions: the passive also runs its own code, one instruction after the
     /// active's each step.
     pub twosided: bool,
+    /// Copies are built on a separate nascent strand (see reaction::copy_nascent).
+    pub strandcopy: bool,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -127,6 +129,7 @@ impl Config {
             displace_rate: num("DISPLACE_RATE", 1.0)?,
             displace_restore: num("DISPLACE_RESTORE", 0.0)? != 0.0,
             twosided: num("TWOSIDED", 0.0)? != 0.0,
+            strandcopy: num("STRANDCOPY", 0.0)? != 0.0,
             agents,
             raw,
         })
