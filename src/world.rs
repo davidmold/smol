@@ -87,6 +87,7 @@ pub struct World {
     acted: Vec<u64>,
     order: Vec<usize>,
     comp: Vec<u8>,
+    bind_cache: HashMap<(u32, u32), (f32, usize, usize)>,
     products: Vec<Vec<u8>>,
     label: Vec<u8>,
     other: Vec<u8>,
@@ -129,6 +130,7 @@ impl World {
             acted: Vec::new(),
             order: Vec::new(),
             comp: Vec::new(),
+            bind_cache: HashMap::new(),
             products: Vec::new(),
             label: Vec::new(),
             other: Vec::new(),
@@ -332,11 +334,28 @@ impl World {
             self.acted[b] = now; // an encounter uses up the partner's turn, bound or not
         }
         self.stats.encounters += 1;
-        self.comp.clear();
-        let a_seq = self.mols[idx].strand.seq();
-        self.comp.extend(a_seq.iter().map(|&c| complement(c)));
-        let sw = self.al.align(&self.comp, self.mols[b].strand.seq(), &self.tab);
-        let p = bind_prob_rule(&sw, self.bindlen, self.bind_t);
+        // The alignment depends only on the two sequences, and a free molecule's species always
+        // matches its sequence, so results for two free molecules are cached by species pair.
+        // (A bound one may be mid-copy in the in-place chemistry, so it is always aligned.)
+        let key = (self.mols[idx].species, self.mols[b].species);
+        let cached = if busy { None } else { self.bind_cache.get(&key).copied() };
+        let (p, s1, s2) = match cached {
+            Some(v) => v,
+            None => {
+                self.comp.clear();
+                let a_seq = self.mols[idx].strand.seq();
+                self.comp.extend(a_seq.iter().map(|&c| complement(c)));
+                let sw = self.al.align(&self.comp, self.mols[b].strand.seq(), &self.tab);
+                let v = (bind_prob_rule(&sw, self.bindlen, self.bind_t), sw.s1, sw.s2);
+                if !busy {
+                    if self.bind_cache.len() >= 2_000_000 {
+                        self.bind_cache.clear();
+                    }
+                    self.bind_cache.insert(key, v);
+                }
+                v
+            }
+        };
         let rno = self.rng.next_f64() as f32;
         if busy {
             // strand displacement: the newcomer must bind, and the old bond must give way.
@@ -371,7 +390,7 @@ impl World {
         } else if rno >= p {
             return;
         }
-        let (act, pas, act_idx, pas_idx) = if sw.s1 >= sw.s2 { (idx, b, sw.s1, sw.s2) } else { (b, idx, sw.s2, sw.s1) };
+        let (act, pas, act_idx, pas_idx) = if s1 >= s2 { (idx, b, s1, s2) } else { (b, idx, s2, s1) };
         let (sp_act, sp_pas) = (self.mols[act].species, self.mols[pas].species);
         self.stats.binds += 1;
         self.acted[b] = now;
