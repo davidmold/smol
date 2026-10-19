@@ -83,6 +83,9 @@ pub struct ChemParams {
     /// TRANSLATE: the codon table (letter pair -> symbol). Only used with STRANDCOPY, when the
     /// write pointer's side has been toggled away from the executor's own string.
     pub codon: Option<[u8; 676]>,
+    /// TRANSLATE_STOP: in translate mode, a symbol under R that is not the start of a letter
+    /// pair is a stop codon: the reaction ends and the nascent strand is released.
+    pub translate_stop: bool,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -364,6 +367,9 @@ fn copy_nascent(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &
         if is_letter(ch) && is_letter(c2) {
             ch = table[(ch - b'A') as usize * 26 + (c2 - b'A') as usize];
             step = 2;
+        } else if ctx.params.translate_stop && ch != 0 {
+            p.bump(I, 1);
+            return Outcome::Ended;
         }
     }
     let n = ctx.nascent.as_mut().unwrap();

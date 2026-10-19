@@ -55,7 +55,8 @@ fn main() {
         let seed = args.get(i + 1).and_then(|v| v.parse().ok()).unwrap_or(1);
         smol::symbols::codon_table(seed)
     });
-    let params = ChemParams { maxl: 2000, mutate, compat_deletion_skip: compat, codon };
+    let translate_stop = args.iter().any(|a| a == "--stop");
+    let params = ChemParams { maxl: 2000, mutate, compat_deletion_skip: compat, codon, translate_stop };
     let mut ctx = Ctx { tab: &tab, al: &mut al, params, label: Vec::new(), other: Vec::new(), nascent: None };
     let out = std::io::stdout();
     let mut out = out.lock();

@@ -123,6 +123,7 @@ impl World {
                 mutate: cfg.mutate,
                 compat_deletion_skip: false,
                 codon: if cfg.translate && cfg.strandcopy { Some(crate::symbols::codon_table(cfg.translate_seed)) } else { None },
+                translate_stop: cfg.translate_stop,
             },
             stats: Stats::default(),
             tab: Table::new(),
