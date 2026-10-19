@@ -80,6 +80,9 @@ pub struct ChemParams {
     pub mutate: f32,
     /// Old behaviour for validation only: a deletion also skips the next instruction.
     pub compat_deletion_skip: bool,
+    /// TRANSLATE: the codon table (letter pair -> symbol). Only used with STRANDCOPY, when the
+    /// write pointer's side has been toggled away from the executor's own string.
+    pub codon: Option<[u8; 676]>,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -352,7 +355,18 @@ fn copy_nascent(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &
         return Outcome::Continue;
     }
     let _ = own;
-    let ch = partner.at(p.get(R));
+    let mut ch = partner.at(p.get(R));
+    let mut step = 1;
+    // TRANSLATE: with W toggled off the executor's own string, two letters under R are read as a
+    // codon and one symbol is written; an opcode passes through unchanged
+    if let (Some(table), 0) = (ctx.params.codon.as_ref(), p.side[W]) {
+        let c2 = partner.at(p.get(R) + 1);
+        if is_letter(ch) && is_letter(c2) {
+            ch = table[(ch - b'A') as usize * 26 + (c2 - b'A') as usize];
+            step = 2;
+        }
+    }
+    let n = ctx.nascent.as_mut().unwrap();
     if ch != 0 {
         let m = ctx.params.mutate;
         let rno = rng.next_f64() as f32;
@@ -363,7 +377,7 @@ fn copy_nascent(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &
                 let k = ((rng.next_f64() as f32) * NSYM as f32) as usize;
                 n.push(KEY[k.min(NSYM - 1)]);
             }
-            p.bump(R, 1);
+            p.bump(R, step);
         } else {
             let out = if rno < m + m {
                 let nb = neighbours(ch, ctx.tab);
@@ -373,7 +387,7 @@ fn copy_nascent(p: &mut Pointers, own: &mut Strand, partner: &mut Strand, ctx: &
                 ch
             };
             n.push(out);
-            p.bump(R, 1);
+            p.bump(R, step);
         }
     }
     p.bump(I, 1);

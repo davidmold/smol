@@ -40,6 +40,9 @@ pub struct Config {
     pub twosided: bool,
     /// Copies are built on a separate nascent strand (see reaction::copy_nascent).
     pub strandcopy: bool,
+    /// TRANSLATE: `^C` switches `=` to translating letter pairs through a codon table.
+    pub translate: bool,
+    pub translate_seed: u64,
     /// (sequence, x, y)
     pub agents: Vec<(Vec<u8>, usize, usize)>,
     /// Every key/value as read, for run.json.
@@ -130,6 +133,8 @@ impl Config {
             displace_restore: num("DISPLACE_RESTORE", 0.0)? != 0.0,
             twosided: num("TWOSIDED", 0.0)? != 0.0,
             strandcopy: num("STRANDCOPY", 0.0)? != 0.0,
+            translate: num("TRANSLATE", 0.0)? != 0.0,
+            translate_seed: num("TRANSLATE_SEED", 1.0)? as u64,
             agents,
             raw,
         })

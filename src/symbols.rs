@@ -104,3 +104,19 @@ mod tests {
         assert_eq!(neighbours(b'C', &t), [b'B', b'$']);
     }
 }
+
+/// TRANSLATE: a balanced codon table. The 676 letter pairs are dealt out over the 33 symbols
+/// (20 or 21 pairs each) in an order shuffled by `seed`, so it is fixed for a run.
+pub fn codon_table(seed: u64) -> [u8; 676] {
+    use crate::rng::{Rng, Xoshiro};
+    let mut t = [0u8; 676];
+    for (i, c) in t.iter_mut().enumerate() {
+        *c = KEY[i % NSYM];
+    }
+    let mut r = Xoshiro::new(seed);
+    for i in (1..676).rev() {
+        let j = r.below(i + 1);
+        t.swap(i, j);
+    }
+    t
+}
