@@ -8,6 +8,9 @@ pub struct Config {
     pub gridx: usize,
     pub gridy: usize,
     pub decay: f64,
+    /// DAMAGE: chance per symbol per step that a symbol is replaced by a random one, in any
+    /// molecule, free or bound (an environmental hazard, like UV).
+    pub damage: f64,
     pub mutate: f32,
     pub maxl: usize,
     pub seed: u64,
@@ -114,6 +117,7 @@ impl Config {
             gridx,
             gridy,
             decay: num("DECAY", 0.0005)?,
+            damage: num("DAMAGE", 0.0)?,
             mutate,
             maxl: num("MAXLEN", 2000.0)? as usize,
             seed: num("RANDSEED", 1.0)? as u64,

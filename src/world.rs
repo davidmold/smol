@@ -25,6 +25,8 @@ pub struct Stats {
     pub pas_ended: u64,
     /// STRANDCOPY: unfinished nascent strands released when a reaction ended
     pub unfinished: u64,
+    /// DAMAGE: symbols hit
+    pub damage_hits: u64,
     pub instr: u64,
 }
 
@@ -67,6 +69,7 @@ pub struct World {
     pub step: u64,
     pub rng: Xoshiro,
     pub decay: f64,
+    pub damage: f64,
     pub bindlen: usize,
     pub bind_t: f64,
     pub compat_partner: bool,
@@ -106,6 +109,7 @@ impl World {
             step: 0,
             rng: Xoshiro::new(cfg.seed),
             decay: cfg.decay,
+            damage: cfg.damage,
             bindlen: cfg.bindlen,
             bind_t: cfg.bind_t,
             compat_partner: cfg.compat_partner,
@@ -294,7 +298,41 @@ impl World {
             }
         }
         self.order = order;
+        if self.damage > 0.0 {
+            self.apply_damage(obs);
+        }
         self.step = now;
+    }
+
+    /// DAMAGE: after every molecule has acted, each is hit with probability
+    /// 1 - (1 - damage)^len; a hit replaces one random symbol with a random symbol. A free
+    /// molecule's species is re-read at once (the binding cache relies on it); a bound one's is
+    /// re-read when its reaction ends, as for any change made during a reaction.
+    fn apply_damage(&mut self, obs: &mut dyn Observer) {
+        use crate::symbols::{KEY, NSYM};
+        for idx in 0..self.mols.len() {
+            if !self.mols[idx].alive {
+                continue;
+            }
+            let len = self.mols[idx].strand.len();
+            if len == 0 {
+                continue;
+            }
+            let p = 1.0 - (1.0 - self.damage).powi(len as i32);
+            if self.rng.next_f64() >= p {
+                continue;
+            }
+            let at = self.rng.below(len);
+            let k = self.rng.below(NSYM);
+            self.mols[idx].strand.put(at, KEY[k]);
+            self.stats.damage_hits += 1;
+            if self.mols[idx].bond == Bond::Free {
+                let seq = self.mols[idx].strand.seq().to_vec();
+                let old = self.mols[idx].species as i64;
+                let sp = self.species_of(&seq, old, -1, obs);
+                self.mols[idx].species = sp;
+            }
+        }
     }
 
     fn roll_decay(&mut self) -> bool {
