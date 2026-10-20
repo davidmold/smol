@@ -13,6 +13,11 @@ pub struct Config {
     pub damage: f64,
     /// DAMAGE_SHIELD_BOUND: molecules in a reaction are shielded from damage.
     pub damage_shield_bound: bool,
+    /// RATE_MIN / RATE_MAX: reaction-rate field across x. A molecule's turn (binding attempt or
+    /// one instruction) happens with probability rate(x); decay is unaffected. The field runs
+    /// from RATE_MIN at x = 0 to RATE_MAX at the middle column and back (smooth on the torus).
+    pub rate_min: f64,
+    pub rate_max: f64,
     pub mutate: f32,
     pub maxl: usize,
     pub seed: u64,
@@ -123,6 +128,8 @@ impl Config {
             decay: num("DECAY", 0.0005)?,
             damage: num("DAMAGE", 0.0)?,
             damage_shield_bound: num("DAMAGE_SHIELD_BOUND", 0.0)? != 0.0,
+            rate_min: num("RATE_MIN", 1.0)?,
+            rate_max: num("RATE_MAX", 1.0)?,
             mutate,
             maxl: num("MAXLEN", 2000.0)? as usize,
             seed: num("RANDSEED", 1.0)? as u64,

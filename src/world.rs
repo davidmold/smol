@@ -71,6 +71,8 @@ pub struct World {
     pub decay: f64,
     pub damage: f64,
     pub damage_shield_bound: bool,
+    pub rate_min: f64,
+    pub rate_max: f64,
     pub bindlen: usize,
     pub bind_t: f64,
     pub compat_partner: bool,
@@ -112,6 +114,8 @@ impl World {
             decay: cfg.decay,
             damage: cfg.damage,
             damage_shield_bound: cfg.damage_shield_bound,
+            rate_min: cfg.rate_min,
+            rate_max: cfg.rate_max,
             bindlen: cfg.bindlen,
             bind_t: cfg.bind_t,
             compat_partner: cfg.compat_partner,
@@ -337,6 +341,17 @@ impl World {
         }
     }
 
+    /// RATE field: true if the molecule at column x gets its reaction turn this step.
+    fn rate_turn(&mut self, x: usize) -> bool {
+        if self.rate_min >= 1.0 && self.rate_max >= 1.0 {
+            return true;
+        }
+        let half = self.gx as f64 / 2.0;
+        let warmth = 1.0 - ((x as f64 - half).abs() / half);
+        let r = self.rate_min + (self.rate_max - self.rate_min) * warmth;
+        self.rng.next_f64() < r
+    }
+
     fn roll_decay(&mut self) -> bool {
         self.rng.next_f64() < self.decay
     }
@@ -347,6 +362,9 @@ impl World {
             return;
         }
         let (x, y) = (self.mols[idx].x, self.mols[idx].y);
+        if !self.rate_turn(x) {
+            return;
+        }
         let mut cand = [0usize; 8];
         let mut n = 0;
         let cells = if self.compat_partner { self.scan_order(x, y) } else { self.neighbours(x, y) };
@@ -476,6 +494,9 @@ impl World {
             }
             return;
         }
+        }
+        if !self.rate_turn(self.mols[drawn].x) {
+            return;
         }
         // one instruction of the active's program
         let mut ptr = match &self.mols[act].bond {
