@@ -58,8 +58,12 @@ pub trait Observer {
 }
 
 pub struct World {
+    /// storage width: slice width * depth
     pub gx: usize,
     pub gy: usize,
+    /// slice width and number of slices (DEPTH)
+    pub sx: usize,
+    pub gz: usize,
     /// cell -> molecule index + 1, 0 for empty
     pub grid: Vec<u32>,
     pub mols: Vec<Mol>,
@@ -106,9 +110,11 @@ pub struct World {
 impl World {
     pub fn new(cfg: &Config, obs: &mut dyn Observer) -> Result<World, String> {
         let mut w = World {
-            gx: cfg.gridx,
+            gx: cfg.gridx * cfg.depth,
             gy: cfg.gridy,
-            grid: vec![0; cfg.gridx * cfg.gridy],
+            sx: cfg.gridx,
+            gz: cfg.depth,
+            grid: vec![0; cfg.gridx * cfg.depth * cfg.gridy],
             mols: Vec::new(),
             free_slots: Vec::new(),
             species: HashMap::new(),
@@ -233,9 +239,12 @@ impl World {
         }
     }
 
-    pub fn neighbours(&self, x: usize, y: usize) -> [(usize, usize); 8] {
+    pub fn neighbours(&self, x: usize, y: usize) -> ([(usize, usize); 26], usize) {
+        if self.gz > 1 {
+            return self.neighbours3(x, y);
+        }
         let (gx, gy) = (self.gx, self.gy);
-        let mut out = [(0, 0); 8];
+        let mut out = [(0, 0); 26];
         let mut k = 0;
         for dy in [gy - 1, 0, 1] {
             for dx in [gx - 1, 0, 1] {
@@ -249,7 +258,40 @@ impl World {
                 k += 1;
             }
         }
-        out
+        (out, 8)
+    }
+
+    /// DEPTH > 1: the 3x3x3 block around (slice, x, y); x wraps within a slice, slices don't
+    /// wrap, y wraps unless VERTICAL. Off-grid cells are left out.
+    fn neighbours3(&self, xf: usize, y: usize) -> ([(usize, usize); 26], usize) {
+        let (sx, gy, gz) = (self.sx, self.gy, self.gz);
+        let (z, x) = (xf / sx, xf % sx);
+        let mut out = [(0, 0); 26];
+        let mut k = 0;
+        for dz in [-1i64, 0, 1] {
+            let nz = z as i64 + dz;
+            if nz < 0 || nz >= gz as i64 {
+                continue;
+            }
+            for dy in [-1i64, 0, 1] {
+                let mut ny = y as i64 + dy;
+                if ny < 0 || ny >= gy as i64 {
+                    if self.vertical {
+                        continue;
+                    }
+                    ny = (ny + gy as i64) % gy as i64;
+                }
+                for dx in [-1i64, 0, 1] {
+                    if dx == 0 && dy == 0 && dz == 0 {
+                        continue;
+                    }
+                    let nx = ((x as i64 + dx + sx as i64) % sx as i64) as usize;
+                    out[k] = (nz as usize * sx + nx, ny as usize);
+                    k += 1;
+                }
+            }
+        }
+        (out, k)
     }
 
     /// VERTICAL: a cell can hold a molecule if it is on the ground or the cell below is occupied.
@@ -285,9 +327,10 @@ impl World {
 
     fn place_product(&mut self, seq: Vec<u8>, near: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
         let (x, y) = (self.mols[near].x, self.mols[near].y);
-        let mut empty = [(0usize, 0usize); 8];
+        let mut empty = [(0usize, 0usize); 26];
         let mut n = 0;
-        for (nx, ny) in self.neighbours(x, y) {
+        let (nb, nn) = self.neighbours(x, y);
+        for &(nx, ny) in &nb[..nn] {
             if self.grid[self.cell(nx, ny)] == 0 && self.supported(nx, ny) {
                 empty[n] = (nx, ny);
                 n += 1;
@@ -394,7 +437,8 @@ impl World {
             }
             return self.rng.next_f64() < r;
         }
-        let half = self.gx as f64 / 2.0;
+        let x = x % self.sx;
+        let half = self.sx as f64 / 2.0;
         let warmth = 1.0 - ((x as f64 - half).abs() / half);
         let r = self.rate_min + (self.rate_max - self.rate_min) * warmth;
         self.rng.next_f64() < r
@@ -433,10 +477,17 @@ impl World {
         if !self.rate_turn(x, y) {
             return;
         }
-        let mut cand = [0usize; 8];
+        let mut cand = [0usize; 26];
         let mut n = 0;
-        let cells = if self.compat_partner { self.scan_order(x, y) } else { self.neighbours(x, y) };
-        for (nx, ny) in cells {
+        let (cells, nc) = if self.compat_partner {
+            let s = self.scan_order(x, y);
+            let mut c = [(0, 0); 26];
+            c[..8].copy_from_slice(&s);
+            (c, 8)
+        } else {
+            self.neighbours(x, y)
+        };
+        for &(nx, ny) in &cells[..nc] {
             let g = self.grid[self.cell(nx, ny)];
             if g != 0 {
                 let j = (g - 1) as usize;

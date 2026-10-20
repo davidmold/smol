@@ -23,6 +23,9 @@ pub struct Config {
     /// is removed, the column above it falls by one. RATE_MIN /
     /// RATE_MAX run from the ground up (light) instead of across x.
     pub vertical: bool,
+    /// DEPTH n > 1: n slices of GRIDX x GRIDY side by side (a thin 3D slab; no wrap between
+    /// slices). GRIDPOS takes an optional slice number z. Neighbours are the 3x3x3 block.
+    pub depth: usize,
     /// SHADE s > 0 (VERTICAL): a molecule's reaction rate is multiplied by s for every molecule
     /// stacked above it in its column (on top of any RATE_MIN/RATE_MAX light-by-height field).
     pub shade: f64,
@@ -89,6 +92,7 @@ impl Config {
         let mut kv: HashMap<String, String> = HashMap::new();
         let mut raw = Vec::new();
         let mut agents = Vec::new();
+        let mut agent_z: Vec<usize> = Vec::new();
         let mut cur: Option<Vec<u8>> = None;
         for line in text.lines() {
             let l = strip(line);
@@ -107,7 +111,9 @@ impl Config {
                     let seq = cur.clone().ok_or("GRIDPOS before any AGENT")?;
                     let x: usize = rest.first().and_then(|v| v.parse().ok()).ok_or("bad GRIDPOS")?;
                     let y: usize = rest.get(1).and_then(|v| v.parse().ok()).ok_or("bad GRIDPOS")?;
+                    let z: usize = rest.get(2).and_then(|v| v.parse().ok()).unwrap_or(0);
                     agents.push((seq, x, y));
+                    agent_z.push(z);
                 }
                 _ => {
                     if let Some(v) = rest.first() {
@@ -130,10 +136,12 @@ impl Config {
         };
         let gridx = num("GRIDX", 125.0)? as usize;
         let gridy = num("GRIDY", 100.0)? as usize;
-        for (_, x, y) in &agents {
-            if *x >= gridx || *y >= gridy {
-                return Err(format!("GRIDPOS {x} {y} is outside the {gridx}x{gridy} grid"));
+        let depth = (num("DEPTH", 1.0)? as usize).max(1);
+        for (i, (_, x, y)) in agents.iter_mut().enumerate() {
+            if *x >= gridx || *y >= gridy || agent_z[i] >= depth {
+                return Err(format!("GRIDPOS {x} {y} {} is outside the {gridx}x{gridy}x{depth} grid", agent_z[i]));
             }
+            *x += agent_z[i] * gridx; // slices sit side by side in storage
         }
         Ok(Config {
             gridx,
@@ -144,6 +152,7 @@ impl Config {
             rate_min: num("RATE_MIN", 1.0)?,
             rate_max: num("RATE_MAX", 1.0)?,
             vertical: num("VERTICAL", 0.0)? != 0.0,
+            depth,
             shade: num("SHADE", 0.0)?,
             decay_chem: num("DECAY_CHEM", 0.0)?,
             decay_chem_seed: num("DECAY_CHEM_SEED", 1.0)? as u64,

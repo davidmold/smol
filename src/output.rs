@@ -68,21 +68,31 @@ impl Output {
     /// Latest state for a live viewer, replaced atomically: live.grid (one snapshot frame, same
     /// layout as a grid.snap frame) and live.json (step, counts, the 40 most abundant species).
     pub fn live(&mut self, dir: &Path, w: &World) -> std::io::Result<()> {
-        let mut raw = Vec::with_capacity(w.grid.len() * 4);
-        for &g in &w.grid {
-            let v: u32 = if g == 0 {
-                0
-            } else {
-                let m = &w.mols[(g - 1) as usize];
-                m.species | if m.bond == Bond::Free { 0 } else { 0x8000_0000 }
-            };
-            raw.extend_from_slice(&v.to_le_bytes());
+        // DEPTH > 1: slices are drawn as panels stacked top to bottom, one empty row between
+        let (pw, ph) = if w.gz > 1 { (w.sx, w.gz * w.gy + w.gz - 1) } else { (w.gx, w.gy) };
+        let mut raw = Vec::with_capacity(pw * ph * 4);
+        for r in 0..ph {
+            let (z, y) = (r / (w.gy + 1), r % (w.gy + 1));
+            for c in 0..pw {
+                let g = if w.gz > 1 {
+                    if y == w.gy { 0 } else { w.grid[y * w.gx + z * w.sx + c] }
+                } else {
+                    w.grid[r * w.gx + c]
+                };
+                let v: u32 = if g == 0 {
+                    0
+                } else {
+                    let m = &w.mols[(g - 1) as usize];
+                    m.species | if m.bond == Bond::Free { 0 } else { 0x8000_0000 }
+                };
+                raw.extend_from_slice(&v.to_le_bytes());
+            }
         }
         let mut z = ZlibEncoder::new(Vec::new(), Compression::fast());
         z.write_all(&raw)?;
         let z = z.finish()?;
         let mut buf = Vec::with_capacity(z.len() + 16);
-        for h in [w.step as u32, w.gx as u32, w.gy as u32, z.len() as u32] {
+        for h in [w.step as u32, pw as u32, ph as u32, z.len() as u32] {
             buf.extend_from_slice(&h.to_le_bytes());
         }
         buf.extend_from_slice(&z);
@@ -113,7 +123,7 @@ impl Output {
             .collect();
         let json = format!(
             "{{\"step\":{},\"gx\":{},\"gy\":{},\"n\":{n},\"bound\":{bound},\"species\":{nspecies},\"top\":[{}]}}",
-            w.step, w.gx, w.gy, top.join(",")
+            w.step, pw, ph, top.join(",")
         );
         std::fs::write(dir.join("live.json.tmp"), json)?;
         std::fs::rename(dir.join("live.json.tmp"), dir.join("live.json"))
