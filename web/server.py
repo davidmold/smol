@@ -4,6 +4,7 @@
   /                 dashboard: every condition and run, refreshed every 30 s
   /api/runs         JSON: status and population series per run (from log.txt)
   /viewer?run=C/S   the grid viewer for one run, built on demand and cached
+  /live?run=C/S     live view of a running run (needs LIVEEVERY in its config)
 
 Read-only. Standard library only.
 """
@@ -125,6 +126,57 @@ def build_viewer(run):
     return out, None
 
 
+_species = {}   # run dir -> [offset, {id: seq}]
+
+
+def species_map(rdir):
+    path = os.path.join(rdir, "species.tsv")
+    ent = _species.setdefault(rdir, [0, {}])
+    if not os.path.exists(path):
+        return ent[1]
+    with open(path, "rb") as f:
+        f.seek(ent[0])
+        data = f.read()
+    cut = data.rfind(b"\n") + 1
+    for line in data[:cut].decode(errors="replace").splitlines():
+        p = line.split("\t")
+        if p and p[0].isdigit():
+            ent[1][int(p[0])] = p[-1]
+    ent[0] += cut
+    return ent[1]
+
+
+def live_meta(rdir):
+    meta = json.load(open(os.path.join(rdir, "live.json")))
+    seqs = species_map(rdir)
+    pairs, copies, copied = {}, {}, {}
+    path = os.path.join(rdir, "copies.tsv")
+    if os.path.exists(path):
+        size = os.path.getsize(path)
+        with open(path, "rb") as f:
+            f.seek(max(0, size - 4_000_000))
+            lines = f.read().decode(errors="replace").splitlines()[1:]
+        rows = []
+        for line in lines:
+            p = line.split("\t")
+            if len(p) >= 5 and p[0].isdigit():
+                rows.append((int(p[0]), int(p[1]), int(p[2]), int(p[3]), int(p[4])))
+        if rows:
+            since = rows[-1][0] - 20000
+            for st, a, b, prod, n in rows:
+                if st < since or prod != b:
+                    continue
+                pairs[(a, b)] = pairs.get((a, b), 0) + n
+                copies[a] = copies.get(a, 0) + n
+                copied[b] = copied.get(b, 0) + n
+    top = sorted(pairs.items(), key=lambda kv: -kv[1])[:15]
+    meta["pairs"] = [{"count": n, "copier": seqs.get(a, f"#{a}"), "template": seqs.get(b, f"#{b}")} for (a, b), n in top]
+    for s in meta["top"]:
+        s["copies"], s["copied"] = copies.get(s["id"], 0), copied.get(s["id"], 0)
+    meta["series"] = [(st, n) for st, n, b in parse_run(rdir)["series"]]
+    return meta
+
+
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
@@ -152,6 +204,18 @@ class H(BaseHTTPRequestHandler):
             if err:
                 return self.send(404, f"<pre>{html.escape(err)}</pre>")
             self.send(200, open(path, "rb").read())
+        elif u.path in ("/live", "/api/live/grid", "/api/live/meta"):
+            run = parse_qs(u.query).get("run", [""])[0]
+            if ".." in run or run.count("/") != 1:
+                return self.send(400, "bad run")
+            rdir = os.path.join(A.runs, run)
+            if u.path == "/live":
+                return self.send(200, open(os.path.join(HERE, "live.html"), "rb").read())
+            if not os.path.exists(os.path.join(rdir, "live.json")):
+                return self.send(404, "no live output (set LIVEEVERY in the run's config)")
+            if u.path == "/api/live/grid":
+                return self.send(200, open(os.path.join(rdir, "live.grid"), "rb").read(), "application/octet-stream")
+            self.send(200, json.dumps(live_meta(rdir)), "application/json")
         else:
             self.send(404, "not found")
 

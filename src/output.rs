@@ -65,6 +65,60 @@ impl Output {
         self.snap.flush()
     }
 
+    /// Latest state for a live viewer, replaced atomically: live.grid (one snapshot frame, same
+    /// layout as a grid.snap frame) and live.json (step, counts, the 40 most abundant species).
+    pub fn live(&mut self, dir: &Path, w: &World) -> std::io::Result<()> {
+        let mut raw = Vec::with_capacity(w.grid.len() * 4);
+        for &g in &w.grid {
+            let v: u32 = if g == 0 {
+                0
+            } else {
+                let m = &w.mols[(g - 1) as usize];
+                m.species | if m.bond == Bond::Free { 0 } else { 0x8000_0000 }
+            };
+            raw.extend_from_slice(&v.to_le_bytes());
+        }
+        let mut z = ZlibEncoder::new(Vec::new(), Compression::fast());
+        z.write_all(&raw)?;
+        let z = z.finish()?;
+        let mut buf = Vec::with_capacity(z.len() + 16);
+        for h in [w.step as u32, w.gx as u32, w.gy as u32, z.len() as u32] {
+            buf.extend_from_slice(&h.to_le_bytes());
+        }
+        buf.extend_from_slice(&z);
+        std::fs::write(dir.join("live.grid.tmp"), &buf)?;
+        std::fs::rename(dir.join("live.grid.tmp"), dir.join("live.grid"))?;
+
+        let mut counts: HashMap<u32, (u32, usize)> = HashMap::new();
+        let (mut n, mut bound) = (0u32, 0u32);
+        for (i, m) in w.mols.iter().enumerate() {
+            if m.alive {
+                n += 1;
+                if m.bond != Bond::Free {
+                    bound += 1;
+                }
+                counts.entry(m.species).or_insert((0, i)).0 += 1;
+            }
+        }
+        let mut v: Vec<_> = counts.into_iter().collect();
+        v.sort_unstable_by(|a, b| b.1 .0.cmp(&a.1 .0).then(a.0.cmp(&b.0)));
+        let nspecies = v.len();
+        let top: Vec<String> = v
+            .iter()
+            .take(40)
+            .map(|(sp, (c, i))| {
+                let seq = String::from_utf8_lossy(w.mols[*i].strand.seq()).into_owned();
+                format!("{{\"id\":{sp},\"n\":{c},\"seq\":\"{seq}\"}}")
+            })
+            .collect();
+        let json = format!(
+            "{{\"step\":{},\"gx\":{},\"gy\":{},\"n\":{n},\"bound\":{bound},\"species\":{nspecies},\"top\":[{}]}}",
+            w.step, w.gx, w.gy, top.join(",")
+        );
+        std::fs::write(dir.join("live.json.tmp"), json)?;
+        std::fs::rename(dir.join("live.json.tmp"), dir.join("live.json"))
+    }
+
     pub fn flush_copies(&mut self, step: u64) -> std::io::Result<()> {
         let mut v: Vec<_> = self.copylog.drain().collect();
         v.sort_unstable();

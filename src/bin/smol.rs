@@ -85,6 +85,9 @@ fn main() {
         if t % cfg.snap_every == 0 {
             out.snapshot(&world).unwrap();
         }
+        if cfg.live_every > 0 && t % cfg.live_every == 0 {
+            out.live(dir, &world).unwrap();
+        }
         if t % cfg.copy_every == 0 {
             out.flush_copies(t).unwrap();
         }

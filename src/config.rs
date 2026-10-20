@@ -22,6 +22,8 @@ pub struct Config {
     pub copy_every: u64,
     pub ckpt_every: u64,
     pub keep_ckpt: usize,
+    /// LIVEEVERY: write live.grid and live.json (latest state, overwritten) every N steps; 0 = off
+    pub live_every: u64,
     pub bindlen: usize,
     /// > 0: absolute-score binding rule with this scale (see align::bind_prob_rule)
     pub bind_t: f64,
@@ -130,6 +132,7 @@ impl Config {
             copy_every: num("COPYEVERY", 1000.0)? as u64,
             ckpt_every: num("CKPTEVERY", 50_000.0)? as u64,
             keep_ckpt: num("KEEPCKPT", 3.0)? as usize,
+            live_every: num("LIVEEVERY", 0.0)? as u64,
             bindlen: num("BINDLEN", 0.0)? as usize,
             bind_t: num("BIND_T", 0.0)?,
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
