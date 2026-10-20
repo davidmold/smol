@@ -18,6 +18,16 @@ pub struct Config {
     /// from RATE_MIN at x = 0 to RATE_MAX at the middle column and back (smooth on the torus).
     pub rate_min: f64,
     pub rate_max: f64,
+    /// VERTICAL: a side-on world. y = gy-1 is the ground, y = 0 the top; no wrap in y. A product
+    /// may only be placed on the ground or on top of an occupied cell (support); when a molecule
+    /// is removed, the column above it falls by one. RATE_MIN /
+    /// RATE_MAX run from the ground up (light) instead of across x.
+    pub vertical: bool,
+    /// DECAY_CHEM S > 0: each symbol gets a stability weight S^u (u uniform in -1..1, table from
+    /// DECAY_CHEM_SEED), scaled so the alphabet's mean weight is 1; a molecule's decay chance is
+    /// DECAY times the mean weight of its symbols.
+    pub decay_chem: f64,
+    pub decay_chem_seed: u64,
     pub mutate: f32,
     pub maxl: usize,
     pub seed: u64,
@@ -130,6 +140,9 @@ impl Config {
             damage_shield_bound: num("DAMAGE_SHIELD_BOUND", 0.0)? != 0.0,
             rate_min: num("RATE_MIN", 1.0)?,
             rate_max: num("RATE_MAX", 1.0)?,
+            vertical: num("VERTICAL", 0.0)? != 0.0,
+            decay_chem: num("DECAY_CHEM", 0.0)?,
+            decay_chem_seed: num("DECAY_CHEM_SEED", 1.0)? as u64,
             mutate,
             maxl: num("MAXLEN", 2000.0)? as usize,
             seed: num("RANDSEED", 1.0)? as u64,

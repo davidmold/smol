@@ -73,6 +73,9 @@ pub struct World {
     pub damage_shield_bound: bool,
     pub rate_min: f64,
     pub rate_max: f64,
+    pub vertical: bool,
+    /// DECAY_CHEM weights, None when off
+    pub dweights: Option<[f64; 256]>,
     pub bindlen: usize,
     pub bind_t: f64,
     pub compat_partner: bool,
@@ -116,6 +119,8 @@ impl World {
             damage_shield_bound: cfg.damage_shield_bound,
             rate_min: cfg.rate_min,
             rate_max: cfg.rate_max,
+            vertical: cfg.vertical,
+            dweights: if cfg.decay_chem > 0.0 { Some(crate::symbols::decay_weights(cfg.decay_chem, cfg.decay_chem_seed)) } else { None },
             bindlen: cfg.bindlen,
             bind_t: cfg.bind_t,
             compat_partner: cfg.compat_partner,
@@ -182,11 +187,28 @@ impl World {
     }
 
     fn remove(&mut self, idx: usize) {
-        let c = self.cell(self.mols[idx].x, self.mols[idx].y);
+        let (x, y) = (self.mols[idx].x, self.mols[idx].y);
+        let c = self.cell(x, y);
         self.grid[c] = 0;
         self.mols[idx].alive = false;
         self.mols[idx].bond = Bond::Free;
         self.free_slots.push(idx);
+        if self.vertical {
+            // the column above falls by one (reactions in it carry on; bonds are by index)
+            let mut yy = y;
+            while yy > 0 {
+                let above = self.cell(x, yy - 1);
+                let g = self.grid[above];
+                if g == 0 {
+                    break;
+                }
+                let here = self.cell(x, yy);
+                self.grid[here] = g;
+                self.grid[above] = 0;
+                self.mols[(g - 1) as usize].y = yy;
+                yy -= 1;
+            }
+        }
     }
 
     /// Species id for a sequence, creating it (and reporting it) if new.
@@ -219,10 +241,18 @@ impl World {
                     continue;
                 }
                 out[k] = ((x + dx) % gx, (y + dy) % gy);
+                if self.vertical && ((dy == gy - 1 && y == 0) || (dy == 1 && y + 1 == gy)) {
+                    out[k] = (x, y); // no wrap in height: the molecule's own cell stands in
+                }
                 k += 1;
             }
         }
         out
+    }
+
+    /// VERTICAL: a cell can hold a molecule if it is on the ground or the cell below is occupied.
+    fn supported(&self, x: usize, y: usize) -> bool {
+        !self.vertical || y + 1 == self.gy || self.grid[self.cell(x, y + 1)] != 0
     }
 
     /// The old code's neighbour scan order: x offset outer, y offset inner, -1..=1.
@@ -256,7 +286,7 @@ impl World {
         let mut empty = [(0usize, 0usize); 8];
         let mut n = 0;
         for (nx, ny) in self.neighbours(x, y) {
-            if self.grid[self.cell(nx, ny)] == 0 {
+            if self.grid[self.cell(nx, ny)] == 0 && self.supported(nx, ny) {
                 empty[n] = (nx, ny);
                 n += 1;
             }
@@ -342,9 +372,15 @@ impl World {
     }
 
     /// RATE field: true if the molecule at column x gets its reaction turn this step.
-    fn rate_turn(&mut self, x: usize) -> bool {
+    fn rate_turn(&mut self, x: usize, y: usize) -> bool {
         if self.rate_min >= 1.0 && self.rate_max >= 1.0 {
             return true;
+        }
+        if self.vertical {
+            // light: RATE_MIN on the ground, RATE_MAX at the top row
+            let h = (self.gy - 1 - y) as f64 / (self.gy.max(2) - 1) as f64;
+            let r = self.rate_min + (self.rate_max - self.rate_min) * h;
+            return self.rng.next_f64() < r;
         }
         let half = self.gx as f64 / 2.0;
         let warmth = 1.0 - ((x as f64 - half).abs() / half);
@@ -356,13 +392,33 @@ impl World {
         self.rng.next_f64() < self.decay
     }
 
+    /// DECAY_CHEM: mean stability weight of a molecule's symbols (1 when off or empty).
+    fn dfactor(&self, idx: usize) -> f64 {
+        match &self.dweights {
+            None => 1.0,
+            Some(w) => {
+                let s = self.mols[idx].strand.seq();
+                if s.is_empty() { 1.0 } else { s.iter().map(|&c| w[c as usize]).sum::<f64>() / s.len() as f64 }
+            }
+        }
+    }
+
+    /// Decay roll for one molecule (or a pair: the mean of both factors).
+    fn roll_decay_of(&mut self, a: usize, b: Option<usize>) -> bool {
+        if self.dweights.is_none() {
+            return self.roll_decay();
+        }
+        let f = match b { None => self.dfactor(a), Some(b) => 0.5 * (self.dfactor(a) + self.dfactor(b)) };
+        self.rng.next_f64() < self.decay * f
+    }
+
     fn act_free(&mut self, idx: usize, now: u64, obs: &mut dyn Observer) {
-        if self.roll_decay() {
+        if self.roll_decay_of(idx, None) {
             self.remove(idx);
             return;
         }
         let (x, y) = (self.mols[idx].x, self.mols[idx].y);
-        if !self.rate_turn(x) {
+        if !self.rate_turn(x, y) {
             return;
         }
         let mut cand = [0usize; 8];
@@ -474,7 +530,7 @@ impl World {
         };
         if !self.decay_independent {
             // baseline (old) rule: one roll for the pair, both die
-            if self.roll_decay() {
+            if self.roll_decay_of(drawn, Some(other)) {
                 self.stats.pair_decays += 1;
                 self.remove(drawn);
                 self.remove(other);
@@ -482,8 +538,8 @@ impl World {
             }
         } else {
         // DECAY_INDEPENDENT: each member rolls; a decaying molecule dies, its partner is freed
-        let d_drawn = self.roll_decay();
-        let d_other = self.roll_decay();
+        let d_drawn = self.roll_decay_of(drawn, None);
+        let d_other = self.roll_decay_of(other, None);
         if d_drawn || d_other {
             for (m, dies) in [(drawn, d_drawn), (other, d_other)] {
                 if dies {
@@ -495,7 +551,7 @@ impl World {
             return;
         }
         }
-        if !self.rate_turn(self.mols[drawn].x) {
+        if !self.rate_turn(self.mols[drawn].x, self.mols[drawn].y) {
             return;
         }
         // one instruction of the active's program

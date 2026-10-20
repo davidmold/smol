@@ -120,3 +120,22 @@ pub fn codon_table(seed: u64) -> [u8; 676] {
     }
     t
 }
+
+/// DECAY_CHEM: stability weight of every byte (only alphabet entries are meaningful); the
+/// alphabet's mean weight is 1.
+pub fn decay_weights(spread: f64, seed: u64) -> [f64; 256] {
+    use crate::rng::{Rng, Xoshiro};
+    let mut r = Xoshiro::new(seed);
+    let mut w = [1.0f64; 256];
+    let mut sum = 0.0;
+    for &c in KEY.iter() {
+        let u = r.next_f64() * 2.0 - 1.0;
+        w[c as usize] = spread.powf(u);
+        sum += w[c as usize];
+    }
+    let mean = sum / NSYM as f64;
+    for &c in KEY.iter() {
+        w[c as usize] /= mean;
+    }
+    w
+}

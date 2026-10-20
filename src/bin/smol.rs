@@ -34,6 +34,13 @@ fn main() {
             }
             let mut out = Output::new(dir).unwrap_or_else(|e| die(&e.to_string()));
             let w = World::new(&cfg, &mut out).unwrap_or_else(|e| die(&e));
+            if let Some(dw) = &w.dweights {
+                let mut t = String::from("symbol\tweight\n");
+                for &c in smol::symbols::KEY.iter() {
+                    t += &format!("{}\t{:.4}\n", c as char, dw[c as usize]);
+                }
+                let _ = std::fs::write("decay_weights.tsv", t);
+            }
             out.snapshot(&w).unwrap();
             (cfg, text, w, out)
         }
