@@ -23,6 +23,9 @@ pub struct Config {
     /// is removed, the column above it falls by one. RATE_MIN /
     /// RATE_MAX run from the ground up (light) instead of across x.
     pub vertical: bool,
+    /// SHADE s > 0 (VERTICAL): a molecule's reaction rate is multiplied by s for every molecule
+    /// stacked above it in its column (on top of any RATE_MIN/RATE_MAX light-by-height field).
+    pub shade: f64,
     /// DECAY_CHEM S > 0: each symbol gets a stability weight S^u (u uniform in -1..1, table from
     /// DECAY_CHEM_SEED), scaled so the alphabet's mean weight is 1; a molecule's decay chance is
     /// DECAY times the mean weight of its symbols.
@@ -141,6 +144,7 @@ impl Config {
             rate_min: num("RATE_MIN", 1.0)?,
             rate_max: num("RATE_MAX", 1.0)?,
             vertical: num("VERTICAL", 0.0)? != 0.0,
+            shade: num("SHADE", 0.0)?,
             decay_chem: num("DECAY_CHEM", 0.0)?,
             decay_chem_seed: num("DECAY_CHEM_SEED", 1.0)? as u64,
             mutate,

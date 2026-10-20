@@ -74,6 +74,7 @@ pub struct World {
     pub rate_min: f64,
     pub rate_max: f64,
     pub vertical: bool,
+    pub shade: f64,
     /// DECAY_CHEM weights, None when off
     pub dweights: Option<[f64; 256]>,
     pub bindlen: usize,
@@ -120,6 +121,7 @@ impl World {
             rate_min: cfg.rate_min,
             rate_max: cfg.rate_max,
             vertical: cfg.vertical,
+            shade: if cfg.vertical { cfg.shade } else { 0.0 },
             dweights: if cfg.decay_chem > 0.0 { Some(crate::symbols::decay_weights(cfg.decay_chem, cfg.decay_chem_seed)) } else { None },
             bindlen: cfg.bindlen,
             bind_t: cfg.bind_t,
@@ -373,13 +375,23 @@ impl World {
 
     /// RATE field: true if the molecule at column x gets its reaction turn this step.
     fn rate_turn(&mut self, x: usize, y: usize) -> bool {
-        if self.rate_min >= 1.0 && self.rate_max >= 1.0 {
+        if self.rate_min >= 1.0 && self.rate_max >= 1.0 && self.shade <= 0.0 {
             return true;
         }
         if self.vertical {
             // light: RATE_MIN on the ground, RATE_MAX at the top row
             let h = (self.gy - 1 - y) as f64 / (self.gy.max(2) - 1) as f64;
-            let r = self.rate_min + (self.rate_max - self.rate_min) * h;
+            let mut r = self.rate_min + (self.rate_max - self.rate_min) * h;
+            if self.shade > 0.0 {
+                // shading: each molecule stacked above cuts the light
+                let mut k = 0;
+                let mut yy = y;
+                while yy > 0 && self.grid[self.cell(x, yy - 1)] != 0 {
+                    k += 1;
+                    yy -= 1;
+                }
+                r *= self.shade.powi(k);
+            }
             return self.rng.next_f64() < r;
         }
         let half = self.gx as f64 / 2.0;
