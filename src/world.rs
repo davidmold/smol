@@ -70,6 +70,7 @@ pub struct World {
     pub rng: Xoshiro,
     pub decay: f64,
     pub damage: f64,
+    pub damage_shield_bound: bool,
     pub bindlen: usize,
     pub bind_t: f64,
     pub compat_partner: bool,
@@ -110,6 +111,7 @@ impl World {
             rng: Xoshiro::new(cfg.seed),
             decay: cfg.decay,
             damage: cfg.damage,
+            damage_shield_bound: cfg.damage_shield_bound,
             bindlen: cfg.bindlen,
             bind_t: cfg.bind_t,
             compat_partner: cfg.compat_partner,
@@ -311,7 +313,7 @@ impl World {
     fn apply_damage(&mut self, obs: &mut dyn Observer) {
         use crate::symbols::{KEY, NSYM};
         for idx in 0..self.mols.len() {
-            if !self.mols[idx].alive {
+            if !self.mols[idx].alive || (self.damage_shield_bound && self.mols[idx].bond != Bond::Free) {
                 continue;
             }
             let len = self.mols[idx].strand.len();
