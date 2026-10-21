@@ -1,0 +1,6 @@
+# The four pairs (all obligate: neither member binds its own kind; checked with smol-react --strand)
+# name  A (copier)          B (borrower)   parasite  origin
+s1      S^BO$=J?>G}         F^O>           FIO>      big/strand_400x300, top pair at 0.9M
+s2      RER$Y$^BQQ$=?>H}    ERE^AEBP>      ERE^      big/strand_400x300
+s3      FSF^BQ$=?>G}        SES^AQ         SES       big/strand_400x300
+g1      FUS^YF^BPQ$=?L>}    SIF^ABQ        SIF       big/gradient_400x300, top pair at 1.1M
