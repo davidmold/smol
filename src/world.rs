@@ -49,12 +49,29 @@ pub struct Mol {
     pub species: u32,
     pub bond: Bond,
     pub alive: bool,
+    /// OFFSPRINGLOG bookkeeping (not checkpointed; reset on resume): step placed, placed
+    /// products this molecule made while executing, placed exact copies of this molecule.
+    pub born: u64,
+    pub made: u32,
+    pub copied: u32,
+}
+
+/// OFFSPRINGLOG: per-species totals over molecules that died in the current window.
+#[derive(Clone, Debug, Default)]
+pub struct LifeAgg {
+    pub died: u64,
+    pub life_sum: u64,
+    pub made_any: u64,
+    pub made_sum: u64,
+    pub copied_any: u64,
+    pub copied_sum: u64,
 }
 
 /// What happened during a step that the output layer needs to know about.
 pub trait Observer {
     fn new_species(&mut self, id: u32, born: u64, pa: i64, pp: i64, seq: &[u8]);
-    fn product(&mut self, sp_act: u32, sp_pas: u32, sp_prod: u32);
+    /// placed: false when there was no room and the product was lost
+    fn product(&mut self, sp_act: u32, sp_pas: u32, sp_prod: u32, placed: bool);
 }
 
 pub struct World {
@@ -92,6 +109,9 @@ pub struct World {
     pub displace_restore: bool,
     pub twosided: bool,
     pub strandcopy: bool,
+    pub offspring_log: bool,
+    /// OFFSPRINGLOG: deaths in the current window, by species; drained by the output layer
+    pub lives: HashMap<u32, LifeAgg>,
     /// strands of each active and its passive at bind time (DISPLACE only; not checkpointed)
     snap: HashMap<usize, (Vec<u8>, Vec<u8>)>,
     pub chem: ChemParams,
@@ -140,6 +160,8 @@ impl World {
             displace_restore: cfg.displace_restore,
             twosided: cfg.twosided,
             strandcopy: cfg.strandcopy,
+            offspring_log: cfg.offspring_log,
+            lives: HashMap::new(),
             snap: HashMap::new(),
             chem: ChemParams {
                 maxl: cfg.maxl,
@@ -179,7 +201,7 @@ impl World {
     }
 
     fn add(&mut self, strand: Strand, x: usize, y: usize, species: u32) -> usize {
-        let m = Mol { strand, x, y, species, bond: Bond::Free, alive: true };
+        let m = Mol { strand, x, y, species, bond: Bond::Free, alive: true, born: self.step, made: 0, copied: 0 };
         let idx = if let Some(i) = self.free_slots.pop() {
             self.mols[i] = m;
             i
@@ -198,6 +220,16 @@ impl World {
         let (x, y) = (self.mols[idx].x, self.mols[idx].y);
         let c = self.cell(x, y);
         self.grid[c] = 0;
+        if self.offspring_log {
+            let m = &self.mols[idx];
+            let e = self.lives.entry(m.species).or_default();
+            e.died += 1;
+            e.life_sum += self.step.saturating_sub(m.born);
+            e.made_any += (m.made > 0) as u64;
+            e.made_sum += m.made as u64;
+            e.copied_any += (m.copied > 0) as u64;
+            e.copied_sum += m.copied as u64;
+        }
         self.mols[idx].alive = false;
         self.mols[idx].bond = Bond::Free;
         self.free_slots.push(idx);
@@ -325,7 +357,8 @@ impl World {
         self.mols[idx].species = sp;
     }
 
-    fn place_product(&mut self, seq: Vec<u8>, near: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+    /// near: the molecule that made the product; other: its partner in the reaction.
+    fn place_product(&mut self, seq: Vec<u8>, near: usize, other: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
         let (x, y) = (self.mols[near].x, self.mols[near].y);
         let mut empty = [(0usize, 0usize); 26];
         let mut n = 0;
@@ -337,9 +370,19 @@ impl World {
             }
         }
         let sp = self.species_of(&seq, sp_act as i64, sp_pas as i64, obs);
-        obs.product(sp_act, sp_pas, sp);
+        obs.product(sp_act, sp_pas, sp, n > 0);
         if n == 0 {
             return; // no room: the product is lost
+        }
+        if self.offspring_log {
+            // an exact copy is credited once: to the partner (the template) if it matches,
+            // otherwise to the maker
+            self.mols[near].made += 1;
+            if other != near && self.mols[other].alive && self.mols[other].strand.seq() == &seq[..] {
+                self.mols[other].copied += 1;
+            } else if self.mols[near].strand.seq() == &seq[..] {
+                self.mols[near].copied += 1;
+            }
         }
         let (px, py) = empty[self.rng.below(n)];
         let maxl = self.chem.maxl;
@@ -656,7 +699,7 @@ impl World {
         self.stats.products += self.products.len() as u64;
         let products = std::mem::take(&mut self.products);
         for seq in products.iter() {
-            self.place_product(seq.clone(), act, sp_act, sp_pas, obs);
+            self.place_product(seq.clone(), act, pas, sp_act, sp_pas, obs);
         }
         self.products = products;
         if out == Outcome::Continue && self.twosided {
@@ -708,7 +751,7 @@ impl World {
         let products = std::mem::take(&mut self.products);
         for seq in products.iter() {
             // the passive is the copier here
-            self.place_product(seq.clone(), pas, sp_pas, sp_act, obs);
+            self.place_product(seq.clone(), pas, act, sp_pas, sp_act, obs);
         }
         self.products = products;
         // map the passive's view back onto the pair
@@ -748,13 +791,13 @@ impl World {
         if !n.is_empty() {
             self.stats.products += 1;
             self.stats.unfinished += 1;
-            self.place_product(n, act, sp_act, sp_pas, obs);
+            self.place_product(n, act, pas, sp_act, sp_pas, obs);
         }
         if !pn.is_empty() {
             self.stats.products += 1;
             self.stats.unfinished += 1;
             self.stats.pas_products += 1;
-            self.place_product(pn, pas, sp_pas, sp_act, obs);
+            self.place_product(pn, pas, act, sp_pas, sp_act, obs);
         }
     }
 
@@ -799,7 +842,7 @@ impl World {
         struct Nop;
         impl Observer for Nop {
             fn new_species(&mut self, _: u32, _: u64, _: i64, _: i64, _: &[u8]) {}
-            fn product(&mut self, _: u32, _: u32, _: u32) {}
+            fn product(&mut self, _: u32, _: u32, _: u32, _: bool) {}
         }
         let mut empty = cfg.clone();
         empty.agents.clear();
@@ -854,15 +897,15 @@ impl World {
                 b => return Err(format!("bad bond {b}")),
             };
             while w.mols.len() <= idx {
-                w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false });
+                w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0 });
                 w.acted.push(0);
             }
             let c = w.cell(x, y);
             w.grid[c] = idx as u32 + 1;
-            w.mols[idx] = Mol { strand, x, y, species, bond, alive: true };
+            w.mols[idx] = Mol { strand, x, y, species, bond, alive: true, born: w.step, made: 0, copied: 0 };
         }
         while w.mols.len() < slots {
-            w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false });
+            w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0 });
             w.acted.push(0);
         }
         // free list in its saved order, so a resumed run continues exactly

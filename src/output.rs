@@ -13,7 +13,9 @@ pub struct Output {
     species: BufWriter<File>,
     copies: BufWriter<File>,
     snap: BufWriter<File>,
-    copylog: HashMap<(u32, u32, u32), u32>,
+    copylog: HashMap<(u32, u32, u32), (u32, u32)>,
+    /// OFFSPRINGLOG: write the placed column and lives.tsv
+    pub offspring: Option<BufWriter<File>>,
 }
 
 fn open(dir: &Path, name: &str) -> std::io::Result<BufWriter<File>> {
@@ -28,6 +30,7 @@ impl Output {
             copies: open(dir, "copies.tsv")?,
             snap: open(dir, "grid.snap")?,
             copylog: HashMap::new(),
+            offspring: None,
         })
     }
 
@@ -129,11 +132,37 @@ impl Output {
         std::fs::rename(dir.join("live.json.tmp"), dir.join("live.json"))
     }
 
+    /// Turn on OFFSPRINGLOG output (lives.tsv in dir).
+    pub fn enable_offspring(&mut self, dir: &Path) -> std::io::Result<()> {
+        self.offspring = Some(open(dir, "lives.tsv")?);
+        Ok(())
+    }
+
+    /// OFFSPRINGLOG: one row per species with deaths since the last call:
+    /// step, species, died, mean lifetime, died having made >= 1 placed product, placed products
+    /// made, died having been copied exactly >= 1 time (placed), placed exact copies.
+    pub fn flush_lives(&mut self, w: &mut World) -> std::io::Result<()> {
+        if let Some(f) = &mut self.offspring {
+            let mut v: Vec<_> = w.lives.drain().collect();
+            v.sort_unstable_by_key(|(k, _)| *k);
+            for (sp, e) in v {
+                writeln!(f, "{}\t{}\t{}\t{:.1}\t{}\t{}\t{}\t{}", w.step, sp, e.died, e.life_sum as f64 / e.died.max(1) as f64, e.made_any, e.made_sum, e.copied_any, e.copied_sum)?;
+            }
+            f.flush()?;
+        }
+        Ok(())
+    }
+
     pub fn flush_copies(&mut self, step: u64) -> std::io::Result<()> {
         let mut v: Vec<_> = self.copylog.drain().collect();
         v.sort_unstable();
-        for ((a, p, c), n) in v {
-            writeln!(self.copies, "{step}\t{a}\t{p}\t{c}\t{n}\tA")?;
+        let placed_col = self.offspring.is_some();
+        for ((a, p, c), (n, k)) in v {
+            if placed_col {
+                writeln!(self.copies, "{step}\t{a}\t{p}\t{c}\t{n}\tA\t{k}")?;
+            } else {
+                writeln!(self.copies, "{step}\t{a}\t{p}\t{c}\t{n}\tA")?;
+            }
         }
         self.copies.flush()?;
         self.species.flush()
@@ -144,8 +173,10 @@ impl Observer for Output {
     fn new_species(&mut self, id: u32, born: u64, pa: i64, pp: i64, seq: &[u8]) {
         let _ = writeln!(self.species, "{}\t{}\t{}\t{}\t{}", id, born, pa, pp, String::from_utf8_lossy(seq));
     }
-    fn product(&mut self, sp_act: u32, sp_pas: u32, sp_prod: u32) {
-        *self.copylog.entry((sp_act, sp_pas, sp_prod)).or_default() += 1;
+    fn product(&mut self, sp_act: u32, sp_pas: u32, sp_prod: u32, placed: bool) {
+        let e = self.copylog.entry((sp_act, sp_pas, sp_prod)).or_default();
+        e.0 += 1;
+        e.1 += placed as u32;
     }
 }
 

@@ -68,6 +68,13 @@ pub struct Config {
     pub twosided: bool,
     /// Copies are built on a separate nascent strand (see reaction::copy_nascent).
     pub strandcopy: bool,
+    /// OFFSPRINGLOG: copies.tsv gains a column of placed products (the count column is all
+    /// attempts, as before), and lives.tsv records, per species and window, the molecules that
+    /// died: how long they lived, how many placed products they made, and how many placed exact
+    /// copies of them were made (their successful offspring).
+    pub offspring_log: bool,
+    /// CKPTKEEPEVERY n > 0: checkpoints at multiples of n are kept permanently.
+    pub ckpt_keep_every: u64,
     /// TRANSLATE: `^C` switches `=` to translating letter pairs through a codon table.
     pub translate: bool,
     pub translate_seed: u64,
@@ -177,6 +184,8 @@ impl Config {
             displace_restore: num("DISPLACE_RESTORE", 0.0)? != 0.0,
             twosided: num("TWOSIDED", 0.0)? != 0.0,
             strandcopy: num("STRANDCOPY", 0.0)? != 0.0,
+            offspring_log: num("OFFSPRINGLOG", 0.0)? != 0.0,
+            ckpt_keep_every: num("CKPTKEEPEVERY", 0.0)? as u64,
             translate: num("TRANSLATE", 0.0)? != 0.0,
             translate_seed: num("TRANSLATE_SEED", 1.0)? as u64,
             translate_stop: num("TRANSLATE_STOP", 0.0)? != 0.0,

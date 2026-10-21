@@ -80,6 +80,9 @@ fn main() {
         }
         _ => die("usage: smol run CONF | smol resume CKPT [--reseed S] [--nsteps N]"),
     };
+    if cfg.offspring_log {
+        out.enable_offspring(dir).unwrap_or_else(|e| die(&e.to_string()));
+    }
 
     let mut ckpts: Vec<String> = Vec::new();
     let start = std::time::Instant::now();
@@ -97,12 +100,18 @@ fn main() {
         }
         if t % cfg.copy_every == 0 {
             out.flush_copies(t).unwrap();
+            out.flush_lives(&mut world).unwrap();
         }
         if t % cfg.ckpt_every == 0 {
             out.flush_copies(t).unwrap();
             ckpts.push(write_checkpoint(dir, &world, &cfg_text).unwrap());
             while ckpts.len() > cfg.keep_ckpt {
-                let _ = std::fs::remove_file(dir.join(ckpts.remove(0)));
+                let old = ckpts.remove(0);
+                let step_of = |n: &str| n.trim_start_matches("checkpoint_").trim_end_matches(".txt.gz").parse::<u64>().unwrap_or(1);
+                if cfg.ckpt_keep_every > 0 && step_of(&old) % cfg.ckpt_keep_every == 0 {
+                    continue; // CKPTKEEPEVERY: a permanent checkpoint
+                }
+                let _ = std::fs::remove_file(dir.join(old));
             }
         }
         if t % 1000 == 0 {
@@ -122,5 +131,6 @@ fn main() {
         }
     }
     out.flush_copies(world.step).unwrap();
+    out.flush_lives(&mut world).unwrap();
     write_checkpoint(dir, &world, &cfg_text).unwrap();
 }
