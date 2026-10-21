@@ -22,8 +22,9 @@ replicator transition (the 64-symbol seed shrinks to ~30 symbols), then settles 
 replicator-plus-parasite churn: sequence-family turnover declines and falls below a
 neutral-drift reference, and no sustained accumulation of new reproductive functions has been
 demonstrated. That is narrower than "not open-ended": the published spatial Stringmol work
-reports longer, slower replicators and growing parasite discrimination in the *second* million
-steps, which we have not yet looked at (see findings, "Caveats"). Every chemistry change tried since (strand
+reports slower replicators and growing parasite discrimination in the *second* million steps.
+Their archived runs confirm it, as a shift from parasitic towards mutual copying and longer
+reactions rather than longer molecules (findings section 12); our runs stopped at 1M. Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
 translation from gene to machine, environmental damage, cells) has left the same pressure in
 place: **short and fast wins whenever nothing stops it.** A 10x bigger world is sturdier and

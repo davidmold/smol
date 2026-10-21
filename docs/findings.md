@@ -169,6 +169,28 @@ All copy-strand chemistry.
 - Diagnosis: nothing yet rewards a molecule for what its copies do. A copier gains nothing from
   where its copies land and will copy whatever is next to it, including the lid.
 
+## 12. The published runs, analysed with our tools (Oct 20)
+
+The authors' archive has full snapshots every 20k steps of their 8 surviving 2M-step runs, and
+their configs. Runs 1-4 use exactly our baseline config (125x100, 121 seeds in a block, DECAY
+0.0005, MUTATE 0.0002). Details and numbers: `experiments/published/`.
+- **Our reaction probe reproduces their reported reaction times** on their own evolved strings
+  (run 2, self-reaction of the top species): 184, 263 and 225 steps at 600k, 680k and 1.5M
+  against their 183, 262 and 224. Their parasitic share reaching ~0 at 1.5M in run 2 also shows.
+  So the chemistry matches at the reaction level.
+- **Over the first 1M, their runs and ours look the same** (medians across runs): 5-8k
+  molecules, median length falling from 64 to ~25-30, top species ~26-35 symbols, 80-90% of
+  same-species pairs self-replicating, 60-75% of productive cross-species pairs parasitic,
+  reaction times 130-170 steps.
+- **The change is in their second million, and it is in interactions, not length.** Parasitic
+  share falls from ~0.7 to 0.31-0.55 (0.31 at 2M), mutual copying rises from ~0.3 to 0.45-0.69,
+  reaction time rises from ~140 to 180-205 steps, and population from ~7k to ~10k. Median and top
+  lengths do not rise (22-30).
+- Our runs stopped at 1M, just before this. The 24 baseline survivors are being continued to
+  2.5M (`runs/pr0x`), and the published configs rerun with the old rules (`runs/pub`).
+- Caveat: "parasitic" and "mutual" here are weighted by abundance and binding probability over
+  the top 12 species (`tools/assay.py`); the paper's percentage is over observed reactions.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product
