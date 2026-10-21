@@ -17,9 +17,13 @@ waiting for complexity to appear.
 
 ## Where things stand, in one paragraph
 
-Baseline Stringmol is not open-ended: it makes one replicator transition (the 64-symbol seed
-shrinks to ~30 symbols), then settles into replicator-plus-parasite churn, with *less*
-novelty over time than a neutral-drift null. Every chemistry change tried since (strand
+Under our conditions and observation periods (mostly 1M steps), baseline Stringmol makes one
+replicator transition (the 64-symbol seed shrinks to ~30 symbols), then settles into
+replicator-plus-parasite churn: sequence-family turnover declines and falls below a
+neutral-drift reference, and no sustained accumulation of new reproductive functions has been
+demonstrated. That is narrower than "not open-ended": the published spatial Stringmol work
+reports longer, slower replicators and growing parasite discrimination in the *second* million
+steps, which we have not yet looked at (see findings, "Caveats"). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
 translation from gene to machine, environmental damage, cells) has left the same pressure in
 place: **short and fast wins whenever nothing stops it.** A 10x bigger world is sturdier and
@@ -29,6 +33,20 @@ interaction is in the copy-strand chemistry: **obligate partnerships** where a t
 The current exploratory thread is side-on (VERTICAL) worlds with support, light and
 chemistry-dependent decay, aiming at tree-like structure; so far fragile molecules win and
 the only stratification seen was a lid of stable junk smothering the copiers.
+
+## Current focus (from 20 Oct evening)
+
+Side-on worlds are paused. The three priorities are:
+1. **Partnership isolation**: do the evolved obligate pairs persist, invade from rarity, survive
+   bottlenecks, and get rescued when a missing partner is added back? (`experiments/partners/`)
+2. **Successful-offspring logging** (`OFFSPRINGLOG`): attempted vs placed copies vs offspring
+   that go on to be copied themselves. Only ~4% of copy attempts are placed in a full
+   copy-strand world (~39% in a filling classic one), so earlier "copies" figures are attempts.
+3. **Published-behaviour comparison** with Hickinbotham, Stepney & Hogeweg (2021): matched
+   configuration to 2M steps, our classic survivors extended to 2.5M, and their evolved strings
+   in our probe once their data archive is in hand.
+Aim: a precise account of when distributed reproduction emerges, what maintains it, and what
+prevents the next transition.
 
 ## Files in this folder
 

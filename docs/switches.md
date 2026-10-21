@@ -23,6 +23,8 @@ every checkpoint, so a resumed run keeps its switches.
 | `COPYEVERY` | 1000 | Interval for aggregated rows in `copies.tsv` |
 | `CKPTEVERY`, `KEEPCKPT` | 50,000, 3 | Checkpoint interval and how many to keep |
 | `LIVEEVERY` | 0 | Write `live.grid` / `live.json` for the live viewer every N steps |
+| `CKPTKEEPEVERY` | 0 | Checkpoints at multiples of N are never deleted (for replays) |
+| `OFFSPRINGLOG` | 0 | `copies.tsv` gains a 7th column, placed products (column 5 stays all attempts); `lives.tsv` per species and window: step, species, died, mean lifetime, died having made >=1 placed product, placed products made, died having had >=1 placed exact copy, placed exact copies. An exact copy is credited to the template (the partner) if it matches, else to the maker. Doesn't change the run |
 
 ## Baseline rule switches (the old code's behaviour, for comparison)
 

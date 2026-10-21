@@ -19,7 +19,7 @@ Most batches use the same 40 seeds (RANDSEED 18018, 19019, ... 57057) on a 125x1
   or are lost. Decay 0.0005 per step; a bound pair dies together (old rule, kept).
 - Full rules: the specification document (see README).
 
-## 1. The baseline is not open-ended (Oct 16-17)
+## 1. The baseline consolidates over 1M steps (Oct 16-17)
 
 - **One step forward, then churn.** In every run the 64-symbol seed replicase is replaced by
   one shorter family of 27-32 symbols (between 29k and 259k steps), which holds to the end.
@@ -169,9 +169,29 @@ All copy-strand chemistry.
 - Diagnosis: nothing yet rewards a molecule for what its copies do. A copier gains nothing from
   where its copies land and will copy whatever is next to it, including the lid.
 
+## Caveats on the measurements (review, 20 Oct)
+
+- **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product
+  (and `species.tsv` registered its species) before checking for room to place it. In a full
+  copy-strand world only ~4% of attempts are placed; in a filling classic world ~39%. All copy
+  counts and partnership shares in sections 7 and 10 are attempts. The drift null's rate of new
+  species is calibrated from `species.tsv`, which includes never-placed products, so it is too
+  high.
+- **The novelty metric is narrow.** It compares each window with the previous one only, so a
+  family that returns counts as new; a small sequence change with a large functional effect stays
+  inside a family; the null fixes population size, has no space and uses its own mutation
+  process, so real-vs-null differences are not purely selection.
+- **The big runs are one run per condition.** Blocks are spatial sub-samples, not replicates.
+- **"Expensive ratchet" is not yet decomposed.** Useful innovations might be hard to reach,
+  reachable but unable to invade, or able to invade but unable to persist. These call for
+  different experiments (replay, introduction at low abundance, persistence after invasion).
+- **Run length.** Hickinbotham, Stepney & Hogeweg (2021) report replicator length and reaction
+  time rising, and parasitic reactions falling to near zero by 1.5M, in the second half of 2M-step
+  runs (12 of 20 runs went extinct). Most of our runs stop at 1M.
+
 ## The pattern across everything
 
-Short and fast wins whenever nothing stops it. Changes to binding, interruption, reaction
+Within 1M steps, short and fast wins whenever nothing stops it. Changes to binding, interruption, reaction
 symmetry, copying mechanics, translation, damage and space all left that pressure in place.
 The only design that held its length was the designed cross pair; the only new interaction
 that evolved by itself (partnerships) is itself a way of getting shorter.

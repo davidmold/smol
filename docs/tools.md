@@ -99,3 +99,18 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 - Ready but not yet opened: `perf-agentsalign` (~38% faster) and `perf-small`; each needs a
   rebase onto `upstream/dev` dropping commit `cf715fc`.
 - Not yet ported: replacing the agent list (95% of the old code's run time).
+
+## Interventions on running worlds
+
+`tools/ckpt_edit.py RUN_DIR CKPT OUT_DIR [--remove SEQ] [--remove-species ID] [--cull F]
+[--region X0,X1,Y0,Y1] [--add SEQ N] [--set KEY VALUE] [--rng-seed N]` writes an edited
+checkpoint plus `species.tsv` to OUT_DIR; then `cd OUT_DIR && smol resume CKPT [--reseed S]`.
+A no-op edit resumes byte-identically to the original. Used for rarity invasion, bottlenecks,
+removal and rescue, and for continuing runs with new settings (e.g. `--set NSTEPS`).
+
+## Experiment scripts
+
+- `experiments/partners/mkconf.py`: configs with blocks of one, two or three sequences in a
+  checkerboard. `summ.py RUN [NAME=SEQ...]`: shares, placed/attempted exact copies, share of
+  dead molecules that were copied. `batch1.sh`: partnership batch 1. `pairs.txt`: the pairs.
+- `experiments/queue2.sh`: establishment replays, published-matched runs, pr0 extensions.
