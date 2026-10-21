@@ -186,8 +186,20 @@ their configs. Runs 1-4 use exactly our baseline config (125x100, 121 seeds in a
   share falls from ~0.7 to 0.31-0.55 (0.31 at 2M), mutual copying rises from ~0.3 to 0.45-0.69,
   reaction time rises from ~140 to 180-205 steps, and population from ~7k to ~10k. Median and top
   lengths do not rise (22-30).
-- Our runs stopped at 1M, just before this. The 24 baseline survivors are being continued to
-  2.5M (`runs/pr0x`), and the published configs rerun with the old rules (`runs/pub`).
+- **Our runs past 1M (21 Oct).** The 24 baseline survivors continued to 2.5M (`runs/pr0x`):
+  18 reached it, 6 died after 1M. The published configs rerun with the old rules (`runs/pub`,
+  5 seeds each): 5 of 15 reached 2M (box 1/5, random pairs 3/5, slot 1/5; they had 8 of 20).
+  Both show a **weaker version** of the published shift (medians across survivors):
+
+  | | parasitic share | mutual share | reaction time | N |
+  |---|---|---|---|---|
+  | published, 1.0-1.1M -> 1.9-2.0M | 0.71-0.79 -> 0.31-0.56 | 0.21-0.29 -> 0.43-0.69 | 167-188 -> 162-184 (peak 205) | 8k -> 10k |
+  | our baseline rules, 1.1M -> 2.4-2.5M | 0.70-0.78 -> 0.60-0.66 | 0.22-0.30 -> 0.34-0.40 | 136-184, no trend | 7.5k -> 10.7k |
+  | published configs, old rules, 1.0-1.2M -> 1.9-2.0M | 0.66-0.78 -> 0.61-0.62 (0.44-0.47 at 1.5M, 1.8M) | 0.23-0.34 -> 0.38-0.39 | ~150 -> 178-206 | 9-10k -> 10.3k |
+
+  Mutual copying rises and parasitism falls in all three, but less in ours, and reaction time
+  rises only with the old rules. Length does not rise in any of them. Small numbers of
+  surviving runs (5-18), so this is a direction, not a measured difference.
 - Caveat: "parasitic" and "mutual" here are weighted by abundance and binding probability over
   the top 12 species (`tools/assay.py`); the paper's percentage is over observed reactions.
 
