@@ -3,9 +3,8 @@
 #  Q1 replay/   strand0 seeds where borrower partnerships established: rerun from scratch with
 #               a permanent checkpoint every 10k steps and OFFSPRINGLOG, to 100k past
 #               establishment. Same seed + same chemistry => same run as the original.
-#  Q2 pub/      matched to Hickinbotham, Stepney & Hogeweg (2021): 12,500 cells as 125x100 or
-#               250x50, 100 seed replicases as a 10x10 block or 50 adjacent pairs at random
-#               places, old partner and turn rules, 2M steps, 5 seeds per treatment.
+#  Q2 pub/      the published configurations (Hickinbotham, Stepney & Hogeweg 2021) with the
+#               old partner and turn rules, 2M steps, 5 seeds per treatment.
 #  Q3 pr0x/     the 24 surviving classic baseline runs (pr0) continued from 1M to 2.5M.
 set -e
 S=~/smol; R=$S/runs; BIN=$S/target/release/smol; ED="python3 $S/tools/ckpt_edit.py"
@@ -27,34 +26,22 @@ for s in "${!EST[@]}"; do
   echo "run $d" >> $J
 done
 
-# Q2
-SEEDREP='WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB'
-for grid in 125x100 250x50; do for place in block pairs; do for s in 1101 2202 3303 4404 5505; do
-  d=$R/pub/${grid}_${place}/seed$s; mkdir -p $d
-  python3 - "$d/run.conf" "$grid" "$place" "$s" "$SEEDREP" <<'EOF'
-import sys, random
-out, grid, place, seed, rep = sys.argv[1:]
-gx, gy = map(int, grid.split("x")); rng = random.Random(int(seed))
-L = [f"GRIDX {gx}", f"GRIDY {gy}", "DECAY 0.0005", "MUTATE 0.0002", f"RANDSEED {seed}",
-     "NSTEPS 2000000", "COMPAT_PARTNER 1", "ENCOUNTER_TURN 1", "OFFSPRINGLOG 1",
-     "POPDYEVERY 1000", "SNAPEVERY 5000", "COPYEVERY 1000", "CKPTEVERY 100000",
-     "KEEPCKPT 2", "CKPTKEEPEVERY 100000"]
-cells = []
-if place == "block":
-    cx, cy = gx // 2, gy // 2
-    cells = [(cx - 5 + i, cy - 5 + j) for i in range(10) for j in range(10)]
-else:
-    taken = set()
-    while len(cells) < 100:
-        x, y = rng.randrange(gx), rng.randrange(gy); x2 = (x + 1) % gx
-        if (x, y) in taken or (x2, y) in taken:
-            continue
-        taken |= {(x, y), (x2, y)}; cells += [(x, y), (x2, y)]
-L.append(f"AGENT  {rep} 100 Q"); L += [f"GRIDPOS {x} {y}" for x, y in cells]
-open(out, "w").write("\n".join(L) + "\n")
-EOF
-  echo "run $d" >> $J
-done; done; done
+# Q2: the published configurations themselves (biopaperdata/script/runN/initrunN.conf):
+# box = 125x100 with 121 seeds in a block (runs 1-4), rand = 100x125 with 51 seeds in random
+# pairs (runs 5-6), slot = 250x50 with 121 in a block (runs 7-8). Old partner and turn rules,
+# 2M steps, 5 random seeds per treatment.
+PUB=~/published/bio/biopaperdata/script
+for tr in box:1 rand:5 slot:7; do name=${tr%%:*}; src=$PUB/run${tr##*:}/initrun${tr##*:}.conf
+  for s in 1101 2202 3303 4404 5505; do
+    d=$R/pub/$name/seed$s; mkdir -p $d
+    { echo "RANDSEED $s"; echo "NSTEPS 2000000"; echo "COMPAT_PARTNER 1"; echo "ENCOUNTER_TURN 1"
+      echo "OFFSPRINGLOG 1"; echo "POPDYEVERY 1000"; echo "SNAPEVERY 5000"; echo "CKPTEVERY 100000"
+      echo "KEEPCKPT 2"; echo "CKPTKEEPEVERY 100000"
+      grep -E "^(GRIDX|GRIDY|DECAY|MUTATE)" $src
+      grep -E "^(AGENT|GRIDPOS)" $src; } > $d/run.conf
+    echo "run $d" >> $J
+  done
+done
 
 # Q3
 for f in $R/pr0/seed*/log.txt; do
