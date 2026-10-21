@@ -1,0 +1,71 @@
+# Config keys of `smol`
+
+Config files use the old Stringmol format: `KEY value` lines, `%` or `#` comments,
+`AGENT sequence count Q` followed by `GRIDPOS x y [z]` lines. Every experiment is a switch
+that is **off by default**; with all switches off the output is byte-identical to the
+baseline (checked after every change by running old and new binaries on the same configs and
+comparing `popdy001.dat`, `species.tsv` and `copies.tsv`). The parsed config is copied into
+every checkpoint, so a resumed run keeps its switches.
+
+## World and run
+
+| Key | Default | Meaning |
+|---|---|---|
+| `GRIDX`, `GRIDY` | 125, 100 | Grid size (a torus unless `VERTICAL`) |
+| `DEPTH` | 1 | n > 1: n slices of GRIDX x GRIDY side by side (thin 3D slab, 3x3x3 neighbourhood, slices don't wrap); live view stacks the slices |
+| `DECAY` | 0.0005 | Chance per step that a molecule (or a bound pair, together) is destroyed |
+| `MUTATE` | required | Per copied symbol: indel with this chance, substitution with the same again |
+| `MAXLEN` | 2000 | Longest allowed string; a write past it ends the reaction |
+| `RANDSEED` | 1 | Seed for the run's random-number generator (Xoshiro256++) |
+| `NSTEPS` | 1,000,000 | Run length; the run also stops on extinction |
+| `POPDYEVERY` | 100 | Interval for `popdy001.dat` (step, species, count) |
+| `SNAPEVERY` | 500 | Interval for frames in `grid.snap` (viewer) |
+| `COPYEVERY` | 1000 | Interval for aggregated rows in `copies.tsv` |
+| `CKPTEVERY`, `KEEPCKPT` | 50,000, 3 | Checkpoint interval and how many to keep |
+| `LIVEEVERY` | 0 | Write `live.grid` / `live.json` for the live viewer every N steps |
+
+## Baseline rule switches (the old code's behaviour, for comparison)
+
+| Key | Default | Meaning |
+|---|---|---|
+| `COMPAT_PARTNER` | 0 | 1 = old partner choice: first free neighbour in scan order |
+| `ENCOUNTER_TURN` | 0 | 1 = a failed binding attempt also uses up the partner's turn |
+| `DECAY_INDEPENDENT` | 0 | 1 = partners in a reaction decay separately; a survivor is freed |
+
+## Binding
+
+| Key | Default | Meaning |
+|---|---|---|
+| `BINDLEN` | 0 | Alignments shorter than n bind in proportion to their length |
+| `BIND_T` | 0 | > 0: absolute-score rule P = 1 - exp(-score/T) |
+
+## Reaction mechanics
+
+| Key | Default | Meaning |
+|---|---|---|
+| `DISPLACE` | 0 | A free molecule may break into a reaction: P = DISPLACE_RATE x P(new) x (1 - P0) x max(0, 1 - copied/DISPLACE_K) |
+| `DISPLACE_K`, `DISPLACE_RATE` | 10, 1 | Hardening and overall scale for displacement |
+| `DISPLACE_RESTORE` | 0 | On displacement, undo what the abandoned reaction wrote |
+| `TWOSIDED` | 0 | The passive also runs its own code, one instruction after the active each step |
+| `STRANDCOPY` | 0 | `=` builds the copy on a separate nascent strand; the template must be the partner (own-side `=` does nothing); `%` releases the strand (or cuts at F if empty); an unfinished strand is released when the reaction ends |
+| `TRANSLATE` | 0 | With STRANDCOPY: when `^C` has toggled W to the partner side, `=` reads two letters and writes their codon-table symbol (opcodes pass through) |
+| `TRANSLATE_SEED` | 1 | Seed of the balanced 676 -> 33 codon table (`smol-codon table`) |
+| `TRANSLATE_STOP` | 0 | In translate mode a non-letter pair is a stop codon: the reaction ends |
+
+## Environment
+
+| Key | Default | Meaning |
+|---|---|---|
+| `DAMAGE` | 0 | Chance per symbol per step that a symbol is replaced by a random one, any molecule |
+| `DAMAGE_SHIELD_BOUND` | 0 | Molecules in a reaction are not damaged |
+| `RATE_MIN`, `RATE_MAX` | 1, 1 | Reaction-rate field: a molecule's turn happens with probability rate. Across x (RATE_MIN at x=0, RATE_MAX in the middle column, smooth on the torus), or by height when `VERTICAL`. Decay is unaffected |
+| `VERTICAL` | 0 | Side-on world: bottom row is the ground, no wrap in y; copies only go on the ground or on an occupied cell; a removed molecule drops its column by one |
+| `SHADE` | 0 | With VERTICAL: rate x s for every molecule stacked above |
+| `DECAY_CHEM` | 0 | S > 0: each symbol gets weight S^u (u uniform in -1..1, normalised to mean 1); a molecule decays at DECAY x the mean weight of its symbols; table written to `decay_weights.tsv` |
+| `DECAY_CHEM_SEED` | 1 | Seed of that table |
+
+## Specified but not built
+
+From the specification document: `COMPCOPY` (copy writes the complement), `LENDECAY`
+(length-dependent decay), `DIFFUSE` (molecules move), `MAXRXN` (reaction step limit),
+`SOUP` (start from random strings).

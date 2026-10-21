@@ -1,0 +1,101 @@
+# Machines, code and tools
+
+## Where the code is
+
+| What | Where | Notes |
+|---|---|---|
+| Rust simulator `smol` (source of truth) | chasca `~/projects/smol` | git, **local only, no remote** |
+| Deployed copy + all runs | aida `~/smol` (runs in `~/smol/runs`) | not a git checkout; updated by tar (below) |
+| C++ fork of Stringmol + analysis scripts | aida `~/stringmol` | github.com/davidmold/stringmol, branch `fast` |
+| Upstream contributions | chasca `~/projects/stringmol-uoy` | fork of uoy-research/stringmol |
+| Python env for analysis | aida `~/smenv` (`~/smenv/bin/python`) | rapidfuzz, numpy |
+| Design files for seeds | `designs/` in the repo | cross pair, G+M, cell, evolved seeds, strand seed |
+
+Commits use `git -c user.name=davidmold -c user.email=davidmold@gmail.com`.
+
+## Deploying a change to aida
+
+```
+cd ~/projects/smol && tar czf /tmp/smolsrc.tgz src Cargo.toml && scp /tmp/smolsrc.tgz aida:/tmp/
+ssh aida 'cd ~/smol && tar xzf /tmp/smolsrc.tgz && touch src/*.rs src/bin/*.rs && ~/.cargo/bin/cargo build --release'
+```
+
+`cargo` is not on PATH in non-interactive ssh. Running simulations keep their old binary;
+new switches default off, so rebuilding mid-batch is safe.
+
+Before committing any chemistry change: build the previous commit in a worktree
+(`git worktree add /tmp/smolhead HEAD`), run both binaries on a classic config, a gradient
+config and the latest special config, and `cmp` `popdy001.dat`, `species.tsv`, `copies.tsv`.
+
+## Binaries (`target/release/`)
+
+| Command | Purpose |
+|---|---|
+| `smol run CONF` | Run in the current directory |
+| `smol resume CKPT [--reseed S] [--nsteps N]` | Continue exactly from a checkpoint; `--reseed` for replay experiments |
+| `smol-react PAIRS [MAXSTEPS] [--compat] [--skip N]` plus `--twosided --trace --strand --translate [seed] --stop --bind-t T` | Reaction probe: react listed molecule pairs, report products and steps |
+| `smol-pairprob [BINDLEN] [BIND_T]` | Binding probabilities between molecules |
+| `smol-codon encode STRING [SEED]` / `decode GENE [SEED]` / `table [SEED]` | Translate between machine strings and letter genes |
+
+Launching a long run on aida so it survives the ssh session:
+`cd RUNDIR && (setsid nohup ~/smol/target/release/smol run run.conf > nohup.out 2>&1 < /dev/null &)`.
+Don't use `pkill -f` with a pattern that matches your own ssh command line. To stop one run,
+find its pid via `readlink /proc/<pid>/cwd`.
+
+## Outputs of a run
+
+`popdy001.dat` (step,species,count), `species.tsv` (id, birth step, parent active, parent
+passive, sequence), `copies.tsv` (step, active, passive, product, count, side), `grid.snap`
+(zlib frames of species ids, bound flag in bit 31), `checkpoint_N.txt.gz`, `log.txt` or
+`nohup.out` (one line per 1000 steps with event counters), and with `LIVEEVERY` `live.grid` +
+`live.json`. Vertical runs with `DECAY_CHEM` also write `decay_weights.tsv`.
+
+## Analysis scripts
+
+| Script | Where | What |
+|---|---|---|
+| `window_novelty.py RUNS_DIR [--glob seed*] [--window 100000] [--thresh 0.25]` | aida `~/stringmol` | The main novelty metric: new sequence families per window (species >= 1% and 20 molecules) |
+| `neutral_null.py RUN OUT [--start 300000]` | aida `~/stringmol` | Drift null: Moran process with the run's own N, turnover and new-species rate; writes files the metric reads. Existing nulls in `~/smol/nulls_pr0`, `nulls_strand0`, `nulls_strandTS` |
+| `families.py`, `summarise.py` | aida `~/stringmol` | Family clustering per run; summary across runs |
+| `probe_families.py pairs/analyse` | aida `~/stringmol` | Are families functional? (builds probe pair lists, analyses `smol-react` output) |
+| `tools/partners.py RUN...` | repo; aida `~/smol/partners.py` | Borrower partnerships: first seen, established, ancestry, share |
+| `tools/replicators.py RUN... [--window] [--top]` | repo; aida `~/smol/replicators.py` | Dominant replicators across runs |
+| `evo_report.sh`, `strand_report.sh` | aida `~/smol` | Batch reports used for the Oct 18 results |
+| `viz/build.py RUN OUT.html EVERY` | repo / aida `~/smol/viz` | Animated grid viewer for one run |
+
+Quick scripts from 20 Oct, saved in `tools/` (paths inside are hard-coded to aida; edit before
+reuse):
+
+| Script | What |
+|---|---|
+| `tools/who_copies_whom.py RUN_DIR [WINDOW]` | Last-window copy relations: self vs cross, copier vs code-less, mutual pairs, hosts |
+| `tools/block_novelty.py` | Per-100x100-block novelty from checkpoints for `big/classic_400x300`, plus small runs scored the same way |
+| `tools/big_summary.py` | Species, effective species, mean length over time and by band, for the three big runs |
+| `tools/vertical_profile.py RUN_DIR` | Occupancy and top species by height in a side-on run |
+| `tools/vertical_strata.py RUN_DIR...` | Decay weight and share of copiers by depth from the column top (handles DEPTH slabs) |
+
+## Dashboard and live viewer
+
+`web/server.py` runs on aida as the user service `smol-dash`
+(`systemctl --user restart smol-dash` after changing it). Port 8095:
+`/` lists conditions and runs with their descriptions from `runs/conditions.json`;
+`/live?run=<condition>/<run>` shows the live grid (colour by species, brighter when bound,
+click to highlight, species list with roles, who-copies-whom, population chart; refreshes
+every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
+
+## Data and disk
+
+- The finished small-run batches had their `popdy001.dat`, `species.tsv` and `copies.tsv`
+  gzipped on 20 Oct (110 GB -> 29 GB). All the analysis scripts above read either form
+  (`ropen`/`rexists` helpers; originals kept as `.bak` next to each edited script).
+- The big runs write roughly 0.2-0.8 GB per million steps each; 100M steps fits in the free
+  space (~239 GB) but `copies.tsv` is the part to segment or trim if needed.
+- Checkpoints are what replays and per-block scoring need; consider keeping more, spaced out.
+
+## Upstream (Simon Hickinbotham's Stringmol)
+
+- PR #50 (alignment-score fix + regression test) was squash-merged into `dev` by Simon.
+- PR #51 (RNGFILE fix: restarts restore the random generator) is open.
+- Ready but not yet opened: `perf-agentsalign` (~38% faster) and `perf-small`; each needs a
+  rebase onto `upstream/dev` dropping commit `cf715fc`.
+- Not yet ported: replacing the agent list (95% of the old code's run time).
