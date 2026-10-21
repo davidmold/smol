@@ -15,9 +15,21 @@ product == template) although its own sequence has no '=' (so it must be running
 import sys, os
 from collections import defaultdict
 
+def ropen(p, mode="r", **k):
+    """open p, or p.gz if p was compressed (archived runs)."""
+    import gzip, os as _os
+    if not _os.path.exists(p) and _os.path.exists(p + ".gz"):
+        return gzip.open(p + ".gz", "rb" if "b" in mode else "rt", **k)
+    return open(p, mode, **k)
+
+def rexists(p):
+    import os as _os
+    return _os.path.exists(p) or _os.path.exists(p + ".gz")
+
+
 def load_species(d):
     sp = {}
-    for l in open(os.path.join(d, "species.tsv")):
+    for l in ropen(os.path.join(d, "species.tsv")):
         p = l.rstrip("\n").split("\t")
         if p[0].isdigit():
             sp[int(p[0])] = (int(p[1]), int(p[2]), int(p[3]), p[-1])
@@ -27,7 +39,7 @@ def analyse(d):
     sp = load_species(d)
     seq = lambda i: sp[i][3] if i in sp else ""
     rows = []
-    for l in open(os.path.join(d, "copies.tsv")):
+    for l in ropen(os.path.join(d, "copies.tsv")):
         p = l.split("\t")
         if p[0].isdigit() and p[2] == p[3]:  # exact copies of the template only
             rows.append((int(p[0]), int(p[1]), int(p[2]), int(p[4])))

@@ -87,7 +87,7 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 
 - The finished small-run batches had their `popdy001.dat`, `species.tsv` and `copies.tsv`
   gzipped on 20 Oct (110 GB -> 29 GB). All the analysis scripts above read either form
-  (`ropen`/`rexists` helpers; originals kept as `.bak` next to each edited script).
+  (`ropen`/`rexists` helpers in each script; pre-change copies kept on aida as `.bak`).
 - The big runs write roughly 0.2-0.8 GB per million steps each; 100M steps fits in the free
   space (~239 GB) but `copies.tsv` is the part to segment or trim if needed.
 - Checkpoints are what replays and per-block scoring need; consider keeping more, spaced out.

@@ -11,6 +11,18 @@ it made exact copies (as copier) and was exactly copied at least 3 times each. P
 import argparse, collections, os, sys
 from rapidfuzz.distance import Levenshtein
 
+def ropen(p, mode="r", **k):
+    """open p, or p.gz if p was compressed (archived runs)."""
+    import gzip, os as _os
+    if not _os.path.exists(p) and _os.path.exists(p + ".gz"):
+        return gzip.open(p + ".gz", "rb" if "b" in mode else "rt", **k)
+    return open(p, mode, **k)
+
+def rexists(p):
+    import os as _os
+    return _os.path.exists(p) or _os.path.exists(p + ".gz")
+
+
 ap = argparse.ArgumentParser()
 ap.add_argument("runs", nargs="+")
 ap.add_argument("--window", type=int, default=200000)
@@ -22,14 +34,14 @@ tops = []
 for run in a.runs:
     name = "/".join(run.rstrip("/").split("/")[-2:])
     seq = {}
-    for l in open(os.path.join(run, "species.tsv")):
+    for l in ropen(os.path.join(run, "species.tsv")):
         p = l.rstrip("\n").split("\t")
         if len(p) >= 5:
             seq[int(p[0])] = p[4]
     last = 0
     abund = collections.Counter()
     rows = []
-    with open(os.path.join(run, "popdy001.dat")) as f:
+    with ropen(os.path.join(run, "popdy001.dat")) as f:
         for l in f:
             t, s, n = l.split(",")
             t = int(t)
@@ -41,7 +53,7 @@ for run in a.runs:
         if t > lo:
             abund[s] += n
     copier = collections.Counter(); copied = collections.Counter()
-    for l in open(os.path.join(run, "copies.tsv")):
+    for l in ropen(os.path.join(run, "copies.tsv")):
         p = l.split("\t")
         if int(p[0]) <= lo:
             continue
