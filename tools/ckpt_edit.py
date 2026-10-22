@@ -8,7 +8,8 @@ Ops, applied in the order given:
   --remove-species ID    remove every molecule of that species id
   --cull F               keep each molecule with probability F (a bottleneck)
   --add SEQ N            put N new free molecules of SEQ in random empty cells
-  --region X0,X1,Y0,Y1   restrict the following --add ops to that box (inclusive; storage x)
+  --region X0,X1,Y0,Y1   restrict the following --add and --clear ops to that box (inclusive)
+  --clear                remove every molecule inside the current region
   --set KEY VALUE        set a config key in the checkpoint (e.g. MUTATE 0, NSTEPS 400000)
 
 A molecule whose partner is removed is freed (its reaction ends, any half-built copy is
@@ -89,6 +90,11 @@ while k < len(ops):
             if idx in mols and rng.random() >= f:
                 remove(idx); removed += 1
         k += 2
+    elif op == "--clear":
+        x0, x1, y0, y1 = region
+        for idx in [j for j, m in mols.items() if x0 <= m[0] <= x1 and y0 <= m[1] <= y1]:
+            if idx in mols: remove(idx); removed += 1
+        k += 1
     elif op == "--region":
         region = [int(v) for v in ops[k + 1].split(",")]; k += 2
     elif op == "--add":

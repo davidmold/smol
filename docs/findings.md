@@ -244,7 +244,7 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
   accessibility (the right variants arising), not invasion; and a community a few tens of
   thousands of steps older makes spontaneous establishment more likely. Caveats: 3 seeds;
   "established" counts any mutual pair, not only the introduced one (the introduced sequences
-  were still present at the end in 46 of 54 intro runs).
+  were still present at the end in 42 of 54 intro runs).
 - **Against the three possibilities** (hard to reach, can't invade, can't persist): for
   partnerships themselves, they are reachable and invade evolving communities easily; against a
   resident autonomous copier, invasion depends on the specific chemistry of the encounter; and
