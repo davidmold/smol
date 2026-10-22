@@ -203,6 +203,54 @@ their configs. Runs 1-4 use exactly our baseline config (125x100, 121 seeds in a
 - Caveat: "parasitic" and "mutual" here are weighted by abundance and binding probability over
   the top 12 species (`tools/assay.py`); the paper's percentage is over observed reactions.
 
+## 13. Partnership isolation (Oct 21-22)
+
+Four obligate pairs from the big runs (`experiments/partners/pairs.txt`; in the probe neither
+member binds its own kind and each copies the other), copy-strand chemistry, 125x100.
+Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
+
+- **Members alone die out** (0 of 16 runs); the pair alone fills the grid (40/40).
+- **Mutation off, the pair is a stable ecology.** Beside an equal block of the plain copier, three
+  pairs exclude it completely and g1 coexists (copier 15%). With a parasite the pair holds ~30%
+  of the grid against ~70% parasite in all 40 runs.
+- **Mutation on (200k), the original pairs become a minority** (4-27% of molecules), replaced by
+  short fragments (s1-s3) or newly evolved ~15-symbol self-copiers (g1, and where the copier was
+  present). 117 of 120 worlds survive. Whether descendants keep the partnership is not yet
+  measured.
+- **Invasion of a resident copier world from rarity is chemistry-specific.** s1 and g1 never
+  establish (0/40): the copier can't bind s1, and copier-g1 complexes stall. s2 and s3 take
+  over from 20 molecules (10/10, 8/10), the copier going extinct, but the invasion often crashes
+  the whole world first (from 2 molecules: 5/10 and 8/10 worlds died). In the probe s2A is copied
+  by the copier without copying back, and copier-s3A reactions never end, so copiers are
+  parasitised or locked up. The copier never invades a pair world (0/40).
+- **Bottlenecks:** cut to 1%, pair worlds survive 35/40 against the copier's 10/10; cut to 0.1%,
+  4/40 against 1/10. Obligate pairs are only slightly more fragile.
+- **Rescue:** with one partner removed, adding 20 back after 0, 2k or 5k steps restores the pair
+  in 60/60 runs; after 10k in 5/20; after 20k in 0/20 (the remaining partner has died out).
+- **Accessibility vs introduction** in evolving communities (strand0 replays, MUTATE 0.0002,
+  150k steps after the checkpoint). A partnership counts as established if, in some 10k window,
+  at least 30% of placed exact copies happen in mutual cross-species pairs (counts at a 10%
+  threshold are in agg2.txt and are higher):
+
+  | seed (orig. establishment) | checkpoint | replays establishing | own pair introduced | foreign s1 introduced |
+  |---|---|---|---|---|
+  | 18018 (110k) | 30k / 60k / 90k | 5/10, 6/10, 10/10 | 2/3, 2/3, 3/3 | 3/3, 3/3, 3/3 |
+  | 20020 (70k) | 20k / 40k / 60k | 1/10, 4/10, 10/10 | 3/3, 3/3, 3/3 | 2/3, 2/3, 3/3 |
+  | 23023 (100k) | 30k / 60k / 90k | 3/10, 2/10, 7/10 | 3/3, 3/3, 3/3 | 3/3, 3/3, 3/3 |
+
+  Partnerships are reachable: they form spontaneously in most replays, more reliably closer to
+  the original establishment time. When supplied, a pair establishes almost always, even early
+  and even when foreign. So in these communities the limit on *when* partnerships appear is
+  accessibility (the right variants arising), not invasion; and a community a few tens of
+  thousands of steps older makes spontaneous establishment more likely. Caveats: 3 seeds;
+  "established" counts any mutual pair, not only the introduced one (the introduced sequences
+  were still present at the end in 46 of 54 intro runs).
+- **Against the three possibilities** (hard to reach, can't invade, can't persist): for
+  partnerships themselves, they are reachable and invade evolving communities easily; against a
+  resident autonomous copier, invasion depends on the specific chemistry of the encounter; and
+  under mutation the original pairs persist only as a minority. The next transition beyond
+  pairs has not been observed, so these experiments don't yet say what blocks it.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

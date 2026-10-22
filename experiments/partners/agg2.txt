@@ -1,0 +1,79 @@
+
+== invade: condition, alive/runs, median final share of tracked sequences
+  g1_n2          alive 10/10  tracked present  0  median share 0.00
+  g1_n20         alive 10/10  tracked present  0  median share 0.00
+  s1_n2          alive 10/10  tracked present  0  median share 0.00
+  s1_n20         alive 10/10  tracked present  1  median share 0.00
+  s2_n2          alive  5/10  tracked present  4  median share 1.00
+  s2_n20         alive 10/10  tracked present 10  median share 1.00
+  s3_n2          alive  2/10  tracked present  0  median share 0.00
+  s3_n20         alive  8/10  tracked present  8  median share 1.00
+
+== reverse: condition, alive/runs, median final share of tracked sequences
+  g1             alive 10/10  tracked present  0  median share 0.00
+  s1             alive 10/10  tracked present  0  median share 0.00
+  s2             alive 10/10  tracked present  0  median share 0.00
+  s3             alive 10/10  tracked present  0  median share 0.00
+
+== bottleneck: condition, alive/runs, median final share of tracked sequences
+  cop_f0.001     alive  1/10  tracked present  1  median share 1.00
+  cop_f0.01      alive 10/10  tracked present 10  median share 1.00
+  g1_f0.001      alive  2/10  tracked present  2  median share 1.00
+  g1_f0.01       alive 10/10  tracked present 10  median share 1.00
+  s1_f0.001      alive  1/10  tracked present  1  median share 1.00
+  s1_f0.01       alive  9/10  tracked present  9  median share 1.00
+  s2_f0.001      alive  1/10  tracked present  1  median share 1.00
+  s2_f0.01       alive  8/10  tracked present  8  median share 1.00
+  s3_f0.001      alive  0/10  tracked present  0  median share 0.00
+  s3_f0.01       alive  8/10  tracked present  8  median share 1.00
+
+== rescue: condition, alive/runs, median final share of tracked sequences
+  g1_d0          alive  5/5   tracked present  5  median share 1.00
+  g1_d10000      alive  1/5   tracked present  1  median share 1.00
+  g1_d2000       alive  5/5   tracked present  5  median share 1.00
+  g1_d20000      alive  0/5   tracked present  0  median share 0.00
+  g1_d5000       alive  5/5   tracked present  5  median share 1.00
+  s1_d0          alive  5/5   tracked present  5  median share 1.00
+  s1_d10000      alive  1/5   tracked present  1  median share 1.00
+  s1_d2000       alive  5/5   tracked present  5  median share 1.00
+  s1_d20000      alive  0/5   tracked present  0  median share 0.00
+  s1_d5000       alive  5/5   tracked present  5  median share 1.00
+  s2_d0          alive  5/5   tracked present  5  median share 1.00
+  s2_d10000      alive  0/5   tracked present  0  median share 0.00
+  s2_d2000       alive  5/5   tracked present  5  median share 1.00
+  s2_d20000      alive  0/5   tracked present  0  median share 0.00
+  s2_d5000       alive  5/5   tracked present  5  median share 1.00
+  s3_d0          alive  5/5   tracked present  5  median share 1.00
+  s3_d10000      alive  3/5   tracked present  3  median share 1.00
+  s3_d2000       alive  5/5   tracked present  5  median share 1.00
+  s3_d20000      alive  0/5   tracked present  0  median share 0.00
+  s3_d5000       alive  5/5   tracked present  5  median share 1.00
+
+== access: established partnership (best 10k-window share of placed exact copies in mutual pairs >= 0.10)
+  seed18018 t= 30k replay     established 10/10  best shares 0.15 0.21 0.49 0.45 0.38 0.15 0.12 0.43 0.35 0.13
+  seed18018 t= 30k intro_own  established 3/3  best shares 0.29 0.41 0.84  | introduced present at end 2/3
+  seed18018 t= 30k intro_s1   established 3/3  best shares 0.46 0.66 0.80  | introduced present at end 3/3
+  seed18018 t= 60k replay     established 10/10  best shares 0.43 0.18 0.28 0.39 0.78 0.40 0.13 0.35 0.40 0.17
+  seed18018 t= 60k intro_own  established 3/3  best shares 0.45 0.22 0.59  | introduced present at end 1/3
+  seed18018 t= 60k intro_s1   established 3/3  best shares 0.84 0.63 0.66  | introduced present at end 3/3
+  seed18018 t= 90k replay     established 10/10  best shares 0.87 0.73 0.64 0.77 0.86 0.37 0.84 0.45 0.63 0.51
+  seed18018 t= 90k intro_own  established 3/3  best shares 0.71 0.87 0.71  | introduced present at end 2/3
+  seed18018 t= 90k intro_s1   established 3/3  best shares 0.60 0.67 0.67  | introduced present at end 3/3
+  seed20020 t= 20k replay     established 4/10  best shares 0.10 0.10 0.10 0.10 0.09 0.62 0.10 0.20 0.09 0.09
+  seed20020 t= 20k intro_own  established 3/3  best shares 0.59 0.42 0.94  | introduced present at end 2/3
+  seed20020 t= 20k intro_s1   established 2/3  best shares 0.10 0.36 0.44  | introduced present at end 1/3
+  seed20020 t= 40k replay     established 6/10  best shares 0.09 0.09 0.08 0.84 0.44 0.14 0.69 0.75 0.21 0.07
+  seed20020 t= 40k intro_own  established 3/3  best shares 0.88 0.55 0.54  | introduced present at end 2/3
+  seed20020 t= 40k intro_s1   established 3/3  best shares 0.28 0.70 0.56  | introduced present at end 2/3
+  seed20020 t= 60k replay     established 10/10  best shares 0.59 0.62 0.69 0.54 0.87 0.60 0.64 0.53 0.54 0.71
+  seed20020 t= 60k intro_own  established 3/3  best shares 0.55 0.64 0.49  | introduced present at end 3/3
+  seed20020 t= 60k intro_s1   established 3/3  best shares 0.81 0.67 0.73  | introduced present at end 2/3
+  seed23023 t= 30k replay     established 10/10  best shares 0.13 0.30 0.56 0.34 0.17 0.12 0.70 0.20 0.13 0.17
+  seed23023 t= 30k intro_own  established 3/3  best shares 0.91 0.69 0.73  | introduced present at end 2/3
+  seed23023 t= 30k intro_s1   established 3/3  best shares 0.37 0.57 0.71  | introduced present at end 2/3
+  seed23023 t= 60k replay     established 2/10  best shares 0.07 0.07 0.07 0.07 0.07 0.87 0.08 0.38 0.07 0.07
+  seed23023 t= 60k intro_own  established 3/3  best shares 0.48 0.60 0.57  | introduced present at end 3/3
+  seed23023 t= 60k intro_s1   established 3/3  best shares 0.65 0.88 0.73  | introduced present at end 3/3
+  seed23023 t= 90k replay     established 7/10  best shares 0.36 0.36 0.62 0.05 0.03 0.63 0.67 0.78 0.03 0.40
+  seed23023 t= 90k intro_own  established 3/3  best shares 0.48 0.40 0.48  | introduced present at end 3/3
+  seed23023 t= 90k intro_s1   established 3/3  best shares 0.79 0.90 0.85  | introduced present at end 3/3
