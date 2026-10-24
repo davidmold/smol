@@ -21,9 +21,11 @@ Baseline Stringmol makes one large sequence transition early (the 64-symbol seed
 ~30 symbols), after which lengths stay roughly stable. But ecological interactions keep
 changing after that: past 1M steps parasitism falls and mutual copying rises, in the published
 runs and, more weakly, in ours (findings 12). So "one transition, then nothing but churn" was
-too strong; length alone misses this. Sustained accumulation of new reproductive functions has
-not been demonstrated. The earlier claim that selection suppresses sequence-family novelty
-rests on a null calibrated with never-placed products and is being rechecked. Every chemistry change tried since (strand
+too strong; length alone misses this. In the big classic world a second transition did happen, at
+~3-4.5M steps: a parasitic family displaced the replicators and processive (amplifying)
+replicators, twice as long, evolved from it (findings 10b; one run). The earlier claim that
+selection suppresses sequence-family novelty does not survive a correctly calibrated drift null
+(findings 1). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
 translation from gene to machine, environmental damage, cells) has left the same pressure in
 place: **short and fast wins whenever nothing stops it.** A 10x bigger world is sturdier and

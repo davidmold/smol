@@ -15,11 +15,6 @@ ap = argparse.ArgumentParser(); ap.add_argument("run")
 ap.add_argument("--every", type=int, default=1000000); ap.add_argument("--window", type=int, default=20000)
 a = ap.parse_args()
 ropen = lambda p: open(p) if os.path.exists(p) else gzip.open(p + ".gz", "rt")
-seq = {}
-for l in ropen(f"{a.run}/species.tsv"):
-    p = l.rstrip("\n").split("\t")
-    if p[0].isdigit():
-        seq[int(p[0])] = p[-1]
 win = collections.defaultdict(collections.Counter); placed_col = None
 for l in ropen(f"{a.run}/copies.tsv"):
     r = l.rstrip("\n").split("\t")
@@ -29,6 +24,12 @@ for l in ropen(f"{a.run}/copies.tsv"):
     if placed_col is None:
         placed_col = len(r) > 6
     win[k][(int(r[1]), int(r[2]))] += int(r[6]) if placed_col else int(r[4])
+need = {t for c in win.values() for (m, t) in c}
+seq = {}
+for l in ropen(f"{a.run}/species.tsv"):
+    i = l.find("\t")
+    if i > 0 and l[:i].isdigit() and int(l[:i]) in need:
+        seq[int(l[:i])] = l.rstrip("\n").split("\t")[-1]
 print(f"== {a.run} ({'placed' if placed_col else 'attempted'} exact copies)")
 print(f"{'step':>9} {'copies':>9} {'self':>5} {'mutual':>6} {'oneway':>6} {'codeless':>8} {'pairs':>6}")
 for k in sorted(win):

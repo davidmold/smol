@@ -1,0 +1,35 @@
+seed20020  new families per window: [8, 10, 5, 2, 6, 7, 6, 8, 8]
+seed21021  new families per window: [8, 12, 1, 2, 3, 7, 7, 7, 4]
+seed22022  new families per window: [11, 2, 1, 0, 1, 2, 4, 4, 6]
+seed24024  new families per window: [10, 5, 2, 1, 4, 4, 4, 9, 11]
+seed25025  new families per window: [11, 9, 2, 5, 24, 16, 9, 9, 29]
+seed26026  new families per window: [11, 11, 6, 14, 19, 24, 14, 20, 22]
+seed29029  new families per window: [13, 16, 0]
+seed32032  new families per window: [9, 6, 1, 3, 3, 4, 3, 5, 6]
+seed36036  new families per window: [15, 9, 2, 2, 4, 1, 7, 10, 11]
+seed37037  new families per window: [7, 7, 4, 6, 12, 17, 10, 16, 20]
+seed40040  new families per window: [10, 14, 0, 2, 8, 6, 6, 9, 7]
+seed41041  new families per window: [5, 8, 6, 14, 15, 24, 12, 29, 20]
+seed42042  new families per window: [16, 15, 1, 3, 3, 5, 5, 4, 6]
+seed43043  new families per window: [9, 15, 0, 0, 0, 3, 2, 9, 7]
+seed44044  new families per window: [7, 7, 3, 4, 1, 2, 1, 2, 1]
+seed45045  new families per window: [5, 11, 10, 17, 27, 31, 34, 34, 37]
+seed47047  new families per window: [13, 7, 0, 3, 5, 2, 6, 2, 2]
+seed48048  new families per window: [9, 13, 4, 10, 15, 15, 17, 16, 16]
+seed49049  new families per window: [18, 10, 2, 8, 7, 12, 12, 11, 17]
+seed52052  new families per window: [6, 13, 2, 3, 8, 5, 8, 10, 5]
+seed53053  new families per window: [24, 9, 0, 0, 5, 5, 6, 5, 7]
+seed54054  new families per window: [11, 4, 2, 13, 10, 12, 10, 14, 15]
+seed56056  new families per window: [7, 17, 2, 3, 5, 9, 10, 9, 8]
+seed57057  new families per window: [9, 13, 1, 2, 2, 9, 8, 8, 9]
+
+window(k)  runs  families_present/run  new_vs_previous_window/run
+ 100-200     24                  18.2                        10.5
+ 200-300     24                  17.2                        10.1
+ 300-400     24                  11.2                         2.4
+ 400-500     23                  13.0                         5.1
+ 500-600     23                  17.0                         8.1
+ 600-700     23                  18.0                         9.7
+ 700-800     23                  19.3                         8.7
+ 800-900     23                  20.5                        10.9
+ 900-1000    23                  24.3                        11.9

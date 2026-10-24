@@ -1,0 +1,70 @@
+== step 2800000: 113775 molecules
+  0.011 born  2469219 len  26 self-reaction steps   96 copies   1 other  0  ??>C$BU^BQ>C$=?W>F$B%R}XHO
+  0.011 born  2294117 len  25 self-reaction steps   92 copies   1 other  0  ?=>C$BU^BQ>C$=?W>$B%R}WHO
+  0.009 born  2541879 len  22 self-reaction steps  137 copies   1 other  0  ==?>$?AIBOA^B$=?>$U%}H
+  0.008 born  2434989 len  26 self-reaction steps  100 copies   1 other  0  ??>CZ$DB=C^BY>C$=?W>$B%RNO
+  0.008 born    38102 len   1 self-reaction steps    2 copies   0 other  0  ?
+  0.007 born  1728661 len  27 self-reaction steps  100 copies   1 other  0  ??>C$DB=C^B>C$=?W>F$B%R}WHO
+== step 3000000: 114567 molecules
+  0.015 born  1730618 len  27 self-reaction steps  100 copies   1 other  0  ??>C$B=C^BY>C$=?W>F$B%R}WHO
+  0.010 born  2016434 len  28 self-reaction steps  103 copies   1 other  0  ???TE>C$BBWL^BY>C$=?U>$B%}GO
+  0.009 born  2724866 len  29 self-reaction steps  108 copies   1 other  0  ???D>C$BBW?^BZ>C$=?U>Z$B%S}^O
+  0.008 born  2634088 len  26 self-reaction steps  100 copies   1 other  0  ??>CZ$DB=C^BY>C$=?W>$B%SNO
+  0.007 born  2469219 len  26 self-reaction steps   96 copies   1 other  0  ??>C$BU^BQ>C$=?W>F$B%R}XHO
+  0.006 born  2302658 len  26 self-reaction steps   96 copies   1 other  0  ?=>C$BU^BQ>C$=?W>F$B%R}VHO
+== step 3200000: 116171 molecules
+  0.007 born  3100846 len  29 self-reaction steps   62 copies   0 other  1  ^B>C$LC^O>BP$YP^B>C%T$==?>MUC
+  0.006 born  2183962 len  23 self-reaction steps   89 copies   1 other  0  ==?>C$BK^B>C$=?>N$BN%CO
+  0.006 born  2302658 len  26 self-reaction steps   96 copies   1 other  0  ?=>C$BU^BQ>C$=?W>F$B%R}VHO
+  0.005 born  3105171 len  48 self-reaction steps   85 copies   0 other  1  ^O>BP$YP^B>C^B>C$LC^B>C$LC^O>BP$YP^B>C%T$==?>MUC
+  0.004 born  3077960 len  29 self-reaction steps  107 copies   1 other  0  ???TE?>C$BBL^BY>C$=?U>$B%%}GO
+  0.003 born  1730618 len  27 self-reaction steps  100 copies   1 other  0  ??>C$B=C^BY>C$=?W>F$B%R}WHO
+== step 3300000: 116458 molecules
+  0.008 born  2460128 len   7 self-reaction steps   13 copies   0 other  0  %T$==?>
+  0.005 born  3258991 len  29 self-reaction steps   61 copies   0 other  1  ^B>C$LCA^O>BP$YPN^B>C%T$==?>M
+  0.005 born  3271988 len  55 self-reaction steps   91 copies   0 other  1  ^OD>B$APW^BQ>C^BQ>CN$NCJ^BQ>CN$NCJ^OD>B$APW^BQ>C%T$==?>
+  0.004 born  3271625 len  41 self-reaction steps   61 copies   0 other  1  ^BQ>CN$NCJ^BQ>CN$NCJ^OD>B$APW^BQ>C%T$==?>
+  0.003 born  3270252 len  31 self-reaction steps   61 copies   0 other  1  ^BQ>CN$NCJ^OD>B$APW^BQ>C%T$==?>
+  0.003 born  3232775 len  31 self-reaction steps   62 copies   0 other  1  ^BO>C$NCI^OB>BP$APV^BP>C%T$==?>
+== step 3500000: 116307 molecules
+  0.026 born  2460128 len   7 self-reaction steps   13 copies   0 other  0  %T$==?>
+  0.013 born  3429110 len  35 self-reaction steps   68 copies   0 other  1  ^BQ>CN$NCIJ^OD>BPA$APVW^BQ>C%T$==?>
+  0.008 born  3461268 len  63 self-reaction steps  103 copies   0 other  1  ^OD>BPA$APVW^BQ>C^BQ>CN$NCIJ^BQ>CN$NCIJ^OD>BPA$APVW^BQ>C%T$=
+  0.008 born  3420591 len  44 self-reaction steps   62 copies   0 other  1  ^BQ>CNN$NCJ^BQ>CNN$NCJ^OD>BA$APW^BQ>C%T$==?>
+  0.007 born  3421533 len  59 self-reaction steps   97 copies   0 other  1  ^OD>BA$APW^BQ>C^BQ>CNN$NCJ^BQ>CNN$NCJ^OD>BA$APW^BQ>C%T$==?>
+  0.006 born  3369678 len  33 self-reaction steps   62 copies   0 other  1  ^BQ>CNN$NCJ^OD>BA$APW^BQ>C%T$==?>
+== step 3800000: 114976 molecules
+  0.007 born  2460128 len   7 self-reaction steps   13 copies   0 other  0  %T$==?>
+  0.003 born  2646634 len   7 self-reaction steps   13 copies   0 other  0  %S$==?>
+  0.002 born  3731802 len  25 self-reaction steps   61 copies   0 other  1  W^CJ^P>BR$P?X^B>C%S$==?>M
+  0.001 born  2948588 len   9 self-reaction steps   19 copies   0 other  0  %T$==?>MB
+  0.001 born  3687239 len  51 self-reaction steps   85 copies   0 other  1  ^O>B$APOV^B>C^BBO$NCBI^BBO$NCBI^O>B$APOV^B>C%T$==?>
+  0.001 born  2046727 len   2 self-reaction steps    3 copies   0 other  0  KB
+== step 4000000: 115823 molecules
+  0.004 born  3943289 len  31 self-reaction steps   79 copies   0 other  1  BW^COJ^P>BWER$P?^BKQ>C%TP$==?>M
+  0.003 born  3916960 len  31 self-reaction steps   79 copies   0 other  1  BW^COJ^PB>BER$P?^BKQ>C%TP$==?>M
+  0.003 born  3958551 len  54 self-reaction steps   72 copies   0 other  1  ^BFQBBO$NMCJN^BFQBBO$NMCJN^OSDO>B$AZPWA^BFH>C%S$===?K>
+  0.003 born  2460128 len   7 self-reaction steps   13 copies   0 other  0  %T$==?>
+  0.002 born  3332259 len   9 self-reaction steps   14 copies   0 other  0  %TP$==?>M
+  0.002 born  3957551 len  41 self-reaction steps   72 copies   0 other  1  ^BFQBBO$NMCJN^OSDO>B$AZPWA^BFH>C%S$===?K>
+== step 4200000: 115716 molecules
+  0.003 born  2646634 len   7 self-reaction steps   13 copies   0 other  0  %S$==?>
+  0.002 born  4111083 len  25 self-reaction steps   61 copies   0 other  1  ^BMC^OZP>BR$PL^B>C%S$==?>
+  0.002 born  4156364 len  68 self-reaction steps 5000 copies  28 other  1  O^BJ$H>BD$XOD^BK^BKKKBRKBXO^B^$^Q$BBE$XO^B?Q>C%FTB$===?>^BQB
+  0.002 born  4174409 len  26 self-reaction steps   62 copies   0 other  1  ^BMC^OZP>BM$PL^B>C%SO$==?>
+  0.002 born  4164337 len  71 self-reaction steps 5000 copies  26 other  1  OO^BJ$HL>BD$WODC^BK^BKKKBK$BXO^B^$^QBBE$XO^B?Q>C%FTB$===?>^B
+  0.002 born  4180029 len  32 self-reaction steps   62 copies   0 other  1  ^BMCOOEJCY^OZP>BR$WPL^B>C%S$==?>
+== step 4500000: 115540 molecules
+  0.004 born  4362414 len  28 self-reaction steps   72 copies   0 other  1  J^CW^PJ>BES$P^B?P>C%RT$==?>M
+  0.003 born  4464820 len  28 self-reaction steps   73 copies   0 other  1  W^CJ^PW>BFF$PN^BB>C%XX$==?>L
+  0.003 born  4314827 len  33 self-reaction steps   84 copies   0 other  1  B^COO^PB>BFR$PBQ?^B?Q>C%SOH$==?>M
+  0.002 born  4352610 len  62 self-reaction steps 5000 copies  30 other  2  JQ$H>BE$XO^BK^BKKBXOXO^B^$^QBBEDXO^B?Q>C%TB$===?>^BQBCO$NMCI
+  0.002 born  4444330 len  74 self-reaction steps 5000 copies  26 other  1  O^BJ$H>BD$XOD^BK^BKKK?BKCBXO^B^$^Q$BBER$LXO^B?QF>C%FBTB$===?
+  0.002 born  4364128 len  44 self-reaction steps   79 copies   0 other  1  W^PJ>BES$P^B?P>CJ^CW^PJ>BES$P^B?P>C%RT$==?>M
+== step 5000000: 114746 molecules
+  0.004 born  4851173 len  28 self-reaction steps   72 copies   0 other  1  J^CW^PJ>BE$PRD^B?P>C%R$==?>N
+  0.003 born  4945528 len  42 self-reaction steps 5000 copies  45 other  1  $>B$^>B$R$OG^B>C%TB$=E===?>ZNCOOO^H$$D$D>>
+  0.003 born  4903503 len  50 self-reaction steps 5000 copies  34 other  1  J$H>B^DO$D>B$^RB?$R$O^BG>C%TB$=E==?>XOB^OOH$$CD$D>
+  0.003 born  4946471 len  28 self-reaction steps   72 copies   0 other  1  L^BY^OAQ>B$OI^B>CY%JSG$==?J>
+  0.003 born  4873140 len  28 self-reaction steps   73 copies   0 other  1  L^BY^OLAP>B$OI^B>CY%JSG$==?>
+  0.002 born  4874748 len  47 self-reaction steps 5000 copies  36 other  1  ^DO$D>B$^>B?$R$O^BG>C%TB$=E==?>YOW$B^OO^H$$C$D>

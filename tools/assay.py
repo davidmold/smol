@@ -29,11 +29,6 @@ a = ap.parse_args()
 def ropen(p):
     return open(p) if os.path.exists(p) else gzip.open(p + ".gz", "rt")
 
-seq = {}
-for l in ropen(os.path.join(a.run, "species.tsv")):
-    p = l.rstrip("\n").split("\t")
-    if p[0].isdigit():
-        seq[int(p[0])] = p[-1]
 want = set(int(s) for s in a.steps.split(",")) if a.steps else None
 pops = {}
 cur = None
@@ -44,6 +39,15 @@ for l in ropen(os.path.join(a.run, "popdy001.dat")):
     if (want and t in want) or (not want and t % a.every == 0 and t > 0):
         pops.setdefault(t, {})[int(s)] = pops.get(t, {}).get(int(s), 0) + int(c)
 
+# load only the sequences of species we will react (species.tsv can be tens of GB)
+need = set()
+for t, pop in pops.items():
+    need |= {sp for sp, _ in sorted(pop.items(), key=lambda kv: -kv[1])[:a.top]}
+seq = {}
+for l in ropen(os.path.join(a.run, "species.tsv")):
+    i = l.find("\t")
+    if i > 0 and l[:i].isdigit() and int(l[:i]) in need:
+        seq[int(l[:i])] = l.rstrip("\n").split("\t")[-1]
 pat = re.compile(r"(\S+)\s+initiates with (\S+)\s+P\(bind\)=([\d.]+)\s+copier=\S+\s+copied=\S+\s+steps=(\d+)")
 print(f"== {a.run}")
 print(f"{'step':>8} {'N':>6} {'cover':>5} {'selfrep':>7} {'mutual':>6} {'parasitic':>9} {'rtime':>6} {'toplen':>6} {'toprt':>6}")

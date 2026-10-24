@@ -26,8 +26,17 @@ Most batches use the same 40 seeds (RANDSEED 18018, 19019, ... 57057) on a 125x1
   After that almost every new family is a parasite (1-16 symbols, copied by others, copying
   nobody). A second replicator family is rare and late (731k, 884k, 971k in 3 of 6 runs,
   never above 11%).
-- **Novelty fell below a drift reference (to be rechecked: the null's rate of new species
-  included never-placed products; see Caveats).** Sequence-family novelty per 100k-step window, against a
+- **Novelty against drift: the original conclusion does not survive the corrected null.**
+  Rechecked 24 Oct (`experiments/novelty/`) on the 24 surviving baseline runs, rerun to 1M with
+  placement logging (identical runs: same seeds, byte-identical population files). The null
+  calibrated from *placed* new species has about a third of the old null's rate of new
+  sequences, and then real runs produce **more** new families than drift, not fewer (new
+  families per window from 400k-1M: real 4.7-6.7, placed-calibrated null 2.2-3.1, old
+  registered-births null 5.1-11.9). Families present: real 12.6-14.7, placed null 13.7-14.3. So
+  the drift comparison depends entirely on calibrating the supply of new sequences, and with the
+  correct calibration selection *raises* family turnover in these runs (consistent with
+  replicator-parasite churn) rather than suppressing it. The old text follows for the record.
+  Sequence-family novelty per 100k-step window, against a
   neutral drift null with the same population, turnover and rate of new sequences:
   new families fall 6.4 -> 2.8 in the real runs while the null rises 3.2 -> 11.5; families
   present fall 14.1 -> 10.3 against 11.8 -> 27.7. Families = edit distance <= 0.25.
@@ -171,8 +180,22 @@ species reacted pairwise every 1M).
   probe one binding makes copy after copy of the partner (46 exact copies in 5,000 steps, about
   one per 110 steps) and is still running at the step limit. This processive (amplifying) mode of
   reproduction did not appear in any small run or in the published runs, and it is the first
-  sustained increase in molecule length we have seen. One run; when and how it arose is being
-  traced.
+  sustained increase in molecule length we have seen. One run.
+- **How it arose** (`mix_classic_100k.txt`, `top_classic.txt`: top species every 100-500k,
+  self-reacted in the probe):
+  1. To ~3.0M the world is ~26-symbol self-replicators (`??>C$BU^BQ>C$=?W>F$B%R}XHO`): one copy
+     per ~100-step reaction.
+  2. 3.1-4.0M, a crisis: a family ending `...^B>C%T$==?>` (doubled `=`, often with tandem repeats,
+     31-63 symbols) takes over, together with the fragment `%T$==?>`. None of them makes an exact
+     copy of itself in the probe. Exact copying falls ~20-fold (2.1M to ~0.1M per 20k steps) and
+     98-99% of what remains is one-way: templates copied by species they don't copy back.
+  3. From ~4.15M, molecules from that family with a tripled copy (`...?Q>C%FTB$===?>^B...`,
+     68-74 symbols) appear that copy processively (26-30 exact copies per 5,000-step reaction). By
+     4.5-5.0M they and relatives (42-74 symbols) are among the top species, self-copying recovers
+     to 0.8-0.95 of exact copies, and one-way copying drops to 2-6%.
+  So the processive replicators came out of the parasitic family that had displaced the old
+  replicators, not from the old replicators directly. This is the first observed case of a
+  transition after the initial one, but it is a single run.
 
 ## 11. Side-on worlds: towards trees (Oct 20, exploratory)
 
