@@ -8,30 +8,95 @@ use std::fs::{File, OpenOptions};
 use std::io::{BufWriter, Write};
 use std::path::Path;
 
+/// A log file: plain text, or (GZIPLOGS) gzip written as a new member at every checkpoint, so a
+/// run that is killed loses at most the data since its last checkpoint.
+pub trait Sink: Write {
+    fn rotate(&mut self) -> std::io::Result<()> {
+        self.flush()
+    }
+}
+impl Sink for BufWriter<File> {}
+
+pub struct GzSink {
+    enc: Option<GzEncoder<BufWriter<File>>>,
+    path: std::path::PathBuf,
+}
+impl GzSink {
+    fn open(path: std::path::PathBuf) -> std::io::Result<GzSink> {
+        let f = BufWriter::new(OpenOptions::new().create(true).append(true).open(&path)?);
+        Ok(GzSink { enc: Some(GzEncoder::new(f, Compression::default())), path })
+    }
+}
+impl Write for GzSink {
+    fn write(&mut self, b: &[u8]) -> std::io::Result<usize> {
+        self.enc.as_mut().unwrap().write(b)
+    }
+    fn flush(&mut self) -> std::io::Result<()> {
+        Ok(()) // a gzip member is completed only at rotate() or drop
+    }
+}
+impl Sink for GzSink {
+    fn rotate(&mut self) -> std::io::Result<()> {
+        if let Some(e) = self.enc.take() {
+            e.finish()?.flush()?;
+        }
+        let f = BufWriter::new(OpenOptions::new().create(true).append(true).open(&self.path)?);
+        self.enc = Some(GzEncoder::new(f, Compression::default()));
+        Ok(())
+    }
+}
+impl Drop for GzSink {
+    fn drop(&mut self) {
+        if let Some(e) = self.enc.take() {
+            if let Ok(mut f) = e.finish() {
+                let _ = f.flush();
+            }
+        }
+    }
+}
+
 pub struct Output {
-    popdy: BufWriter<File>,
-    species: BufWriter<File>,
-    copies: BufWriter<File>,
+    popdy: Box<dyn Sink>,
+    species: Box<dyn Sink>,
+    copies: Box<dyn Sink>,
     snap: BufWriter<File>,
     copylog: HashMap<(u32, u32, u32), (u32, u32)>,
+    gz: bool,
     /// OFFSPRINGLOG: write the placed column and lives.tsv
-    pub offspring: Option<BufWriter<File>>,
+    pub offspring: Option<Box<dyn Sink>>,
 }
 
 fn open(dir: &Path, name: &str) -> std::io::Result<BufWriter<File>> {
     Ok(BufWriter::new(OpenOptions::new().create(true).append(true).open(dir.join(name))?))
 }
 
+fn sink(dir: &Path, name: &str, gz: bool) -> std::io::Result<Box<dyn Sink>> {
+    Ok(if gz { Box::new(GzSink::open(dir.join(format!("{name}.gz")))?) } else { Box::new(open(dir, name)?) })
+}
+
 impl Output {
-    pub fn new(dir: &Path) -> std::io::Result<Output> {
+    /// gz (GZIPLOGS): popdy001.dat, species.tsv, copies.tsv and lives.tsv are written gzipped.
+    pub fn new(dir: &Path, gz: bool) -> std::io::Result<Output> {
         Ok(Output {
-            popdy: open(dir, "popdy001.dat")?,
-            species: open(dir, "species.tsv")?,
-            copies: open(dir, "copies.tsv")?,
+            popdy: sink(dir, "popdy001.dat", gz)?,
+            species: sink(dir, "species.tsv", gz)?,
+            copies: sink(dir, "copies.tsv", gz)?,
             snap: open(dir, "grid.snap")?,
             copylog: HashMap::new(),
+            gz,
             offspring: None,
         })
+    }
+
+    /// Close the current gzip members (GZIPLOGS); called after each checkpoint.
+    pub fn rotate_logs(&mut self) -> std::io::Result<()> {
+        self.popdy.rotate()?;
+        self.species.rotate()?;
+        self.copies.rotate()?;
+        if let Some(f) = &mut self.offspring {
+            f.rotate()?;
+        }
+        Ok(())
     }
 
     pub fn popdy(&mut self, w: &World) -> std::io::Result<()> {
@@ -134,7 +199,7 @@ impl Output {
 
     /// Turn on OFFSPRINGLOG output (lives.tsv in dir).
     pub fn enable_offspring(&mut self, dir: &Path) -> std::io::Result<()> {
-        self.offspring = Some(open(dir, "lives.tsv")?);
+        self.offspring = Some(sink(dir, "lives.tsv", self.gz)?);
         Ok(())
     }
 

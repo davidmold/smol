@@ -32,7 +32,7 @@ fn main() {
                     die(&format!("{f} already exists here; run in an empty directory"));
                 }
             }
-            let mut out = Output::new(dir).unwrap_or_else(|e| die(&e.to_string()));
+            let mut out = Output::new(dir, cfg.gziplogs).unwrap_or_else(|e| die(&e.to_string()));
             let w = World::new(&cfg, &mut out).unwrap_or_else(|e| die(&e));
             if let Some(dw) = &w.dweights {
                 let mut t = String::from("symbol\tweight\n");
@@ -75,7 +75,7 @@ fn main() {
                     }
                 }
             }
-            let out = Output::new(dir).unwrap_or_else(|e| die(&e.to_string()));
+            let out = Output::new(dir, cfg.gziplogs).unwrap_or_else(|e| die(&e.to_string()));
             (cfg, cfg_text, w, out)
         }
         _ => die("usage: smol run CONF | smol resume CKPT [--reseed S] [--nsteps N]"),
@@ -105,6 +105,8 @@ fn main() {
         if t % cfg.ckpt_every == 0 {
             out.flush_copies(t).unwrap();
             ckpts.push(write_checkpoint(dir, &world, &cfg_text).unwrap());
+            out.flush_lives(&mut world).unwrap();
+            out.rotate_logs().unwrap();
             while ckpts.len() > cfg.keep_ckpt {
                 let old = ckpts.remove(0);
                 let step_of = |n: &str| n.trim_start_matches("checkpoint_").trim_end_matches(".txt.gz").parse::<u64>().unwrap_or(1);

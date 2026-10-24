@@ -36,6 +36,8 @@ fn main() {
     let twosided = args.iter().any(|a| a == "--twosided");
     let trace = args.iter().any(|a| a == "--trace");
     let strand = args.iter().any(|a| a == "--strand");
+    // --self: react each molecule only with itself (screening many species)
+    let self_only = args.iter().any(|a| a == "--self");
     let text = std::fs::read_to_string(&args[1]).expect("pairs file");
     let mols: Vec<(String, Vec<u8>)> = text
         .split_whitespace()
@@ -70,6 +72,9 @@ fn main() {
 
     for x in &mols {
         for y in &mols {
+            if self_only && !std::ptr::eq(x, y) {
+                continue;
+            }
             let (p, sw) = smol::bind_probability_rule(&x.1, &y.1, 0, bind_t, ctx.al, &tab);
             // old set_exec: the molecule whose alignment starts later is active
             let (act_is_x, act_idx, pas_idx) = if sw.s1 >= sw.s2 { (true, sw.s1, sw.s2) } else { (false, sw.s2, sw.s1) };

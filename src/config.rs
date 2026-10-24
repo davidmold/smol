@@ -73,6 +73,9 @@ pub struct Config {
     /// died: how long they lived, how many placed products they made, and how many placed exact
     /// copies of them were made (their successful offspring).
     pub offspring_log: bool,
+    /// GZIPLOGS: popdy001.dat, species.tsv, copies.tsv and lives.tsv are written gzipped (.gz),
+    /// one gzip member per checkpoint interval. Doesn't change the run.
+    pub gziplogs: bool,
     /// CKPTKEEPEVERY n > 0: checkpoints at multiples of n are kept permanently.
     pub ckpt_keep_every: u64,
     /// TRANSLATE: `^C` switches `=` to translating letter pairs through a codon table.
@@ -185,6 +188,7 @@ impl Config {
             twosided: num("TWOSIDED", 0.0)? != 0.0,
             strandcopy: num("STRANDCOPY", 0.0)? != 0.0,
             offspring_log: num("OFFSPRINGLOG", 0.0)? != 0.0,
+            gziplogs: num("GZIPLOGS", 0.0)? != 0.0,
             ckpt_keep_every: num("CKPTKEEPEVERY", 0.0)? as u64,
             translate: num("TRANSLATE", 0.0)? != 0.0,
             translate_seed: num("TRANSLATE_SEED", 1.0)? as u64,
