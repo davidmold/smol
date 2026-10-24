@@ -50,10 +50,10 @@ Seed `RERERERE^BQQ$=?>%}` unless stated (`designs/strand.conf`).
 | `dmg/{cop,gm,gmc}_<rate>` | `DAMAGE` at 1e-6, 3e-6, 1e-5, 3e-5 | see findings 9 |
 | `cell/`, `cellhi/` | cell-cycle machine (`designs/cell*.`), with and without copiers, damage up to 1e-3, `DAMAGE_SHIELD_BOUND` | cell loses to copiers at every rate |
 
-## Big worlds (Oct 20, running)
+## Big worlds (Oct 20-23; stopped at ~10M steps)
 
 400x300 grid (120,000 cells), RANDSEED 18018, 121-molecule seed block in the centre,
-NSTEPS 100M, LIVEEVERY 200, CKPTEVERY 100k (5 kept). Live: `/live?run=big/<name>`.
+NSTEPS 100M (stopped by hand at ~10M: classic 9.8M, strand 10.0M, gradient 12.9M), LIVEEVERY 200, CKPTEVERY 100k (5 kept). Live: `/live?run=big/<name>`.
 
 | Run | Chemistry | Notes |
 |---|---|---|

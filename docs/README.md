@@ -71,15 +71,8 @@ prevents the next transition.
 
 ## Running right now (on aida)
 
-| Run | What | Progress (20 Oct, ~20:15) |
-|---|---|---|
-| `big/classic_400x300` | classic chemistry, 120,000 cells | 1.66M steps, 107k molecules |
-| `big/strand_400x300` | copy-strand chemistry, uniform | 1.34M steps, 118k molecules |
-| `big/gradient_400x300` | copy strand + reaction-rate gradient | 1.68M steps, 113k molecules |
-| `vert/strand_400x12` | side-on world, light by height | 10.3M steps |
-| `vert/slab_400x12x5` | side-on slab, 5 slices deep, shading | 0.53M steps |
-
-The big runs are set for 100M steps (2-3 weeks); the vertical ones for 20M.
+Nothing. The three big 400x300 runs were stopped on 23 Oct: classic at 9.8M steps, copy strand
+at 10.0M, gradient at 12.9M (last checkpoints). All finished run outputs are gzipped.
 
 ## The long-form documents (claude.ai)
 
