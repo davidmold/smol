@@ -149,6 +149,31 @@ One run each on 400x300 (120,000 cells, 9.6x the area), still running.
 - Taken together: the "bigger worlds" leg of the clean negative, supporting the
   expensive-ratchet view (one run per condition).
 
+### 10b. The big runs to ~10M steps (analysed 24 Oct; `experiments/big/`)
+
+Copy logs in these runs are attempts (they predate `OFFSPRINGLOG`). Measures: `copy_mix.py`
+(exact copies by kind, 20k-step window before each 0.5M), `length_traj.py`, `assay.py` (top 12
+species reacted pairwise every 1M).
+
+- **Copy strand, uniform:** the partnership ecology persists for all 10M steps. Mutual copying is
+  52-71% of exact copies throughout; one-way copying (templates copied but not copying back) falls
+  from ~30% to ~15%; templates without copy code fall from ~50% to ~25-30%; self-copying rises
+  from ~3% to 20-29% after 2M. Among the top species, parasitic cross-pairs fall from 0.51 at 1M
+  to 0-0.12 from 6M. Lengths stay ~8-10 (median).
+- **Copy strand, gradient:** similar but more parasitic: mutual 55-68%, one-way ~30%, self 5-15%;
+  median length drifts down from 11 to 5-6.
+- **Classic: a late transition to longer, processive replicators.** Until ~3M the classic world is
+  as before (self-copying 55-62%, one-way ~31-35%, median length ~30). Between 3M and 4.5M copying
+  collapses and recovers, and from 4.5M on: self-copying 94-96%, one-way 4-6%, mutual ~0; median
+  length rises from ~30 to 60-75 (90th percentile 100-260); the population is extremely diverse
+  (top 12 species are 3-4% of molecules). The new replicators (e.g.
+  `EKM>BHCOM^$EOC>C%M$==C=?H>PFYPBXCOPB$E>`, ~40 symbols) **do not finish their reactions**: in the
+  probe one binding makes copy after copy of the partner (46 exact copies in 5,000 steps, about
+  one per 110 steps) and is still running at the step limit. This processive (amplifying) mode of
+  reproduction did not appear in any small run or in the published runs, and it is the first
+  sustained increase in molecule length we have seen. One run; when and how it arose is being
+  traced.
+
 ## 11. Side-on worlds: towards trees (Oct 20, exploratory)
 
 `VERTICAL`: x is horizontal, y is height with the ground at the bottom; a copy can only go on
