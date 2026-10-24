@@ -245,6 +245,34 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
   barriers, because the criterion counts any reciprocal pair reaching the threshold in one 10k
   window, not the introduced partnership persisting (the introduced sequences were still present
   at the end in 42 of 54 intro runs, but presence is not continued mutual dependence). 3 seeds.
+- **What replaces the original pairs (24 Oct; `lineage_agg.txt`, `dep_agg.txt`).** Each species
+  is assigned to the founder it descends from through template ancestry (`lineage.py`).
+  - In the mutation-on runs at 200k, **the partnership persists through descendants**: in 90 of
+    117 surviving runs at least half of all placed exact copies are made between the A and B
+    lineages in both directions; same-species self-copies are ~0 for s1-s3. The molecules I had
+    called "other" are mostly the borrower's own descendants: mutants that lost the jump (e.g.
+    `F^OQ`, `F^OR`, `F^O` from `F^O>`), copied by the A lineage and making nothing (44-86% of the
+    B lineage). The working core is carried by 1-5 effective species pairs. Exceptions: g1 is
+    mixed (some autonomous copying), s2 with its parasite is dominated by the parasite lineage,
+    and where the plain copier was present it persists alongside (15-36%).
+  - **Removal tests on the evolved communities** (from 200k, mutation on, 50k more steps):
+
+    | pair | unchanged | B lineage removed | A lineage removed | B removed, 20 of an evolved B added |
+    |---|---|---|---|---|
+    | s1 | 10/10 | 0/10 | 0/10 | 10/10 |
+    | s2 | 10/10 | 7/10 | 0/10 | 9/10 |
+    | s3 | 10/10 | 2/10 | 0/10 | 10/10 |
+    | g1 | 6/8 | 4/8 | 0/8 | 5/5 |
+
+    The B lineage is entirely dependent on A. The A lineage still depends on B in s1 and mostly
+    in s3; in s2 and g1 it often survives B's removal, either by self-copying variants
+    (`S^OF^B$=?L>}` in g1, `>$$^BQQ$=?>H}` in s2) or by a **new partnership inside the A
+    lineage** (s3: `SE^BQ$=I?>G}` <-> `FS^BQ$=I?>G}`, complementary prefixes, zero self-copies).
+    An evolved B descendant restores the partnership in 34 of 35 runs.
+  - So under mutation the organisation is maintained by descendants rather than by the
+    original sequences, with a fringe of passengers shed by the borrower lineage; the copier
+    lineage sometimes carries standing variation that can replace its partner, either by
+    becoming autonomous or by re-forming a partnership with itself.
 - **Against the three possibilities** (hard to reach, can't invade, can't persist): for
   the tested pairs form self-maintaining, mutually dependent ecologies; mutual copying is
   provisionally easier to obtain when supplied (accessibility); against a resident autonomous

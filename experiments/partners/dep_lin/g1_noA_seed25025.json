@@ -1,0 +1,1 @@
+{"run": "g1/noA/seed25025", "step": null, "alive": false, "n": 0, "pop": {}, "copies": {}, "cross": {"A->B": {"copies": 0, "share": 0, "pairs": 0, "eff_pairs": 0, "top_pair_share": 0}, "B->A": {"copies": 0, "share": 0, "pairs": 0, "eff_pairs": 0, "top_pair_share": 0}}, "roles": []}
