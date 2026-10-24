@@ -1,0 +1,9 @@
+== /home/davidmold/smol/runs/pub/slot/seed5505  (cumulative placed copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+   100000    2417     50  0.89       0      0.000       125668  
+   200000    6237    131  0.94       0      0.000       272241  
+   300000    6811    115  0.94       0      0.000       464998  
+   400000    5605    108  0.92       0      0.000       714892  
+   500000    3249     67  0.91       0      0.000       859786  
+   600000      14      0  0.00       0      0.000       987890  
+detection None  establishment None

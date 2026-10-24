@@ -6,18 +6,22 @@ including the classic world's second transition to processive replicators (10b),
 novelty recheck with a placed-birth null, which withdraws the "selection suppresses novelty"
 claim (1).
 
-## Candidates
+## Running (24 Oct evening)
 
-1. **How often does the second transition happen, and does it need a big world?**
-   - Introduce the processive replicators (from the classic run's 9.4-9.8M checkpoints) into
-     small classic worlds at different ages: do they invade and persist?
-   - Replicate the big classic world (about 3 days per run at 400x300).
-   - Look for processive reactions in the existing small runs to 2.5M (`pr0x`) and the
-     published runs, with `tools/top_probe.py`.
-2. **Do partnerships accumulate further organisation?** Longer runs from established
-   partnerships with lineage tracking; look for third-party dependencies.
-3. **Measurement:** observed-reaction percentages (the paper's measure) instead of the top-12
-   weighted probe; a drift null with space.
+- Three big classic replicates, `runs/big/classic_rep{19019,20020,21021}`, to 10M with
+  OFFSPRINGLOG, GZIPLOGS and a checkpoint kept every 100k (2-4 days).
+- `experiments/processive/long_small.sh`: the 18 small survivors continued 2.5M -> 10M
+  (`runs/pr0xx`, survivor-conditioned) and 20 fresh small runs 0 -> 10M (`runs/long`), 9 at a time
+  (about 3 days). Score both with `transition_scan.py` (detection, establishment, by steps and
+  by cumulative placed copies; extinction as a competing outcome).
+
+## Then
+
+1. Transition frequency: small vs big worlds over matched steps and matched reproductive
+   activity; does the parasitic crisis precede emergence and destroy small worlds?
+2. Why seed21021 resists processive invasion.
+3. Do partnerships accumulate further organisation?
+4. Measurement: observed-reaction percentages; a drift null with space.
 
 ## Paused
 

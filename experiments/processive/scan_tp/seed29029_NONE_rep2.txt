@@ -1,0 +1,9 @@
+== /home/davidmold/smol/runs/transplant/seed29029/NONE/rep2  (cumulative placed copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+  2550000   11129      5  0.01       0      0.000       282156  
+  2600000   11253      3  0.00       0      0.000       562303  
+  2650000   11263      7  0.01       0      0.000       844242  
+  2700000   11330      4  0.00       0      0.000      1126014  
+  2750000   11391      8  0.01       0      0.000      1407208  
+  2800000   11289      4  0.00       0      0.000      1689870  
+detection None  establishment None

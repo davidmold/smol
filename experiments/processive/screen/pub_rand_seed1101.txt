@@ -1,0 +1,3 @@
+== /home/davidmold/smol/runs/pub/rand/seed1101  (cumulative placed copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+detection None  establishment None

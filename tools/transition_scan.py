@@ -30,7 +30,9 @@ def ropen(p):
         return open(p)
     return gzip.open(p + ".gz", "rt")
 
-def lines(p):  # tolerate a gzip file cut off by a killed run
+def lines(p):  # tolerate a gzip file cut off by a killed run, or a missing file
+    if not (os.path.exists(p) or os.path.exists(p + ".gz")):
+        return
     try:
         for l in ropen(p):
             yield l
@@ -48,7 +50,17 @@ need = set()
 for t, p in pops.items():
     need |= {s for s, c in sorted(p.items(), key=lambda kv: -kv[1])[:a.cap] if c >= a.min}
 seq = {}
-for l in lines(f"{a.run}/species.tsv"):
+def species_lines(run):
+    # a run resumed from an edited checkpoint with GZIPLOGS has both: species.tsv (copied by
+    # ckpt_edit) and species.tsv.gz (species born after the resume)
+    for p in (f"{run}/species.tsv", f"{run}/species.tsv.gz"):
+        if os.path.exists(p):
+            try:
+                for l in (gzip.open(p, "rt") if p.endswith(".gz") else open(p)):
+                    yield l
+            except EOFError:
+                pass
+for l in species_lines(a.run):
     i = l.find("\t")
     if i > 0 and l[:i].isdigit() and int(l[:i]) in need:
         seq[int(l[:i])] = l.rstrip("\n").split("\t")[-1]

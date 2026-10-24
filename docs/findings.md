@@ -329,6 +329,54 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
   is not yet established (next: ancestry plus removal tests on descendants). Whether
   partnerships accumulate further organisation is the open question.
 
+## 14. Processive replicators: detection, screen and transplants (Oct 24)
+
+**Definition** (`tools/transition_scan.py`). A species is *processive* if, in a probe
+self-reaction (mutation off, 5,000-step limit, `smol-react --self`), it binds itself and makes at
+least 3 exact copies of itself in that one reaction; reaching the step limit alone does not
+count. *Detection*: the first sampled step with a processive species of >= 20 molecules.
+*Establishment*: processive species hold >= 10% of molecules for >= 3 consecutive samples. Every
+species with >= 5 molecules is probed (up to 4,000 per sample), not just the most abundant; the
+scan also reports cumulative placed (or attempted) copies, so emergence can be set against
+reproductive activity as well as elapsed steps.
+
+- **Validation on the big classic run** (every 500k, species >= 20 molecules): detection at
+  3.0M (2 processive species, 0.1% of molecules: a `...%T$==?>` family member, i.e. the precursor
+  was already present, rare, before the crisis), 0.7% at 4.0M, establishment at 4.5M (21%), and
+  59-64% of all molecules from 6M on.
+- **Screen of existing histories** (every 100k, species >= 5 molecules): no processive species
+  in any of 87 runs: our 40 small baseline runs (0-1M), the 24 survivors continued to 2.5M, the
+  15 old-rules reruns of the published configs (to 2M) and the 8 published runs (to 2M). All of
+  these stop before the 3M at which the big world first showed them, so this is not evidence of
+  a size requirement (time confound).
+- **Transplants** (`experiments/processive/`, 123 runs of 300k steps, mutation on, 3 replicates;
+  20 molecules in a cleared 5x5 patch; `tp_agg.txt`). Sequences: early processive E1, E2 (from
+  5.0M; 42 and 50 symbols; 45 and 34 copies per reaction), mature M1, M2 (9.8M; 40 and 61
+  symbols; 46 and 34), and an ordinary pre-transition replicator ORD (2.8M; 26 symbols; 1 copy).
+
+  | recipient | E1 | E2 | M1 | M2 | ORD | resident only |
+  |---|---|---|---|---|---|---|
+  | empty 125x100 world | 3/3 (0.84) | 3/3 (0.80) | 3/3 (0.75) | 3/3 (0.87) | 0/3 | - |
+  | 5 evolved communities (seeds 29029, 36036, 40040, 47047, 56056) | 15/15 | 14/15 | 15/15 | 15/15 | 0/15 | 0/15 |
+  | evolved community seed21021 | 1/3 | 0/3 | 3/3 (0.42) | 1/3 | 0/3 | 0/3 |
+
+  Cells: runs with processive species >= 10% of molecules at 300k (median final share). The
+  communities are small classic worlds evolved for 2.5M steps (from `pr0x`). Processive
+  replicators established in 64 of 72 community introductions, usually within 50-150k steps,
+  reaching 42-88% of molecules; no control ever became processive. One community (seed21021)
+  largely resisted (5/12). Descendants were tracked as processive species by the scan, not as
+  the introduced sequence.
+- **Reading:** once they exist, processive replicators need neither a big world nor an empty
+  one to spread: they invade most evolved small communities from 20 molecules. So the open
+  question is whether they can *arise* in small worlds (the 38 small runs to 10M now running)
+  and how often in big ones (3 big replicates running). A concrete hypothesis from the original
+  history: the parasitic crisis through which they arose may usually destroy small populations.
+- **Bug found and fixed:** runs resumed from an edited checkpoint with `GZIPLOGS` had two species
+  files (the copied `species.tsv` and `species.tsv.gz` for new species), and the scan read only
+  the first. The first transplant summary (no establishment in communities, "boom then bust")
+  was an artefact of this and was withdrawn the same evening. `ckpt_edit.py` now writes the gz
+  file when `GZIPLOGS` is on, and the analysis tools read both files.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

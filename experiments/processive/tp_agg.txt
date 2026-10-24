@@ -1,0 +1,50 @@
+recipient x treatment: alive, established (>=10% processive at end), median final processive share,
+detection / establishment in k steps after introduction
+== empty
+  E1    alive 3/3  established 3/3  median share 0.84  det [50, 50, 50]  est [50, 50, 50]
+  E2    alive 3/3  established 3/3  median share 0.80  det [50, 50, 50]  est [50, 50, 50]
+  M1    alive 3/3  established 3/3  median share 0.75  det [50, 50, 50]  est [50, 50, 50]
+  M2    alive 3/3  established 3/3  median share 0.87  det [50, 50, 50]  est [50, 50, 50]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed21021
+  E1    alive 3/3  established 1/3  median share 0.00  det [None, None, 50]  est [None, None, 150]
+  E2    alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  M1    alive 3/3  established 3/3  median share 0.42  det [100, 50, 50]  est [150, 100, 150]
+  M2    alive 3/3  established 1/3  median share 0.00  det [None, 50, None]  est [None, None, None]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed29029
+  E1    alive 3/3  established 3/3  median share 0.82  det [50, 50, 50]  est [100, 100, 100]
+  E2    alive 3/3  established 3/3  median share 0.82  det [50, 50, 50]  est [50, 50, 50]
+  M1    alive 3/3  established 3/3  median share 0.49  det [50, 50, 50]  est [150, 100, 100]
+  M2    alive 3/3  established 3/3  median share 0.88  det [50, 50, 50]  est [50, 100, 100]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed36036
+  E1    alive 3/3  established 3/3  median share 0.83  det [50, 50, 50]  est [50, 50, 50]
+  E2    alive 3/3  established 3/3  median share 0.81  det [50, 50, 50]  est [50, 100, 100]
+  M1    alive 3/3  established 3/3  median share 0.75  det [50, 50, 50]  est [50, 50, 50]
+  M2    alive 3/3  established 3/3  median share 0.88  det [50, 50, 50]  est [50, 50, 50]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed40040
+  E1    alive 3/3  established 3/3  median share 0.83  det [50, 50, 50]  est [50, 50, 50]
+  E2    alive 3/3  established 2/3  median share 0.81  det [None, 50, 50]  est [None, 150, 100]
+  M1    alive 3/3  established 3/3  median share 0.51  det [50, 50, 50]  est [50, 50, 100]
+  M2    alive 3/3  established 3/3  median share 0.85  det [50, 50, 50]  est [50, 50, 50]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed47047
+  E1    alive 3/3  established 3/3  median share 0.84  det [50, 50, 50]  est [50, 50, 50]
+  E2    alive 3/3  established 3/3  median share 0.84  det [50, 50, 50]  est [100, 100, 50]
+  M1    alive 3/3  established 3/3  median share 0.71  det [50, 50, 50]  est [50, 50, 50]
+  M2    alive 3/3  established 3/3  median share 0.85  det [50, 50, 50]  est [50, 50, 50]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+== seed56056
+  E1    alive 3/3  established 3/3  median share 0.85  det [50, 50, 50]  est [50, 50, 50]
+  E2    alive 3/3  established 3/3  median share 0.81  det [50, 50, 50]  est [50, 50, 50]
+  M1    alive 3/3  established 3/3  median share 0.79  det [50, 50, 50]  est [50, 50, 50]
+  M2    alive 3/3  established 3/3  median share 0.88  det [50, 50, 50]  est [50, 50, 50]
+  ORD   alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]
+  NONE  alive 3/3  established 0/3  median share 0.00  det [None, None, None]  est [None, None, None]

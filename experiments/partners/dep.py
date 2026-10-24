@@ -15,6 +15,19 @@ Lineages come from template ancestry (as in lineage.py).
 import argparse, gzip, json, os, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 ap = argparse.ArgumentParser(); ap.add_argument("--jobs", type=int, default=10)
 a = ap.parse_args()
 H = os.path.expanduser("~/smol"); P = f"{H}/runs/partners"; OUT = f"{H}/runs/dep"
@@ -27,7 +40,7 @@ def ropen(p):
 
 def lineages(run, founders):
     seq, tpl = {}, {}
-    for l in ropen(f"{run}/species.tsv"):
+    for l in species_lines(f"{run}/species.tsv"):
         p = l.rstrip("\n").split("\t")
         if p[0].isdigit():
             seq[int(p[0])] = p[-1]; tpl[int(p[0])] = int(p[3])

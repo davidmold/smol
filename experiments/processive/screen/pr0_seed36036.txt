@@ -1,0 +1,13 @@
+== /home/davidmold/smol/runs/pr0/seed36036  (cumulative attempted copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+   100000    7214    131  0.92       0      0.000       722143  
+   200000    9482    247  0.90       0      0.000      2160104  
+   300000    9276    176  0.92       0      0.000      3328380  
+   400000    7313    159  0.92       0      0.000      4679802  
+   500000    8931    165  0.94       0      0.000      6223505  
+   600000    9337    165  0.94       0      0.000      8338788  
+   700000    9420    161  0.93       0      0.000     10152722  
+   800000   10104    131  0.94       0      0.000     12222711  
+   900000    9342    106  0.96       0      0.000     14164524  
+  1000000    9021    140  0.93       0      0.000     16528010  
+detection None  establishment None

@@ -19,6 +19,19 @@ Pairs are weighted by abundance_a * abundance_b * P(bind). Reported per step:
 """
 import argparse, gzip, os, re, subprocess, tempfile
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 ap = argparse.ArgumentParser()
 ap.add_argument("run"); ap.add_argument("--steps"); ap.add_argument("--every", type=int, default=100000)
 ap.add_argument("--top", type=int, default=12); ap.add_argument("--strand", action="store_true")
@@ -44,7 +57,7 @@ need = set()
 for t, pop in pops.items():
     need |= {sp for sp, _ in sorted(pop.items(), key=lambda kv: -kv[1])[:a.top]}
 seq = {}
-for l in ropen(os.path.join(a.run, "species.tsv")):
+for l in species_lines(os.path.join(a.run, "species.tsv")):
     i = l.find("\t")
     if i > 0 and l[:i].isdigit() and int(l[:i]) in need:
         seq[int(l[:i])] = l.rstrip("\n").split("\t")[-1]

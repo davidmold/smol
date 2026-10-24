@@ -19,6 +19,19 @@ Works on plain or gzipped species.tsv.
 """
 import argparse, gzip, os, random, sys
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 ap = argparse.ArgumentParser()
 ap.add_argument("run"); ap.add_argument("ckpt"); ap.add_argument("out")
 ap.add_argument("--rng-seed", type=int, default=1)
@@ -54,7 +67,7 @@ W = gx * depth
 
 species = {}
 spfile = []
-for l in ropen(os.path.join(a.run, "species.tsv")):
+for l in species_lines(os.path.join(a.run, "species.tsv")):
     spfile.append(l)
     p = l.rstrip("\n").split("\t")
     if p[0].isdigit():
@@ -138,6 +151,12 @@ with gzip.open(os.path.join(a.out, name), "wt") as f:
     for idx in sorted(mols):
         x, y, sp, seq, b = mols[idx]
         f.write(f"{idx} {x} {y} {sp} {seq} {' '.join(b)}\n")
-with open(os.path.join(a.out, "species.tsv"), "w") as f:
-    f.writelines(spfile)
+# a run with GZIPLOGS appends new species to species.tsv.gz, so write the copy there too
+gz_logs = any(l.split()[:2] == ["GZIPLOGS", "1"] for l in conf)
+if gz_logs:
+    with gzip.open(os.path.join(a.out, "species.tsv.gz"), "wt") as f:
+        f.writelines(spfile)
+else:
+    with open(os.path.join(a.out, "species.tsv"), "w") as f:
+        f.writelines(spfile)
 print(f"step {step}: removed {removed}, added {added}, molecules now {len(mols)} -> {a.out}/{name}")

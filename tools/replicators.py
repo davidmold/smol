@@ -11,6 +11,19 @@ it made exact copies (as copier) and was exactly copied at least 3 times each. P
 import argparse, collections, os, sys
 from rapidfuzz.distance import Levenshtein
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 def ropen(p, mode="r", **k):
     """open p, or p.gz if p was compressed (archived runs)."""
     import gzip, os as _os
@@ -34,7 +47,7 @@ tops = []
 for run in a.runs:
     name = "/".join(run.rstrip("/").split("/")[-2:])
     seq = {}
-    for l in ropen(os.path.join(run, "species.tsv")):
+    for l in species_lines(os.path.join(run, "species.tsv")):
         p = l.rstrip("\n").split("\t")
         if len(p) >= 5:
             seq[int(p[0])] = p[4]

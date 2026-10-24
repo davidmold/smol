@@ -18,6 +18,19 @@ Reported for the last WINDOW steps, over placed exact copies (product == templat
 """
 import argparse, collections, gzip, json, os, sys
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 ap = argparse.ArgumentParser()
 ap.add_argument("run"); ap.add_argument("names", nargs="+")
 ap.add_argument("--window", type=int, default=20000); ap.add_argument("--json")
@@ -28,7 +41,7 @@ def ropen(p):
     return open(p) if os.path.exists(p) else gzip.open(p + ".gz", "rt")
 
 seq, tpl = {}, {}
-for l in ropen(f"{a.run}/species.tsv"):
+for l in species_lines(f"{a.run}/species.tsv"):
     p = l.rstrip("\n").split("\t")
     if p[0].isdigit():
         seq[int(p[0])] = p[-1]; tpl[int(p[0])] = int(p[3])

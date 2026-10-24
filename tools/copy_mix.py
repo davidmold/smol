@@ -11,6 +11,19 @@ using the placed column when present and otherwise attempts (older runs):
 """
 import argparse, collections, gzip, os
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 ap = argparse.ArgumentParser(); ap.add_argument("run")
 ap.add_argument("--every", type=int, default=1000000); ap.add_argument("--window", type=int, default=20000)
 a = ap.parse_args()
@@ -26,7 +39,7 @@ for l in ropen(f"{a.run}/copies.tsv"):
     win[k][(int(r[1]), int(r[2]))] += int(r[6]) if placed_col else int(r[4])
 need = {t for c in win.values() for (m, t) in c}
 seq = {}
-for l in ropen(f"{a.run}/species.tsv"):
+for l in species_lines(f"{a.run}/species.tsv"):
     i = l.find("\t")
     if i > 0 and l[:i].isdigit() and int(l[:i]) in need:
         seq[int(l[:i])] = l.rstrip("\n").split("\t")[-1]

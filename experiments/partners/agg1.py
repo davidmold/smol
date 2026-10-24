@@ -10,6 +10,19 @@ B molecules that died having had at least one placed exact copy made of them.
 """
 import collections, glob, gzip, os, statistics, sys
 
+def species_lines(p):
+    """Lines of species.tsv and species.tsv.gz together (a run resumed from an edited checkpoint
+    with GZIPLOGS has both: the copied list and the species born after the resume)."""
+    import gzip as _g, os as _o
+    for q in (p, p + ".gz"):
+        if _o.path.exists(q):
+            try:
+                for l in (_g.open(q, "rt") if q.endswith(".gz") else open(q)):
+                    yield l
+            except EOFError:
+                pass
+
+
 runs, pairsf = sys.argv[1], sys.argv[2]
 P = {}
 for l in open(pairsf):
@@ -24,7 +37,7 @@ def ropen(p):
 
 def one(d, names):
     seq = {}
-    for l in ropen(os.path.join(d, "species.tsv")):
+    for l in species_lines(os.path.join(d, "species.tsv")):
         p = l.rstrip("\n").split("\t")
         if p[0].isdigit():
             seq[int(p[0])] = p[-1]

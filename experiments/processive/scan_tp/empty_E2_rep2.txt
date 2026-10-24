@@ -1,0 +1,9 @@
+== /home/davidmold/smol/runs/transplant/empty/E2/rep2  (cumulative placed copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+    50000   12244    182  0.94     146      0.869       152709   2198 J$H>B^DO$D>B$^RB?$R$OH^BG>C%TB$=E==?>XOB^OOH$$CD$D
+   100000   12181    360  0.91     282      0.844       459111    311 J$H>B^TDO$D>B$^R$B?$R$OH^BG>C%TBY$=E==?>XOB^OOH$$C
+   150000   12168    347  0.90     286      0.845       769540    404 J$H>B^DO$D>B$^R$B?$R$OH^BG>C%TBY$=E==?>XOBW^OOH$$C
+   200000   12117    342  0.90     274      0.839      1087295    376 J$H>B^DO%$VD>B$^GRB?$R$OH^BH>C%TB$=E==?>XOB^OTOH$$
+   250000   12147    347  0.90     266      0.825      1404781    762 J$LH>B^DO$D>B$^R?BKDR$OH^BG>C%TB$=E==?>XO$^EOOH$$C
+   300000   12163    342  0.91     274      0.830      1720966    871 J$LH>B^DO$D>B$IR?BKDR$OH^BG>C%TB$=E==?>XO$^EOOH$$C
+detection 50000  establishment 50000

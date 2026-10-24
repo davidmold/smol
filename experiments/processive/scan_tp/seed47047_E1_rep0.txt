@@ -1,0 +1,9 @@
+== /home/davidmold/smol/runs/transplant/seed47047/E1/rep0  (cumulative placed copies; species with >= 5 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+  2550000   11295    175  0.95      61      0.464       266674   2963 $>B$^>B$R$OG^B>C%TB$=E===?>ZNCOOO^H$$D$D>>
+  2600000   12261    294  0.93     235      0.848       567214    513 $>B$^>B$R$OG^B>C%XTB$=E===?>ZNCOOO^H$$D$D>>
+  2650000   12212    336  0.92     288      0.880       878252    445 $>B$^>B?L$R$OG^B>CI%TB$=E$===?>ZNCOOO^H$$D$D>>
+  2700000   12259    329  0.92     276      0.873      1190928    359 $>BU$^>B?L$R$OG^B>CI%=B$TEA$===?>ZNCOOO^H$$D$D>>$
+  2750000   12207    351  0.92     308      0.883      1506688    499 $?^>B$?^>BI$NXNR$OG^B>C%IJTB$=KE===?>ZNCOOO^H$$D$D
+  2800000   12233    342  0.91     286      0.862      1822778    258 $?^>B$?^>BI$NXNR$OG^B>C%IJT$B$=KE===?>ZNCOOO^^$$D$
+detection 2550000  establishment 2550000

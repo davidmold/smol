@@ -97,3 +97,12 @@ ground row. Weights are written to `decay_weights.tsv` in each run.
 | `~/smol/nulls_pr0placed/` | Drift null calibrated from placed births | `experiments/novelty/wn_null_placed.txt` |
 
 Big-run analyses to 10M: `experiments/big/` (copy mixes, lengths, assays, classic transition).
+
+## Processive replicators (Oct 24-)
+
+| Where (aida `~/smol/runs/`) | What | Results in repo |
+|---|---|---|
+| (scan only) | `transition_scan.py` over big classic and 87 existing small/published runs | `experiments/processive/screen/` |
+| `transplant/` | E1, E2, M1, M2, ORD into an empty world and six 2.5M communities; 3 reps; 300k | `experiments/processive/tp_agg.txt`, `scan_tp/` |
+| `big/classic_rep*` | three big classic replicates to 10M (running) | |
+| `pr0xx/`, `long/` | small worlds to 10M: 18 continued survivors, 20 fresh (running) | |
