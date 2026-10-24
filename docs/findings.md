@@ -19,14 +19,15 @@ Most batches use the same 40 seeds (RANDSEED 18018, 19019, ... 57057) on a 125x1
   or are lost. Decay 0.0005 per step; a bound pair dies together (old rule, kept).
 - Full rules: the specification document (see README).
 
-## 1. The baseline consolidates over 1M steps (Oct 16-17)
+## 1. The baseline over its first 1M steps (Oct 16-17)
 
-- **One step forward, then churn.** In every run the 64-symbol seed replicase is replaced by
+- **One sequence transition, then parasite turnover (to 1M).** In every run the 64-symbol seed replicase is replaced by
   one shorter family of 27-32 symbols (between 29k and 259k steps), which holds to the end.
   After that almost every new family is a parasite (1-16 symbols, copied by others, copying
   nobody). A second replicator family is rare and late (731k, 884k, 971k in 3 of 6 runs,
   never above 11%).
-- **Selection suppresses novelty.** Sequence-family novelty per 100k-step window, against a
+- **Novelty fell below a drift reference (to be rechecked: the null's rate of new species
+  included never-placed products; see Caveats).** Sequence-family novelty per 100k-step window, against a
   neutral drift null with the same population, turnover and rate of new sequences:
   new families fall 6.4 -> 2.8 in the real runs while the null rises 3.2 -> 11.5; families
   present fall 14.1 -> 10.3 against 11.8 -> 27.7. Families = edit distance <= 0.25.
@@ -238,18 +239,19 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
   | 20020 (70k) | 20k / 40k / 60k | 1/10, 4/10, 10/10 | 3/3, 3/3, 3/3 | 2/3, 2/3, 3/3 |
   | 23023 (100k) | 30k / 60k / 90k | 3/10, 2/10, 7/10 | 3/3, 3/3, 3/3 | 3/3, 3/3, 3/3 |
 
-  Partnerships are reachable: they form spontaneously in most replays, more reliably closer to
-  the original establishment time. When supplied, a pair establishes almost always, even early
-  and even when foreign. So in these communities the limit on *when* partnerships appear is
-  accessibility (the right variants arising), not invasion; and a community a few tens of
-  thousands of steps older makes spontaneous establishment more likely. Caveats: 3 seeds;
-  "established" counts any mutual pair, not only the introduced one (the introduced sequences
-  were still present at the end in 42 of 54 intro runs).
+  Provisional reading: supplying pairs makes substantial mutual copying easier to obtain in the
+  three tested communities, and spontaneous establishment becomes likelier as the community ages.
+  That supports an accessibility limitation; it does not exclude establishment or persistence
+  barriers, because the criterion counts any reciprocal pair reaching the threshold in one 10k
+  window, not the introduced partnership persisting (the introduced sequences were still present
+  at the end in 42 of 54 intro runs, but presence is not continued mutual dependence). 3 seeds.
 - **Against the three possibilities** (hard to reach, can't invade, can't persist): for
-  partnerships themselves, they are reachable and invade evolving communities easily; against a
-  resident autonomous copier, invasion depends on the specific chemistry of the encounter; and
-  under mutation the original pairs persist only as a minority. The next transition beyond
-  pairs has not been observed, so these experiments don't yet say what blocks it.
+  the tested pairs form self-maintaining, mutually dependent ecologies; mutual copying is
+  provisionally easier to obtain when supplied (accessibility); against a resident autonomous
+  copier, invasion depends on the chemistry of the encounter; under mutation the *original
+  sequences* become a minority, but whether the *partnership* persists through their descendants
+  is not yet established (next: ancestry plus removal tests on descendants). Whether
+  partnerships accumulate further organisation is the open question.
 
 ## Caveats on the measurements (review, 20 Oct)
 
@@ -273,7 +275,9 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
 
 ## The pattern across everything
 
-Within 1M steps, short and fast wins whenever nothing stops it. Changes to binding, interruption, reaction
-symmetry, copying mechanics, translation, damage and space all left that pressure in place.
-The only design that held its length was the designed cross pair; the only new interaction
-that evolved by itself (partnerships) is itself a way of getting shorter.
+Short and fast wins on length whenever nothing stops it: changes to binding, interruption,
+reaction symmetry, copying mechanics, translation, damage and space all left that pressure in
+place, and only the designed cross pair held its length. But length is not the whole story:
+interactions keep changing after lengths settle (parasitism down, mutual copying up), and the
+one new organisation that evolved by itself, obligate partnerships, forms self-maintaining
+ecologies. Whether it builds on itself is the current question.

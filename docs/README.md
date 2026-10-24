@@ -17,14 +17,13 @@ waiting for complexity to appear.
 
 ## Where things stand, in one paragraph
 
-Under our conditions and observation periods (mostly 1M steps), baseline Stringmol makes one
-replicator transition (the 64-symbol seed shrinks to ~30 symbols), then settles into
-replicator-plus-parasite churn: sequence-family turnover declines and falls below a
-neutral-drift reference, and no sustained accumulation of new reproductive functions has been
-demonstrated. That is narrower than "not open-ended": the published spatial Stringmol work
-reports slower replicators and growing parasite discrimination in the *second* million steps.
-Their archived runs confirm it, as a shift from parasitic towards mutual copying and longer
-reactions rather than longer molecules (findings section 12); our runs stopped at 1M. Every chemistry change tried since (strand
+Baseline Stringmol makes one large sequence transition early (the 64-symbol seed shrinks to
+~30 symbols), after which lengths stay roughly stable. But ecological interactions keep
+changing after that: past 1M steps parasitism falls and mutual copying rises, in the published
+runs and, more weakly, in ours (findings 12). So "one transition, then nothing but churn" was
+too strong; length alone misses this. Sustained accumulation of new reproductive functions has
+not been demonstrated. The earlier claim that selection suppresses sequence-family novelty
+rests on a null calibrated with never-placed products and is being rechecked. Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
 translation from gene to machine, environmental damage, cells) has left the same pressure in
 place: **short and fast wins whenever nothing stops it.** A 10x bigger world is sturdier and
