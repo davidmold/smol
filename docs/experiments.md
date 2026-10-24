@@ -76,3 +76,24 @@ ground row. Weights are written to `decay_weights.tsv` in each run.
 | `vert/shade_400x12` | 400 x 12, `SHADE 0.5`, no height field | died at 379k |
 | `vert/shade_1200x12` | as above, 1200 wide | started by mistake, stopped at ~3.3M |
 | `vert/slab_400x12x5` | 400 x 12 x 5 slices (`DEPTH 5`), `SHADE 0.5`, seed in middle slice | running (20M) |
+
+## Partnership isolation and follow-ups (Oct 21-24)
+
+| Where (aida `~/smol/runs/`) | What | Results in repo |
+|---|---|---|
+| `partners/` | Batch 1: four pairs alone, vs copier, with parasite; mutation off/on; 10 seeds; 200k | `experiments/partners/agg1.txt`, `lineage_agg.txt` |
+| `b2/` | Batch 2: invasion from rarity, reverse invasion, bottlenecks, rescue, accessibility | `experiments/partners/agg2.txt` |
+| `dep/` | Removal tests on evolved descendants (from batch-1 mutation-on runs at 200k) | `experiments/partners/dep_agg.txt` |
+| `replay/` | strand0 seeds rerun with a checkpoint every 10k (identical to the originals) | used by batch 2 |
+
+## Published comparison and novelty (Oct 20-24)
+
+| Where | What | Results in repo |
+|---|---|---|
+| `~/published/bio/` | The authors' archive (8 runs to 2M) | `experiments/published/` |
+| `pub/` | Published configs with old rules, 5 seeds each, 2M | `experiments/published/assay_pubrerun.txt` |
+| `pr0x/` | 24 baseline survivors continued 1M to 2.5M | `experiments/published/assay_pr0x.txt` |
+| `pr0log/` | The same 24 baseline runs rerun to 1M with `OFFSPRINGLOG` | `experiments/novelty/` |
+| `~/smol/nulls_pr0placed/` | Drift null calibrated from placed births | `experiments/novelty/wn_null_placed.txt` |
+
+Big-run analyses to 10M: `experiments/big/` (copy mixes, lengths, assays, classic transition).

@@ -1,27 +1,23 @@
-# Next steps (24 Oct)
+# Next steps (24 Oct, afternoon)
 
-Nothing is running on aida. Completed and written up: offspring logging, partnership batches 1
-and 2, the published comparison (archive analysis, old-rules reruns, baseline extended to 2.5M),
-establishment replays, and the big runs (stopped at ~10M).
+Nothing is running on aida. Done since the last update and written up in findings:
+descendant tracking and removal tests on evolved partnerships (13), the big runs to ~10M
+including the classic world's second transition to processive replicators (10b), and the
+novelty recheck with a placed-birth null, which withdraws the "selection suppresses novelty"
+claim (1).
 
-## Now
+## Candidates
 
-1. **What replaces the original pairs?** In the mutation-on partnership runs, trace descendants
-   of each partner through `species.tsv` template ancestry, build the placed-copy network among
-   abundant species, probe evolved descendants, and remove/rescue descendant lineages. Question:
-   does mutual dependence persist, become interchangeable among many species, or collapse into
-   autonomous copying with parasites?
-2. **The big runs, 1M-10M.** Diversity, length, functional assays and partnership share over the
-   full runs (their copy logs are attempts only; they predate OFFSPRINGLOG).
-3. **Novelty against drift, rechecked** with the null calibrated from placed births, on runs that
-   have OFFSPRINGLOG.
-
-## Later
-
-- Does the partnership accumulate further organisation (third-party dependencies, defence)?
-  Longer runs from established replays.
-- Replace the top-12 weighted probe with observed-reaction percentages (the paper's measure),
-  which needs a per-reaction log.
+1. **How often does the second transition happen, and does it need a big world?**
+   - Introduce the processive replicators (from the classic run's 9.4-9.8M checkpoints) into
+     small classic worlds at different ages: do they invade and persist?
+   - Replicate the big classic world (about 3 days per run at 400x300).
+   - Look for processive reactions in the existing small runs to 2.5M (`pr0x`) and the
+     published runs, with `tools/top_probe.py`.
+2. **Do partnerships accumulate further organisation?** Longer runs from established
+   partnerships with lineage tracking; look for third-party dependencies.
+3. **Measurement:** observed-reaction percentages (the paper's measure) instead of the top-12
+   weighted probe; a drift null with space.
 
 ## Paused
 
