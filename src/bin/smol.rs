@@ -62,18 +62,33 @@ fn main() {
             if let Some(s) = flag(&args, "--reseed") {
                 w.rng = Xoshiro::new(s);
             }
-            // species ids so far, from this directory's species.tsv
-            if let Ok(sp) = std::fs::read_to_string(dir.join("species.tsv")) {
-                for l in sp.lines() {
-                    let p: Vec<&str> = l.split('\t').collect();
-                    if p.len() >= 5 {
-                        if let Ok(id) = p[0].parse::<u32>() {
-                            if id < w.next_species {
-                                w.known_species(id, p[4].as_bytes());
+            // species ids so far, from this directory's species.tsv and species.tsv.gz;
+            // with SPECIESFORGET only the species now present (a molecule's strand can differ
+            // from its species' sequence mid-reaction, so the sequences come from the file)
+            {
+                let live = if cfg.species_forget { Some(w.live_species()) } else { None };
+                use std::io::BufRead;
+                let mut readers: Vec<Box<dyn BufRead>> = Vec::new();
+                if let Ok(f) = std::fs::File::open(dir.join("species.tsv")) {
+                    readers.push(Box::new(std::io::BufReader::new(f)));
+                }
+                if let Ok(f) = std::fs::File::open(dir.join("species.tsv.gz")) {
+                    readers.push(Box::new(std::io::BufReader::new(flate2::read::MultiGzDecoder::new(f))));
+                }
+                for r in readers {
+                    for l in r.lines() {
+                        let Ok(l) = l else { break }; // a truncated final gzip member ends the read
+                        let p: Vec<&str> = l.split('\t').collect();
+                        if p.len() >= 5 {
+                            if let Ok(id) = p[0].parse::<u32>() {
+                                if id < w.next_species && live.as_ref().map_or(true, |s| s.contains(&id)) {
+                                    w.known_species(id, p[4].as_bytes());
+                                }
                             }
                         }
                     }
                 }
+                w.forget_cutoff = w.next_species;
             }
             let out = Output::new(dir, cfg.gziplogs).unwrap_or_else(|e| die(&e.to_string()));
             (cfg, cfg_text, w, out)
@@ -107,6 +122,10 @@ fn main() {
             ckpts.push(write_checkpoint(dir, &world, &cfg_text).unwrap());
             out.flush_lives(&mut world).unwrap();
             out.rotate_logs().unwrap();
+            if cfg.species_forget {
+                let n = world.forget_species();
+                println!("SPECIESFORGET step {t}: forgot {n}, kept {}", world.species.len());
+            }
             while ckpts.len() > cfg.keep_ckpt {
                 let old = ckpts.remove(0);
                 let step_of = |n: &str| n.trim_start_matches("checkpoint_").trim_end_matches(".txt.gz").parse::<u64>().unwrap_or(1);

@@ -85,7 +85,10 @@ pub struct World {
     pub grid: Vec<u32>,
     pub mols: Vec<Mol>,
     pub free_slots: Vec<usize>,
-    pub species: HashMap<Vec<u8>, u32>,
+    /// sequence -> species id, keyed by a 128-bit hash of the sequence (memory)
+    pub species: HashMap<u128, u32>,
+    /// SPECIESFORGET: next_species at the previous forget sweep
+    pub forget_cutoff: u32,
     pub next_species: u32,
     pub step: u64,
     pub rng: Xoshiro,
@@ -127,6 +130,17 @@ pub struct World {
     other: Vec<u8>,
 }
 
+/// 128-bit key for a sequence: two SipHash values (fixed keys, so deterministic).
+pub fn seq_key(seq: &[u8]) -> u128 {
+    use std::hash::Hasher;
+    let mut a = std::collections::hash_map::DefaultHasher::new();
+    a.write(seq);
+    let mut b = std::collections::hash_map::DefaultHasher::new();
+    b.write(&[0xA5, 0x5A, seq.len() as u8]);
+    b.write(seq);
+    ((a.finish() as u128) << 64) | b.finish() as u128
+}
+
 impl World {
     pub fn new(cfg: &Config, obs: &mut dyn Observer) -> Result<World, String> {
         let mut w = World {
@@ -138,6 +152,7 @@ impl World {
             mols: Vec::new(),
             free_slots: Vec::new(),
             species: HashMap::new(),
+            forget_cutoff: 1,
             next_species: 1,
             step: 0,
             rng: Xoshiro::new(cfg.seed),
@@ -253,22 +268,41 @@ impl World {
 
     /// Species id for a sequence, creating it (and reporting it) if new.
     fn species_of(&mut self, seq: &[u8], pa: i64, pp: i64, obs: &mut dyn Observer) -> u32 {
-        if let Some(&id) = self.species.get(seq) {
+        let k = seq_key(seq);
+        if let Some(&id) = self.species.get(&k) {
             return id;
         }
         let id = self.next_species;
         self.next_species += 1;
-        self.species.insert(seq.to_vec(), id);
+        self.species.insert(k, id);
         obs.new_species(id, self.step + 1, pa, pp, seq);
         id
     }
 
     /// Restore an entry from species.tsv when resuming.
     pub fn known_species(&mut self, id: u32, seq: &[u8]) {
-        self.species.insert(seq.to_vec(), id);
+        self.species.insert(seq_key(seq), id);
         if id >= self.next_species {
             self.next_species = id + 1;
         }
+    }
+
+    /// SPECIESFORGET sweep: drop sequences that are absent from the world and were
+    /// created before the previous sweep. If one arises again it gets a new id.
+    /// Returns the number forgotten.
+    pub fn forget_species(&mut self) -> usize {
+        let live: std::collections::HashSet<u32> = self.mols.iter().filter(|m| m.alive).map(|m| m.species).collect();
+        let cutoff = self.forget_cutoff;
+        let before = self.species.len();
+        self.species.retain(|_, id| *id >= cutoff || live.contains(id));
+        self.species.shrink_to_fit();
+        self.forget_cutoff = self.next_species;
+        before - self.species.len()
+    }
+
+    /// Species ids of the molecules now in the world.
+    pub fn live_species(&self) -> std::collections::HashSet<u32> {
+        self.mols.iter().filter(|m| m.alive).map(|m| m.species).collect()
     }
 
     pub fn neighbours(&self, x: usize, y: usize) -> ([(usize, usize); 26], usize) {
