@@ -108,6 +108,18 @@ checkpoint plus `species.tsv` to OUT_DIR; then `cd OUT_DIR && smol resume CKPT [
 A no-op edit resumes byte-identically to the original. Used for rarity invasion, bottlenecks,
 removal and rescue, and for continuing runs with new settings (e.g. `--set NSTEPS`).
 
+## Stopping and resuming long runs
+
+- `tools/trim_logs.py RUN_DIR STEP [--dry]`: before resuming a GZIPLOGS run from
+  `checkpoint_STEP`, drop the logged data after STEP (whole trailing gzip members, including one
+  cut off by a crash; the tail is kept as `*.trimmed_tail`), so steps are not logged twice.
+  Trim + resume reproduces an uninterrupted run's popdy, species and copies logs exactly.
+- `tools/ckpt_setkey.py IN OUT KEY VALUE`: set a config key in a checkpoint (e.g.
+  `SPECIESFORGET 1`); resume from OUT in the same directory.
+- `tools/fold_species.sh RUN_DIR`: fold a plain `species.tsv` (copied in by `ckpt_edit.py`) into
+  `species.tsv.gz` as its first member, to save disk.
+- `smol resume` reads both `species.tsv` and `species.tsv.gz` (since 25 Oct).
+
 ## Experiment scripts
 
 - `experiments/partners/mkconf.py`: configs with blocks of one, two or three sequences in a

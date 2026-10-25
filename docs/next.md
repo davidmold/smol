@@ -1,27 +1,30 @@
-# Next steps (24 Oct, afternoon)
+# Next steps (25 Oct, evening)
 
-Nothing is running on aida. Done since the last update and written up in findings:
-descendant tracking and removal tests on evolved partnerships (13), the big runs to ~10M
-including the classic world's second transition to processive replicators (10b), and the
-novelty recheck with a placed-birth null, which withdraws the "selection suppresses novelty"
-claim (1).
+Done since the last update and written up in findings 14: the processive-species definition
+and screen, the transplants, the first long small-world results (no processive species in 38
+runs; extinction common), and a memory fix after five runs were killed for lack of memory.
 
-## Running (24 Oct evening)
+## Running (25 Oct evening, on aida)
 
-- Three big classic replicates, `runs/big/classic_rep{19019,20020,21021}`, to 10M with
-  OFFSPRINGLOG, GZIPLOGS and a checkpoint kept every 100k (2-4 days).
-- `experiments/processive/long_small.sh`: the 18 small survivors continued 2.5M -> 10M
-  (`runs/pr0xx`, survivor-conditioned) and 20 fresh small runs 0 -> 10M (`runs/long`), 9 at a time
-  (about 3 days). Score both with `transition_scan.py` (detection, establishment, by steps and
-  by cumulative placed copies; extinction as a competing outcome).
+- Big classic replicates `runs/big/classic_rep{19019,20020,21021}` to 10M. 19019 and 21021
+  continue from checkpoints (2.2M, 1.7M) with `SPECIESFORGET` on; 20020 (2.9M) is on the old
+  binary and stays under 2 GB, so it is left alone. At ~23 steps/s each, 10M is ~4 days away.
+- Small worlds to 10M: long seed64064 and seed68068 (old binary, finishing), seed66066
+  (resumed at 6.1M), and the four OOM-killed survivors pr0xx 21021, 24024, 29029, 44044
+  (resumed by `/tmp/queue3.sh` as memory frees). Each is scanned when it finishes;
+  `~/published/scan_long/DONE2` marks the end.
 
 ## Then
 
-1. Transition frequency: small vs big worlds over matched steps and matched reproductive
-   activity; does the parasitic crisis precede emergence and destroy small worlds?
-2. Why seed21021 resists processive invasion.
-3. Do partnerships accumulate further organisation?
-4. Measurement: observed-reaction percentages; a drift null with space.
+1. Transition frequency, small vs big, matched by steps **and** by cumulative copying. The small
+   runs to 10M have had a third to two thirds of the copying (attempts) the big world had at
+   first detection; compare at matched activity, in attempts, since the original big run did
+   not log placed copies.
+2. Big replicates: scan every 500k past 3M; does a parasitic crisis precede any transition?
+   seed20020 already has a very different, low-novelty history.
+3. Why seed21021 resists processive invasion.
+4. Do partnerships accumulate further organisation?
+5. Measurement: observed-reaction percentages; a drift null with space.
 
 ## Paused
 
@@ -30,5 +33,7 @@ claim (1).
 
 ## Housekeeping
 
+- Memory: watch `free -g` while more than ~6 runs share aida; new long runs should set
+  `SPECIESFORGET 1` unless species-id continuity matters.
 - The `smol` repo has no remote: push it somewhere for a backup.
 - Upstream: open `perf-agentsalign` and `perf-small` after rebasing; follow PR #51.

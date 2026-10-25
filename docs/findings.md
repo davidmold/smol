@@ -329,7 +329,7 @@ Batch 1 (`agg1.txt`, 256 runs, 200k steps) and batch 2 (`agg2.txt`, 464 runs).
   is not yet established (next: ancestry plus removal tests on descendants). Whether
   partnerships accumulate further organisation is the open question.
 
-## 14. Processive replicators: detection, screen and transplants (Oct 24)
+## 14. Processive replicators: detection, screen, transplants, long small runs (Oct 24-25)
 
 **Definition** (`tools/transition_scan.py`). A species is *processive* if, in a probe
 self-reaction (mutation off, 5,000-step limit, `smol-react --self`), it binds itself and makes at
@@ -368,14 +368,57 @@ reproductive activity as well as elapsed steps.
   the introduced sequence.
 - **Reading:** once they exist, processive replicators need neither a big world nor an empty
   one to spread: they invade most evolved small communities from 20 molecules. So the open
-  question is whether they can *arise* in small worlds (the 38 small runs to 10M now running)
-  and how often in big ones (3 big replicates running). A concrete hypothesis from the original
+  question is whether they can *arise* in small worlds and how often in big ones (below). A concrete hypothesis from the original
   history: the parasitic crisis through which they arose may usually destroy small populations.
 - **Bug found and fixed:** runs resumed from an edited checkpoint with `GZIPLOGS` had two species
   files (the copied `species.tsv` and `species.tsv.gz` for new species), and the scan read only
   the first. The first transplant summary (no establishment in communities, "boom then bust")
   was an artefact of this and was withdrawn the same evening. `ckpt_edit.py` now writes the gz
   file when `GZIPLOGS` is on, and the analysis tools read both files.
+
+- **Small worlds to 10M (25 Oct; `experiments/processive/scan_long/`).** Scored every 100k
+  (species >= 5 molecules), from 2.5M for the survivors.
+
+  | set | reached 10M | extinct (step) | killed (OOM), resuming | still running |
+  |---|---|---|---|---|
+  | `pr0xx`: 18 survivors continued 2.5M -> 10M | 9 | 5 (5.19, 5.53, 5.72, 6.08, 6.55M) | 4 (at 4.2-9.4M) | - |
+  | `long`: 20 fresh runs 0 -> 10M | 5 | 12 (6 before 1.5M; 2.1, 3.1, 3.9, 6.0, 7.0M) | - | 3 (6.1-8.7M) |
+
+  **No processive species was detected in any of the 38 runs**, over every step reached
+  (14 runs to 10M). By cumulative reproductive activity the gap is smaller than by steps.
+  The original big run logged only attempted copies (products, placed or not): 6.3 x 10^8 by its
+  first detection at 3.0M and 1.2 x 10^9 by establishment. The fresh small runs that reached
+  10M made 1.8-3.9 x 10^8 attempts (the continued survivors 1.2-3.9 x 10^8 over 2.5-10M alone),
+  i.e. about a third to two thirds of the big world's activity before detection
+  (`scan_long/attempts.txt`). So small worlds have now been watched for three times the steps
+  but somewhat less copying, and one big world is a sample of one: "not in small worlds" is
+  suggestive, not yet a rate comparison. (Placed products are 14-29% of attempts in these runs;
+  one run, pr0xx seed36036, places 94%.)
+  Extinction is the commoner outcome (17 of 38 so far, about half of them late, after 2M).
+  One late extinction looked at in detail (pr0xx seed47047, 5.19M) was not preceded by a
+  parasitic crisis: exact copying held at ~1 x 10^5 per 250k, and one-way copying *fell*
+  (0.36 -> 0.12 of copies) while self-copying rose (0.55 -> 0.71) just before the end.
+- **Big replicates so far.** Of the three 400x300 classic replicates, seed20020 (at 2.9M) has
+  no processive species up to 2.5M, and a very different history from the original big run:
+  6.4 x 10^6 species ever by 2.9M against 7.9 x 10^7 for seed19019 by 2.1M, though its copying
+  is comparable (4.8 x 10^8 attempts by 2.5M; the original had 6.3 x 10^8 by 3.0M).
+  `experiments/processive/scan_big/`.
+- **Runs lost to memory, and the fix (25 Oct).** The simulator kept every sequence ever made
+  (including never-placed products) as a key in memory, so a small run grew to ~15 GB by 6-9M
+  steps and a big one to ~13-19 GB by 2M. Five runs were killed by the out-of-memory killer
+  (pr0xx 21021, 24024, 29029, 44044 and big seed21021); one more (long seed66066) was stopped
+  at a checkpoint to protect the rest. The species table is now keyed by a 128-bit hash of the
+  sequence (outputs byte-identical to before on a test run), and the new switch
+  `SPECIESFORGET` lets a run forget sequences absent from the world at a checkpoint (an
+  extinct sequence that reappears gets a new id; the dynamics are unchanged, verified). The
+  big replicates continue with it on; the small runs without it. All stopped runs resume from
+  their last checkpoint after trimming their logs back to it (`tools/trim_logs.py`; a trimmed
+  resume reproduces the uninterrupted logs exactly, apart from `lives.tsv`, whose per-molecule
+  bookkeeping is not checkpointed).
+- **A second resume bug found and fixed:** `smol resume` read only a plain `species.tsv`, so a
+  GZIPLOGS run resumed with its species only in `species.tsv.gz` started with an empty table
+  and gave reappearing sequences new ids. It now reads both. No reported run was affected
+  (every earlier resume had a plain copy of its species file).
 
 ## Caveats on the measurements (review, 20 Oct)
 

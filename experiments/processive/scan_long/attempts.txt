@@ -1,0 +1,15 @@
+pr0xx/seed22022	att 2.87e+08	placed 4.69e+07	frac 0.16	att<=2.5M 0
+pr0xx/seed32032	att 2e+08	placed 4.34e+07	frac 0.22	att<=2.5M 0
+pr0xx/seed36036	att 3.88e+08	placed 3.67e+08	frac 0.94	att<=2.5M 0
+pr0xx/seed37037	att 1.23e+08	placed 3.57e+07	frac 0.29	att<=2.5M 0
+pr0xx/seed42042	att 2.82e+08	placed 4.45e+07	frac 0.16	att<=2.5M 0
+pr0xx/seed53053	att 1.62e+08	placed 3.95e+07	frac 0.24	att<=2.5M 0
+pr0xx/seed54054	att 1.82e+08	placed 4.26e+07	frac 0.23	att<=2.5M 0
+pr0xx/seed56056	att 1.49e+08	placed 4.08e+07	frac 0.27	att<=2.5M 0
+pr0xx/seed57057	att 3.28e+08	placed 4.44e+07	frac 0.14	att<=2.5M 0
+long/seed59059	att 3.05e+08	placed 8.04e+07	frac 0.26	att<=2.5M 3.67e+07
+long/seed63063	att 2.06e+08	placed 5.4e+07	frac 0.26	att<=2.5M 3.57e+07
+long/seed67067	att 3.85e+08	placed 6.21e+07	frac 0.16	att<=2.5M 5.01e+07
+long/seed71071	att 1.82e+08	placed 4.57e+07	frac 0.25	att<=2.5M 3.39e+07
+long/seed73073	att 3.57e+08	placed 5.67e+07	frac 0.16	att<=2.5M 4.09e+07
+big/classic_rep20020	att 5.83e+08	placed 1.69e+08	frac 0.29	att<=2.5M 4.75e+08

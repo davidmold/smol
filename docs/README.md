@@ -23,7 +23,9 @@ changing after that: past 1M steps parasitism falls and mutual copying rises, in
 runs and, more weakly, in ours (findings 12). So "one transition, then nothing but churn" was
 too strong; length alone misses this. In the big classic world a second transition did happen, at
 ~3-4.5M steps: a parasitic family displaced the replicators and processive (amplifying)
-replicators, twice as long, evolved from it (findings 10b; one run). The earlier claim that
+replicators, twice as long, evolved from it (findings 10b; one run). Once present they invade
+most evolved small communities from 20 molecules, but none has arisen in 38 small runs of up
+to 10M steps so far (findings 14); three big replicates are running. The earlier claim that
 selection suppresses sequence-family novelty does not survive a correctly calibrated drift null
 (findings 1). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
@@ -72,8 +74,9 @@ prevents the next transition.
 
 ## Running right now (on aida)
 
-Nothing. The three big 400x300 runs were stopped on 23 Oct: classic at 9.8M steps, copy strand
-at 10.0M, gradient at 12.9M (last checkpoints). All finished run outputs are gzipped.
+Three big classic replicates to 10M and the last small worlds to 10M; see `next.md` for the
+list and how they are queued. The original three big 400x300 runs were stopped on 23 Oct
+(classic 9.8M, copy strand 10.0M, gradient 12.9M).
 
 ## The long-form documents (claude.ai)
 

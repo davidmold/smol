@@ -1,0 +1,1 @@
+{"run": "/home/davidmold/smol/runs/long/seed74074", "detection": null, "establishment": null, "rows": [{"step": 100000, "n": 3059, "proc_share": 0.0, "proc_species": 0, "cum": 216418}, {"step": 200000, "n": 6122, "proc_share": 0.0, "proc_species": 0, "cum": 506850}], "kind": "placed"}

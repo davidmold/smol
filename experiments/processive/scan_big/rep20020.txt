@@ -1,0 +1,8 @@
+== /home/davidmold/smol/runs/big/classic_rep20020  (cumulative placed copies; species with >= 20 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+   500000   81309    532  0.85       0      0.000     12619390  
+  1000000  102015    737  0.81       0      0.000     37614944  
+  1500000  108456    724  0.85       0      0.000     64577944  
+  2000000  105742    661  0.82       0      0.000     91513299  
+  2500000  105646    633  0.81       0      0.000    117859276  
+detection None  establishment None
