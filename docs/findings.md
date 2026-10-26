@@ -393,7 +393,35 @@ reproductive activity as well as elapsed steps.
   samples every 20k, `scan_21021/`) shows the lineage appearing between 9.96M and 9.98M, with a
   33-molecule species at 9.98M: by the definition above that is a **detection** (>= 20
   molecules) in a small world, missed by the 100k-step scan; it is at 0.6-0.7%, far from
-  establishment.
+  establishment. **It then vanished:** 0.2% at 10.00M and none in any of the 102 samples from
+  10.02M to 12.04M (`scan_21021/post10M.txt`). So the small-world lineages so far arise, reach a
+  few dozen molecules at most, and are gone within ~50-100k steps.
+- **Introduction size (partial, 26 Oct evening: 171 of 270 runs scored;
+  `experiments/processive/sizes.py`, `sizes_agg_partial.txt`).** Clear the same 5x5 patch in an
+  evolved community (pr0x at 2.5M), add N molecules of one sequence, run 200k steps with
+  mutation; established = processive share >= 10% at the end. Cells: established / runs.
+
+  | recipient | sequence | N = 1 | N = 2 (adjacent) | N = 5 | N = 20 |
+  |---|---|---|---|---|---|
+  | seed36036 (permissive) | E1 (big world, 42 symbols) | 2/12 | 10/12 | 6/6 | 3/3 |
+  | | S66 (small world, 38) | 0/12 | 6/12 | 6/6 | 1/3 (3/3 persist) |
+  | | S21 (small world, 95) | 0/12 | 5/12 | 4/6 | 3/3 |
+  | | S44 (small world, 462) | 0/12 | 0/12 | 0/6 | 0/3 |
+  | seed21021 (resistant) | E1 | running | running | 0/5 | 1/3 |
+  | | S66 | running | running | 0/6 | 0/3 |
+  | | S21 | running | running | 0/5 | 1/3 |
+  | | S44 | running | running | 0/5 | 0/3 |
+
+  Clearing alone (NONE) never produced processive replicators (0/6). Outcomes are all or
+  nothing: a single E1 either takes over (~87% of molecules within 40k steps; 2 runs) or is gone
+  within 20k (10 runs). In the permissive community the step from one molecule to two adjacent
+  ones is large for every sequence that works (E1 2/12 -> 10/12; S66 and S21 0/12 -> 5-6/12),
+  which is what an encounter limit predicts: a lone processive molecule needs a second copy of
+  itself to bind before it is lost. Two of the three small-world variants (S66, S21) establish
+  readily from small groups, so their natural failure is not mainly genotype quality; the
+  462-symbol S44 never establishes, so genotype does matter for some; and the seed21021
+  community resists even 5-20 molecules of every sequence, so community matters too. Naturally
+  arising variants start as one molecule (or a few, scattered), the worst case in this table.
 - **The small-world variants** (`seqs_sizes.json`). seed66066 at 3.3M: 38 symbols, 46 copies
   per self-reaction, and the same layout as the big-world processive replicators (a `>C%`
   copy block); 17 + 14 + 2 molecules of three variants. seed21021 at 10M: 95 symbols, 24 copies
@@ -419,14 +447,14 @@ reproductive activity as well as elapsed steps.
   big-world samples), assuming the probe classifies correctly; brief appearances between samples
   are not ruled out. The probe now stops on a failed `smol-react` call instead of recording a
   negative; none of the ~190k cached classifications came from a failed probe.
-- **Reading, provisionally.** Processive variants do arise in some small worlds and (in two of
+- **Reading, provisionally.** Processive variants do arise in some small worlds and (in all
   three cases) vanish. One hypothesis is that the barrier is getting a foothold rather than
   persisting: the transplants show that *selected big-world genotypes*, supplied as 20 adjacent
   molecules in a cleared 5x5 patch, spread in most evolved small communities. But that protocol
   supplies partners and space, and the naturally arising small-world variants may be poorer
-  genotypes or a poor fit to their community, so the transplants don't yet say why they fail.
-  Next: introduction size (1, 2 adjacent, 5, 20, with matched clearing) and the small-world
-  variants themselves alongside the big-world ones. The two small cohorts (20 fresh runs; 18
+  genotypes or a poor fit to their community, so the transplants alone don't say why they fail.
+  The introduction-size results above now point to starting number (encounter) as a major
+  barrier, with genotype and community as further ones. The two small cohorts (20 fresh runs; 18
   survivors continued from 2.5M) are differently selected and only 21 runs reached 10M, so they
   are kept separate in any frequency estimate.
 - **Activity, not just steps.** The original big run logged only attempted copies (products,
