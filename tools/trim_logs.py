@@ -49,6 +49,8 @@ def members(path):
     return out
 
 def step_of(line, col):
+    if not line:
+        return None
     p = re.split(r"[\t, ]+", line.decode(errors="replace").strip())
     try:
         return int(float(p[col]))
@@ -67,6 +69,9 @@ def main():
         keep = 0
         for i, (a0, b0, first, last, ok) in enumerate(ms):
             lo, hi = step_of(first, col), step_of(last, col)
+            if ok and lo is None and hi is None:  # an empty member (nothing logged in that interval)
+                keep = b0
+                continue
             if ok and hi is not None and hi <= step:
                 keep = b0
                 continue

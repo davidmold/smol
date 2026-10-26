@@ -15,7 +15,7 @@ Every species with at least --min molecules at a sampled step is probed (up to -
 most abundant first), not only the top few. Also reports cumulative reproductive activity up to
 each sample: placed copies if the run logged them (OFFSPRINGLOG), else attempts.
 """
-import argparse, gzip, json, os, re, subprocess, tempfile
+import argparse, gzip, json, os, re, subprocess, sys, tempfile
 
 ap = argparse.ArgumentParser(); ap.add_argument("run")
 ap.add_argument("--every", type=int, default=100000); ap.add_argument("--min", type=int, default=5)
@@ -83,9 +83,12 @@ for i in range(0, len(todo), 400):
         for k, sq in enumerate(chunk):
             f.write(f"R m{k} {sq}\n")
         fn = f.name
-    out = subprocess.run([a.react, fn, "5000", "--self"] + (["--strand"] if a.strand else []),
-                         capture_output=True, text=True).stdout.split("\n")
+    r = subprocess.run([a.react, fn, "5000", "--self"] + (["--strand"] if a.strand else []),
+                       capture_output=True, text=True)
     os.unlink(fn)
+    if r.returncode != 0:
+        sys.exit(f"smol-react failed (exit {r.returncode}) on a chunk of {len(chunk)}: {r.stderr[-500:]}")
+    out = r.stdout.split("\n")
     cur = None; res = {}
     for l in out:
         m = pat.match(l)
@@ -93,9 +96,11 @@ for i in range(0, len(todo), 400):
             cur = m.group(1); res[cur] = [float(m.group(3)), int(m.group(4)), 0]
         elif "-> product" in l and cur and l.split()[2] == cur:
             res[cur][2] += 1
+    missing = [k for k in range(len(chunk)) if f"m{k}" not in res]
+    if missing:  # every probed sequence prints an "initiates" line; a gap is a failure, not a negative
+        sys.exit(f"smol-react gave no result for {len(missing)} of {len(chunk)} sequences, e.g. {chunk[missing[0]][:60]}")
     for k, sq in enumerate(chunk):
-        p, st, cp = res.get(f"m{k}", [0, 0, 0])
-        cache[sq] = [p, st, cp]
+        cache[sq] = res[f"m{k}"]
 if a.cache:
     json.dump(cache, open(a.cache, "w"))
 proc = lambda sq: sq in cache and cache[sq][0] > 0 and cache[sq][2] >= 3

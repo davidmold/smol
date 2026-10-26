@@ -387,7 +387,18 @@ reproductive activity as well as elapsed steps.
   **No processive species reached detection (>= 20 molecules) in any run.** Processive species
   were seen below that, briefly, in three runs: long seed66066 at 3.3M (10 species, 0.7% of
   molecules), pr0xx seed44044 at 3.1M (1 species) and pr0xx seed21021 at 10M (3-7 species,
-  0.3%, largest 16 molecules). None was there at the next sample.
+  0.3%, largest 16 molecules). The first two were gone at the next sample (100k later); the
+  seed21021 sighting is the run's last observation, so its fate is unknown. That run is being
+  continued to 13M with checkpoints every 50k (26 Oct). A finer scan of 9.0-10M (1,000-molecule
+  samples every 20k, `scan_21021/`) shows the lineage appearing between 9.96M and 9.98M, with a
+  33-molecule species at 9.98M: by the definition above that is a **detection** (>= 20
+  molecules) in a small world, missed by the 100k-step scan; it is at 0.6-0.7%, far from
+  establishment.
+- **The small-world variants** (`seqs_sizes.json`). seed66066 at 3.3M: 38 symbols, 46 copies
+  per self-reaction, and the same layout as the big-world processive replicators (a `>C%`
+  copy block); 17 + 14 + 2 molecules of three variants. seed21021 at 10M: 95 symbols, 24 copies
+  (16 and 8 molecules of two variants). seed44044 at 3.1M: one species of 462 symbols making
+  5 copies (5 molecules).
 - **A blind spot in the scan, and the check.** The default scan only probes species with >= 5
   molecules. In 7 of the 21 runs that reached 10M (long 64064, 66066, 68068; pr0xx 21021, 22022,
   29029, 44044) these cover only 0-20% of molecules for long stretches: almost every molecule is
@@ -396,14 +407,28 @@ reproductive activity as well as elapsed steps.
   `transition_scan.py --sample K`, probes the species of K molecules drawn at random (weighted by
   abundance), which estimates the processive share without regard to rarity
   (`experiments/processive/scan_sample/`). On the original big run it gives 0 at 3.0M (below
-  the sample's resolution), 1.1% at 4.0M, 30% at 4.5M and 80% at 6.0M, in line with the
-  abundance scan. With K = 300 every 100k over 2.5-10M in the 7 low-cover small runs it finds
-  processive molecules only at the three sightings above (1.0% at 3.3M in 66066, 1.3% at 10M in
-  21021, 0.3% at 3.1M in 44044) and none at any other of ~520 samples; a scan probing up to 3,000
-  species of any size every 500k (`scan_min1/`) agrees. So the blind spot was real but hid
-  nothing: in small worlds processive replicators appear occasionally and fail to spread.
-  Given the transplants (they invade most evolved small communities from 20 molecules), the
-  small-world barrier looks like reaching a viable foothold, not persisting once there.
+  the sample's resolution), 1.1% at 4.0M, 30% at 4.5M and 80% at 6.0M. That matches the
+  abundance scan on the timing of the transition but not the size: the abundance scan gave
+  ~21% at 4.5M and 59-64% from 6M, consistent with it missing rare processive variants. So the
+  two agree on when, not on how much. With K = 300 every 100k over 2.5-10M in the 7 low-cover small runs it finds
+  processive molecules only at the three sightings above (3, 4 and 1 sampled molecules: 1.0%
+  at 3.3M in 66066, 1.3% at 10M in 21021, 0.3% at 3.1M in 44044, so these shares are rough) and
+  none at the other 525 of 528 samples; a scan probing up to 3,000 species of any size every 500k
+  (`scan_min1/`) agrees. What this rules out: a missed *established* population. With 300 draws
+  and no hits, the 95% upper bound on the share at that sample is ~1% (~0.3% for the 1,000-draw
+  big-world samples), assuming the probe classifies correctly; brief appearances between samples
+  are not ruled out. The probe now stops on a failed `smol-react` call instead of recording a
+  negative; none of the ~190k cached classifications came from a failed probe.
+- **Reading, provisionally.** Processive variants do arise in some small worlds and (in two of
+  three cases) vanish. One hypothesis is that the barrier is getting a foothold rather than
+  persisting: the transplants show that *selected big-world genotypes*, supplied as 20 adjacent
+  molecules in a cleared 5x5 patch, spread in most evolved small communities. But that protocol
+  supplies partners and space, and the naturally arising small-world variants may be poorer
+  genotypes or a poor fit to their community, so the transplants don't yet say why they fail.
+  Next: introduction size (1, 2 adjacent, 5, 20, with matched clearing) and the small-world
+  variants themselves alongside the big-world ones. The two small cohorts (20 fresh runs; 18
+  survivors continued from 2.5M) are differently selected and only 21 runs reached 10M, so they
+  are kept separate in any frequency estimate.
 - **Activity, not just steps.** The original big run logged only attempted copies (products,
   placed or not): 6.3 x 10^8 by its first detection at 3.0M and 1.2 x 10^9 by establishment.
   The fresh small runs that reached 10M made 1.8-3.9 x 10^8 attempts (the continued survivors
@@ -419,7 +444,10 @@ reproductive activity as well as elapsed steps.
 - **Big replicates so far (26 Oct; `scan_big/`, `scan_sample/`).** None of the three 400x300
   classic replicates has processive species yet: none in the abundance scan (>= 20 molecules) or
   in random samples of 1,000 molecules every 500k, to 4.0M (seed19019), 4.5M (seed20020) and
-  3.5M (seed21021); the original run had 1.1% at 4.0M and 30% at 4.5M. seed20020's history
+  3.5M (seed21021) at the last scan (26 Oct; the runs themselves are further on); the original
+  run had 1.1% at 4.0M and 30% at 4.5M. Three replicates without a transition would mean the
+  original result was not reproduced in three runs, not that it is rare: even at a 50% chance
+  per run, three misses happen 12.5% of the time. seed20020's history
   differs: 6.4 x 10^6 species ever by 2.9M against 7.9 x 10^7 for seed19019 by 2.1M, at
   comparable copying (4.8 x 10^8 attempts by 2.5M), and its cover fell from 0.77 to 0.15 over
   3-4.5M, like the original crisis. Running on to 10M.

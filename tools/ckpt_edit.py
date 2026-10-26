@@ -35,6 +35,9 @@ def species_lines(p):
 ap = argparse.ArgumentParser()
 ap.add_argument("run"); ap.add_argument("ckpt"); ap.add_argument("out")
 ap.add_argument("--rng-seed", type=int, default=1)
+ap.add_argument("--live-species", action="store_true",
+                help="write only the species present after the edit (plus new ones), not the whole list; "
+                     "pair with --set SPECIESFORGET 1. Saves disk and memory for long-evolved recipients")
 a, ops = ap.parse_known_args()
 rng = random.Random(a.rng_seed)
 
@@ -67,11 +70,28 @@ W = gx * depth
 
 species = {}
 spfile = []
-for l in species_lines(os.path.join(a.run, "species.tsv")):
-    spfile.append(l)
-    p = l.rstrip("\n").split("\t")
-    if p[0].isdigit():
-        species.setdefault(p[-1], int(p[0]))
+if a.live_species:
+    # stream: keep the lines of species present now, and ids for any sequence --add will use
+    live0 = {m[2] for m in mols.values()}
+    adds = {ops[k + 1] for k in range(len(ops) - 1) if ops[k] == "--add"}
+    kept = {}
+    for l in species_lines(os.path.join(a.run, "species.tsv")):
+        t = l.find("\t")
+        if t > 0 and l[:t].isdigit():
+            sid = int(l[:t])
+            if sid in live0:
+                kept.setdefault(sid, l)
+            if adds:
+                sq = l.rstrip("\n").rsplit("\t", 1)[-1]
+                if sq in adds:
+                    species.setdefault(sq, sid)
+                    kept.setdefault(sid, l)
+else:
+    for l in species_lines(os.path.join(a.run, "species.tsv")):
+        spfile.append(l)
+        p = l.rstrip("\n").split("\t")
+        if p[0].isdigit():
+            species.setdefault(p[-1], int(p[0]))
 
 def partner(idx):
     b = mols[idx][4]
@@ -151,6 +171,9 @@ with gzip.open(os.path.join(a.out, name), "wt") as f:
     for idx in sorted(mols):
         x, y, sp, seq, b = mols[idx]
         f.write(f"{idx} {x} {y} {sp} {seq} {' '.join(b)}\n")
+if a.live_species:
+    live = {m[2] for m in mols.values()}
+    spfile = [kept[i] for i in sorted(kept) if i in live] + spfile  # spfile now holds only new species
 # a run with GZIPLOGS appends new species to species.tsv.gz, so write the copy there too
 gz_logs = any(l.split()[:2] == ["GZIPLOGS", "1"] for l in conf)
 if gz_logs:

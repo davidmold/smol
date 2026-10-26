@@ -105,7 +105,8 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 `tools/ckpt_edit.py RUN_DIR CKPT OUT_DIR [--remove SEQ] [--remove-species ID] [--cull F]
 [--region X0,X1,Y0,Y1] [--add SEQ N] [--set KEY VALUE] [--rng-seed N]` writes an edited
 checkpoint plus `species.tsv` to OUT_DIR; then `cd OUT_DIR && smol resume CKPT [--reseed S]`.
-A no-op edit resumes byte-identically to the original. Used for rarity invasion, bottlenecks,
+A no-op edit resumes byte-identically to the original. `--live-species` copies only the species
+present after the edit (pair with `--set SPECIESFORGET 1`), instead of the recipient's whole list. Used for rarity invasion, bottlenecks,
 removal and rescue, and for continuing runs with new settings (e.g. `--set NSTEPS`).
 
 ## Scanning for processive species

@@ -13,17 +13,24 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 
 ## Then
 
-1. Transition frequency: small worlds 0 of 38 (with brief sightings), big worlds 1 of 1 so far,
-   3 replicates pending. Compare at matched activity in attempts (the original big run did not
-   log placed copies). If none of the replicates transitions, the original was a rare event.
-2. Foothold vs persistence: the sightings say processive variants do arise in small worlds and
-   vanish. Introduce a single processive molecule (not 20) into evolved small communities to
-   measure the establishment probability from one copy.
-3. Big replicates: does a parasitic crisis precede any transition? seed20020 has a different,
+1. Follow pr0xx seed21021 past its 9.98M detection (running to 13M, checkpoints every 50k):
+   scan finely (`--sample 1000`, every 10-20k) and see whether the processive variants spread,
+   persist at low level or vanish.
+2. Introduction size (`experiments/processive/sizes.py`, running from 26 Oct; 270 runs of
+   200k steps into communities seed36036 and seed21021 at 2.5M; sequences E1, S66, S21, S44):
+   1, 2 adjacent, 5 and 20 molecules, each with a matched cleared-space control. A lone processive molecule cannot react with a copy of itself until one appears;
+   the adjacent pair separates encounter limitation from establishment failure. Use the
+   small-world sightings' own sequences alongside the big-world ones: if they fail even in
+   groups, genotype or community fit matters, not just starting abundance.
+3. Transition frequency: small worlds none established in 38 (fresh and survivor cohorts kept
+   separate; 21 reached 10M), big worlds 1 of 1 so far with 3 replicates pending. Compare at
+   matched activity in attempts. Three negative replicates would mean "not reproduced in three
+   runs", not "rare".
+4. Big replicates: does a parasitic crisis precede any transition? seed20020 has a different,
    low-novelty history.
-4. Why seed21021 resists processive invasion.
-5. Do partnerships accumulate further organisation?
-6. Measurement: observed-reaction percentages; a drift null with space.
+5. Why seed21021 resists processive invasion.
+6. Do partnerships accumulate further organisation?
+7. Measurement: observed-reaction percentages; a drift null with space.
 
 ## Paused
 
