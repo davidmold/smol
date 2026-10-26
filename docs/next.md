@@ -1,30 +1,29 @@
-# Next steps (25 Oct, evening)
+# Next steps (26 Oct, afternoon)
 
-Done since the last update and written up in findings 14: the processive-species definition
-and screen, the transplants, the first long small-world results (no processive species in 38
-runs; extinction common), and a memory fix after five runs were killed for lack of memory.
+Done and written up in findings 14: all 38 small runs to 10M (21 reached it, 17 extinct; no
+processive species established, three brief sightings below 1%), a random-sample scan that
+closes the rare-variant blind spot, and the memory fix that let the killed runs finish.
 
-## Running (25 Oct evening, on aida)
+## Running (on aida)
 
-- Big classic replicates `runs/big/classic_rep{19019,20020,21021}` to 10M. 19019 and 21021
-  continue from checkpoints (2.2M, 1.7M) with `SPECIESFORGET` on; 20020 (2.9M) is on the old
-  binary and stays under 2 GB, so it is left alone. At ~23 steps/s each, 10M is ~4 days away.
-- Small worlds to 10M: long seed64064 and seed68068 (old binary, finishing), seed66066
-  (resumed at 6.1M), and the four OOM-killed survivors pr0xx 21021, 24024, 29029, 44044
-  (resumed by `/tmp/queue3.sh` as memory frees). Each is scanned when it finishes;
-  `~/published/scan_long/DONE2` marks the end.
+- Big classic replicates `runs/big/classic_rep{19019,20020,21021}` to 10M, all now on the
+  hashed-species binary with `SPECIESFORGET` (at 4.4M, 5.2M, 4.0M on 26 Oct 14:30; ~23
+  steps/s, so ~3 days). No processive species yet. Scan each every 500k with both
+  `transition_scan.py --min 20` and `--sample 1000`.
 
 ## Then
 
-1. Transition frequency, small vs big, matched by steps **and** by cumulative copying. The small
-   runs to 10M have had a third to two thirds of the copying (attempts) the big world had at
-   first detection; compare at matched activity, in attempts, since the original big run did
-   not log placed copies.
-2. Big replicates: scan every 500k past 3M; does a parasitic crisis precede any transition?
-   seed20020 already has a very different, low-novelty history.
-3. Why seed21021 resists processive invasion.
-4. Do partnerships accumulate further organisation?
-5. Measurement: observed-reaction percentages; a drift null with space.
+1. Transition frequency: small worlds 0 of 38 (with brief sightings), big worlds 1 of 1 so far,
+   3 replicates pending. Compare at matched activity in attempts (the original big run did not
+   log placed copies). If none of the replicates transitions, the original was a rare event.
+2. Foothold vs persistence: the sightings say processive variants do arise in small worlds and
+   vanish. Introduce a single processive molecule (not 20) into evolved small communities to
+   measure the establishment probability from one copy.
+3. Big replicates: does a parasitic crisis precede any transition? seed20020 has a different,
+   low-novelty history.
+4. Why seed21021 resists processive invasion.
+5. Do partnerships accumulate further organisation?
+6. Measurement: observed-reaction percentages; a drift null with space.
 
 ## Paused
 

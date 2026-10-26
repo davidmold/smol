@@ -1,0 +1,12 @@
+== /home/davidmold/smol/runs/big/classic_400x300  (cumulative attempted copies; species of 1000 random molecules probed; share is the sample estimate)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+  2000000  108463    670  1.00       0      0.000    368578145  
+  2500000  112099    715  1.00       0      0.000    491544598  
+  3000000  114567    844  1.00       0      0.000    634696791  
+  3500000  116307    819  1.00       0      0.000    825269265  
+  4000000  115823    946  1.00       7      0.011    988067479    208 O^BJ$H>BD$XO^BK^BKKBKBXO^B^$^QBBE$XO^B?Q>C%TB$===?
+  4500000  115540    913  1.00     235      0.297   1155501384    264 JQ$H>BE$XO^BK^BKKBXOXO^B^$^QBBEDXO^B?Q>C%TB$===?>^
+  5000000  114746    895  1.00     236      0.285   1299755578    383 $>B$^>B$R$OG^B>C%TB$=E===?>ZNCOOO^H$$D$D>>
+  5500000  116131    818  1.00     434      0.588   1467030710    493 $E>B$^>B?$S$O^BG>C%TB$=E==?>YOWE$B^O^O^$$CDD>>
+  6000000  116772    777  1.00     590      0.796   1658032558    725 $H>BKR$OJ^>C%?T$=E==D=?>O^OMRP^G$=N$$D>
+detection 4000000  establishment 4500000

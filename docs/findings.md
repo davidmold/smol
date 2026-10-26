@@ -376,42 +376,63 @@ reproductive activity as well as elapsed steps.
   was an artefact of this and was withdrawn the same evening. `ckpt_edit.py` now writes the gz
   file when `GZIPLOGS` is on, and the analysis tools read both files.
 
-- **Small worlds to 10M (25 Oct; `experiments/processive/scan_long/`).** Scored every 100k
-  (species >= 5 molecules), from 2.5M for the survivors.
+- **Small worlds to 10M (25-26 Oct; `experiments/processive/scan_long/`).** Scored every 100k
+  (species >= 5 molecules), from 2.5M for the survivors. All 38 runs are finished.
 
-  | set | reached 10M | extinct (step) | killed (OOM), resuming | still running |
-  |---|---|---|---|---|
-  | `pr0xx`: 18 survivors continued 2.5M -> 10M | 9 | 5 (5.19, 5.53, 5.72, 6.08, 6.55M) | 4 (at 4.2-9.4M) | - |
-  | `long`: 20 fresh runs 0 -> 10M | 5 | 12 (6 before 1.5M; 2.1, 3.1, 3.9, 6.0, 7.0M) | - | 3 (6.1-8.7M) |
+  | set | reached 10M | extinct (step) |
+  |---|---|---|
+  | `pr0xx`: 18 survivors continued 2.5M -> 10M | 13 | 5 (5.19, 5.53, 5.72, 6.08, 6.55M) |
+  | `long`: 20 fresh runs 0 -> 10M | 8 | 12 (6 before 1.5M; 2.1, 3.1, 3.9, 6.0, 7.0M) |
 
-  **No processive species was detected in any of the 38 runs**, over every step reached
-  (14 runs to 10M). By cumulative reproductive activity the gap is smaller than by steps.
-  The original big run logged only attempted copies (products, placed or not): 6.3 x 10^8 by its
-  first detection at 3.0M and 1.2 x 10^9 by establishment. The fresh small runs that reached
-  10M made 1.8-3.9 x 10^8 attempts (the continued survivors 1.2-3.9 x 10^8 over 2.5-10M alone),
-  i.e. about a third to two thirds of the big world's activity before detection
-  (`scan_long/attempts.txt`). So small worlds have now been watched for three times the steps
-  but somewhat less copying, and one big world is a sample of one: "not in small worlds" is
-  suggestive, not yet a rate comparison. (Placed products are 14-29% of attempts in these runs;
-  one run, pr0xx seed36036, places 94%.)
+  **No processive species reached detection (>= 20 molecules) in any run.** Processive species
+  were seen below that, briefly, in three runs: long seed66066 at 3.3M (10 species, 0.7% of
+  molecules), pr0xx seed44044 at 3.1M (1 species) and pr0xx seed21021 at 10M (3-7 species,
+  0.3%, largest 16 molecules). None was there at the next sample.
+- **A blind spot in the scan, and the check.** The default scan only probes species with >= 5
+  molecules. In 7 of the 21 runs that reached 10M (long 64064, 66066, 68068; pr0xx 21021, 22022,
+  29029, 44044) these cover only 0-20% of molecules for long stretches: almost every molecule is
+  a unique variant. The big classic world went the same way during its crisis (cover 0.15-0.3 at
+  3-4.5M), and the big replicates are mostly in that state too (cover 0.08-0.4). So a new option,
+  `transition_scan.py --sample K`, probes the species of K molecules drawn at random (weighted by
+  abundance), which estimates the processive share without regard to rarity
+  (`experiments/processive/scan_sample/`). On the original big run it gives 0 at 3.0M (below
+  the sample's resolution), 1.1% at 4.0M, 30% at 4.5M and 80% at 6.0M, in line with the
+  abundance scan. With K = 300 every 100k over 2.5-10M in the 7 low-cover small runs it finds
+  processive molecules only at the three sightings above (1.0% at 3.3M in 66066, 1.3% at 10M in
+  21021, 0.3% at 3.1M in 44044) and none at any other of ~520 samples; a scan probing up to 3,000
+  species of any size every 500k (`scan_min1/`) agrees. So the blind spot was real but hid
+  nothing: in small worlds processive replicators appear occasionally and fail to spread.
+  Given the transplants (they invade most evolved small communities from 20 molecules), the
+  small-world barrier looks like reaching a viable foothold, not persisting once there.
+- **Activity, not just steps.** The original big run logged only attempted copies (products,
+  placed or not): 6.3 x 10^8 by its first detection at 3.0M and 1.2 x 10^9 by establishment.
+  The fresh small runs that reached 10M made 1.8-3.9 x 10^8 attempts (the continued survivors
+  1.2-3.9 x 10^8 over 2.5-10M alone), about a third to two thirds of the big world's activity
+  before detection (`scan_long/attempts.txt`). So small worlds have been watched for three times
+  the steps but somewhat less copying, and one big world is a sample of one: "not in small
+  worlds" is suggestive, not yet a rate comparison. (Placed products are 14-29% of attempts in
+  these runs; one run, pr0xx seed36036, places 94%.)
   Extinction is the commoner outcome (17 of 38 so far, about half of them late, after 2M).
   One late extinction looked at in detail (pr0xx seed47047, 5.19M) was not preceded by a
   parasitic crisis: exact copying held at ~1 x 10^5 per 250k, and one-way copying *fell*
   (0.36 -> 0.12 of copies) while self-copying rose (0.55 -> 0.71) just before the end.
-- **Big replicates so far.** Of the three 400x300 classic replicates, seed20020 (at 2.9M) has
-  no processive species up to 2.5M, and a very different history from the original big run:
-  6.4 x 10^6 species ever by 2.9M against 7.9 x 10^7 for seed19019 by 2.1M, though its copying
-  is comparable (4.8 x 10^8 attempts by 2.5M; the original had 6.3 x 10^8 by 3.0M).
-  `experiments/processive/scan_big/`.
+- **Big replicates so far (26 Oct; `scan_big/`, `scan_sample/`).** None of the three 400x300
+  classic replicates has processive species yet: none in the abundance scan (>= 20 molecules) or
+  in random samples of 1,000 molecules every 500k, to 4.0M (seed19019), 4.5M (seed20020) and
+  3.5M (seed21021); the original run had 1.1% at 4.0M and 30% at 4.5M. seed20020's history
+  differs: 6.4 x 10^6 species ever by 2.9M against 7.9 x 10^7 for seed19019 by 2.1M, at
+  comparable copying (4.8 x 10^8 attempts by 2.5M), and its cover fell from 0.77 to 0.15 over
+  3-4.5M, like the original crisis. Running on to 10M.
 - **Runs lost to memory, and the fix (25 Oct).** The simulator kept every sequence ever made
   (including never-placed products) as a key in memory, so a small run grew to ~15 GB by 6-9M
   steps and a big one to ~13-19 GB by 2M. Five runs were killed by the out-of-memory killer
   (pr0xx 21021, 24024, 29029, 44044 and big seed21021); one more (long seed66066) was stopped
-  at a checkpoint to protect the rest. The species table is now keyed by a 128-bit hash of the
+  at a checkpoint to protect the rest. All were resumed and the small ones finished. The species table is now keyed by a 128-bit hash of the
   sequence (outputs byte-identical to before on a test run), and the new switch
   `SPECIESFORGET` lets a run forget sequences absent from the world at a checkpoint (an
   extinct sequence that reappears gets a new id; the dynamics are unchanged, verified). The
-  big replicates continue with it on; the small runs without it. All stopped runs resume from
+  big replicates continue with it on (seed20020 from 4.9M, 19019 from 2.2M, 21021 from 1.7M);
+  the small runs without it. All stopped runs resume from
   their last checkpoint after trimming their logs back to it (`tools/trim_logs.py`; a trimmed
   resume reproduces the uninterrupted logs exactly, apart from `lives.tsv`, whose per-molecule
   bookkeeping is not checkpointed).

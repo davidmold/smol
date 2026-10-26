@@ -22,6 +22,7 @@ ap.add_argument("--every", type=int, default=100000); ap.add_argument("--min", t
 ap.add_argument("--cap", type=int, default=4000); ap.add_argument("--strand", action="store_true")
 ap.add_argument("--start", type=int, default=0); ap.add_argument("--max", type=int, default=10**12)
 ap.add_argument("--cache"); ap.add_argument("--json")
+ap.add_argument("--sample", type=int, default=0, help="probe the species of K random molecules per sample instead of the most abundant species (unbiased share estimate when most molecules are rare variants)")
 ap.add_argument("--react", default=os.path.expanduser("~/smol/target/release/smol-react"))
 a = ap.parse_args()
 
@@ -47,8 +48,16 @@ for l in lines(f"{a.run}/popdy001.dat"):
     if t >= a.start and t % a.every == 0 and t > 0:
         _, s, c = l.split(","); pops.setdefault(t, {})[int(s)] = int(c)
 need = set()
-for t, p in pops.items():
-    need |= {s for s, c in sorted(p.items(), key=lambda kv: -kv[1])[:a.cap] if c >= a.min}
+samp = {}
+if a.sample:
+    import random
+    rng = random.Random(1)
+    for t, p in pops.items():
+        ks = sorted(p); samp[t] = rng.choices(ks, weights=[p[k] for k in ks], k=a.sample)
+        need |= set(samp[t])
+else:
+    for t, p in pops.items():
+        need |= {s for s, c in sorted(p.items(), key=lambda kv: -kv[1])[:a.cap] if c >= a.min}
 seq = {}
 def species_lines(run):
     # a run resumed from an edited checkpoint with GZIPLOGS has both: species.tsv (copied by
@@ -104,15 +113,22 @@ for l in lines(f"{a.run}/copies.tsv"):
 for s in steps[j:]:
     cum[s] = tot
 
-print(f"== {a.run}  (cumulative {kind or '-'} copies; species with >= {a.min} molecules probed)")
+print(f"== {a.run}  (cumulative {kind or '-'} copies; " + (f"species of {a.sample} random molecules probed; share is the sample estimate)" if a.sample else f"species with >= {a.min} molecules probed)"))
 print(f"{'step':>9} {'N':>7} {'probed':>6} {'cover':>5} {'proc_sp':>7} {'proc_share':>10} {'cum_copies':>12}  top processive")
 det = est = None; run_len = 0; rows = []
 for t in steps:
     p = pops[t]; n = sum(p.values())
-    probed = [(s, c) for s, c in sorted(p.items(), key=lambda kv: -kv[1])[:a.cap] if c >= a.min and s in seq]
-    pr = [(s, c) for s, c in probed if proc(seq[s])]
-    share = sum(c for _, c in pr) / n if n else 0
-    cover = sum(c for _, c in probed) / n if n else 0
+    if a.sample:
+        hits = [s for s in samp[t] if s in seq]
+        probed = [(s, p[s]) for s in set(hits)]
+        pr = [(s, c) for s, c in probed if proc(seq[s])]
+        share = sum(1 for s in hits if proc(seq[s])) / len(hits) if hits else 0
+        cover = len(hits) / a.sample
+    else:
+        probed = [(s, c) for s, c in sorted(p.items(), key=lambda kv: -kv[1])[:a.cap] if c >= a.min and s in seq]
+        pr = [(s, c) for s, c in probed if proc(seq[s])]
+        share = sum(c for _, c in pr) / n if n else 0
+        cover = sum(c for _, c in probed) / n if n else 0
     top = max(pr, key=lambda x: x[1]) if pr else None
     if det is None and any(c >= 20 for _, c in pr):
         det = t

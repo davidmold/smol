@@ -108,6 +108,14 @@ checkpoint plus `species.tsv` to OUT_DIR; then `cd OUT_DIR && smol resume CKPT [
 A no-op edit resumes byte-identically to the original. Used for rarity invasion, bottlenecks,
 removal and rescue, and for continuing runs with new settings (e.g. `--set NSTEPS`).
 
+## Scanning for processive species
+
+`tools/transition_scan.py RUN [--every N] [--start S] [--min M] [--cap C] [--sample K] [--cache F] [--json F]`:
+probes species in a self-reaction and reports processive share, detection and establishment and
+cumulative copies. By default it probes the most abundant species (>= M molecules, up to C);
+`--sample K` probes the species of K random molecules instead, an unbiased share estimate when
+most molecules are rare variants (column `cover` then means the fraction of the sample probed).
+
 ## Stopping and resuming long runs
 
 - `tools/trim_logs.py RUN_DIR STEP [--dry]`: before resuming a GZIPLOGS run from

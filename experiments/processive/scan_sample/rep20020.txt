@@ -1,0 +1,12 @@
+== /home/davidmold/smol/runs/big/classic_rep20020  (cumulative placed copies; species of 1000 random molecules probed; share is the sample estimate)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+   500000   81309    457  1.00       0      0.000     12619390  
+  1000000  102015    506  1.00       0      0.000     37614944  
+  1500000  108456    478  1.00       0      0.000     64577944  
+  2000000  105742    495  1.00       0      0.000     91513299  
+  2500000  105646    500  1.00       0      0.000    117859276  
+  3000000   92467    474  1.00       0      0.000    183385907  
+  3500000  111768    894  1.00       0      0.000    278696839  
+  4000000  112409    924  1.00       0      0.000    316454971  
+  4500000  114885    951  1.00       0      0.000    349473712  
+detection None  establishment None
