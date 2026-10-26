@@ -117,6 +117,13 @@ cumulative copies. By default it probes the most abundant species (>= M molecule
 `--sample K` probes the species of K random molecules instead, an unbiased share estimate when
 most molecules are rare variants (column `cover` then means the fraction of the sample probed).
 
+## Archiving to S3
+
+`tools/archive_s3.sh [--delete] RUNPATH...` (run on chasca): streams each `aida:~/smol/runs/RUNPATH`
+as a tar to `s3://lantic-smol-archive/runs/RUNPATH.tar` (Glacier Instant Retrieval), records the
+SHA-256 and size, checks the object's size in S3, and with `--delete` then removes the aida copy.
+It skips directories a running `smol` or scan is using, and objects already uploaded.
+
 ## Stopping and resuming long runs
 
 - `tools/trim_logs.py RUN_DIR STEP [--dry]`: before resuming a GZIPLOGS run from
