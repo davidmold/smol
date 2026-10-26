@@ -396,8 +396,8 @@ reproductive activity as well as elapsed steps.
   establishment. **It then vanished:** 0.2% at 10.00M and none in any of the 102 samples from
   10.02M to 12.04M (`scan_21021/post10M.txt`). So the small-world lineages so far arise, reach a
   few dozen molecules at most, and are gone within ~50-100k steps.
-- **Introduction size (partial, 26 Oct evening: 171 of 270 runs scored;
-  `experiments/processive/sizes.py`, `sizes_agg_partial.txt`).** Clear the same 5x5 patch in an
+- **Introduction size (26 Oct; all 270 runs; `experiments/processive/sizes.py`,
+  `sizes_agg.txt`).** Clear the same 5x5 patch in an
   evolved community (pr0x at 2.5M), add N molecules of one sequence, run 200k steps with
   mutation; established = processive share >= 10% at the end. Cells: established / runs.
 
@@ -407,10 +407,10 @@ reproductive activity as well as elapsed steps.
   | | S66 (small world, 38) | 0/12 | 6/12 | 6/6 | 1/3 (3/3 persist) |
   | | S21 (small world, 95) | 0/12 | 5/12 | 4/6 | 3/3 |
   | | S44 (small world, 462) | 0/12 | 0/12 | 0/6 | 0/3 |
-  | seed21021 (resistant) | E1 | running | running | 0/5 | 1/3 |
-  | | S66 | running | running | 0/6 | 0/3 |
-  | | S21 | running | running | 0/5 | 1/3 |
-  | | S44 | running | running | 0/5 | 0/3 |
+  | seed21021 (resistant) | E1 | 0/12 | 1/12 | 0/6 | 1/3 |
+  | | S66 | 0/12 | 0/12 | 0/6 | 0/3 |
+  | | S21 | 0/12 | 1/12 | 0/6 | 1/3 |
+  | | S44 | 0/12 | 0/12 | 0/6 | 0/3 |
 
   Clearing alone (NONE) never produced processive replicators (0/6). Outcomes are all or
   nothing: a single E1 either takes over (~87% of molecules within 40k steps; 2 runs) or is gone
@@ -420,7 +420,9 @@ reproductive activity as well as elapsed steps.
   itself to bind before it is lost. Two of the three small-world variants (S66, S21) establish
   readily from small groups, so their natural failure is not mainly genotype quality; the
   462-symbol S44 never establishes, so genotype does matter for some; and the seed21021
-  community resists even 5-20 molecules of every sequence, so community matters too. Naturally
+  community resists every sequence at every size (4 of 105 introductions established, all with
+  E1 or S21 at 2 or 20 molecules), so community matters too. Note that seed21021 at 2.5M is the
+  recipient here, the same community whose own descendant produced S21 at 9.98M and lost it. Naturally
   arising variants start as one molecule (or a few, scattered), the worst case in this table.
 - **The small-world variants** (`seqs_sizes.json`). seed66066 at 3.3M: 38 symbols, 46 copies
   per self-reaction, and the same layout as the big-world processive replicators (a `>C%`

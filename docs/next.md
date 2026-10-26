@@ -16,9 +16,9 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 1. pr0xx seed21021 past its 9.98M detection: the lineage vanished by 10.02M (none to 12.04M).
    The run continues to 13M; replays from the 9.95M/10.0M checkpoints with different random
    streams would give the chance that such a lineage spreads in its own community.
-2. Introduction size (`experiments/processive/sizes.py`; 171 of 270 runs scored, findings 14):
-   one molecule mostly fails, two adjacent mostly succeed, in the permissive community; finish
-   the seed21021 (resistant) N = 1 and 2 runs. Then: a single molecule without clearing, and two
+2. Introduction size (`experiments/processive/sizes.py`; 270 runs, findings 14): in the
+   permissive community one molecule mostly fails and two adjacent mostly succeed; the resistant
+   seed21021 community admits 4 of 105 at any size. Then: a single molecule without clearing, and two
    molecules a few cells apart, to separate encounter from space. A lone processive molecule cannot react with a copy of itself until one appears;
    the adjacent pair separates encounter limitation from establishment failure. Use the
    small-world sightings' own sequences alongside the big-world ones: if they fail even in
