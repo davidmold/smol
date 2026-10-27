@@ -5,15 +5,30 @@ Every run lives on aida under `~/smol/runs/<condition>/<run>/` with its `run.con
 Short descriptions of each condition are also in `~/smol/runs/conditions.json`, which the
 dashboard shows. Finished conditions have their text outputs gzipped (see tools.md).
 
-**Archived to S3 (26 Oct).** To free aida's disk, finished run directories were moved to
+**Archived to S3.** To free aida's disk, finished run directories were moved to
 `s3://lantic-smol-archive/runs/<condition>/<run>.tar` (AWS profile `lantic`, us-east-1,
-Glacier Instant Retrieval: readable at once, ~$4/TB-month): the three original big runs
-(`big/classic_400x300`, `gradient_400x300`, `strand_400x300`), all of `long/`, `pr0xx/` except
-seed21021, and `transplant/` (one tar per recipient). Each tar's SHA-256 is in
-`s3://lantic-smol-archive/manifest/` and in `experiments/archive_manifest.tsv`; it was checked
-against the S3 object size before the aida copy was deleted. The scan and analysis outputs
-derived from them stay in this repo and in `~/published` on aida. Restore one run:
+Glacier Instant Retrieval: readable at once, ~$4/TB-month; 85 objects, 217 GB on 27 Oct):
+- 26 Oct: the three original big runs (`big/classic_400x300`, `gradient_400x300`,
+  `strand_400x300`), all of `long/`, `pr0xx/` except seed21021, and `transplant/` (one tar per
+  recipient).
+- 27 Oct: `sizes`, `pr0xx/seed21021` (continued to 13M), and the finished conditions of 16-21 Oct:
+  b2, bindT3, cd, cell, cellhi, cp, cross, dep, disp0.01, disp0.03, disp0.1, disp0.3, disp1.0,
+  dmg, evo21, evo57, gm, gmc, half, new, old, partners, pr, pr0, pr0log, ps, pub, replay,
+  strand0, strandTS, vert.
+- 27 Oct: `natural/<recipient>` archived in full; on aida each run directory keeps only
+  `trace.tsv`, `scan.json`, `intro.txt` and `log.txt` (`natural/_src` is kept: `replays.py`
+  reads it).
+Each tar's SHA-256 is in `s3://lantic-smol-archive/manifest/` and in
+`experiments/archive_manifest.tsv`; it was checked against the S3 object size before the aida
+copy was deleted. The scan and analysis outputs derived from them stay in this repo and in
+`~/published` on aida. Restore one run:
 `aws --profile lantic s3 cp s3://lantic-smol-archive/runs/long/seed59059.tar - | tar -xf -`
+
+**Deleted, not archived (27 Oct, at David's request):** the original C++ Stringmol runs in
+`aida:~/stringmol/runs` (14-17 Oct; ~172 GB, mostly a full snapshot every 100 steps), superseded
+by smol. Their names are in `experiments/stringmol_runs_deleted.txt`; `~/stringmol/runs/batch.log`
+and the C++ source were kept.
+
 (`tools/archive_s3.sh` does the uploads, from chasca, so no keys live on aida).
 
 Seeds: 40-seed batches use RANDSEED 18018, 19019, ..., 57057 (run dirs `seed18018` ...);
