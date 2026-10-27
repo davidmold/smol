@@ -1,0 +1,13 @@
+== s21_10.0M/rep20  (cumulative placed copies; species with >= 2 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+ 10020000   11827   1080  0.40       1      0.001       133744      8 Q^$P%HK?L>C$===?P>M$C==T=?BBB$AFOPPPOOO$CCOCCEOCGO
+ 10040000   11844   1322  0.44       0      0.000       273082  
+ 10060000   11770   1444  0.44       0      0.000       417173  
+ 10080000   11820   1241  0.35       0      0.000       566434  
+ 10100000   11760   1048  0.26       0      0.000       704110  
+ 10120000   11713    968  0.25       1      0.002       839664     27 $I>BO^$O%HKB?>C$====?N>NZ$IN>NZ$I?N>NZ$IN>NZ$I
+ 10140000   11738   1000  0.24       1      0.002       971956     24 $I>BO^$O%HKB?>C$====?N>NZ$IN>NZ$I?N>NZ$IN>NZ$I
+ 10160000   11622    771  0.18       1      0.001      1101780     14 $I>BO^$O%HKB?>C$====?N>NZ$IN>NZ$I?N>NZ$IN>NZ$I
+ 10180000   11524    727  0.19       2      0.010      1227940    109 $I>BO^$O%HKB?>C$====?N>NZ$IN>NZ$I?N>NZ$IN>NZ$I
+ 10200000   11441    670  0.16       2      0.019      1351512    205 $I>BO^$O%HKB?>C$====?N>NZ$IN>NZ$I?N>NZ$IN>NZ$I
+detection 10120000  establishment None

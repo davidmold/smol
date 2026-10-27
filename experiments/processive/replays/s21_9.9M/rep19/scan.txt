@@ -1,0 +1,13 @@
+== s21_9.9M/rep19  (cumulative placed copies; species with >= 2 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+  9920000   11540    779  0.20       0      0.000       119802  
+  9940000   11413    686  0.18       0      0.000       239372  
+  9960000   11311    655  0.18       0      0.000       357381  
+  9980000   11056    582  0.16       0      0.000       471978  
+ 10000000   10932    578  0.16       0      0.000       586424  
+ 10020000   11143    662  0.20       0      0.000       701280  
+ 10040000   11391    790  0.24       0      0.000       817896  
+ 10060000   11401    871  0.27       0      0.000       935406  
+ 10080000   11458    797  0.23       1      0.000      1054547      2 $===?>NZDPAHQCSDP>B^$MP%W?L>CFD===?>NZ$
+ 10100000   11387    800  0.23       3      0.002      1174596      8 $===?>NZGQCSDP>B^$MP%WKL>CFD===?>NZ$
+detection None  establishment None

@@ -472,8 +472,21 @@ reproductive activity as well as elapsed steps.
     lineage died out but a native S21-family processive population reached 16% and 31% by 10.1M
     (e.g. `TDNP>BO^$O%HK?>C$====?>MZ$I>`, 28 symbols, 80 self-copies per reaction): the family
     that produced S21 arose again from the same state and, this time, took hold. None arose from
-    10.0M (0 of 64). Clean replays without any introduction are running (`replays.py`, 24 from
-    each checkpoint).
+    10.0M (0 of 64).
+  - **Clean replays** (`replays.py`, `replays_summary.txt`; 24 reseeded 200k-step replays from
+    each checkpoint, nothing introduced). From 9.9M, 1 of 24 established a native processive
+    population: `Q>BO^$O%H>C$===?O>A$$T$TQ>` (26 symbols), detected at 9.94M with 42 molecules
+    (0.5%), 10% by 10.04M, 36% by 10.1M. Two more replays had 1-3 processive species briefly;
+    the other 21 none. From 10.0M, where the original lineage was present (16 + 8 molecules),
+    0 of 24 established; it was detected again in one replay (10.04M) and lost, and one ended at
+    1.9%. Together with the introduction runs, native establishment from 9.9M happened in 3 of
+    56 runs (~5%; 95% interval roughly 1-15%), and from 10.0M in 0 of 88. So the original loss
+    at 10.02M was the usual outcome, not bad luck: once this lineage is in this state it is
+    almost always lost, while a fresh start from 9.9M occasionally succeeds.
+  - **The winners are short.** All three native successes are 26-32-symbol members of the
+    S21 family with one copy block (`...>BO^$O%H...>C$===?...>`), matching the second half of
+    S21 itself (`...Q>BO^$P%HIL>C$====?O>AMY$Z>...`). S21, the variant that arose in the
+    original run and failed (95 symbols), carries two such blocks.
   - **How founders failed** (all 512 founders; `natural_agg.txt`). Few decayed without ever
     binding (0-3 per group). A common end is the first reaction: the founder binds a resident
     and both die in that reaction with no product, since under the old pair-decay rule a pair

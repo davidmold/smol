@@ -1,0 +1,13 @@
+== s21_9.9M/rep13  (cumulative placed copies; species with >= 2 molecules probed)
+     step       N probed cover proc_sp proc_share   cum_copies  top processive
+  9920000   11453    730  0.20       0      0.000       121574  
+  9940000   11344    654  0.17       0      0.000       239367  
+  9960000   11209    679  0.19       0      0.000       355903  
+  9980000   11165    700  0.20       0      0.000       473468  
+ 10000000   11054    664  0.18       0      0.000       590140  
+ 10020000   11125    646  0.19       0      0.000       707768  
+ 10040000   11307    860  0.30       0      0.000       827270  
+ 10060000   11706   1159  0.39       0      0.000       952912  
+ 10080000   11679   1238  0.37       0      0.000      1080517  
+ 10100000   11725   1148  0.34       1      0.001      1209662      7 GQCTDP>BTDP>BGQCTDP>BTDP>BGQCTDP>BTDP>BGQCSDP>BTDP
+detection None  establishment None
