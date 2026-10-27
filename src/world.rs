@@ -496,9 +496,10 @@ impl World {
         let (exact, tagged) = if traced {
             let (sm, so) = (self.mols[near].strand.seq().to_vec(), self.mols[other].strand.seq().to_vec());
             let (tm, to) = (self.mols[near].tag, other != near && self.mols[other].tag);
-            if other != near && so == seq {
+            // exact copy: compare species as at the bind (the strands may have been edited since)
+            if other != near && (sp == self.mols[other].species || so == seq) {
                 ('P', to)
-            } else if sm == seq {
+            } else if sp == self.mols[near].species || sm == seq {
                 ('M', tm)
             } else {
                 // a mutated or partial product: it descends from whichever parent it is closer to
