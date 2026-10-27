@@ -440,6 +440,54 @@ reproductive activity as well as elapsed steps.
   failed in its actual surroundings. Next: introductions without clearing (replacing a resident),
   at several locations, into checkpoints near S21's emergence as well as at 2.5M, with the first
   encounters of each newcomer logged.
+- **Introductions without clearing (27 Oct; `experiments/processive/natural.py`,
+  `natural_agg.txt`, `natural_families.txt`).** One processive molecule replaces the resident of
+  a randomly chosen occupied cell, or two replace that cell and its right-hand neighbour; nothing
+  else is touched (a replaced resident's partner is freed). 16 locations per recipient, shared by
+  both sequences and both N, so treatments are paired. The newcomers and their descendants are
+  traced (`TRACESEQ`/`TRACEAT`). 200k steps, mutation on. Established = processive share >= 10%
+  at 200k *and* the top processive species belongs to the introduced family (by its copy block:
+  E1's `>C%TB$=E===?>`, S21's `>C$====?`). Cells: N = 1 / N = 2, out of 16 each.
+
+  | recipient | E1 | S21 |
+  |---|---|---|
+  | seed36036 at 2.5M | 1 / 5 | 0 / 9 |
+  | seed21021 at 2.5M | 3 / 4 | 2 / 3 |
+  | seed21021 at 9.9M | 1 / 2 | 0 / 0 |
+  | seed21021 at 10.0M | 0 / 3 | 0 / 0 |
+
+  - **seed21021 at 2.5M is not a resistant community.** Over 16 random locations without
+    clearing it admitted 12 of 64 introductions, against 15 of 64 for seed36036. The cleared
+    single-location result above (4 of 132) was largely a property of that protocol and place.
+  - **A second molecule helps in seed36036** (E1 1 -> 5, S21 0 -> 9) but hardly in seed21021
+    at 2.5M (3 -> 4, 2 -> 3). Without clearing, E1 singletons did no better than from a cleared
+    patch (1/16 here, 2/12 there), and E1 pairs worse (5/16 against 10/12).
+  - **S21 never established in its own late community:** 0 of 64 at 9.9M and 10.0M, against
+    6 of 64 for E1 there. Introduced singly, 13 of 16 S21 founders at each late snapshot were
+    first bound as the *passive* partner by a resident (the resident runs its code on the
+    newcomer), and 8-9 of 16 had their own sequence altered by a reaction before dying. In
+    seed21021 at 2.5M most founders' first reaction was instead as the *active* partner (10-11
+    of 16), and few were altered (2 of 16).
+  - **Native establishment in two replays.** In 2 of the 32 E1 runs from 9.9M the introduced
+    lineage died out but a native S21-family processive population reached 16% and 31% by 10.1M
+    (e.g. `TDNP>BO^$O%HK?>C$====?>MZ$I>`, 28 symbols, 80 self-copies per reaction): the family
+    that produced S21 arose again from the same state and, this time, took hold. None arose from
+    10.0M (0 of 64). Clean replays without any introduction are running (`replays.py`, 24 from
+    each checkpoint).
+  - **How founders failed** (all 512 founders; `natural_agg.txt`). Few decayed without ever
+    binding (0-3 per group). A common end is the first reaction: the founder binds a resident
+    and both die in that reaction with no product, since under the old pair-decay rule a pair
+    decays together (up to 16 of 32 founders in a group, e.g. S21 pairs in seed21021 at 2.5M).
+    Others react repeatedly without a placed descendant (14 of 16 S21 singletons in seed36036),
+    or have descendants that then die out; lineages that went extinct did so after a median of
+    ~0.7-14k steps. Products lost for lack of room are common (the worlds are full).
+  - Checked by hand: the fates of the 15 founders of seed36036 / E1 / N = 1 read from their
+    traces match the scorer's counts. A traced lineage being alive is not the same as a
+    processive population: one S21 lineage in seed36036 spread to the trace limit while no
+    processive species remained (its descendants had lost processivity).
+  - Caveats: one 200k-step window per run, an endpoint test, 16 locations per recipient, one
+    replicate set; the trace's exact-copy flag in these runs compared current strands, and the
+    scorer recomputes exact copies from species ids (the simulator now does the same).
 - **The small-world variants** (`seqs_sizes.json`). seed66066 at 3.3M: 38 symbols, 46 copies
   per self-reaction, and the same layout as the big-world processive replicators (a `>C%`
   copy block); 17 + 14 + 2 molecules of three variants. seed21021 at 10M: 95 symbols, 24 copies

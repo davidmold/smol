@@ -13,20 +13,15 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 
 ## Then
 
-1. pr0xx seed21021 past its 9.98M detection: the lineage vanished by 10.02M (none to 12.04M).
-   The run continues to 13M; replays from the 9.9M/10.0M checkpoints with different random
-   streams would give the chance that such a lineage spreads in its own community.
-2. Introduction size (`experiments/processive/sizes.py`; 270 runs, findings 14): from a cleared
-   patch an adjacent pair helps (E1 2/12 -> 10/12; small-world variants 0/12 -> ~6/12), S44 never
-   establishes, and seed21021 at 2.5M admits 4 of 132. The cleared patch isolates the singleton,
-   so this does not measure a natural mutant's chances. Next (naturalistic): replace one resident
-   (or two adjacent) without clearing, at several locations per recipient; recipients seed36036
-   and seed21021 at 2.5M plus seed21021 near S21's emergence (9.9M, 10.0M); log each newcomer's
-   first encounters (copied / trapped in a reaction / died unreproduced / descendants failed).
-   Running from 27 Oct: `experiments/processive/natural.py` (256 runs: recipients seed36036 and
-   seed21021 at 2.5M, seed21021 at 9.9M and 10.0M; E1 and S21; N = 1 or 2 adjacent, replacing
-   residents; 16 random locations, shared across treatments; `TRACESEQ` + `TRACEAT` lineage
-   trace); score with `natural_agg.py --scan`.
+1. Replays of pr0xx seed21021 from 9.9M and 10.0M with only the random stream changed
+   (`replays.py`, 48 runs of 200k, running 27 Oct): how often does the native processive
+   transition succeed from the same state? (It did in 2 of 32 E1-introduction runs from 9.9M and
+   in none of 64 from 10.0M; the original run lost it.) If it is common from 9.9M, the original
+   loss was chance; if rare, what differs in the runs where it succeeds?
+2. Why S21 fails in its own late community (0/64) but not in seed36036 (9/16 as pairs): its
+   founders there are mostly used as templates by residents and often altered. Compare the
+   residents that bind newcomers at 2.5M and at 9.9M (who they are, what their code does to
+   the newcomer), from the traces.
 3. Transition frequency: small worlds none established in 38 (fresh and survivor cohorts kept
    separate; 21 reached 10M), big worlds 1 of 1 so far with 3 replicates pending. Compare at
    matched activity in attempts. Three negative replicates would mean "not reproduced in three
