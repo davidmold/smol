@@ -23,6 +23,10 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
    (or two adjacent) without clearing, at several locations per recipient; recipients seed36036
    and seed21021 at 2.5M plus seed21021 near S21's emergence (9.9M, 10.0M); log each newcomer's
    first encounters (copied / trapped in a reaction / died unreproduced / descendants failed).
+   Running from 27 Oct: `experiments/processive/natural.py` (256 runs: recipients seed36036 and
+   seed21021 at 2.5M, seed21021 at 9.9M and 10.0M; E1 and S21; N = 1 or 2 adjacent, replacing
+   residents; 16 random locations, shared across treatments; `TRACESEQ` + `TRACEAT` lineage
+   trace); score with `natural_agg.py --scan`.
 3. Transition frequency: small worlds none established in 38 (fresh and survivor cohorts kept
    separate; 21 reached 10M), big worlds 1 of 1 so far with 3 replicates pending. Compare at
    matched activity in attempts. Three negative replicates would mean "not reproduced in three

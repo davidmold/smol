@@ -10,6 +10,8 @@ Ops, applied in the order given:
   --add SEQ N            put N new free molecules of SEQ in random empty cells
   --region X0,X1,Y0,Y1   restrict the following --add and --clear ops to that box (inclusive)
   --clear                remove every molecule inside the current region
+  --put X,Y SEQ          replace whatever is in cell (X,Y) with one new free molecule of SEQ
+                         (a resident there is removed and its partner freed; an empty cell is filled)
   --set KEY VALUE        set a config key in the checkpoint (e.g. MUTATE 0, NSTEPS 400000)
 
 A molecule whose partner is removed is freed (its reaction ends, any half-built copy is
@@ -74,6 +76,7 @@ if a.live_species:
     # stream: keep the lines of species present now, and ids for any sequence --add will use
     live0 = {m[2] for m in mols.values()}
     adds = {ops[k + 1] for k in range(len(ops) - 1) if ops[k] == "--add"}
+    adds |= {ops[k + 2] for k in range(len(ops) - 2) if ops[k] == "--put"}
     kept = {}
     for l in species_lines(os.path.join(a.run, "species.tsv")):
         t = l.find("\t")
@@ -146,6 +149,19 @@ while k < len(ops):
                 slots += 1
             mols[idx] = [x, y, species[seq], seq, ["F"]]
             added += 1
+        k += 3
+    elif op == "--put":
+        (x, y), seq = [int(v) for v in ops[k + 1].split(",")], ops[k + 2]
+        for idx in [j for j, m in mols.items() if m[0] == x and m[1] == y]:
+            if idx in mols: remove(idx); removed += 1
+        if seq not in species:
+            species[seq] = nextsp
+            spfile.append(f"{nextsp}\t{step}\t-1\t-1\t{seq}\n"); nextsp += 1
+        idx = free.pop(0) if free else slots
+        if idx == slots:
+            slots += 1
+        mols[idx] = [x, y, species[seq], seq, ["F"]]
+        added += 1
         k += 3
     elif op == "--set":
         key, val = ops[k + 1], ops[k + 2]

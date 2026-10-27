@@ -54,6 +54,32 @@ pub struct Mol {
     pub born: u64,
     pub made: u32,
     pub copied: u32,
+    /// TRACESEQ lineage tag (not checkpointed) and the step of the current bind (for the trace)
+    pub tag: bool,
+    pub bound_at: u64,
+}
+
+/// TRACESEQ: event log for one introduced sequence and its descendants (trace.tsv).
+#[derive(Clone, Debug, Default)]
+pub struct Trace {
+    pub seq: Vec<u8>,
+    pub max: usize,
+    pub n: usize,
+    pub buf: Vec<String>,
+}
+
+/// Edit distance (for assigning a mutated product to the nearer parent; used only in the trace).
+fn edit_distance(a: &[u8], b: &[u8]) -> usize {
+    let mut prev: Vec<usize> = (0..=b.len()).collect();
+    let mut cur = vec![0; b.len() + 1];
+    for i in 1..=a.len() {
+        cur[0] = i;
+        for j in 1..=b.len() {
+            cur[j] = (prev[j] + 1).min(cur[j - 1] + 1).min(prev[j - 1] + (a[i - 1] != b[j - 1]) as usize);
+        }
+        std::mem::swap(&mut prev, &mut cur);
+    }
+    prev[b.len()]
 }
 
 /// OFFSPRINGLOG: per-species totals over molecules that died in the current window.
@@ -115,6 +141,8 @@ pub struct World {
     pub offspring_log: bool,
     /// OFFSPRINGLOG: deaths in the current window, by species; drained by the output layer
     pub lives: HashMap<u32, LifeAgg>,
+    /// TRACESEQ event log, None when off
+    pub trace: Option<Trace>,
     /// strands of each active and its passive at bind time (DISPLACE only; not checkpointed)
     snap: HashMap<usize, (Vec<u8>, Vec<u8>)>,
     pub chem: ChemParams,
@@ -177,6 +205,7 @@ impl World {
             strandcopy: cfg.strandcopy,
             offspring_log: cfg.offspring_log,
             lives: HashMap::new(),
+            trace: None,
             snap: HashMap::new(),
             chem: ChemParams {
                 maxl: cfg.maxl,
@@ -216,7 +245,7 @@ impl World {
     }
 
     fn add(&mut self, strand: Strand, x: usize, y: usize, species: u32) -> usize {
-        let m = Mol { strand, x, y, species, bond: Bond::Free, alive: true, born: self.step, made: 0, copied: 0 };
+        let m = Mol { strand, x, y, species, bond: Bond::Free, alive: true, born: self.step, made: 0, copied: 0, tag: false, bound_at: 0 };
         let idx = if let Some(i) = self.free_slots.pop() {
             self.mols[i] = m;
             i
@@ -232,6 +261,12 @@ impl World {
     }
 
     fn remove(&mut self, idx: usize) {
+        if self.trace.is_some() && self.mols[idx].tag {
+            let m = &self.mols[idx];
+            let l = format!("{}\tdie\t{}\t{}\t{}\t{}\t{}\t{}\t{}", self.step, idx, m.born, m.species,
+                            (m.bond != Bond::Free) as u8, self.step.saturating_sub(m.born), m.made, m.copied);
+            self.tr(l);
+        }
         let (x, y) = (self.mols[idx].x, self.mols[idx].y);
         let c = self.cell(x, y);
         self.grid[c] = 0;
@@ -298,6 +333,32 @@ impl World {
         self.species.shrink_to_fit();
         self.forget_cutoff = self.next_species;
         before - self.species.len()
+    }
+
+    fn tr(&mut self, line: String) {
+        if let Some(t) = &mut self.trace {
+            if t.n < t.max {
+                t.n += 1;
+                t.buf.push(line);
+            }
+        }
+    }
+
+    /// TRACESEQ: tag every molecule now carrying `seq` (call after resume) and log them.
+    /// With `at`, only molecules in those cells are tagged (so residents that already carry `seq`
+    /// are not mistaken for the newcomers).
+    pub fn tag_seq(&mut self, seq: &[u8], max: usize, at: Option<&[(usize, usize)]>) {
+        self.trace = Some(Trace { seq: seq.to_vec(), max, ..Default::default() });
+        let hits: Vec<usize> = (0..self.mols.len())
+            .filter(|&i| self.mols[i].alive && self.mols[i].strand.seq() == seq)
+            .filter(|&i| at.map_or(true, |c| c.contains(&(self.mols[i].x, self.mols[i].y))))
+            .collect();
+        for i in hits {
+            self.mols[i].tag = true;
+            let m = &self.mols[i];
+            let l = format!("{}\ttag\t{}\t{}\t{}\t{}\t{}", self.step, i, m.born, m.species, m.x, m.y);
+            self.tr(l);
+        }
     }
 
     /// Species ids of the molecules now in the world.
@@ -385,6 +446,11 @@ impl World {
     /// End a molecule's reaction from its side: it becomes free, and its species is
     /// re-read from its (possibly changed) sequence.
     fn release(&mut self, idx: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+        if self.trace.is_some() && self.mols[idx].tag {
+            let m = &self.mols[idx];
+            let l = format!("{}\tend\t{}\t{}\t{}\t{}", self.step, idx, m.born, m.species, self.step.saturating_sub(m.bound_at));
+            self.tr(l);
+        }
         self.mols[idx].bond = Bond::Free;
         let seq = self.mols[idx].strand.seq().to_vec();
         let sp = self.species_of(&seq, sp_act as i64, sp_pas as i64, obs);
@@ -406,6 +472,12 @@ impl World {
         let sp = self.species_of(&seq, sp_act as i64, sp_pas as i64, obs);
         obs.product(sp_act, sp_pas, sp, n > 0);
         if n == 0 {
+            if self.trace.is_some() && (self.mols[near].tag || (other != near && self.mols[other].tag)) {
+                let (m, o) = (&self.mols[near], &self.mols[other]);
+                let l = format!("{}\tlost\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}", self.step, near, m.born, m.species, m.tag as u8,
+                                other, o.born, o.species, o.tag as u8, sp);
+                self.tr(l);
+            }
             return; // no room: the product is lost
         }
         if self.offspring_log {
@@ -420,7 +492,30 @@ impl World {
         }
         let (px, py) = empty[self.rng.below(n)];
         let maxl = self.chem.maxl;
-        self.add(Strand::new(&seq, maxl), px, py, sp);
+        let traced = self.trace.is_some() && (self.mols[near].tag || (other != near && self.mols[other].tag));
+        let (exact, tagged) = if traced {
+            let (sm, so) = (self.mols[near].strand.seq().to_vec(), self.mols[other].strand.seq().to_vec());
+            let (tm, to) = (self.mols[near].tag, other != near && self.mols[other].tag);
+            if other != near && so == seq {
+                ('P', to)
+            } else if sm == seq {
+                ('M', tm)
+            } else {
+                // a mutated or partial product: it descends from whichever parent it is closer to
+                let (dm, dp) = (edit_distance(&seq, &sm), if other != near { edit_distance(&seq, &so) } else { usize::MAX });
+                ('-', if dp < dm { to } else { tm })
+            }
+        } else {
+            ('-', false)
+        };
+        let ni = self.add(Strand::new(&seq, maxl), px, py, sp);
+        if traced {
+            self.mols[ni].tag = tagged;
+            let (m, o) = (&self.mols[near], &self.mols[other]);
+            let l = format!("{}\tprod\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}", self.step, near, m.born, m.species, m.tag as u8,
+                            other, o.born, o.species, o.tag as u8, sp, exact, tagged as u8, ni);
+            self.tr(l);
+        }
     }
 
     fn pair_of(&self, idx: usize) -> Option<(usize, usize)> {
@@ -655,6 +750,18 @@ impl World {
         let pptr = if self.twosided { Some(Pointers::at_bind(pas_idx, act_idx)) } else { None };
         self.mols[act].bond = Bond::Active { partner: pas, ptr: Pointers::at_bind(act_idx, pas_idx), sp_act, sp_pas, p0: p, copied: 0, pptr, nas: Vec::new(), pnas: Vec::new() };
         self.mols[pas].bond = Bond::Passive { partner: act };
+        self.mols[act].bound_at = now;
+        self.mols[pas].bound_at = now;
+        if self.trace.is_some() && (self.mols[act].tag || self.mols[pas].tag) {
+            for (me, role, other) in [(act, 'A', pas), (pas, 'P', act)] {
+                if self.mols[me].tag {
+                    let (m, o) = (&self.mols[me], &self.mols[other]);
+                    let l = format!("{}\tbind\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}", now, me, m.born, m.species, role,
+                                    other, o.born, o.species, o.tag as u8);
+                    self.tr(l);
+                }
+            }
+        }
         if self.displace {
             let v = (self.mols[act].strand.seq().to_vec(), self.mols[pas].strand.seq().to_vec());
             self.snap.insert(act, v);
@@ -931,15 +1038,15 @@ impl World {
                 b => return Err(format!("bad bond {b}")),
             };
             while w.mols.len() <= idx {
-                w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0 });
+                w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0, tag: false, bound_at: 0 });
                 w.acted.push(0);
             }
             let c = w.cell(x, y);
             w.grid[c] = idx as u32 + 1;
-            w.mols[idx] = Mol { strand, x, y, species, bond, alive: true, born: w.step, made: 0, copied: 0 };
+            w.mols[idx] = Mol { strand, x, y, species, bond, alive: true, born: w.step, made: 0, copied: 0, tag: false, bound_at: 0 };
         }
         while w.mols.len() < slots {
-            w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0 });
+            w.mols.push(Mol { strand: Strand::new(&[], 0), x: 0, y: 0, species: 0, bond: Bond::Free, alive: false, born: 0, made: 0, copied: 0, tag: false, bound_at: 0 });
             w.acted.push(0);
         }
         // free list in its saved order, so a resumed run continues exactly

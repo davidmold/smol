@@ -98,6 +98,30 @@ fn main() {
     if cfg.offspring_log {
         out.enable_offspring(dir).unwrap_or_else(|e| die(&e.to_string()));
     }
+    // TRACESEQ SEQ [TRACEMAX N]: log binds, reaction ends, products and deaths of the molecules
+    // carrying SEQ now, and of their descendants, to trace.tsv (see docs/switches.md)
+    let rawv = |k: &str| cfg.raw.iter().rev().find(|(key, _)| key == k).map(|(_, v)| v.trim().to_string());
+    if let Some(ts) = rawv("TRACESEQ") {
+        let max = rawv("TRACEMAX").and_then(|v| v.parse::<f64>().ok()).unwrap_or(200000.0) as usize;
+        let at: Option<Vec<(usize, usize)>> = rawv("TRACEAT").map(|v| {
+            v.split(';').filter_map(|c| {
+                let mut it = c.split(',').map(|n| n.trim().parse::<usize>());
+                match (it.next(), it.next()) { (Some(Ok(x)), Some(Ok(y))) => Some((x, y)), _ => None }
+            }).collect()
+        });
+        world.tag_seq(ts.as_bytes(), max, at.as_deref());
+    }
+    let trace_out = |w: &mut World| {
+        if let Some(t) = &mut w.trace {
+            if !t.buf.is_empty() {
+                use std::io::Write;
+                let mut f = std::fs::OpenOptions::new().create(true).append(true).open(dir.join("trace.tsv")).unwrap();
+                for l in t.buf.drain(..) {
+                    let _ = writeln!(f, "{l}");
+                }
+            }
+        }
+    };
 
     let mut ckpts: Vec<String> = Vec::new();
     let start = std::time::Instant::now();
@@ -116,6 +140,7 @@ fn main() {
         if t % cfg.copy_every == 0 {
             out.flush_copies(t).unwrap();
             out.flush_lives(&mut world).unwrap();
+            trace_out(&mut world);
         }
         if t % cfg.ckpt_every == 0 {
             out.flush_copies(t).unwrap();
@@ -153,5 +178,6 @@ fn main() {
     }
     out.flush_copies(world.step).unwrap();
     out.flush_lives(&mut world).unwrap();
+    trace_out(&mut world);
     write_checkpoint(dir, &world, &cfg_text).unwrap();
 }
