@@ -13,7 +13,7 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 
 ## Then
 
-1. Native transitions in seed21021: from 9.9M 3 of 56 runs established a short (26-32 symbol)
+1. Native transitions in seed21021: from 9.9M 3 of 88 runs established a short (26-32 symbol)
    S21-family replicator; from 10.0M, with the original 95-symbol lineage present, 0 of 88. Is
    the short single-block form what makes the difference? Introduce the 26-symbol winner
    (`Q>BO^$O%H>C$===?O>A$$T$TQ>`) and S21 into the 9.9M and 10.0M states, singly and as pairs

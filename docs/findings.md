@@ -479,8 +479,9 @@ reproductive activity as well as elapsed steps.
     (0.5%), 10% by 10.04M, 36% by 10.1M. Two more replays had 1-3 processive species briefly;
     the other 21 none. From 10.0M, where the original lineage was present (16 + 8 molecules),
     0 of 24 established; it was detected again in one replay (10.04M) and lost, and one ended at
-    1.9%. Together with the introduction runs, native establishment from 9.9M happened in 3 of
-    56 runs (~5%; 95% interval roughly 1-15%), and from 10.0M in 0 of 88. So the original loss
+    1.9%. Together with the introduction runs (none of the 32 S21-introduction runs from 9.9M
+    established anything), native establishment from 9.9M happened in 3 of 88 runs (~3%; 95%
+    interval roughly 1-10%), and from 10.0M in 0 of 88. So the original loss
     at 10.02M was the usual outcome, not bad luck: once this lineage is in this state it is
     almost always lost, while a fresh start from 9.9M occasionally succeeds.
   - **The winners are short.** All three native successes are 26-32-symbol members of the
