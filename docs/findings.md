@@ -463,7 +463,7 @@ reproductive activity as well as elapsed steps.
     at 2.5M (3 -> 4, 2 -> 3). Without clearing, E1 singletons did no better than from a cleared
     patch (1/16 here, 2/12 there), and E1 pairs worse (5/16 against 10/12).
   - **S21 never established in its own late community:** 0 of 64 at 9.9M and 10.0M, against
-    6 of 64 for E1 there. Introduced singly, 13 of 16 S21 founders at each late snapshot were
+    6 of 64 for E1 there. Introduced singly, 13 and 12 of 16 S21 founders (9.9M, 10.0M) were
     first bound as the *passive* partner by a resident (the resident runs its code on the
     newcomer), and 8-9 of 16 had their own sequence altered by a reaction before dying. In
     seed21021 at 2.5M most founders' first reaction was instead as the *active* partner (10-11
@@ -480,7 +480,7 @@ reproductive activity as well as elapsed steps.
     decays together (up to 16 of 32 founders in a group, e.g. S21 pairs in seed21021 at 2.5M).
     Others react repeatedly without a placed descendant (14 of 16 S21 singletons in seed36036),
     or have descendants that then die out; lineages that went extinct did so after a median of
-    ~0.7-14k steps. Products lost for lack of room are common (the worlds are full).
+    ~0.9-12k steps (by group). Products lost for lack of room are common (the worlds are full).
   - Checked by hand: the fates of the 15 founders of seed36036 / E1 / N = 1 read from their
     traces match the scorer's counts. A traced lineage being alive is not the same as a
     processive population: one S21 lineage in seed36036 spread to the trace limit while no
