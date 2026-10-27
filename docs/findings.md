@@ -412,18 +412,34 @@ reproductive activity as well as elapsed steps.
   | | S21 | 0/12 | 1/12 | 0/6 | 1/3 |
   | | S44 | 0/12 | 0/12 | 0/6 | 0/3 |
 
-  Clearing alone (NONE) never produced processive replicators (0/6). Outcomes are all or
-  nothing: a single E1 either takes over (~87% of molecules within 40k steps; 2 runs) or is gone
-  within 20k (10 runs). In the permissive community the step from one molecule to two adjacent
-  ones is large for every sequence that works (E1 2/12 -> 10/12; S66 and S21 0/12 -> 5-6/12),
-  which is what an encounter limit predicts: a lone processive molecule needs a second copy of
-  itself to bind before it is lost. Two of the three small-world variants (S66, S21) establish
-  readily from small groups, so their natural failure is not mainly genotype quality; the
-  462-symbol S44 never establishes, so genotype does matter for some; and the seed21021
-  community resists every sequence at every size (4 of 105 introductions established, all with
-  E1 or S21 at 2 or 20 molecules), so community matters too. Note that seed21021 at 2.5M is the
-  recipient here, the same community whose own descendant produced S21 at 9.98M and lost it. Naturally
-  arising variants start as one molecule (or a few, scattered), the worst case in this table.
+  "Established" here means a processive share >= 10% at the 200k endpoint, a looser test than
+  the scan's (>= 10% for three consecutive samples); neither means takeover. S66 at N = 20
+  persisted in all three permissive runs but crossed 10% in only one. Clearing alone (NONE)
+  never produced processive replicators (0/6). Outcomes were mostly all or nothing: a single E1
+  either took over (~87% of molecules within 40k steps; 2 runs) or was gone within 20k (10 runs).
+
+  **Design caveat.** Every treatment clears the same 5x5 patch, so a single molecule starts
+  with all eight neighbouring cells empty and must wait for residents to grow back into
+  contact, while an adjacent pair has a reaction partner at once. This is a fair comparison of
+  colonisation from different founding groups, but not of how a natural mutant fares: a mutant
+  usually appears next to the molecules that made it. And every introduction uses the same
+  location, so differences between recipients are partly differences between two local
+  neighbourhoods.
+
+  What the table supports, under this protocol:
+  - **Founding group:** an adjacent pair clearly helps (E1 2/12 -> 10/12; S66 0/12 -> 6/12; S21
+    0/12 -> 5/12), consistent with an encounter limit. For the small-world variants a pair
+    succeeds about half the time, not usually.
+  - **Genotype:** S66 and S21 can establish in a small world; S44 (462 symbols) never did. This
+    does not show that length is the reason, or that S66 and S21 are as competitive as E1.
+  - **Recipient:** a large difference between the two snapshots tested. seed21021 admitted 4 of
+    132 introductions (4 sequences x 33; the 3 clearing-only controls aside), all E1 or S21 at
+    N = 2 or 20. seed21021 at 2.5M is an ancestor of the 9.98M community in which S21's lineage
+    arose and was lost, not the same ecological state.
+  So these results narrow the possibilities but do not yet say why the natural seed21021 lineage
+  failed in its actual surroundings. Next: introductions without clearing (replacing a resident),
+  at several locations, into checkpoints near S21's emergence as well as at 2.5M, with the first
+  encounters of each newcomer logged.
 - **The small-world variants** (`seqs_sizes.json`). seed66066 at 3.3M: 38 symbols, 46 copies
   per self-reaction, and the same layout as the big-world processive replicators (a `>C%`
   copy block); 17 + 14 + 2 molecules of three variants. seed21021 at 10M: 95 symbols, 24 copies

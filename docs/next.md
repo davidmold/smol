@@ -14,15 +14,15 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 ## Then
 
 1. pr0xx seed21021 past its 9.98M detection: the lineage vanished by 10.02M (none to 12.04M).
-   The run continues to 13M; replays from the 9.95M/10.0M checkpoints with different random
+   The run continues to 13M; replays from the 9.9M/10.0M checkpoints with different random
    streams would give the chance that such a lineage spreads in its own community.
-2. Introduction size (`experiments/processive/sizes.py`; 270 runs, findings 14): in the
-   permissive community one molecule mostly fails and two adjacent mostly succeed; the resistant
-   seed21021 community admits 4 of 105 at any size. Then: a single molecule without clearing, and two
-   molecules a few cells apart, to separate encounter from space. A lone processive molecule cannot react with a copy of itself until one appears;
-   the adjacent pair separates encounter limitation from establishment failure. Use the
-   small-world sightings' own sequences alongside the big-world ones: if they fail even in
-   groups, genotype or community fit matters, not just starting abundance.
+2. Introduction size (`experiments/processive/sizes.py`; 270 runs, findings 14): from a cleared
+   patch an adjacent pair helps (E1 2/12 -> 10/12; small-world variants 0/12 -> ~6/12), S44 never
+   establishes, and seed21021 at 2.5M admits 4 of 132. The cleared patch isolates the singleton,
+   so this does not measure a natural mutant's chances. Next (naturalistic): replace one resident
+   (or two adjacent) without clearing, at several locations per recipient; recipients seed36036
+   and seed21021 at 2.5M plus seed21021 near S21's emergence (9.9M, 10.0M); log each newcomer's
+   first encounters (copied / trapped in a reaction / died unreproduced / descendants failed).
 3. Transition frequency: small worlds none established in 38 (fresh and survivor cohorts kept
    separate; 21 reached 10M), big worlds 1 of 1 so far with 3 replicates pending. Compare at
    matched activity in attempts. Three negative replicates would mean "not reproduced in three
