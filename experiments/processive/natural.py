@@ -17,6 +17,8 @@ Each run: mutation on, OFFSPRINGLOG, GZIPLOGS, SPECIESFORGET, live species only,
 TRACESEQ = the introduced sequence (trace.tsv: binds, reaction ends, products, lost products,
 deaths of the newcomers and their descendants; TRACEMAX 100000 lines).
 Output: ~/smol/runs/natural/<recipient>/<seq>/n<N>/rep<k>; intro.txt records the cells used.
+Placement and random streams depend only on (recipient, rep), so a sequence added later (e.g.
+W26, 27 Oct, --rec s21_9.9M,s21_10.0M) is paired run-for-run with the earlier ones.
 Both sequences and both N share a location in a given (recipient, rep), so treatments are paired.
 """
 import argparse, gzip, json, os, random, subprocess, sys, zlib
@@ -25,6 +27,7 @@ from concurrent.futures import ThreadPoolExecutor
 ap = argparse.ArgumentParser(); ap.add_argument("seqs")
 ap.add_argument("--jobs", type=int, default=7); ap.add_argument("--steps", type=int, default=200000)
 ap.add_argument("--reps", type=int, default=16)
+ap.add_argument("--rec", default="", help="comma-separated recipients to run (default all)")
 a = ap.parse_args()
 S = json.load(open(a.seqs))
 H = os.path.expanduser("~/smol"); OUT = f"{H}/runs/natural"
@@ -41,15 +44,21 @@ def prep(rec):
                        stdout=subprocess.DEVNULL)
     return d
 
-def occupied(src, step):
-    """(gx, occupied cells) of a checkpoint."""
-    L = gzip.open(f"{H}/runs/{src}/checkpoint_{step}.txt.gz", "rt").read().split("\n")
+def occupied(src, step, rec=None):
+    """(gx, occupied cells) of a checkpoint (from the live-species copy if the source run has
+    since been archived)."""
+    f = f"{H}/runs/{src}/checkpoint_{step}.txt.gz"
+    if not os.path.exists(f) and rec:
+        f = f"{OUT}/_src/{rec}/checkpoint_{step}.txt.gz"
+    L = gzip.open(f, "rt").read().split("\n")
     nconf = int(L[4].split()[1]); conf = L[5:5 + nconf]
     gx = next(int(float(l.split()[1])) for l in conf if l.split()[:1] == ["GRIDX"])
     i = 5 + nconf; nm = int(L[i + 2].split()[1])
     return gx, sorted({(int(p.split()[1]), int(p.split()[2])) for p in L[i + 3:i + 3 + nm]})
 
-OCC = {r: occupied(*REC[r]) for r in REC}
+if a.rec:
+    REC = {r: REC[r] for r in a.rec.split(",")}
+OCC = {r: occupied(*REC[r], rec=r) for r in REC}
 with ThreadPoolExecutor(4) as ex:
     SRC = dict(zip(REC, ex.map(prep, REC)))
 
