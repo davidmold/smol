@@ -14,11 +14,12 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
 ## Then
 
 1. Native transitions in seed21021: from 9.9M 3 of 88 runs established a short (26-32 symbol)
-   S21-family replicator; from 10.0M, with the original 95-symbol lineage present, 0 of 88. Is
-   the short single-block form what makes the difference? Introduce the 26-symbol winner
-   (`Q>BO^$O%H>C$===?O>A$$T$TQ>`) and S21 into the 9.9M and 10.0M states, singly and as pairs
-   (as in natural.py), and trace them; and replay from 9.95M/9.97M (needs checkpoints: rerun
-   9.9M -> 10.0M once with CKPTEVERY 10000) to see how often the family arises at all.
+   S21-family replicator; from 10.0M, with the original 95-symbol lineage present, 0 of 88.
+   Introduced at the same cells, the 26-symbol W26 established 6 of 64 times and S21 0 of 64
+   (p = 0.014): the short single-block form matters. Open: is it length (copy time, exposure to
+   decay and editing while bound) or the second block itself? Test with S21's two halves
+   separately and with W26 padded to S21's length by inert symbols; and replay from 9.95M/9.97M
+   (rerun 9.9M -> 10.0M once with CKPTEVERY 10000) to see how often the family arises at all.
 2. Why S21 fails in its own late community (0/64) but not in seed36036 (9/16 as pairs): its
    founders there are mostly used as templates by residents and often altered. Compare the
    residents that bind newcomers at 2.5M and at 9.9M (who they are, what their code does to

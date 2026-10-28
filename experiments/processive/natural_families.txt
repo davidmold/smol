@@ -34,3 +34,9 @@ s36_2.5M/S21/n2/rep4	2700000	S21-family	introduced	Q^$P%HK?L>C$===?P>M$C==T=?BBA
 s36_2.5M/S21/n2/rep5	2700000	S21-family	introduced	Q^$P%HK?L%>C$=U=?P>M$C==T=?BBB$AFOPPOPO$BCCCEOCGOCCR$=I=?=?B$=$Q>BO^$PQ%HIL>C$====?O>AMY$Z>ZZZZZ
 s36_2.5M/S21/n2/rep6	2700000	S21-family	introduced	Q^$P%ZHK?L>C$===?P>M$C==T=?BAB$AFOPPOOOCCCOCCEOCGOCCR$==?=?B$=$Q>BO^$P%HIL>C$====?O>AMY$Z>ZZZZZ
 s36_2.5M/S21/n2/rep8	2700000	S21-family	introduced	COCCZEOCGOCCR$=T?=?B$=$Q>BO^$P%HJL>C$====?>AEY$Z>ZZZZZ
+s21_9.9M/W26/n1/rep12	10100000	S21-family (W26-like)	introduced	Q>BO^$JO%?H>C$===?O>A$$$TQ>
+s21_9.9M/W26/n2/rep11	10100000	S21-family (W26-like)	introduced	QB>B?O^$OM%H>C$===?O>A$$T$TQ>
+s21_9.9M/W26/n2/rep5	10100000	S21-family (W26-like)	introduced	Q>BP^$O%ZH>C$==?O>A$$T$TQ>
+s21_10.0M/W26/n2/rep1	10200000	S21-family (W26-like)	introduced	Q>BAOW^Q$O%H>C$===?O>A$$=$TQ>
+s21_10.0M/W26/n2/rep2	10200000	S21-family (W26-like)	introduced	Q>BYO^$SO%QH>C$===?O>A$T$TQ>>
+s21_10.0M/W26/n2/rep8	10200000	?	introduced	Q>BO^$O%HO>CC$===?O>A$$T$TQ>

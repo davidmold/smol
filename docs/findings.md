@@ -488,6 +488,19 @@ reproductive activity as well as elapsed steps.
     S21 family with one copy block (`...>BO^$O%H...>C$===?...>`), matching the second half of
     S21 itself (`...Q>BO^$P%HIL>C$====?O>AMY$Z>...`). S21, the variant that arose in the
     original run and failed (95 symbols), carries two such blocks.
+  - **The short form does better where S21 failed** (28 Oct; W26 =
+    `Q>BO^$O%H>C$===?O>A$$T$TQ>`, the 26-symbol replay winner, introduced exactly as above at
+    the same 16 locations with the same random streams, so each W26 run is paired with an S21
+    and an E1 run). Established, N = 1 / N = 2 of 16: from 9.9M W26 1 / 2, from 10.0M W26 0 / 3,
+    against S21 0 / 0 at both; 6 of 64 for W26 against 0 of 64 for S21 (one-sided Fisher
+    p = 0.014) and 6 of 64 introduced-E1 successes. All six W26 populations are W26-like
+    (26-29 symbols, e.g. `Q>BAOW^Q$O%H>C$===?O>A$$=$TQ>`). The successes are at different
+    places: only one location (9.9M, pair, rep 5) worked for both W26 and E1. W26 founders are
+    treated much like S21's: first bound as the passive partner by a resident in 14-15 of 16
+    singles, and 6-12 per group altered. So the late community uses newcomers as templates
+    whatever they are; what differs is that the short one-block replicator sometimes comes
+    through it, and the 95-symbol two-block S21 never did. Still rare (about 1 in 10), so the
+    native transition there is a long-odds event either way.
   - **How founders failed** (all 512 founders; `natural_agg.txt`). Few decayed without ever
     binding (0-3 per group). A common end is the first reaction: the founder binds a resident
     and both die in that reaction with no product, since under the old pair-decay rule a pair
