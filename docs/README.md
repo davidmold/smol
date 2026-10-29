@@ -25,8 +25,10 @@ too strong; length alone misses this. In the big classic world a second transiti
 ~3-4.5M steps: a parasitic family displaced the replicators and processive (amplifying)
 replicators, twice as long, evolved from it (findings 10b; one run). Once present they invade
 most evolved small communities from 20 molecules, but in 38 small runs of up to 10M steps they
-appeared only briefly, below 1%, in three, and never spread (findings 14); three big replicates
-are running. The earlier claim that
+appeared only briefly, below 1%, in three, and never spread (findings 14); and three big replicates
+ran to 10M without it, with 4-5 times the original's copying. So the transition is real but
+chancy. Where it can happen, the short single-copy-block replicators establish more often than
+long ones (findings 14). The earlier claim that
 selection suppresses sequence-family novelty does not survive a correctly calibrated drift null
 (findings 1). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
@@ -75,7 +77,8 @@ prevents the next transition.
 
 ## Running right now (on aida)
 
-Three big classic replicates to 10M; see `next.md`. The small worlds to 10M are finished. The original three big 400x300 runs were stopped on 23 Oct
+Nothing (29 Oct). The three big classic replicates reached 10M; the small worlds, transplants,
+introduction and replay experiments are finished. The original three big 400x300 runs were stopped on 23 Oct
 (classic 9.8M, copy strand 10.0M, gradient 12.9M).
 
 ## The long-form documents (claude.ai)

@@ -24,12 +24,14 @@ closes the rare-variant blind spot, and the memory fix that let the killed runs 
    founders there are mostly used as templates by residents and often altered. Compare the
    residents that bind newcomers at 2.5M and at 9.9M (who they are, what their code does to
    the newcomer), from the traces.
-3. Transition frequency: small worlds none established in 38 (fresh and survivor cohorts kept
-   separate; 21 reached 10M), big worlds 1 of 1 so far with 3 replicates pending. Compare at
-   matched activity in attempts. Three negative replicates would mean "not reproduced in three
-   runs", not "rare".
-4. Big replicates: does a parasitic crisis precede any transition? seed20020 has a different,
-   low-novelty history.
+3. Transition frequency: big worlds 1 of 4 (the original; 3 replicates none by 10M, with 4-5
+   times the original's copying), small worlds none established in 38 (fresh and survivor cohorts
+   kept separate; 21 reached 10M). The transition is chancy rather than routine at these sizes.
+   If frequency matters, the next step is more big replicates (each ~4 days on aida) or replays
+   of the original big run from just before its crisis (needs its 2.5-3.0M checkpoints, which
+   are in the S3 archive) to see how often the transition follows from that state.
+4. Big replicates: seed20020 went through a crisis-like loss of cover (0.77 -> 0.15 at 3-4.5M)
+   without a transition; compare its community with the original's at the same stage.
 5. Why seed21021 resists processive invasion.
 6. Do partnerships accumulate further organisation?
 7. Measurement: observed-reaction percentages; a drift null with space.

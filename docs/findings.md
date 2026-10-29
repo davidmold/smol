@@ -562,16 +562,21 @@ reproductive activity as well as elapsed steps.
   One late extinction looked at in detail (pr0xx seed47047, 5.19M) was not preceded by a
   parasitic crisis: exact copying held at ~1 x 10^5 per 250k, and one-way copying *fell*
   (0.36 -> 0.12 of copies) while self-copying rose (0.55 -> 0.71) just before the end.
-- **Big replicates so far (26 Oct; `scan_big/`, `scan_sample/`).** None of the three 400x300
-  classic replicates has processive species yet: none in the abundance scan (>= 20 molecules) or
-  in random samples of 1,000 molecules every 500k, to 4.0M (seed19019), 4.5M (seed20020) and
-  3.5M (seed21021) at the last scan (26 Oct; the runs themselves are further on); the original
-  run had 1.1% at 4.0M and 30% at 4.5M. Three replicates without a transition would mean the
-  original result was not reproduced in three runs, not that it is rare: even at a 50% chance
-  per run, three misses happen 12.5% of the time. seed20020's history
-  differs: 6.4 x 10^6 species ever by 2.9M against 7.9 x 10^7 for seed19019 by 2.1M, at
-  comparable copying (4.8 x 10^8 attempts by 2.5M), and its cover fell from 0.77 to 0.15 over
-  3-4.5M, like the original crisis. Running on to 10M.
+- **Big replicates: final (29 Oct; `scan_big/`, `scan_sample/`).** None of the three 400x300
+  classic replicates (seeds 19019, 20020, 21021) produced processive replicators by 10M steps:
+  none in the abundance scan (species >= 20 molecules) or in random samples of 1,000 molecules,
+  every 500k from 0.5M to 10M (20 samples each). The original run had detection at 3.0M,
+  1.1% at 4.0M, 30% at 4.5M and ~80% from 6M. Nor is it a matter of activity: by 10M the
+  replicates had made 5.0-6.3 x 10^9 attempted copies, 4-5 times the original's 1.2 x 10^9 at
+  its establishment (by 3.0M they had 6.0-10.8 x 10^8 against its 6.3 x 10^8). So the original
+  transition was **not reproduced in three runs**. That alone does not make it rare: even at a
+  50% chance per run, three misses happen 12.5% of the time; but together with the 0 of 38
+  small worlds and the ~3% native success from the one small-world state that came closest
+  (seed21021 at 9.9M), the evidence now points to a chancy event rather than a routine one at
+  this scale. The replicates' histories differ from each other: seed20020 made far fewer new
+  species (2.3 x 10^8 ids by 10M, against 5.0 and 5.6 x 10^8) at similar copying, and its
+  cover fell from 0.77 to 0.15 over 3-4.5M, as the original's did during its crisis, without a
+  transition following.
 - **Runs lost to memory, and the fix (25 Oct).** The simulator kept every sequence ever made
   (including never-placed products) as a key in memory, so a small run grew to ~15 GB by 6-9M
   steps and a big one to ~13-19 GB by 2M. Five runs were killed by the out-of-memory killer
