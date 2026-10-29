@@ -479,9 +479,11 @@ reproductive activity as well as elapsed steps.
     (0.5%), 10% by 10.04M, 36% by 10.1M. Two more replays had 1-3 processive species briefly;
     the other 21 none. From 10.0M, where the original lineage was present (16 + 8 molecules),
     0 of 24 established; it was detected again in one replay (10.04M) and lost, and one ended at
-    1.9%. Together with the introduction runs (none of the 32 S21-introduction runs from 9.9M
-    established anything), native establishment from 9.9M happened in 3 of 88 runs (~3%; 95%
-    interval roughly 1-10%), and from 10.0M in 0 of 88. So the original loss
+    1.9%. The clean (unperturbed) rate from 9.9M is therefore 1 of 24; the other two native
+    successes came in E1-introduction runs, which perturb the community, so they are not
+    equivalent trials (3 of 88 counts them all). From 10.0M: 0 of 24 clean, 0 of 88 in all. The
+    clean success still settles the possibility question: a small world can make the processive
+    transition spontaneously, without a big world or an introduction (from one evolved state). So the original loss
     at 10.02M was the usual outcome, not bad luck: once this lineage is in this state it is
     almost always lost, while a fresh start from 9.9M occasionally succeeds.
   - **The winners are short.** All three native successes are 26-32-symbol members of the
@@ -498,8 +500,10 @@ reproductive activity as well as elapsed steps.
     places: only one location (9.9M, pair, rep 5) worked for both W26 and E1. W26 founders are
     treated much like S21's: first bound as the passive partner by a resident in 14-15 of 16
     singles, and 6-12 per group altered. So the late community uses newcomers as templates
-    whatever they are; what differs is that the short one-block replicator sometimes comes
-    through it, and the 95-symbol two-block S21 never did. Still rare (about 1 in 10), so the
+    whatever they are; what differs is that W26 sometimes comes through it and S21 never did.
+    This is a genotype difference; it does not yet say whether length, the second copy block or
+    susceptibility to resident reactions is the cause (and "inert" padding would not isolate
+    length cleanly, since every symbol also affects binding and search labels). Still rare (about 1 in 10), so the
     native transition there is a long-odds event either way.
   - **How founders failed** (all 512 founders; `natural_agg.txt`). Few decayed without ever
     binding (0-3 per group). A common end is the first reaction: the founder binds a resident
@@ -571,8 +575,8 @@ reproductive activity as well as elapsed steps.
   its establishment (by 3.0M they had 6.0-10.8 x 10^8 against its 6.3 x 10^8). So the original
   transition was **not reproduced in three runs**. That alone does not make it rare: even at a
   50% chance per run, three misses happen 12.5% of the time; but together with the 0 of 38
-  small worlds and the ~3% native success from the one small-world state that came closest
-  (seed21021 at 9.9M), the evidence now points to a chancy event rather than a routine one at
+  small worlds and the 1-in-24 clean native success from the one small-world state that came
+  closest (seed21021 at 9.9M), the evidence now points to a chancy event rather than a routine one at
   this scale. The replicates' histories differ from each other: seed20020 made far fewer new
   species (2.3 x 10^8 ids by 10M, against 5.0 and 5.6 x 10^8) at similar copying, and its
   cover fell from 0.77 to 0.15 over 3-4.5M, as the original's did during its crisis, without a

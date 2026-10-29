@@ -1,40 +1,45 @@
-# Next steps (26 Oct, afternoon)
+# Next steps (29 Oct)
 
-Done and written up in findings 14: all 38 small runs to 10M (21 reached it, 17 extinct; no
-processive species established, three brief sightings below 1%), a random-sample scan that
-closes the rare-variant blind spot, and the memory fix that let the killed runs finish.
+Done and written up in findings 14: small worlds to 10M, transplants, introduction size,
+introductions without clearing (traced), replays of seed21021, W26 vs S21, and the three big
+replicates to 10M (none made the transition). Three conclusions set the direction: a small
+world can make the processive transition spontaneously (1 of 24 clean replays from seed21021
+at 9.9M); "permissive versus resistant worlds" is retired (a cleared-patch artefact); and more
+evolutionary activity alone does not make the transition routine (big replicates).
 
-## Running (on aida)
+## Now: does spatially clustered disturbance help innovations establish? (running from 29 Oct)
 
-- Big classic replicates `runs/big/classic_rep{19019,20020,21021}` to 10M, all now on the
-  hashed-species binary with `SPECIESFORGET` (at 4.4M, 5.2M, 4.0M on 26 Oct 14:30; ~23
-  steps/s, so ~3 days). No processive species yet. Scan each every 500k with both
-  `transition_scan.py --min 20` and `--sample 1000`.
+Hypothesis: occasional local openings let new reproductive strategies expand alongside
+compatible neighbours before resident interactions eliminate them (motivated by the traces:
+residents often alter newcomers, and many products find no room). It could equally destroy
+useful associations or favour ordinary fast copiers.
 
-## Then
+Design (`experiments/disturb/disturb.py`, scored by `disturb_agg.py`): from seed21021 at 9.9M, 40 reseeded runs per treatment, chemistry
+unchanged, nothing introduced, disturbance blind to genotype and to any detected novelty:
+- baseline: existing dynamics;
+- clustered: every 1,000 steps remove everything in one random 7x7 patch (49 cells);
+- dispersed: every 1,000 steps remove whatever is in 49 random cells across the world (same
+  expected mortality and freed space, no spatial clustering).
+Disturbance runs for the first 150k steps, then stops; all runs go to 200k. One preselected
+schedule, no parameter sweep. Measures: appearance of processive variants (`--sample 1000`
+every 10k); establishment sustained over >= 3 consecutive samples; persistence after
+disturbance stops; extinction, occupancy and placed copies, so that turnover is not mistaken
+for evolutionary potential. Established populations are continued to 400k to tell a bloom from
+a lasting change, and histories are kept.
 
-1. Native transitions in seed21021: from 9.9M 3 of 88 runs established a short (26-32 symbol)
-   S21-family replicator; from 10.0M, with the original 95-symbol lineage present, 0 of 88.
-   Introduced at the same cells, the 26-symbol W26 established 6 of 64 times and S21 0 of 64
-   (p = 0.014): the short single-block form matters. Open: is it length (copy time, exposure to
-   decay and editing while bound) or the second block itself? Test with S21's two halves
-   separately and with W26 padded to S21's length by inert symbols; and replay from 9.95M/9.97M
-   (rerun 9.9M -> 10.0M once with CKPTEVERY 10000) to see how often the family arises at all.
-2. Why S21 fails in its own late community (0/64) but not in seed36036 (9/16 as pairs): its
-   founders there are mostly used as templates by residents and often altered. Compare the
-   residents that bind newcomers at 2.5M and at 9.9M (who they are, what their code does to
-   the newcomer), from the traces.
-3. Transition frequency: big worlds 1 of 4 (the original; 3 replicates none by 10M, with 4-5
-   times the original's copying), small worlds none established in 38 (fresh and survivor cohorts
-   kept separate; 21 reached 10M). The transition is chancy rather than routine at these sizes.
-   If frequency matters, the next step is more big replicates (each ~4 days on aida) or replays
-   of the original big run from just before its crisis (needs its 2.5-3.0M checkpoints, which
-   are in the S3 archive) to see how often the transition follows from that state.
-4. Big replicates: seed20020 went through a crisis-like loss of cover (0.77 -> 0.15 at 3-4.5M)
-   without a transition; compare its community with the original's at the same stage.
-5. Why seed21021 resists processive invasion.
-6. Do partnerships accumulate further organisation?
-7. Measurement: observed-reaction percentages; a drift null with space.
+Decision rule: clustered beats dispersed -> spatial opportunity is a supported mechanism; test
+it in another starting community and, later, with another kind of innovation. Both similar ->
+available space or turnover is the lead. Neither substantial -> close this hypothesis (no
+sweep). This is a screen for a large effect (baseline ~1/24), not an estimate of a small one.
+
+## Deferred
+
+- More big replicates (frequency at scale; ~4 days per 3).
+- S21 dissection (halves; length vs copy blocks vs susceptibility to residents). Padding with
+  "inert" symbols would not isolate length: every symbol affects binding and search labels.
+- Replays of the original big run from its 2.5-3.0M checkpoints (in the S3 archive).
+- Partnerships accumulating further organisation; measurement (observed-reaction percentages,
+  a drift null with space).
 
 ## Paused
 

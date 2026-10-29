@@ -75,6 +75,14 @@ pub struct Config {
     pub offspring_log: bool,
     /// SPECIESFORGET 1: at each checkpoint forget species absent from the world (memory)
     pub species_forget: bool,
+    /// DISTURB_*: every DISTURB_EVERY steps (0 = off) up to DISTURB_UNTIL (0 = no end), remove
+    /// every molecule in DISTURB_SIZE^2 cells: one random square patch (DISTURB_MODE 1) or that
+    /// many random cells across the world (DISTURB_MODE 2). Cells come from DISTURB_SEED and the step.
+    pub disturb_every: u64,
+    pub disturb_until: u64,
+    pub disturb_size: usize,
+    pub disturb_mode: u32,
+    pub disturb_seed: u64,
     /// GZIPLOGS: popdy001.dat, species.tsv, copies.tsv and lives.tsv are written gzipped (.gz),
     /// one gzip member per checkpoint interval. Doesn't change the run.
     pub gziplogs: bool,
@@ -191,6 +199,11 @@ impl Config {
             strandcopy: num("STRANDCOPY", 0.0)? != 0.0,
             offspring_log: num("OFFSPRINGLOG", 0.0)? != 0.0,
             species_forget: num("SPECIESFORGET", 0.0)? != 0.0,
+            disturb_every: num("DISTURB_EVERY", 0.0)? as u64,
+            disturb_until: num("DISTURB_UNTIL", 0.0)? as u64,
+            disturb_size: num("DISTURB_SIZE", 7.0)? as usize,
+            disturb_mode: num("DISTURB_MODE", 1.0)? as u32,
+            disturb_seed: num("DISTURB_SEED", 1.0)? as u64,
             gziplogs: num("GZIPLOGS", 0.0)? != 0.0,
             ckpt_keep_every: num("CKPTKEEPEVERY", 0.0)? as u64,
             translate: num("TRANSLATE", 0.0)? != 0.0,

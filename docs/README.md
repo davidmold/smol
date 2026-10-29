@@ -27,8 +27,10 @@ replicators, twice as long, evolved from it (findings 10b; one run). Once presen
 most evolved small communities from 20 molecules, but in 38 small runs of up to 10M steps they
 appeared only briefly, below 1%, in three, and never spread (findings 14); and three big replicates
 ran to 10M without it, with 4-5 times the original's copying. So the transition is real but
-chancy. Where it can happen, the short single-copy-block replicators establish more often than
-long ones (findings 14). The earlier claim that
+chancy, and a small world can make it spontaneously (1 of 24 clean replays of seed21021 from
+9.9M). Retired: "permissive versus resistant worlds" (an artefact of the cleared-patch
+protocol). Current question: can a genotype-blind ecological change, spatially clustered
+disturbance, make spontaneous innovations establish more often? (next.md, 29 Oct) The earlier claim that
 selection suppresses sequence-family novelty does not survive a correctly calibrated drift null
 (findings 1). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,

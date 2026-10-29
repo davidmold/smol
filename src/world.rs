@@ -10,6 +10,8 @@ use std::collections::HashMap;
 /// Event counters, reset by whoever reads them.
 #[derive(Clone, Debug, Default)]
 pub struct Stats {
+    /// DISTURB: molecules removed
+    pub disturbed: u64,
     pub encounters: u64,
     pub binds: u64,
     pub kin_binds: u64,
@@ -139,6 +141,8 @@ pub struct World {
     pub twosided: bool,
     pub strandcopy: bool,
     pub offspring_log: bool,
+    /// DISTURB (see config.rs): every, until, size, mode, seed
+    pub disturb: (u64, u64, usize, u32, u64),
     /// OFFSPRINGLOG: deaths in the current window, by species; drained by the output layer
     pub lives: HashMap<u32, LifeAgg>,
     /// TRACESEQ event log, None when off
@@ -204,6 +208,7 @@ impl World {
             twosided: cfg.twosided,
             strandcopy: cfg.strandcopy,
             offspring_log: cfg.offspring_log,
+            disturb: (cfg.disturb_every, cfg.disturb_until, cfg.disturb_size, cfg.disturb_mode, cfg.disturb_seed),
             lives: HashMap::new(),
             trace: None,
             snap: HashMap::new(),
@@ -527,8 +532,64 @@ impl World {
         }
     }
 
+    /// DISTURB: remove every molecule in the chosen cells; a removed molecule's partner (if it
+    /// survives) is freed, as when one member of a pair decays under DECAY_INDEPENDENT.
+    /// Returns the number of molecules removed.
+    fn disturb_now(&mut self, now: u64, obs: &mut dyn Observer) -> usize {
+        let (_, _, size, mode, seed) = self.disturb;
+        let mut r = Xoshiro::new(seed ^ now.wrapping_mul(0x9e37_79b9_7f4a_7c15));
+        let (gx, gy) = (self.gx, self.gy);
+        let mut cells: Vec<(usize, usize)> = Vec::with_capacity(size * size);
+        if mode == 2 {
+            let mut seen = std::collections::HashSet::new();
+            while cells.len() < (size * size).min(gx * gy) {
+                let c = (r.below(gx), r.below(gy));
+                if seen.insert(c) {
+                    cells.push(c);
+                }
+            }
+        } else {
+            let (x0, y0) = (r.below(gx), r.below(gy));
+            for i in 0..size {
+                for j in 0..size {
+                    cells.push(((x0 + i) % gx, (y0 + j) % gy));
+                }
+            }
+        }
+        let mut n = 0;
+        for (x, y) in cells {
+            let g = self.grid[self.cell(x, y)];
+            if g == 0 {
+                continue;
+            }
+            let idx = (g - 1) as usize;
+            if !self.mols[idx].alive {
+                continue;
+            }
+            let pair = self.pair_of(idx);
+            self.remove(idx);
+            n += 1;
+            if let Some((a, p)) = pair {
+                let other = if a == idx { p } else { a };
+                if self.mols[other].alive {
+                    let (sa, sp) = match self.mols[a].bond.clone() {
+                        Bond::Active { sp_act, sp_pas, .. } => (sp_act, sp_pas),
+                        _ => (self.mols[a].species, self.mols[p].species),
+                    };
+                    self.release(other, sa, sp, obs);
+                }
+            }
+        }
+        n
+    }
+
     pub fn step(&mut self, obs: &mut dyn Observer) {
         let now = self.step + 1;
+        let (de, du, ..) = self.disturb;
+        if de > 0 && now % de == 0 && (du == 0 || now <= du) {
+            let n = self.disturb_now(now, obs);
+            self.stats.disturbed += n as u64;
+        }
         self.order.clear();
         for (i, m) in self.mols.iter().enumerate() {
             if m.alive {

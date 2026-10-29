@@ -169,6 +169,9 @@ fn main() {
                 t as f64 / start.elapsed().as_secs_f64().max(1e-9),
                 st.encounters, st.binds, st.kin_binds, st.ended, st.products, st.pair_decays, st.displacements, st.instr, st.disp_damaged, st.pas_products, st.pas_ended, st.damage_hits
             );
+            if cfg.disturb_every > 0 && st.disturbed > 0 {
+                println!("DISTURB to step {t}: removed {}", st.disturbed);
+            }
         }
         if world.count() == 0 {
             out.popdy(&world).unwrap();
