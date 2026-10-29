@@ -29,8 +29,8 @@ appeared only briefly, below 1%, in three, and never spread (findings 14); and t
 ran to 10M without it, with 4-5 times the original's copying. So the transition is real but
 chancy, and a small world can make it spontaneously (1 of 24 clean replays of seed21021 from
 9.9M). Retired: "permissive versus resistant worlds" (an artefact of the cleared-patch
-protocol). Current question: can a genotype-blind ecological change, spatially clustered
-disturbance, make spontaneous innovations establish more often? (next.md, 29 Oct) The earlier claim that
+protocol). A genotype-blind ecological change, spatially clustered disturbance, did not make them
+establish more often (findings 15, 29 Oct); the clean baseline from that state is ~5%. The earlier claim that
 selection suppresses sequence-family novelty does not survive a correctly calibrated drift null
 (findings 1). Every chemistry change tried since (strand
 displacement, two-sided reactions, a binding rule, copying onto a separate strand,
@@ -79,8 +79,7 @@ prevents the next transition.
 
 ## Running right now (on aida)
 
-Nothing (29 Oct). The three big classic replicates reached 10M; the small worlds, transplants,
-introduction and replay experiments are finished. The original three big 400x300 runs were stopped on 23 Oct
+Nothing (29 Oct, evening). The disturbance experiment and everything before it are finished. The original three big 400x300 runs were stopped on 23 Oct
 (classic 9.8M, copy strand 10.0M, gradient 12.9M).
 
 ## The long-form documents (claude.ai)

@@ -599,6 +599,47 @@ reproductive activity as well as elapsed steps.
   and gave reappearing sequences new ids. It now reads both. No reported run was affected
   (every earlier resume had a plain copy of its species file).
 
+## 15. Disturbance: does clustered disturbance help innovations establish? (Oct 29)
+
+**Question.** Can a genotype-blind ecological change make spontaneous innovations establish
+more often? Hypothesis: occasional local openings let new reproductive strategies expand
+alongside compatible neighbours before resident interactions eliminate them.
+
+**Design** (`experiments/disturb/`). From seed21021 at 9.9M (where 1 of 24 clean replays made
+the processive transition), 40 reseeded 200k-step runs per treatment, chemistry unchanged,
+nothing introduced: *base*; *clustered*, every 1,000 steps remove every molecule in one random
+7x7 patch; *dispersed*, every 1,000 steps remove whatever is in 49 random cells. Disturbance for
+the first 150k steps, then off. Rep k shares its random stream across treatments and its
+disturbance seed across the two disturbed ones. Scored with `--sample 1000` every 10k;
+established = >= 10% processive for >= 3 consecutive samples. Established populations were
+continued to 400k without disturbance. One schedule, chosen in advance; no sweep.
+
+| treatment | runs | any processive seen | detected (>= 20 mol.) | established | extinct | mean molecules | placed copies (median) | removed by disturbance |
+|---|---|---|---|---|---|---|---|---|
+| base | 40 | 5 | 3 | 2 | 0 | 11,374 | 1.21 x 10^6 | 0 |
+| clustered | 40 | 5 | 2 | 1 | 0 | 11,394 | 1.22 x 10^6 | 6,718 |
+| dispersed | 40 | 6 | 2 | 0 | 0 | 11,357 | 1.21 x 10^6 | 6,703 |
+
+(Fisher, established: clustered vs base p = 1.0; dispersed vs base p = 0.49; clustered vs
+dispersed p = 1.0. `results/disturb_agg.txt`.)
+
+- **Decision: neither disturbance improved establishment, so this hypothesis is closed** (by
+  the rule set beforehand). Disturbance changed neither how often processive variants appeared
+  (5-6 runs of 40 in every treatment) nor how often they established.
+- **Turnover did not stand in for potential:** occupancy and placed copies were the same in all
+  treatments; nothing went extinct.
+- **The baseline itself is a better estimate now:** 2 of 40 clean replays from 9.9M
+  established, with the earlier 1 of 24, 3 of 64 (~5%).
+- **Lasting, not blooms:** all three established populations (base rep3, base rep18,
+  clustered rep35) were still there at 400k with disturbance off: 50%, 43% and 19% of
+  molecules (the last falling from a 48% peak). All are short S21-family replicators again
+  (29-38 symbols, e.g. `$=P>BO?^$O%HK?>C$====?M>MZ$I>`). One more base run (rep6) ended at
+  10.8% without meeting the three-sample rule.
+- **Scope:** this tested one modest dose. 49 cells every 1,000 steps removed ~6,700 molecules
+  over 150k steps, under 1% of the run's deaths (it places ~1.2 million products). "No effect"
+  holds for this dose; a heavier dose would be a different question, and the rule set
+  beforehand was to close rather than sweep.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

@@ -1,0 +1,14 @@
+scored to step 10100000
+treatment  runs seen  det estab end>=10% kept@end extinct  mean_N placed_copies  removed
+base         40    5    3     2        3        2       0   11374      1.21e+06        0
+clustered    40    5    2     1        1        1       0   11394      1.22e+06     6718
+dispersed    40    6    2     0        0        0       0   11357      1.21e+06     6703
+
+established clustered 1/40 vs base 2/40: two-sided Fisher p = 1.000
+established dispersed 0/40 vs base 2/40: two-sided Fisher p = 0.494
+established clustered 1/40 vs dispersed 0/40: two-sided Fisher p = 1.000
+
+base       rep3   est 9990000 det 9950000 share@stop 0.414 share@end 0.606
+base       rep6   est None det 10060000 share@stop 0.0 share@end 0.108
+base       rep18  est 10080000 det 9990000 share@stop 0.036 share@end 0.136
+clustered  rep35  est 10070000 det 10010000 share@stop 0.05 share@end 0.193
