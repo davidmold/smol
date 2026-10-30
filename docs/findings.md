@@ -668,8 +668,8 @@ copied whom) and `grid.snap` (species map every 500 steps).
 - **The first difference is who copies them.** In the first 5,000 steps successful and large
   lineages had more of their reactions with kin (0.48-0.65 vs 0.19), and when residents ran
   their code on a member, the residents were mostly relatives (non-processive residents carrying
-  the founder's copy core), and 70% of those copies were new members. For failed lineages most
-  such copying was by unrelated residents (2,043 of 2,683 attempts), and 15% gave members
+  the founder's copy core), and 70% of those copies were new members. In the 15 most-copied failed
+  lineages most such copying was by unrelated residents (2,043 of 2,683 attempts), and 15% gave members
   (`results/same_geno.txt`).
 - **The same signal in the introduction runs** (`intro_neigh.py`, `intro_motif.py`; recipient
   cells from the 9.9M/10.0M checkpoints). W26's 6 successes had a larger share of neighbouring
