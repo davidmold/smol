@@ -1,0 +1,25 @@
+lineages with >= 5 molecules: 171 (3 established, 168 not)
+
+feature (window t5..t5+5k)              established       failed
+founder length                                   30         47.5
+probe P(bind)                                 0.615        0.615
+probe self-copies                                35           42
+members at t5                                     6            5
+members at t5+2k                                 10            5
+members at t5+5k                                 19            4
+copy attempts: kin                              125         26.5
+copy attempts: used by residents                 98           27
+copy attempts: using residents                  109         59.5
+kin share of member reactions                  0.48        0.207
+used: product is a member                      0.69            0
+kin: product placed                           0.195        0.206
+neighbours empty                             0.0386       0.0333
+neighbours member                              0.37        0.259
+neighbours resident                           0.572        0.706
+members bound                                 0.951        0.966
+largest cluster share                         0.771        0.926
+
+established lineages:
+  disturb/base/rep3            len  57 self-copies  35 n0/2k/5k 8/10/None empty 0.04 member 0.42 dominant {'len': 32, 'born_after_root': 48400, 'born_after_t5': 46742, 'is_root': False}
+  disturb/clustered/rep35      len  30 self-copies  28 n0/2k/5k 4/8/None empty 0.03 member 0.25 dominant {'len': 31, 'born_after_root': 48138, 'born_after_t5': 42194, 'is_root': False}
+  replays/s21_9.9M/rep1        len  26 self-copies  78 n0/2k/5k 6/12/19 empty 0.06 member 0.37 dominant {'len': 27, 'born_after_root': 42820, 'born_after_t5': 42251, 'is_root': False}

@@ -1,0 +1,55 @@
+== 9.9M: 118 lineages with a foothold (>= 5 molecules)
+  established n=  3 used_member=0.69  kin_share=0.48  len=30.00  selfcopies=35.00  growth2k=2.00  empty=0.04  member_nb=0.37  resident_nb=0.57  cluster=0.77
+  large       n=  3 used_member=0.00  kin_share=0.65  len=39.00  selfcopies=54.00  growth2k=2.40  empty=0.04  member_nb=0.49  resident_nb=0.49  cluster=1.00
+  failed      n=112 used_member=0.00  kin_share=0.19  len=40.00  selfcopies=54.00  growth2k=0.80  empty=0.03  member_nb=0.24  resident_nb=0.73  cluster=0.94
+  failed used_member: n=110  >0: 32  >=0.4: 6  max 1.00
+  established/large individually:
+    large       disturb/base/rep18           len  36 selfcopies  69 used_member 0.0 kin_share 0.84 n0/2k 5/7 peak 1346 used 8
+    established disturb/base/rep3            len  57 selfcopies  35 used_member 0.88 kin_share 0.50 n0/2k 8/10 peak 5861 used 16
+    large       disturb/base/rep3            len  39 selfcopies  54 used_member 0.0 kin_share 0.43 n0/2k 5/12 peak 1362 used 21
+    large       disturb/base/rep6            len  47 selfcopies  53 used_member 0.82 kin_share 0.65 n0/2k 7/26 peak 1121 used 74
+    established disturb/clustered/rep35      len  30 selfcopies  28 used_member 0.46 kin_share 0.26 n0/2k 4/8 peak 1724 used 98
+    established replays/s21_9.9M/rep1        len  26 selfcopies  78 used_member 0.69 kin_share 0.48 n0/2k 6/12 peak 4298 used 184
+== 10.0M: 53 lineages with a foothold (>= 5 molecules)
+  failed      n= 53 used_member=0.00  kin_share=0.52  len=94.00  selfcopies=24.00  growth2k=0.79  empty=0.04  member_nb=0.42  resident_nb=0.56  cluster=0.90
+  failed used_member: n=53  >0: 23  >=0.4: 1  max 0.47
+  established/large individually:
+fraction of neighbour cells holding a relative
+W26 motif 'O%H>C$===?O>A': carried by 7.8% of molecules at 9.9M
+   W26: established [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.07 (n=58)  one-sided MW p = 0.868
+   S21: established 0; failed mean 0.06 (n=64)
+   E1: established [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.07 (n=58)  one-sided MW p = 0.868
+W26 core '>C$===?O>A': carried by 8.2% of molecules at 9.9M
+   W26: established [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.09 (n=58)  one-sided MW p = 0.895
+   S21: established 0; failed mean 0.08 (n=64)
+   E1: established [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.09 (n=58)  one-sided MW p = 0.895
+family '>C$==': carried by 53.3% of molecules at 9.9M
+   W26: established [0.4, 0.7, 0.8, 0.8, 0.8, 0.88]  failed mean 0.52 (n=58)  one-sided MW p = 0.008
+   S21: established 0; failed mean 0.54 (n=64)
+   E1: established [0.0, 0.0, 0.3, 0.4, 0.5, 0.8]  failed mean 0.57 (n=58)  one-sided MW p = 0.968
+fraction of neighbour cells holding a relative, n2 only
+W26 motif 'O%H>C$===?O>A': carried by 7.8% of molecules at 9.9M
+   W26: established [0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.07 (n=27)  one-sided MW p = 0.856
+   S21: established 0; failed mean 0.06 (n=32)
+   E1: established [0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.07 (n=27)  one-sided MW p = 0.856
+W26 core '>C$===?O>A': carried by 8.2% of molecules at 9.9M
+   W26: established [0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.09 (n=27)  one-sided MW p = 0.884
+   S21: established 0; failed mean 0.07 (n=32)
+   E1: established [0.0, 0.0, 0.0, 0.0, 0.0]  failed mean 0.09 (n=27)  one-sided MW p = 0.884
+family '>C$==': carried by 53.3% of molecules at 9.9M
+   W26: established [0.4, 0.7, 0.8, 0.8, 0.8]  failed mean 0.51 (n=27)  one-sided MW p = 0.039
+   S21: established 0; failed mean 0.54 (n=32)
+   E1: established [0.0, 0.3, 0.4, 0.5, 0.8]  failed mean 0.57 (n=27)  one-sided MW p = 0.903
+fraction of neighbour cells holding a relative, n1 only
+W26 motif 'O%H>C$===?O>A': carried by 7.8% of molecules at 9.9M
+   W26: established [0.0]  failed mean 0.06 (n=31)  one-sided MW p = 0.687
+   S21: established 0; failed mean 0.06 (n=32)
+   E1: established [0.0]  failed mean 0.06 (n=31)  one-sided MW p = 0.687
+W26 core '>C$===?O>A': carried by 8.2% of molecules at 9.9M
+   W26: established [0.0]  failed mean 0.08 (n=31)  one-sided MW p = 0.706
+   S21: established 0; failed mean 0.08 (n=32)
+   E1: established [0.0]  failed mean 0.08 (n=31)  one-sided MW p = 0.706
+family '>C$==': carried by 53.3% of molecules at 9.9M
+   W26: established [0.88]  failed mean 0.54 (n=31)  one-sided MW p = 0.058
+   S21: established 0; failed mean 0.55 (n=32)
+   E1: established [0.0]  failed mean 0.56 (n=31)  one-sided MW p = 0.953

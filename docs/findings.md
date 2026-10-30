@@ -640,6 +640,53 @@ dispersed p = 1.0. `results/disturb_agg.txt`.)
   holds for this dose; a heavier dose would be a different question, and the rule set
   beforehand was to close rather than sweep.
 
+## 16. What first differs between a lineage that establishes and one that disappears? (Oct 30)
+
+From existing histories only (`experiments/whyfail/`): all 168 runs from the two seed21021 states
+(120 disturbance runs and 24 replays from 9.9M, 24 replays from 10.0M). `lineages.py` probes every
+species that reached 3 molecules and groups processive species into lineages by parent links (a
+processive species whose parents are not processive founds a new lineage). `compare.py` compares
+lineages over the 5,000 steps after each first reached 5 molecules, from `copies.tsv` (who
+copied whom) and `grid.snap` (species map every 500 steps).
+
+- **Origins.** 118 lineages got a foothold (>= 5 molecules) from 9.9M and 53 from 10.0M. Each is
+  a separate origin: processive forms arise again and again from non-processive residents of
+  the same family, which carry the copy core (`...BO^$O%HK?>C$====?M>MZ$I>` and relatives) behind
+  long repetitive prefixes; a shortening makes them processive. No founder sequence occurred
+  twice in 118, so the histories cannot compare one genotype in two places.
+- **Outcomes.** From 9.9M, 3 lineages established, 3 more grew large (peak >= 500 molecules,
+  e.g. disturb base rep18, which the molecule-sample scan counted as established; the lineage
+  count misses its rarest variants) and 112 failed. From 10.0M (the 95-symbol S21 lineage
+  present) all 53 failed.
+- **Space did not differ:** 3-4% of neighbouring cells were empty for every group, and
+  successful lineages were not more clustered.
+- **Not obviously a better genotype:** failed founders were similar in length (median 40 vs 30)
+  and made more self-copies in the probe (median 54 vs 35).
+- **Later mutation is not the first difference:** in all three established lineages the form
+  that came to dominate arose 42-48k steps after the foothold, but the lineages had already
+  started growing (x2.0-2.4 in the first 2,000 steps; failures x0.8).
+- **The first difference is who copies them.** In the first 5,000 steps successful and large
+  lineages had more of their reactions with kin (0.48-0.65 vs 0.19), and when residents ran
+  their code on a member, the residents were mostly relatives (non-processive residents carrying
+  the founder's copy core), and 70% of those copies were new members. For failed lineages most
+  such copying was by unrelated residents (2,043 of 2,683 attempts), and 15% gave members
+  (`results/same_geno.txt`).
+- **The same signal in the introduction runs** (`intro_neigh.py`, `intro_motif.py`; recipient
+  cells from the 9.9M/10.0M checkpoints). W26's 6 successes had a larger share of neighbouring
+  cells holding S21-family residents (carrying `>C$==`): 0.40-0.88 against a mean of 0.52 for
+  its 58 failures (one-sided Mann-Whitney p = 0.008; pairs only p = 0.039). Among W26 pairs,
+  4 of 13 established where >= 70% of neighbours were family, 1 of 10 where < 50%. **E1 at the
+  same cells shows the opposite** (3 of 10 at < 50%, 1 of 13 at >= 70%; p = 0.97), so the
+  effect is not that some places are generally better: it depends on the newcomer's fit to its
+  neighbours. Close copies of W26's own motif did not help (none next to any success).
+- Caveats: few successes (6 natural, 6 introduced); the family definition (`>C$==`) was chosen
+  after looking, out of three tried; a lineage counts only species that reached 3 molecules.
+
+**Prediction.** A new S21-family processive replicator establishes much more often when it
+arrives among residents of its own broad family, which copy it faithfully into new members,
+than among unrelated residents, which use it as a template and alter it; for an unrelated
+replicator (E1) the same neighbourhoods should give no advantage, or the reverse.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

@@ -14,12 +14,17 @@ processive variants appeared or established from seed21021 at 9.9M (base 2/40, c
 dispersed 0/40); hypothesis closed. Baseline now 3 of 64 clean replays (~5%), all winners short
 S21-family replicators that persisted to 400k.
 
-## Open: what next (not yet decided)
+## Proposed test of the findings-16 prediction (not started)
 
-The same question, a genotype-blind ecological change that raises establishment, can be asked
-with a different lever (one at a time, each with a decision rule set in advance), e.g. lower
-overall density (more empty space everywhere) or a gradient in decay. Or step back to the
-deferred list below.
+Neighbourhood x genotype, matched: from seed21021 at 9.9M, place an adjacent pair of W26 or of
+E1, replacing residents (no clearing), at 40 'family' sites (>= 70% of the 10 neighbouring cells
+hold a `>C$==` carrier) and 40 'non-family' sites (< 30%), chosen at random from the ~3,400 and
+~1,900 such sites; each site gets W26 and E1 with the same random stream. 160 runs of 200k,
+traced; ~5 h on aida plus scoring. Readouts: establishment (>= 10%, introduced family) and,
+mechanistically, the share of residents' copies of the newcomer that are new members (first
+5k steps). Prediction: W26 family > W26 non-family (from the data so far ~30% vs ~10%), with
+E1 showing no such difference or the reverse (the interaction is the test). If W26 does no
+better at family sites, the copier-compatibility account is wrong.
 
 ## Deferred
 

@@ -1,0 +1,35 @@
+1. same founder genotype, different fate
+  disturb/base/rep18           founder len 36 peak 1346: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  disturb/base/rep3            founder len 57 peak 5861: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  disturb/base/rep3            founder len 39 peak 1362: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  disturb/base/rep6            founder len 47 peak 1121: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  disturb/clustered/rep35      founder len 30 peak 1724: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  replays/s21_9.9M/rep1        founder len 26 peak 4298: failed elsewhere with the identical founder: 0 []; failed lineages founded by one of its top-20 member sequences: 0
+  founder sequences seen in more than one lineage: 0 of 118 distinct founders
+
+2. residents that ran their code on lineage members (t5..t5+5000)
+  estab disturb/base/rep18           len  36 used    8 -> member    0; top copiers: 2x (0 member) oth len 36 $====?M>NZI>BO^$O%HKC?>C$====?M>NZ$I; 1x (0 member) oth len 163 CQBCQBC=$CCQB=$CCQBC=$CCQB=$CCQBC=$CCQBY
+  estab disturb/base/rep3            len  57 used   16 -> member   14; top copiers: 2x (2 member) oth len 91 TDP>BTDP>BTDP>BTDP>BTDPGQCGNQTDP>BGQCT$O; 2x (2 member) oth len 85 TDP>BTDP>BTDP>BTDPTDP>B^CO$==QCT$O>BTDPG
+  estab disturb/base/rep3            len  39 used   21 -> member    0; top copiers: 13x (0 member) REL len 53 TDEP>BGQCGQCTDP>BGQCTDP>BTDP>BO^$O%HK?>C; 1x (0 member) oth len 238 GQCTDP>BGQCGQ$=P>BO^$OTCHOCTDPTDP>BTDP>B
+  estab disturb/base/rep6            len  47 used   74 -> member   61; top copiers: 59x (57 member) REL len 71 CCOCCCEOCGOCCS$==?S=?B$T$P>BO^$O%HIL>C$=; 3x (2 member) REL len 84 B$AOP?PPBPPOCCCOCCCEOCGOCCS$==?S=?B$T$P>
+  estab disturb/clustered/rep35      len  30 used   98 -> member   45; top copiers: 89x (44 member) REL len 51 $===?>NZP>B^$P%WIKL>C$===?>NZP>B^$P%WIKL; 4x (1 member) oth len 39 ^$P%WIKL>C$===?>NZO>B^$P%WIKL>CF$T==>NZ
+  estab replays/s21_9.9M/rep1        len  26 used  184 -> member  127; top copiers: 75x (71 member) REL len 51 CTPCCTCCBBPOIWWY$==?OHB$DQ>BO^$O%H>C$===; 42x (41 member) REL len 42 BPOIWWY$==?OHB$DQ>BO^$O%H>C$===?O>A$$T$T
+   established/large: by relative: 330 attempts, 232 gave a member (0.70)
+   established/large: by other   : 71 attempts, 15 gave a member (0.21)
+  faile disturb/base/rep18           len  37 used  402 -> member  233; top copiers: 109x (101 member) REL len 38 ====?N>NZZM>BO^$VO%HKC?>C==A==?MS>NY$I; 78x (68 member) oth len 38 ====?N>NZZM>BO^$WO%HKC?>C==A==KMS>NY$I
+  faile disturb/clustered/rep35      len  48 used  213 -> member   59; top copiers: 71x (0 member) oth len 49 $===?>NZP>B^$P%XIK?>C$===?>NYQ>B^$P%XIK?; 39x (24 member) oth len 29 $===?>NNZP>B^$P%XIK?>C$T==L>Z
+  faile disturb/clustered/rep35      len  28 used  209 -> member   91; top copiers: 38x (29 member) REL len 49 ===?>NZZP>B^$P%XIK?>C$===?>NYQ>B^$P%XIK?; 38x (28 member) REL len 49 $===?>NZP>B^$P%XIKL>C$===?>NYQ>B^$P%XIK?
+  faile disturb/base/rep18           len  41 used  201 -> member   46; top copiers: 47x (0 member) oth len 42 ====?N>NZZ>BO^$VO%HKC?>C====?MDR>NZI====; 46x (46 member) oth len 36 ====?N>NZZ>BO^$WO%HKC?>C====?MDR>NZ^
+  faile disturb/base/rep3            len  28 used  196 -> member    0; top copiers: 160x (0 member) REL len 32 PS>BTDP>BO^$O%HK?>C$==T=?M>MZ$I>; 19x (0 member) oth len 32 PS>BTDP>BO^$O%HK?>C$====?M>MZ$I>
+  faile disturb/clustered/rep35      len  49 used  173 -> member   11; top copiers: 55x (0 member) oth len 28 $==L=?>NZP>B^$P%XIL>C$T==?>Z; 42x (11 member) REL len 29 $==L=?>NZP>B^$P%XIKL>C$T==?>Z
+  faile disturb/base/rep18           len  30 used  168 -> member   33; top copiers: 55x (0 member) oth len 37 ===?N>NZZM>BO^$WO%HKC?>C==A==KMS>NY$I; 39x (33 member) oth len 39 ====?N>NZZM>BO^$WO%HKC?>C==A==KMSL>NY$I
+  faile disturb/clustered/rep35      len  32 used  164 -> member   12; top copiers: 53x (0 member) oth len 32 $===?>NZP>B^K$P%XSIKL>CF$T==?>A>; 34x (0 member) oth len 53 $===?>NZP>B^$P%XSIKL>C$==U?>NZP>B^$P%XSI
+  faile disturb/base/rep18           len  36 used  156 -> member   16; top copiers: 43x (0 member) oth len 38 ====?M>NZZ>BOO^$VO%HKCD?>C==A==?LS>NZ$; 30x (0 member) oth len 36 ===?N>NZZ>BO^$VO%HKC?>C==A==LMS>NZ$I
+  faile disturb/base/rep3            len  28 used  150 -> member    0; top copiers: 114x (0 member) REL len 29 $=P>BOT^$O%HK?>C$====?M>MZ$I>; 15x (0 member) REL len 39 $=BGQCTDP>BTDP>BO^$O%HK?>C$====?M>MZ$I>
+  faile disturb/clustered/rep32      len  28 used  144 -> member    0; top copiers: 52x (0 member) oth len 28 ===?>NDI>BU^$MP%WL>CF===?>NZ; 45x (0 member) oth len 27 ===?>NDOI>B^$P%WL>CF===?>NZ
+  faile disturb/base/rep18           len  42 used  138 -> member    0; top copiers: 51x (0 member) oth len 39 ====?N>NZZ>BO^$V%HKC>C====?MT>N$I====?N; 46x (0 member) oth len 35 ====?N>NZZ>BO^$VO%HKC?>C====?S>NQ$I
+  faile disturb/base/rep18           len  44 used  129 -> member   12; top copiers: 42x (0 member) oth len 36 ====?M>NAA>BO^$VO%HKC?>C====?MS>NZ$I; 37x (0 member) oth len 35 ====?N>NZZ>BO^$VO%HKC?>C====LMS>N$I
+  faile disturb/clustered/rep32      len  37 used  122 -> member    0; top copiers: 53x (0 member) oth len 29 ===?>NDQJ>B^$MP%WKM>CF===?>NZ; 50x (0 member) oth len 30 ===?>NDQJ>B^$MP%WKMZ>CF===?>NZ
+  faile disturb/base/rep18           len  42 used  118 -> member    0; top copiers: 59x (0 member) oth len 43 ====?M>NZZ>BO^$VOQ%HKL>C====?MS>MNZ$I=T=; 37x (0 member) oth len 36 ====?M>NBA>BO^$VO%HKC?>C====?MS>NZ$I
+   failed (largest 15 by attempts): by relative: 640 attempts, 216 gave a member (0.34)
+   failed (largest 15 by attempts): by other   : 2043 attempts, 297 gave a member (0.15)
