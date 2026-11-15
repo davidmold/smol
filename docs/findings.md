@@ -687,6 +687,25 @@ arrives among residents of its own broad family, which copy it faithfully into n
 than among unrelated residents, which use it as a template and alter it; for an unrelated
 replicator (E1) the same neighbourhoods should give no advantage, or the reverse.
 
+## 17. Reaction-level equivalence with the C++ code (Nov 15)
+
+Details: `experiments/equivalence/README.md`.
+
+- **Test:** 23,040 reactions between the paper's own evolved molecules (top 12 species, 8 runs,
+  every 100k steps, every ordered pair), about 25 million steps. Each reaction was run in the C++
+  spatial code and in smol, with matching random draws, and compared step by step.
+- **Current dev:** every reaction matches exactly, with mutation off and at 1%: binding
+  probability, choice of active molecule, every pointer at every step, products and outcome.
+  The exceptions are 17-18 reactions where a copy fills the 2,000-symbol buffer and the C++
+  code writes past its end.
+- **The paper's version (0.2.3.4):** the same, except 0.7% of reactions. These all hit the
+  uninitialised alignment score at a `?` with the read pointer at the end of a string (fixed in
+  #50), so the paper's binary was build-dependent there.
+- **One rule difference found:** in the C++ code a copy-deletion also skips the next
+  instruction. Now a switch, `COMPAT_DELETION`, which `pub_to_ckpt.py` turns on.
+- **Not yet tested:** world-level rules (update order, partner choice, placement), which have
+  only been compared statistically.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

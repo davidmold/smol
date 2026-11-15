@@ -14,8 +14,9 @@ exactly: every free molecule, and every bound pair mid-reaction with its strings
 any half-written copy) and all four pointers on both strings (the C++ `irwf` fields map
 one-to-one onto smol's Pointers: tape 1 = own string, tape 0 = partner).
 
-By default the config uses the C++ partner and turn rules (COMPAT_PARTNER 1, ENCOUNTER_TURN 1),
-as the published runs (v0.2.3.4) did; --new-rules leaves them off. Parameters taken from the
+By default the config uses the C++ partner, turn and copy-deletion rules (COMPAT_PARTNER 1,
+ENCOUNTER_TURN 1, COMPAT_DELETION 1), as the published runs (v0.2.3.4) did; --new-rules leaves
+them off. Parameters taken from the
 snapshot: GRIDX, GRIDY, DECAY, MUTATE. Species ids are new (smol's), assigned in order of first
 appearance; the C++ id of each is kept in species.tsv's third column.
 """
@@ -94,7 +95,7 @@ def sid(seq):
 cfg = [f"GRIDX {gx}", f"GRIDY {gy}", f"DECAY {params['DECAY']}", f"MUTATE {params['MUTATE']}",
        f"RANDSEED {params.get('RANDSEED', 1)}", f"NSTEPS {a.nsteps or step + 1_000_000}"]
 if not a.new_rules:
-    cfg += ["COMPAT_PARTNER 1", "ENCOUNTER_TURN 1"]
+    cfg += ["COMPAT_PARTNER 1", "ENCOUNTER_TURN 1", "COMPAT_DELETION 1"]
 cfg += [f"{k} {v}" for k, v in a.set]
 
 mols, occupied, clamped = [], set(), 0

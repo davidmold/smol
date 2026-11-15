@@ -1,0 +1,31 @@
+## dev, mutation off
+pairs in diff files 1296 differing 17 {'END:act': 17}
+== END:act 17
+   ('r1_1700000', 'PAIR s7 s8 p=0.869263 act=s7', 8001, 'END steps=8000 unbound normally act=C=?>G^BB$=P?>$CLU%NYHP=?>H^BC$=P?>D$L%OPYP=?>H^BC$=P?>D$L%OPYP=?>H^BC$=P?>D$L%OPYP=?>H^BC$=P?>D$L%OPYP=?>H^BC$=P?>D$L%OPYP=?', 'END steps=8000 unbound normally act=C=?
+   ('r1_1800000', 'PAIR s3 s3 p=0.000000 act=s3', 11976, 'END steps=11975 unbound normally act=P=K>H^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', 'END steps=11975 unbound normally act=P
+   ('r4_1300000', 'PAIR s4 s2 p=0.695410 act=s4', 6049, 'END steps=6048 unbound normally act=$=?>=^SC$U?$FC^B%B$T?E>$CMU%YH$=?>$W^A=?QUO^S$U?$FC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^S$U?$FC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^S$', 'END steps=6048 unbound normally act=$=?
+   ('r4_1300000', 'PAIR s4 s6 p=0.695410 act=s4', 6050, 'END steps=6049 unbound normally act=$=?>=^SC$U?$FC^B%B$T?E>$CMU%YH$=?>$W^A=?QUO^SC$U?$FC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^SC$U?$FC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^', 'END steps=6049 unbound normally act=$=?
+
+## dev, mutation 0.01
+pairs in diff files 1440 differing 18 {'END:act': 18}
+== END:act 18
+   ('r1_1700000', 'PAIR s7 s8 p=0.869263 act=s7', 7993, 'END steps=7992 unbound normally act=C=?>G^BB$=P?>$CLU%NYHP=?>H^BC$=P?>D$L%OPYP=?>H^^BC$=MP?>D$L%OPYP=?>H^^BC$=MP?>D$L%OPYP=?>H^^BC$=MP?>D$L%OPYP=?>H^^BC$=MP?>D$', 'END steps=7992 unbound normally act=C=?
+   ('r1_1800000', 'PAIR s3 s3 p=0.000000 act=s3', 11976, 'END steps=11975 unbound normally act=P=K>H^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^M^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', 'END steps=11975 unbound normally act=P
+   ('r4_1300000', 'PAIR s4 s2 p=0.695410 act=s4', 6052, 'END steps=6051 unbound normally act=$=?>=^SC$U?$FC^B%B$T?E>$CMU%YH$=?>$W^A=?QUO^S$^U?$FMC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^S$^U?$FMC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QU', 'END steps=6051 unbound normally act=$=?
+   ('r4_1300000', 'PAIR s4 s6 p=0.695410 act=s4', 6053, 'END steps=6052 unbound normally act=$=?>=^SC$U?$FC^B%B$T?E>$CMU%YH$=?>$W^A=?QUO^SC^$U?$MFC^B%B$=?E>$CMUO%}YH$=?>$W^A=?QUO^SC^$U?$MFC^B%B$=?E>$CMUO%}YH$=?>$W^A=?', 'END steps=6052 unbound normally act=$=?
+
+## 0.2.3.4, mutation off
+pairs in diff files 1584 differing 155 {'TRACE': 155}
+== TRACE 155
+   ('r2_1200000', 'PAIR s3 s2 p=0.799574 act=s3', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s5 s2 p=0.799574 act=s5', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s6 s2 p=0.799574 act=s6', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s7 s2 p=0.799574 act=s7', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+
+## 0.2.3.4, mutation 0.01
+pairs in diff files 1584 differing 151 {'TRACE': 151}
+== TRACE 151
+   ('r2_1200000', 'PAIR s3 s2 p=0.799574 act=s3', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s5 s2 p=0.799574 act=s5', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s6 s2 p=0.799574 act=s6', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)
+   ('r2_1200000', 'PAIR s7 s2 p=0.799574 act=s7', 103, 'T 102 A 0 6 1 32 1 32 1 32 32 23', 'T 102 ^ 0 5 1 32 1 32 1 32 32 23', 36)

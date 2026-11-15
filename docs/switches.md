@@ -35,6 +35,7 @@ every checkpoint, so a resumed run keeps its switches.
 |---|---|---|
 | `COMPAT_PARTNER` | 0 | 1 = old partner choice: first free neighbour in scan order |
 | `ENCOUNTER_TURN` | 0 | 1 = a failed binding attempt also uses up the partner's turn |
+| `COMPAT_DELETION` | 0 | 1 = a deletion during copying also skips the next instruction, as the C++ code does (checked draw-for-draw against it) |
 | `DECAY_INDEPENDENT` | 0 | 1 = partners in a reaction decay separately; a survivor is freed |
 
 ## Binding

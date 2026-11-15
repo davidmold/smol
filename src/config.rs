@@ -55,6 +55,8 @@ pub struct Config {
     pub decay_independent: bool,
     /// A failed encounter also uses up the partner's turn (old rule; default 0 = it does not).
     pub encounter_turn: bool,
+    /// COMPAT_DELETION: a copy-deletion also skips the next instruction, as the C++ code does
+    pub compat_deletion: bool,
     /// Strand displacement (design note): a free molecule may break into a reaction.
     pub displace: bool,
     /// Copy instructions after which a reaction can no longer be broken into.
@@ -191,6 +193,7 @@ impl Config {
             compat_partner: num("COMPAT_PARTNER", 0.0)? != 0.0,
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,
+            compat_deletion: num("COMPAT_DELETION", 0.0)? != 0.0,
             displace: num("DISPLACE", 0.0)? != 0.0,
             displace_k: num("DISPLACE_K", 10.0)?,
             displace_rate: num("DISPLACE_RATE", 1.0)?,

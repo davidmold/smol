@@ -35,6 +35,8 @@ fn main() {
     let bind_t: f64 = args.iter().position(|a| a == "--bind-t").map(|i| args[i + 1].parse().unwrap()).unwrap_or(0.0);
     let twosided = args.iter().any(|a| a == "--twosided");
     let trace = args.iter().any(|a| a == "--trace");
+    // --steptrace: per-step state in the format of the C++ spatial probe (spreact), for diffing
+    let steptrace = args.iter().any(|a| a == "--steptrace");
     let strand = args.iter().any(|a| a == "--strand");
     // --self: react each molecule only with itself (screening many species)
     let self_only = args.iter().any(|a| a == "--self");
@@ -89,7 +91,20 @@ fn main() {
             let mut steps = 0;
             let mut end = "ran out of steps";
             let mut end_by_pas = false;
+            if steptrace {
+                if compat { rng = Box::new(Mt19937::new(4357)); }
+                writeln!(out, "PAIR {} {} p={:.6} act={}", x.0, y.0, p, an).unwrap();
+            }
+            let mut nprod = 0;
             while steps < maxsteps {
+                if steptrace {
+                    let side_str = |sd: usize| if sd == 1 { &own } else { &partner };
+                    let op = side_str(ptr.side[0]).at(ptr.pos[0][ptr.side[0]]);
+                    writeln!(out, "T {} {} {} {} {} {} {} {} {} {} {} {}", steps, if op == 0 { '0' } else { op as char },
+                        ptr.side[0], ptr.pos[0][ptr.side[0]], ptr.side[1], ptr.pos[1][ptr.side[1]],
+                        ptr.side[2], ptr.pos[2][ptr.side[2]], ptr.side[3], ptr.pos[3][ptr.side[3]],
+                        own.len(), partner.len()).unwrap();
+                }
                 if strand { ctx.nascent = Some(std::mem::take(&mut nas)); }
                 let mut o = exec_step(&mut ptr, &mut own, &mut partner, &mut ctx, rng.as_mut(), &mut products);
                 if let Some(n) = ctx.nascent.take() { nas = n; }
@@ -107,6 +122,12 @@ fn main() {
                     clamp_ptrs(&mut ptr, own.len(), partner.len());
                 }
                 steps += 1;
+                if steptrace {
+                    while nprod < products.len() {
+                        writeln!(out, "PROD {} {}", ident(&products[nprod]), String::from_utf8_lossy(&products[nprod])).unwrap();
+                        nprod += 1;
+                    }
+                }
                 if trace && (steps <= 400 && steps % 20 == 0 || steps % 1000 == 0) {
                     eprintln!("  t={steps} act len {} I{:?} R{:?} W{:?} | pas len {} I{:?} R{:?} W{:?}", own.len(),
                         (ptr.side[0], ptr.pos[0][ptr.side[0]]), (ptr.side[1], ptr.pos[1][ptr.side[1]]), (ptr.side[2], ptr.pos[2][ptr.side[2]]),
@@ -127,6 +148,12 @@ fn main() {
                         break;
                     }
                 }
+            }
+            if steptrace {
+                let a_s = if end == "active destroyed" { "-".to_string() } else { String::from_utf8_lossy(own.seq()).into_owned() };
+                let p_s = if end == "passive destroyed" { "-".to_string() } else { String::from_utf8_lossy(partner.seq()).into_owned() };
+                writeln!(out, "END steps={} {} act={} pas={}", steps, end, a_s, p_s).unwrap();
+                continue;
             }
             writeln!(
                 out,

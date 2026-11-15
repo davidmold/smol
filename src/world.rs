@@ -215,7 +215,7 @@ impl World {
             chem: ChemParams {
                 maxl: cfg.maxl,
                 mutate: cfg.mutate,
-                compat_deletion_skip: false,
+                compat_deletion_skip: cfg.compat_deletion,
                 codon: if cfg.translate && cfg.strandcopy { Some(crate::symbols::codon_table(cfg.translate_seed)) } else { None },
                 translate_stop: cfg.translate_stop,
             },
