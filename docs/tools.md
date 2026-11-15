@@ -104,7 +104,8 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
   each on chasca).
 - Next: `perf-small` (BLOSUM row-lookup cache, species hash index, single-pass species counts),
   rebased onto `dev` 109be57 as local branch `perf-small-rebase` (3 commits, cf715fc dropped);
-  regression, restart and Catch tests pass. Not pushed yet.
+  regression, restart and Catch tests pass. Opened as PR #53 (15 Nov): 6% saved over steps 0-10k,
+  3% over 10k-20k, popdy identical. The PR also explains why the agent list needs rewriting next.
 - Not yet ported: replacing the agent list (95% of the old code's run time).
 - Restarting the paper's runs (RSOS 8:210441; data on aida ~/published/bio/biopaperdata/raw/run1-8):
   every run has out1_STEP.conf + RNGstate_STEP.txt every 20k steps to 2,000,000, so `dev` (with
