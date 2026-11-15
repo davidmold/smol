@@ -110,7 +110,7 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 - Restarting the paper's runs (RSOS 8:210441; data on aida ~/published/bio/biopaperdata/raw/run1-8):
   every run has out1_STEP.conf + RNGstate_STEP.txt every 20k steps to 2,000,000, so `dev` (with
   #51) restarts from them and reloads the archived generator state. Speed from run2 at 2M
-  (~3,400 molecules, 125x100), chasca, 40 steps each: `dev` 2.6 s/step, #52 2.6, perf-small 2.6,
+  (9,078 molecules, 125x100), chasca, 40 steps each: `dev` 2.6 s/step, #52 2.6, perf-small 2.6,
   identical output. ~33k steps/day, ~30 days per extra million steps per run. #52 and perf-small
   don't help at this population; the agent-list rewrite is what would.
 
