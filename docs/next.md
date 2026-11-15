@@ -44,5 +44,6 @@ better at family sites, the copier-compatibility account is wrong.
 
 - Memory: watch `free -g` while more than ~6 runs share aida; new long runs should set
   `SPECIESFORGET 1` unless species-id continuity matters.
-- The `smol` repo has no remote: push it somewhere for a backup.
+- The `smol` repo is on GitHub as davidmold/smol (private, 15 Nov), with a README for outside
+  readers (Simon) and the GPL-3.0 licence text.
 - Upstream: open `perf-agentsalign` and `perf-small` after rebasing; follow PR #51.
