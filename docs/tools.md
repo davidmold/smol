@@ -97,14 +97,21 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 - PR #50 (alignment-score fix + regression test) and PR #51 (RNGFILE fix: restarts restore the
   random generator, + restart test) are merged into uoy-research/stringmol `dev` (15 and 19 Oct;
   Simon's note on #51, 15 Nov: apologies for the delay).
-- PR #52 (15 Nov, open): `perf-agentsalign`, rebased onto the new `dev` (dropping `cf715fc`):
+- PR #52 (merged 15 Nov): `perf-agentsalign`, rebased onto the new `dev` (dropping `cf715fc`):
   removes the second, discarded alignment per binding attempt and the `swlist` cache that never
   stored anything. Regression, restart and Catch tests pass; popdy identical to `dev` for 20,000
   steps. Time saved: 12% over steps 0-10k, 38% over 10k-20k (v2.0.3 config, seed 4357, two runs
   each on chasca).
 - Next: `perf-small` (BLOSUM row-lookup cache, species hash index, single-pass species counts),
-  which needs the same rebase.
+  rebased onto `dev` 109be57 as local branch `perf-small-rebase` (3 commits, cf715fc dropped);
+  regression, restart and Catch tests pass. Not pushed yet.
 - Not yet ported: replacing the agent list (95% of the old code's run time).
+- Restarting the paper's runs (RSOS 8:210441; data on aida ~/published/bio/biopaperdata/raw/run1-8):
+  every run has out1_STEP.conf + RNGstate_STEP.txt every 20k steps to 2,000,000, so `dev` (with
+  #51) restarts from them and reloads the archived generator state. Speed from run2 at 2M
+  (~3,400 molecules, 125x100), chasca, 40 steps each: `dev` 2.6 s/step, #52 2.6, perf-small 2.6,
+  identical output. ~33k steps/day, ~30 days per extra million steps per run. #52 and perf-small
+  don't help at this population; the agent-list rewrite is what would.
 
 ## Interventions on running worlds
 
