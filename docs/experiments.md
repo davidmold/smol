@@ -132,3 +132,15 @@ Big-run analyses to 10M: `experiments/big/` (copy mixes, lengths, assays, classi
 | `transplant/` | E1, E2, M1, M2, ORD into an empty world and six 2.5M communities; 3 reps; 300k | `experiments/processive/tp_agg.txt`, `scan_tp/` |
 | `big/classic_rep*` | three big classic replicates to 10M (running) | |
 | `pr0xx/`, `long/` | small worlds to 10M: 18 continued survivors, 20 fresh (running) | |
+
+## Paper runs continued in smol (Nov 15)
+
+The 8 published runs at 2M, converted with `tools/pub_to_ckpt.py` (old partner and turn rules),
+continued to 3M with `--reseed N` on chasca, 8 in parallel. Runs are in `/tmp/sm_time/smolpub/`
+on chasca (not archived).
+- Wall time 2M -> 3M: 35-44 min per run (C++ dev: 2.6 s/step, about 30 days per 1M).
+- All 8 survived. Molecules at 3M: 7,920 / 9,516 / 10,957 / 11,788 / 5,154 / 9,757 / 11,195 /
+  7,693 (runs 1-8).
+- In every run, the most abundant species at 2M had gone by 3M and something else led.
+- These runs lacked `COMPAT_DELETION` (found the same day, section 17). A rerun with it is in
+  `/tmp/sm_time/smolpub2/`.
