@@ -114,6 +114,12 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
   identical output. ~33k steps/day, ~30 days per extra million steps per run. #52 and perf-small
   don't help at this population; the agent-list rewrite is what would.
 
+- `tools/pub_to_ckpt.py OUT1_CONF OUT_DIR [--nsteps N] [--set K V] [--new-rules]` turns a C++
+  snapshot (e.g. the paper's `out1_2000000.conf`) into a smol checkpoint + species.tsv: every free
+  molecule and every bound pair mid-reaction, with both strings and all four pointers (C++ `irwf`
+  maps one-to-one onto smol's Pointers). Resume with `--reseed S` (the C++ RNG can't carry over).
+  Defaults to the old partner/turn rules, as the paper's v0.2.3.4 used.
+
 ## Interventions on running worlds
 
 `tools/ckpt_edit.py RUN_DIR CKPT OUT_DIR [--remove SEQ] [--remove-species ID] [--cull F]
