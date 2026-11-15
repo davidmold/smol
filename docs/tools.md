@@ -97,13 +97,13 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
 - PR #50 (alignment-score fix + regression test) and PR #51 (RNGFILE fix: restarts restore the
   random generator, + restart test) are merged into uoy-research/stringmol `dev` (15 and 19 Oct;
   Simon's note on #51, 15 Nov: apologies for the delay).
-- Next: `perf-agentsalign` (one commit: remove the unused alignment and the ineffective swlist
-  cache from AgentsAlign). Rebased onto the new `dev` dropping `cf715fc` as local branch
-  `perf-agentsalign-rebase` in `~/projects/stringmol-uoy` (15 Nov): builds; the v2.0.3 regression
-  test, the restart test and the Catch tests (79 assertions) pass; popdy identical to `dev`;
-  10,000-step regression config 50.5 s vs 56.0 s on `dev` (~10%; the earlier ~38% was a longer
-  run). Not pushed. Then `perf-small` (symbol-row cache, one-pass species counts, hash species
-  index), also needing the same rebase.
+- PR #52 (15 Nov, open): `perf-agentsalign`, rebased onto the new `dev` (dropping `cf715fc`):
+  removes the second, discarded alignment per binding attempt and the `swlist` cache that never
+  stored anything. Regression, restart and Catch tests pass; popdy identical to `dev` for 20,000
+  steps. Time saved: 12% over steps 0-10k, 38% over 10k-20k (v2.0.3 config, seed 4357, two runs
+  each on chasca).
+- Next: `perf-small` (BLOSUM row-lookup cache, species hash index, single-pass species counts),
+  which needs the same rebase.
 - Not yet ported: replacing the agent list (95% of the old code's run time).
 
 ## Interventions on running worlds
