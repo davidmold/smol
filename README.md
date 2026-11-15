@@ -1,0 +1,53 @@
+# smol
+
+A fast reimplementation, in Rust, of the spatial **Stringmol** automata chemistry
+(Hickinbotham, Stepney et al., University of York;
+[uoy-research/stringmol](https://github.com/uoy-research/stringmol)). It was written from a
+description of the model rather than translated from the C++ code, and is used for long and
+large evolution experiments: a full 125 x 100 world runs at roughly 200 steps per second on one
+core, and much larger worlds are practical.
+
+It reads Stringmol-style configs (`GRIDX`, `GRIDY`, `DECAY`, `MUTATE`, `RANDSEED`, `AGENT`,
+`GRIDPOS`, ...), plus switches for the variations studied here (`docs/switches.md`).
+
+## How it relates to Stringmol
+
+**The same chemistry, not the same program.**
+
+- Matches: the opcode set and execution, binding by Smith-Waterman alignment, copying with
+  point mutation, decay, a toroidal grid with Moore-neighbourhood reactions, products placed
+  in an empty neighbouring cell. Our reaction probe reproduces the reaction times reported in
+  Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441) for strings from their
+  archived runs (184, 263, 225 steps against their 183, 262, 224), and over the first million
+  steps runs of their configurations look statistically like theirs.
+- Differs: a different random generator and update details, so it does not reproduce a C++
+  run step for step and cannot continue one exactly. Two behaviours of the C++ code are
+  switches, off by default: `COMPAT_PARTNER 1` (first free neighbour as partner) and
+  `ENCOUNTER_TURN 1` (a failed binding attempt uses up the partner's turn). Alignment of an
+  empty string scores 0 (as in uoy-research/stringmol#50).
+- In their second million steps the published runs show parasitism falling and mutual copying
+  rising; reruns of their configurations here show the same direction but weaker, even with
+  the old-rule switches (few surviving runs, so not yet a measured difference; `docs/findings.md`
+  section 12).
+- It does not read the C++ code's `out1_*.conf` snapshots or write its log formats; its outputs
+  are `popdy001.dat` (step, species, count), `species.tsv`, `copies.tsv` and gzipped checkpoints.
+
+## Build and run
+
+```
+cargo build --release
+mkdir run && cd run
+../target/release/smol run ../designs/base.conf      # the baseline 125 x 100 world
+../target/release/smol resume checkpoint_500000.txt.gz [--reseed S] [--nsteps N]
+../target/release/smol-react pairs.txt 5000 --self  # reaction probe
+```
+
+## Documentation
+
+`docs/README.md` is the place to start: the research question, where things stand, and links
+to the findings (`docs/findings.md`), experiment index, switches and tools. The notes are a
+working lab book, so they mention the machines and storage the runs used.
+
+## Licence
+
+GPL-3.0-or-later (see `LICENSE`). Stringmol itself is GPL-2.0-or-later.
