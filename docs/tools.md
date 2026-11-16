@@ -108,7 +108,11 @@ every 3 s). Viewer HTML is cached in `~/smol/viewcache`.
   3% over 10k-20k, popdy identical. The PR also explains why the agent list needs rewriting next.
 - PR #54 (16 Nov): `fix-copy-bounds`, the copy at the length limit no longer overwrites the
   terminator (found by the reaction-equivalence test, `experiments/equivalence/`).
-- Not yet ported: replacing the agent list (95% of the old code's run time).
+- PR #55 (16 Nov): `perf-agentlist`, an ordered index (Fenwick tree) alongside nowhead/nexthead.
+  Profile of dev at paper run 2, step 2M: AgentAppend + AgentAddressInList + AgentSelectRandomly
+  took 98% of the time. All 8 paper runs restarted at 2M for 1,000 steps are byte-identical to dev
+  (272 files; both builds with #54). Run 2 on aida: dev ~1.5 s/step, #55 16 ms/step, #55 + #53
+  4.6 ms/step (about 1.3 h per million steps). Proof dirs: aida `~/smagl/`.
 - Restarting the paper's runs (RSOS 8:210441; data on aida ~/published/bio/biopaperdata/raw/run1-8):
   every run has out1_STEP.conf + RNGstate_STEP.txt every 20k steps to 2,000,000, so `dev` (with
   #51) restarts from them and reloads the archived generator state. Speed from run2 at 2M
