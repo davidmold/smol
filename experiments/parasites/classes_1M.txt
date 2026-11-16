@@ -1,0 +1,8 @@
+/home/davidmold/smol/runs/parasites/s1000000/r1/src 8604 R=4164 (48%) P=2419 (28%) N=2021 (23%)  species: R=173 P=275 N=213
+/home/davidmold/smol/runs/parasites/s1000000/r2/src 8173 R=4913 (60%) P=2837 (35%) N=423 (5%)  species: R=189 P=177 N=221
+/home/davidmold/smol/runs/parasites/s1000000/r3/src 6419 R=2107 (33%) P=3971 (62%) N=341 (5%)  species: R=98 P=116 N=185
+/home/davidmold/smol/runs/parasites/s1000000/r4/src 10036 R=6890 (69%) P=2586 (26%) N=560 (6%)  species: R=327 P=343 N=304
+/home/davidmold/smol/runs/parasites/s1000000/r5/src 4822 R=1902 (39%) P=2603 (54%) N=317 (7%)  species: R=132 P=132 N=189
+/home/davidmold/smol/runs/parasites/s1000000/r6/src 7726 R=3980 (52%) P=3176 (41%) N=570 (7%)  species: R=119 P=210 N=246
+/home/davidmold/smol/runs/parasites/s1000000/r7/src 5292 R=3011 (57%) P=1982 (37%) N=299 (6%)  species: R=139 P=100 N=140
+/home/davidmold/smol/runs/parasites/s1000000/r8/src 10697 R=6817 (64%) P=3310 (31%) N=570 (5%)  species: R=323 P=375 N=277

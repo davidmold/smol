@@ -706,6 +706,43 @@ Details: `experiments/equivalence/README.md`.
 - **Not yet tested:** world-level rules (update order, partner choice, placement), which have
   only been compared statistically.
 
+## 18. Do parasites hold the population down? (Nov 16)
+
+The paper says evolved resistance to parasitism "explains how the population size is larger
+than seen before". The premise is that parasites hold the population down. This tests it
+directly.
+
+**Method** (`experiments/parasites/`):
+- Take the 8 published runs at 1M, converted with `pub_to_ckpt.py` (old rules).
+- Classify every species present by what it did in the next 20k steps:
+  - R: made exact copies.
+  - P (parasite): never copied anything but was copied exactly.
+  - N: neither.
+- Parasites were 26-62% of molecules; N was 5-7% (23% in run 1).
+- Treatments: remove all P; remove all N; and, as controls, remove the same number of random
+  molecules (cullP, cullN), since freeing space alone lets the population regrow.
+- 3 reseeds each, 100k steps, mutation on.
+
+**Result:**
+- **Removing parasites releases the population, but only for a while.**
+
+  | Steps after the edit | 2k | 10k | 20k | 50k | 100k |
+  |---|---|---|---|---|---|
+  | noP minus cullP, median of 8 runs | +1,631 | +3,087 | +1,325 | -6 | +323 |
+  | Runs with a positive difference | 8/8 | 8/8 | 7/8 | 4/8 | 6/8 |
+
+  At 10k, run 3 has 11,818 molecules against 3,912 unedited.
+- **Removing N does nothing** (median -430 at 10k).
+
+**Reading:** parasites are what holds the population below a lone replicator's capacity. The
+paper's premise survives a direct test. But a one-off removal is undone within about 50k steps,
+presumably as parasites re-arise by mutation (not yet measured). So a lasting rise needs
+something that keeps parasite load down, which is consistent with their resistance story but
+does not by itself show resistance is the mechanism. Caveats:
+- Only 3 seeds per treatment; the populations swing widely.
+- The classification is behavioural, over smol's first 20k steps.
+- In our own runs the population rose with little fall in our parasitism measure (section 12).
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

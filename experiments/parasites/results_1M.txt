@@ -1,0 +1,65 @@
+== 0 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1          nan     nan     nan     nan     nan         nan        nan
+r2          nan     nan     nan     nan     nan         nan        nan
+r3          nan     nan     nan     nan     nan         nan        nan
+r4          nan     nan     nan     nan     nan         nan        nan
+r5          nan     nan     nan     nan     nan         nan        nan
+r6          nan     nan     nan     nan     nan         nan        nan
+r7          nan     nan     nan     nan     nan         nan        nan
+r8          nan     nan     nan     nan     nan         nan        nan
+== 2000 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1         8780    9511    8190    8834    8315        1321        519
+r2         7983    8952    7259    8024    7897        1692        127
+r3         5703    7474    3980    5702    5690        3495         12
+r4         9749   10304    9432    9872    9801         872         71
+r5         5053    6002    3693    4976    4979        2309         -3
+r6         6982    8477    6046    6931    6824        2431        108
+r7         5393    6293    4724    5418    5306        1569        112
+r8        10578   11398   10162   10600   10527        1236         73
+median  noP-cullP 1631 (positive in 8/8 runs);  noN-cullN 90 (positive in 7/8)
+== 10000 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1         8778   11632    9556    8796    9654        2075       -858
+r2         6480   10674    6575    6772    6591        4099        181
+r3         3912   11818    4904    3305    3908        6914       -604
+r4         8973   10469    8905    8747    9152        1564       -405
+r5         7542   11458    6847    7247    7701        4611       -455
+r6         5675    7763    6460    6263    6390        1303       -126
+r7         5795    9642    4791    5132    5836        4851       -703
+r8        10110   11720   10069   10241   10142        1651         99
+median  noP-cullP 3087 (positive in 8/8 runs);  noN-cullN -430 (positive in 2/8)
+== 20000 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1         8460   10202    8380    8469    8855        1822       -386
+r2         5326    8909    6230    6203    5669        2679        533
+r3         5594   10036    6163    5033    5271        3873       -238
+r4         8653    9092    8780    8436    8609         312       -173
+r5         7121    8177    7816    7026    6915         361        111
+r6         7133    3979    7147    6764    7197       -3168       -433
+r7         4851    7545    4087    3903    4834        3458       -931
+r8        10027   10993   10166    9976    9870         828        106
+median  noP-cullP 1325 (positive in 7/8 runs);  noN-cullN -206 (positive in 3/8)
+== 50000 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1         8133    7078    8712    8232    7932       -1634        300
+r2         7899    8703    8455    6399    7525         248      -1126
+r3         5903    7208    4266    4645    4954        2942       -309
+r4         8537    8876    7976    8761    8704         900         57
+r5         5075    6253    5854    5305    5414         399       -110
+r6         6612    5089    7004    6482    6429       -1914         54
+r7         2957    3163    4541    3862    2983       -1378        878
+r8        10663   10197   10458   10679   10601        -260         78
+median  noP-cullP -6 (positive in 4/8 runs);  noN-cullN 56 (positive in 5/8)
+== 100000 steps after the edit (mean of seeds; molecules)
+run        base     noP   cullP     noN   cullN   noP-cullP  noN-cullN
+r1         5911    6373    9660    5944    7308       -3287      -1364
+r2         7741    8969    8546    8518    9226         423       -708
+r3         6202    5796    5572    5272    5907         224       -636
+r4         8298    9094    7332    7129    8597        1762      -1468
+r5         5188    6800    4277    7085    5217        2523       1868
+r6         6902    6782    6586    6665    7416         196       -751
+r7         4917    7805    6574    5033    5324        1231       -292
+r8        10727   10479   10706   10636   10826        -227       -190
+median  noP-cullP 323 (positive in 6/8 runs);  noN-cullN -672 (positive in 1/8)
