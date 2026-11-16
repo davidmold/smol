@@ -839,6 +839,46 @@ Caveats:
 - Single-step mutants only.
 - smol's reaction probe; the reactions match the C++ code (section 17).
 
+## 21. Tolerance fingerprints and "evolution evolves", 1M vs 2M (Nov 16)
+
+Details: `experiments/parasites/mechanisms.py`, results `mechanisms_paper.txt`. For each
+published run at 1M and 2M: the top replicator S against the world's 10 commonest parasites in
+the probe, the world snapshot, and the 100k-step control runs that follow.
+
+| Measure | 1M | 2M | Runs that rose |
+|---|---|---|---|
+| S self-copy time (steps per copy) | 178 | 153 | 1/6 (it fell in 5) |
+| Parasite time per copy / kin time per copy | 0.73 | 0.77 | 4/5 |
+| Copies per self-binding | 1 | 1 | 0/6 |
+| Two-way copying in S-parasite encounters | 0 | 0 | 0/5 |
+| Replicator clustering (neighbours, vs random) | 1.34 | 1.24 | 2/8 |
+| Copy-operator executions per product symbol | 2.01 | 2.03 | 3/6 |
+| Non-exact products that are >2 edits from both reactants | 0.80 | 0.86 | 5/8 |
+
+**Tolerance:**
+- Two of the candidate mechanisms are ruled out: no run makes more than one copy per binding,
+  and replicators are never copied back by parasites.
+- Clustering, if anything, falls. Caveat: the index's ceiling falls as the replicator share
+  rises.
+- Parasites keep most of their speed advantage (copied in about 75% of a kin copy's time at both
+  times).
+- What does change is the replicators' own speed: self-copy time falls by about 14% in 5 of 6
+  runs. So the clearest difference is simply faster replicators. That is efficiency, which the
+  paper set aside on the basis of Figure 5 (well-mixed, no parasites); with parasites present, a
+  modest speed gain may matter more than Figure 5 suggests.
+- Not yet measured: parasites trapped in long unproductive reactions, which the paper's t3
+  description suggests.
+
+**Evolution evolves:**
+- Effective mutation exposure is already doubled at 1M in every run with a top replicator
+  (self-scan, 2.0 copy operations per product symbol) and does not rise further.
+- Of new strings made by reactions, about 80-86% differ from both reactants by more than 2
+  edits: emergent rearrangements (partial copies, duplications, mis-cleaves) are by far the main
+  source of new sequences, not point mutations, as the paper says. Their share rises only
+  slightly (5/8 runs).
+- So the phenomena are real, but they are established early. There is no evidence here of
+  evolvability itself increasing over the second million.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

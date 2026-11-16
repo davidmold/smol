@@ -1,0 +1,25 @@
+r1    1000000 len  nan tS   nan ratio  nan cps nan twoway  nan expo  nan clusR 1.42 big 0.927
+r2    1000000 len   34 tS 232.0 ratio 0.75 cps   1 twoway 0.00 expo 2.03 clusR 1.28 big 0.736
+r3    1000000 len   27 tS 177.0 ratio 0.71 cps   1 twoway 0.00 expo 2.00 clusR 1.58 big 0.793
+r4    1000000 len   36 tS 246.0 ratio 0.83 cps   1 twoway 0.00 expo 2.03 clusR 1.13 big 0.817
+r5    1000000 len   23 tS 150.0 ratio 0.74 cps   1 twoway 0.00 expo 2.00 clusR 1.64 big 0.867
+r6    1000000 len  nan tS   nan ratio  nan cps nan twoway  nan expo  nan clusR 1.35 big 0.733
+r7    1000000 len   27 tS 179.0 ratio 0.69 cps   1 twoway 0.00 expo 2.04 clusR 1.33 big 0.706
+r8    1000000 len   25 tS 168.0 ratio 0.73 cps   1 twoway 0.00 expo 2.00 clusR 1.17 big 0.815
+r1    2000000 len  nan tS   nan ratio  nan cps nan twoway  nan expo  nan clusR 1.31 big 0.891
+r2    2000000 len   23 tS 169.0 ratio  nan cps   1 twoway  nan expo 2.13 clusR 1.29 big 0.758
+r3    2000000 len   31 tS 218.0 ratio 0.86 cps   1 twoway 0.00 expo 2.06 clusR 1.20 big 0.881
+r4    2000000 len   29 tS 208.0 ratio 0.46 cps   1 twoway 0.00 expo 2.07 clusR 1.03 big 0.821
+r5    2000000 len   19 tS 126.0 ratio 0.79 cps   1 twoway 0.00 expo 2.00 clusR 1.38 big 0.863
+r6    2000000 len  nan tS   nan ratio  nan cps nan twoway  nan expo  nan clusR 1.30 big 0.689
+r7    2000000 len   21 tS 137.0 ratio 0.77 cps   1 twoway 0.00 expo 2.00 clusR 1.17 big 0.938
+r8    2000000 len   20 tS 133.0 ratio 0.75 cps   1 twoway 0.00 expo 2.00 clusR 1.19 big 0.858
+
+== medians, 1M -> 2M (runs with values at both)
+  tS      178.000 -> 153.000   up in 1/6 runs
+  ratio     0.732 ->   0.770   up in 4/5 runs
+  cps       1.000 ->   1.000   up in 0/6 runs
+  twoway    0.000 ->   0.000   up in 0/5 runs
+  expo      2.014 ->   2.032   up in 3/6 runs
+  clus      1.341 ->   1.242   up in 2/8 runs
+  big       0.804 ->   0.861   up in 5/8 runs
