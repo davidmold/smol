@@ -928,6 +928,52 @@ Details: `experiments/parasites/suppress.py`, results `suppress_*.txt`.
 - Caveat: fresh parasites remain in the P arm. A stronger suppression is needed before
   concluding that parasitism plays no part in self-scan.
 
+## 23. PARASITEFREE: no string is placed unless it can copy itself (Nov 16)
+
+Details: `experiments/parasites/pfree_*.txt`.
+
+**Method:**
+- 20 runs from the seed replicators (box config, old rules, COMPAT_DELETION), 2M steps:
+  10 with PARASITEFREE 1 (pf), 10 identical controls (ctl).
+- PARASITEFREE blocks about 340-870 products per 1000 steps once the grid is full.
+
+**Survival and population:**
+- pf: 10/10 survive and hold a full grid (about 12,200 molecules) from 100k on.
+- ctl: 5/10 survive (deaths at 73k-306k; two survivors still running at writing), 6-11k molecules.
+
+**Results** (top replicator, medians):
+
+| | pf | ctl |
+|---|---|---|
+| Length at 200k | 60 | 31 |
+| Length at 1M | 42 | 28 |
+| Length at 2M | 38 | 28 |
+| '?' tests | 1 throughout | 2 from 200k |
+| Self-reaction steps | 215 -> 105-135, falling steadily | 170-230 |
+| Self-scan (copy ops per product symbol) | 1.00 in 28 of 29 snapshots | 2.0 in every survivor from 300k |
+
+- **Self-scan:** the one pf exception is run 210 at 2M (2.00).
+- **Shape of the replicators:**
+  - pf replicators keep much of the seed's long non-coding head and shorten only slowly.
+  - ctl replicators lose it by 200k and duplicate the copy-loop motif (`$=?>...^B$=?>`), which is
+    the self-scan.
+- The mutant-discrimination numbers are not comparable: in pf the top replicator rarely copies
+  even functional mutants when bound to them, because it is usually the passive partner.
+
+**Reading:**
+- With parasites impossible, the changes the paper attributes to parasitism mostly do not
+  happen: the fast collapse to short replicators, self-scan (and with it the doubled mutation
+  exposure), and the second loop test.
+- The replicators instead get steadily faster while staying long.
+- Section 22's tentative conclusion (self-scan evolves without parasites) was wrong: there, fresh
+  parasites were never removed.
+
+**Confound:** PARASITEFREE also blocks every product that cannot copy itself, including the
+non-viable intermediates of the mutational cascades the paper shows leading to the first
+self-scanning replicator (their figure 6). Self-scan may be absent because parasites are absent,
+or because the route to it is blocked. The test that would separate the two: let such products
+exist but never be copied.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

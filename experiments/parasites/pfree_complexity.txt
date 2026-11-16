@@ -1,0 +1,323 @@
+ctl   s201    100000 pop   4307 selfrep_share 0.33  len  58 q  1 ops  11 rt   210 sel 0.44  EWHHHRLUEUWKJRJVUUDYGRHKLRWWRE$BMUBO^B>C$=?>$$BLUBO%}OYHOB
+ctl   s201    200000 pop   5850 selfrep_share 0.25  len  56 q  1 ops  12 rt   203 sel 0.73  EWHHH>LUEUXKJRJVUUNYRHKLRWWRE$BMUBO^B>C$=?>$$BLUBO%}OYHO
+ctl   s201    300000 pop   9602 selfrep_share 0.10  len  31 q  2 ops  17 rt   205 sel 0.75  $=?>$$BUBO^B>C$=?>$$BLUBO%}}YHO
+ctl   s201    400000 pop   8507 selfrep_share 0.34  len  31 q  2 ops  17 rt   205 sel 0.44  $=?>$$BUBO^B>C$=?>$$BLUBO%}}YHO
+ctl   s201    500000 pop   7450 selfrep_share 0.28  len  30 q  2 ops  17 rt   198 sel 0.33  $=?>$$UBO^B>C$=?>$$BLUBO%}}YHO
+ctl   s201    600000 pop   6883 selfrep_share 0.43  len  29 q  2 ops  16 rt   191 sel 0.00  $=?>$$BVBO^BB$=?>$$BLUB%}}YHO
+ctl   s201    700000 pop   6006 selfrep_share 0.56  len  28 q  2 ops  16 rt   184 sel 0.00  $=?>$$BUCO^BC$=?>$$LUB%}}YHO
+ctl   s201    800000 pop   6529 selfrep_share 0.40  len  28 q  2 ops  16 rt   184 sel 0.00  $=?>$$BUCO^BC$=?>$$LUB%}}YHO
+ctl   s201    900000 pop   2616 selfrep_share 0.57  len  23 q  2 ops  14 rt   172 sel 0.00  $=?>$$BUO^BCD=?>$U%}}YH
+ctl   s201   1000000 pop  10960 selfrep_share 0.41  len  33 q  3 ops  21 rt   228 sel 0.20  $=?>$$BUO^A$=?>$$BUO^BC$=?>$U%}YH
+ctl   s201   1100000 pop  10422 selfrep_share 0.22  len  24 q  2 ops  15 rt   157 sel 0.10  $=?>$$$BUO^BB$=?D>$U%}YH
+ctl   s201   1200000 pop  10347 selfrep_share 0.16  len  30 q  3 ops  17 rt   206 sel 0.44  $=?>$BUO^AC?>$BUO^BC$=?>$U%}YH
+ctl   s201   1300000 pop  10808 selfrep_share 0.22  len  28 q  3 ops  15 rt   192 sel 0.90  $=?>$BVO^AC?>BUO^BC=?>$U%}YH
+ctl   s201   1400000 pop   9804 selfrep_share 0.26  len  28 q  3 ops  15 rt   192 sel 0.60  $=?>$BVO^AC?>BUO^BC=?>$U%}YH
+ctl   s201   1500000 pop   8845 selfrep_share 0.56  len  31 q  2 ops  18 rt   221 sel 0.50  $=?>$$UO^A$SL>$DCO^BC$=?>$U%}XH
+ctl   s201   1600000 pop   7795 selfrep_share 0.37  len  29 q  2 ops  18 rt   208 sel 0.30  $=?>$$U^A$RM>$D$O^BC$=?>$U%XH
+ctl   s201   1700000 pop   5112 selfrep_share 0.20  len  27 q  2 ops  14 rt   174 sel 0.00  $=?>$$CV^BB$=?E>M$U%}XUBUOH
+ctl   s201   1800000 pop   5096 selfrep_share 0.14  len  27 q  2 ops  15 rt   174 sel 0.00  $=?>$$$V^BC$=?F>M$U%}XUBUOH
+ctl   s201   1900000 pop   8524 selfrep_share 0.46  len  25 q  2 ops  15 rt   162 sel 0.36  $=?>D$$V^BC$=?>M$U%}X=UOH
+ctl   s201   2000000 pop   5993 selfrep_share 0.57  len  36 q  3 ops  22 rt   245 sel 0.90  $=?>D$$V^AC$=?>D$$V^BC$=?>M$U%}X=UOH
+ctl   s202    100000 pop   2018 selfrep_share 0.51  len  62 q  1 ops  11 rt   225 sel 0.00  WWEWLHHHRLUEUWJJRJXUUUVDYGHJLRWWRE$BLUBO^B>C$=?>$$BMUBO%}OYH
+ctl   s203    100000 pop   4665 selfrep_share 0.31  len  55 q  1 ops  11 rt   198 sel 0.18  HHRLUEUWJJJRJXUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+ctl   s203    200000 pop   7231 selfrep_share 0.55  len  31 q  1 ops  12 rt   117 sel 0.44  WJWJJJE$BLUO^B>C$=?>$$BL=BO%}OY
+ctl   s204    100000 pop   3171 selfrep_share 0.48  len  61 q  1 ops  12 rt   221 sel 0.30  WW%EWLHHHRLUUWJJJRJXUUDYGRJLRWRE$BYLUBO^B>C$=?>$$BLUBO%}OYHO
+ctl   s204    200000 pop   7696 selfrep_share 0.33  len  30 q  2 ops  17 rt   197 sel 0.64  $=?>$$UBO^B>C$=?>$$BUBO%}OYH}B
+ctl   s204    300000 pop   6247 selfrep_share 0.51  len  29 q  2 ops  16 rt   190 sel 0.40  $=?>$$UBO^BC$=?>$$BUBO%}OYH}B
+ctl   s204    400000 pop   6519 selfrep_share 0.38  len  28 q  2 ops  15 rt   184 sel 0.30  $=?>$$UAO^BC$=?>$$CUBO%}XHOB
+ctl   s204    500000 pop   3821 selfrep_share 0.18  len  28 q  2 ops  15 rt   184 sel 0.11  $=?>$$UAO^BC$=?>$$CUBO%}XHOB
+ctl   s204    600000 pop   4206 selfrep_share 0.41  len  27 q  2 ops  14 rt   177 sel 0.00  $=?>$$UAO^B$=?>$CUBOT%}XHOB
+ctl   s204    700000 pop   6067 selfrep_share 0.33  len  36 q  3 ops  20 rt   246 sel 0.40  $=?>$$AO^A$=?>D$UAO^B$=?>$CUBO%}XHOB
+ctl   s204    800000 pop   8889 selfrep_share 0.47  len  34 q  3 ops  21 rt   231 sel 0.00  $=?>$$P^A$=?Q$$UAO^B$=?>$$UBO%}HOB
+ctl   s204    900000 pop   7620 selfrep_share 0.41  len  33 q  3 ops  19 rt   219 sel 0.43  $=?>$AOA$=?>D$UAO^B$=?>$CUB=%}XHO
+ctl   s204   1000000 pop  10679 selfrep_share 0.26  len  21 q  2 ops  14 rt   134 sel 0.45  ==?>$UO^B$=?>$UB=%}HO
+ctl   s204   1100000 pop  10971 selfrep_share 0.49  len  21 q  2 ops  14 rt   137 sel 0.67  $=?>$UO^B$=?>$UB=%}HO
+ctl   s204   1200000 pop   9987 selfrep_share 0.38  len  22 q  2 ops  14 rt   144 sel 0.36  $=?>$UO=^B$=?>$UBU%}HO
+ctl   s204   1300000 pop  11156 selfrep_share 0.34  len  19 q  2 ops  13 rt   123 sel 0.64  ==?>$$UP^B$=?>$VB%O
+ctl   s204   1400000 pop  10909 selfrep_share 0.35  len  29 q  3 ops  20 rt   199 sel 1.00  $=?>$UO^A$=?>$UO^B$=?>$UZ=%}H
+ctl   s204   1500000 pop  10965 selfrep_share 0.38  len  29 q  3 ops  20 rt   199 sel 0.60  $=?>$UO^A$=?>$UO^B$=?>$UZ=%}H
+ctl   s204   1600000 pop  11001 selfrep_share 0.41  len  20 q  2 ops  13 rt   127 sel 0.60  ==?>$VP^B$=?>$UB%}HO
+ctl   s204   1700000 pop  11125 selfrep_share 0.48  len  20 q  2 ops  13 rt   127 sel 0.73  ==?>$VP^B$=?>$UB%}HO
+ctl   s204   1800000 pop  10832 selfrep_share 0.35  len  17 q  2 ops  14 rt   110 sel 1.00  $=?>$^B$=?>$U=%}H
+ctl   s204   1900000 pop  10977 selfrep_share 0.47  len  17 q  2 ops  12 rt   109 sel 0.64  ==?>$V^B$=?>$VB%O
+ctl   s204   2000000 pop  11198 selfrep_share 0.50  len  17 q  2 ops  12 rt   109 sel 0.55  ==?>$V^B$=?>$VB%O
+ctl   s206    100000 pop   9814 selfrep_share 0.08  len  31 q  2 ops  17 rt   205 sel 0.50  $=?>$$ALUBO^B>C$=?>$$BLUB%}OY^O
+ctl   s206    200000 pop  10736 selfrep_share 0.05  len  31 q  2 ops  17 rt   205 sel 0.78  $=?>$$ALUBO^B>C$=?>$$BLUB%}OY^O
+ctl   s206    300000 pop  11122 selfrep_share 0.04  len  29 q  2 ops  16 rt   193 sel 0.67  $=?>$$ALUBO^B>C$=?>$$BLUA%}OY
+ctl   s206    400000 pop  11316 selfrep_share 0.02  len  27 q  2 ops  15 rt   179 sel 0.60  $=?>$$LUBO^B>C$=?>$DBLU%}OY
+ctl   s207    100000 pop   3556 selfrep_share 0.51  len  60 q  1 ops  12 rt   216 sel 0.36  EWLHHHRLUEUWJJJRJXU=DYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+ctl   s207    200000 pop   6529 selfrep_share 0.35  len  34 q  2 ops  16 rt   226 sel 0.27  $=?>$$BVBOBUBO^B>C$=?>$$BUBO%}YHOB
+ctl   s207    300000 pop   8006 selfrep_share 0.41  len  29 q  2 ops  16 rt   192 sel 0.50  $=?>$$BLUO^B>C$=?>$$BLUO%}OYH
+ctl   s207    400000 pop   7518 selfrep_share 0.42  len  33 q  2 ops  16 rt   219 sel 0.30  $=?>$$VBOBUBO^B>C$=?>$$BUBO%}YHOB
+ctl   s207    500000 pop   8219 selfrep_share 0.33  len  33 q  2 ops  16 rt   219 sel 0.22  $=?>$$VBOBUBO^B>C$=?>$$BUBO%}YHOB
+ctl   s207    600000 pop   7283 selfrep_share 0.41  len  34 q  2 ops  16 rt   226 sel 0.00  $=?>$$VBPCUBO^B>C$=?>N$$BUBO%}YHOB
+ctl   s207    700000 pop   7012 selfrep_share 0.38  len  33 q  2 ops  15 rt   219 sel 0.00  $=?>$$VBQBUBO^B>C$=?>N$BUBO%}YHOB
+ctl   s207    800000 pop   6915 selfrep_share 0.33  len  31 q  2 ops  14 rt   205 sel 0.00  $=?>$$VPBUBO^BRC$=?>N$UBO%}YHOB
+ctl   s207    900000 pop   7226 selfrep_share 0.31  len  34 q  2 ops  15 rt   226 sel 0.10  $=?>$$VBQBUBO^B>C$=?>NB$BUCO%}YHOB
+ctl   s207   1000000 pop   6226 selfrep_share 0.55  len  27 q  2 ops  11 rt   182 sel 0.40  $=?>UPUO^BRC$=?>N$BWBO%OYOB
+ctl   s207   1100000 pop   5526 selfrep_share 0.49  len  27 q  2 ops  13 rt   178 sel 0.00  $=?>$UPP^BSC$=?>N$CWBO%}YOB
+ctl   s207   1200000 pop   7935 selfrep_share 0.49  len  26 q  2 ops  12 rt   171 sel 0.00  $=?>EP^BRC$=?>N$FCWBO%}YOB
+ctl   s207   1300000 pop   2406 selfrep_share 0.57  len  25 q  2 ops  12 rt   164 sel 0.00  $=?>EP^BC$=?>N$FCWBO%}YOB
+ctl   s207   1400000 pop   5036 selfrep_share 0.38  len  25 q  2 ops  12 rt   164 sel 0.00  $=?>EP^BC$=?>N$FCWBO%}YOB
+ctl   s207   1500000 pop   1647 selfrep_share 0.48  len  26 q  2 ops  12 rt   171 sel 0.00  $=?>EP^BC$=?>M$FPCWBO%}YOB
+ctl   s207   1600000 pop   3302 selfrep_share 0.70  len  26 q  2 ops  12 rt   171 sel 0.00  $=?>EP^BC$=?>M$FPCWBO%}YOB
+ctl   s207   1700000 pop   8766 selfrep_share 0.41  len  36 q  3 ops  17 rt   245 sel 0.20  $=?>EP^AC$=?>EP^BC$=?>M$FQPCWBO%}YOB
+ctl   s207   1800000 pop   7924 selfrep_share 0.30  len  39 q  4 ops  20 rt   256 sel 0.09  $=?>PCC$=?>DQ^BC$=?>M$FRPBWAO%}YOB$=?}E
+ctl   s207   1900000 pop  10401 selfrep_share 0.32  len  31 q  3 ops  15 rt   202 sel 0.82  >=?>DQ^BC$=?>M$FRPBWAO%}YO$U?}E
+ctl   s207   2000000 pop  10628 selfrep_share 0.30  len  28 q  2 ops  13 rt   182 sel 0.82  $=?>DQ^BC$=?>M$FRBWA%}YOB=LE
+ctl   s208    100000 pop   5490 selfrep_share 0.40  len  61 q  1 ops  12 rt   221 sel 0.09  WWEWLHHHRLEUWJJJRJX=VUDYGRHJRWWRE$BMUBO^B>C$=?>$$BLUBO%}OYHO
+ctl   s208    200000 pop   2019 selfrep_share 0.34  len  61 q  1 ops  12 rt   220 sel 0.40  WWEWLHHHRLUEUXKJJRJX=VUDYGRHJRWRE$BMUBO^B>C$=?>$$BLUBO%}OYHO
+ctl   s210    100000 pop   6300 selfrep_share 0.33  len  29 q  2 ops  17 rt   193 sel 0.20  $=?>$$LUBO^B>C$=?>$$BL=BO%}OY
+ctl   s210    200000 pop   7134 selfrep_share 0.32  len  28 q  2 ops  17 rt   186 sel 0.10  $=?>$$LBO^B>C$=?>$$BL=BO%}OY
+ctl   s210    300000 pop   5352 selfrep_share 0.37  len  30 q  2 ops  16 rt   197 sel 0.18  $=?>$$LBO^BRC$=?>$$LUBO%}PY^OB
+ctl   s210    400000 pop   6010 selfrep_share 0.32  len  29 q  2 ops  16 rt   190 sel 0.00  $=?>$$LBO^BRB$=?>$$LBO%}PY^OB
+ctl   s210    500000 pop   6428 selfrep_share 0.38  len  25 q  2 ops  15 rt   165 sel 0.00  $=?>$$O^BRB$=?>$$LAO%H}PY
+ctl   s210    600000 pop   5960 selfrep_share 0.40  len  25 q  2 ops  13 rt   165 sel 0.00  $=?>$CLOH^BRB$=?>$LCO%}PY
+ctl   s210    700000 pop   9368 selfrep_share 0.53  len  35 q  3 ops  22 rt   240 sel 0.20  $=?>$$O^A$=?>$$O^BRBD$=?>$$LAO%H}PY
+ctl   s210    800000 pop   4419 selfrep_share 0.32  len  33 q  3 ops  22 rt   220 sel 0.20  $=?>$$O^$=?>$$O^BRBD$=?>$$LA%H}PY
+ctl   s210    900000 pop   8273 selfrep_share 0.31  len  51 q  5 ops  34 rt   366 sel 1.00  $=?>$$O^A$=?>$$O^A$=?>$$O^A$=?Q$O^BRBD$=?>$$LZO%H}Y
+ctl   s210   1000000 pop   9465 selfrep_share 0.52  len  30 q  2 ops  17 rt   212 sel 0.64  $=?>$$^A=Q$O^BRBD$T?>$$LZO%H}Y
+ctl   s210   1100000 pop  10766 selfrep_share 0.25  len  22 q  2 ops  13 rt   144 sel 0.00  $=?>$^BRBE$=?>$LO%H}PY
+ctl   s210   1200000 pop  10942 selfrep_share 0.28  len  28 q  2 ops  15 rt   196 sel 0.40  $=?>$^A=Q$P^BRBDT?>$$LZO%H}Y
+ctl   s210   1300000 pop  11104 selfrep_share 0.42  len  28 q  1 ops  16 rt   198 sel 0.27  $=?>$$^A=$O^BRBD$T>$$LZO%H}Y
+ctl   s210   1400000 pop  11499 selfrep_share 0.31  len  28 q  1 ops  16 rt   198 sel 0.10  $=?>$$^A=$O^BRBD$T>$$LAO%H}Y
+pf    s201    100000 pop  12038 selfrep_share 0.42  len  61 q  1 ops  11 rt   221 sel 0.18  WWEWHHHRLUEUWJJJRJKXUUZGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s201    200000 pop  11954 selfrep_share 0.39  len  61 q  1 ops  12 rt   221 sel 0.82  WWEWHHHRMUEUWJJJERJKXU=ZGRHJLRWWE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s201    300000 pop  12005 selfrep_share 0.32  len  59 q  1 ops  10 rt   213 sel 0.73  WWEWHHHMUEUWWJJJERJKXUZSHILRWWRE$BLUBO^B>C$=?>$BLUBO%}OYHOB
+pf    s201    400000 pop  12025 selfrep_share 0.46  len  48 q  2 ops  12 rt   166 sel 0.73  EUWYIJJFRIXUDXGRGJ?RVWS$BLUBO^B>C$=?>$$LUBO%}OYH
+pf    s201    500000 pop  12112 selfrep_share 0.45  len  47 q  1 ops  11 rt   167 sel 0.73  EUWYIIFRIXUDXGRGILRVVS$BLUBO^B>C$=?>$$LUBO%}OYH
+pf    s201    600000 pop  12123 selfrep_share 0.40  len  43 q  1 ops  11 rt   150 sel 0.82  JJERJKUZSHL>WWRE$BUBO^B>C$=?>$BLUBO%}OYYHOB
+pf    s201    700000 pop  12162 selfrep_share 0.48  len  44 q  1 ops  12 rt   153 sel 0.73  JJER$JKUZSHL>WWRE$BUBO^B>C$=?>$BLUBO%}OYYHOB
+pf    s201    800000 pop  12165 selfrep_share 0.44  len  42 q  1 ops  11 rt   147 sel 0.18  JJESJKXUUGRJLWWR$BUBO^B>C$=?>$$ALUCO%}YHOB
+pf    s201    900000 pop  12201 selfrep_share 0.42  len  40 q  1 ops  10 rt   140 sel 0.27  JJESJXUUGRJLWWR$BUBO^B>C$=?>$ALUCO%}YHOB
+pf    s201   1000000 pop  12153 selfrep_share 0.56  len  42 q  1 ops  10 rt   152 sel 1.00  JJE$SJKUUGRJLWWRV$BUBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1100000 pop  12083 selfrep_share 0.71  len  42 q  1 ops  10 rt   151 sel 0.91  JJE$OSJKUUGRJLWWT$BUBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1200000 pop  12148 selfrep_share 0.62  len  42 q  1 ops  10 rt   151 sel 0.45  JJF$OSJKUUGRJLWWT$BUBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1300000 pop  12168 selfrep_share 0.72  len  41 q  1 ops  11 rt   147 sel 0.64  JJ$OHSJK=UGRJLWW$BUBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1400000 pop  12253 selfrep_share 0.68  len  40 q  1 ops  11 rt   143 sel 0.27  JJ$OHSJK=UGRJLWW$ABO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1500000 pop  12215 selfrep_share 0.60  len  39 q  1 ops  11 rt   137 sel 0.82  KJF$PVIOXDSGLXSS$CELUBO^B>C$=?>$LUB%}YH
+pf    s201   1600000 pop  12200 selfrep_share 0.66  len  42 q  1 ops  11 rt   150 sel 0.55  JJ$LOHTJK=UGRJLWW$AHBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1700000 pop  12197 selfrep_share 0.50  len  40 q  1 ops  12 rt   144 sel 0.64  JJ$OHJK=UGRJLWW$$ZBO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1800000 pop  12184 selfrep_share 0.42  len  42 q  1 ops  11 rt   150 sel 0.82  JJ$MOHTJK=UGRJLWW$KABO^B>C$=?>$ALUCO%YNHOB
+pf    s201   1900000 pop  12199 selfrep_share 0.71  len  40 q  1 ops  12 rt   141 sel 0.55  KJF$PVYIXDSGLXSS$$ELUBO^B>C$=?>H$LUB%}YH
+pf    s201   2000000 pop  12213 selfrep_share 0.41  len  41 q  1 ops  12 rt   144 sel 0.36  KFJF$PVYIXDSGLXSS$$ELUBO^B>C$=?>H$LUB%}YH
+pf    s202    100000 pop  11982 selfrep_share 0.36  len  53 q  1 ops  11 rt   188 sel 1.00  EUWYJJJGRXUUVDGRHJLRWWRE$BULUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s202    200000 pop  12015 selfrep_share 0.42  len  60 q  2 ops  12 rt   204 sel 1.00  WWELHHHLUEUVIJJRX?VUUDGRHILRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s202    300000 pop  12039 selfrep_share 0.37  len  51 q  2 ops  13 rt   176 sel 0.36  EUWYJJJRX=UVDGRHJ?RWWRE$BULUBO^B>C$=?>$$CLBO%}OYHOB
+pf    s202    400000 pop  12119 selfrep_share 0.50  len  50 q  2 ops  13 rt   171 sel 0.73  EUWYEJJJRX=UVDGRH?RWWRE$BUUBO^B>C$=?>$$CLBO%}OYHOB
+pf    s202    500000 pop  12088 selfrep_share 0.61  len  48 q  2 ops  13 rt   165 sel 0.64  EUWEJJJRX=UVDGRH?RWRE$BUUBO^B>C$=?>$$CLBO%}OYHOB
+pf    s202    600000 pop  12131 selfrep_share 0.52  len  47 q  2 ops  13 rt   161 sel 0.00  EUWEJJIRX=VDGRH?SWWRE$BUUBO^B>C$=?>$$CBO%}OYHOB
+pf    s202    700000 pop  12158 selfrep_share 0.40  len  46 q  2 ops  13 rt   158 sel 0.00  EUWEJJIX=VDGRH?SWWRE$BUUBO^B>C$=?>$$CBO%}OYHOB
+pf    s202    800000 pop  12127 selfrep_share 0.44  len  48 q  3 ops  15 rt   165 sel 0.45  EUWFJJ^RX=VDGRH??SWWRE$BUUBO^B>C$=?>$$CBO%}OYHOB
+pf    s202    900000 pop  12136 selfrep_share 0.42  len  48 q  1 ops  12 rt   170 sel 0.91  EUWEJERX=UVDGRHLCRUWRE$BUBO^B>C$=?>$$CMBO%}OYHOB
+pf    s202   1000000 pop  12119 selfrep_share 0.48  len  45 q  1 ops  11 rt   159 sel 0.73  EUEEJJSXUVDGRHRRWE$BUUBO^B>C$=?>$$CLBO%}OYHOB
+pf    s202   1100000 pop  12191 selfrep_share 0.45  len  42 q  1 ops  11 rt   148 sel 0.64  EUEJJSXUVDGRHRE$BUUBO^B>C$=?>$$CLBO%}OYHOB
+pf    s202   1200000 pop  12156 selfrep_share 0.39  len  40 q  2 ops  12 rt   138 sel 0.91  FJJE^RTVDGRH?SWWR$BUBO^B>C$=?>$BO%}OYHOB
+pf    s202   1300000 pop  12164 selfrep_share 0.48  len  38 q  2 ops  12 rt   131 sel 0.55  FJJE^RTDGRH?SWW$BUBO^B>C$=?>$BO%}OYHOB
+pf    s202   1400000 pop  12192 selfrep_share 0.37  len  43 q  3 ops  15 rt   149 sel 0.45  FJJ^ORXTDG>H??SWWF$BUBO^B>C$=?>$$CBO%}OYHOB
+pf    s202   1500000 pop  12188 selfrep_share 0.41  len  43 q  3 ops  15 rt   149 sel 0.55  FJJ^ORXTDG>H??SWWF$BUBO^B>C$=?>$$CBO%}OXHOB
+pf    s202   1600000 pop  12207 selfrep_share 0.53  len  41 q  3 ops  16 rt   142 sel 0.45  FJJ$R=UDHR??SWWJ$BBO^B>C$=?>$$CBO%}ONY^OB
+pf    s202   1700000 pop  12217 selfrep_share 0.53  len  42 q  1 ops  13 rt   104 sel 0.73  EUDESJSXUVE^RHORF$UBO^B>C$==?>$$LBO%}OYHOB
+pf    s202   1800000 pop  12245 selfrep_share 0.61  len  42 q  1 ops  13 rt   104 sel 0.18  EUDESJSXUVE^RHORF$UBO^B>C$==?>$$LBO%}OYHOB
+pf    s202   1900000 pop  12247 selfrep_share 0.71  len  46 q  1 ops  12 rt   113 sel 0.45  EUDESRJSXUVEHRGORLFE$BO^B>C$==?K>$$LBO%}OYCHOB
+pf    s202   2000000 pop  12285 selfrep_share 0.51  len  44 q  2 ops  13 rt   105 sel 0.09  DSRJSYUVEHRGPR?QFE$BO^B>C$==?K>$$LBO%}OYCHOB
+pf    s203    100000 pop  11990 selfrep_share 0.45  len  63 q  2 ops  12 rt   212 sel 1.00  WWEWLHHHRLUUWJJJR?JXUUIUDXGHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OY
+pf    s203    200000 pop  11954 selfrep_share 0.40  len  61 q  3 ops  13 rt   205 sel 0.73  WWE?WLHHHLUUWJJJ?JXUUIUXGHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s203    300000 pop  11965 selfrep_share 0.33  len  63 q  2 ops  12 rt   226 sel 0.73  WWWEWLHHHRUEUWEJJJPR?JXV=UDGRZJLRWWRE$BLUBO^B>C$=?>$BLUBO%}O
+pf    s203    400000 pop  11913 selfrep_share 0.47  len  52 q  2 ops  12 rt   183 sel 0.36  EMUWEJJPR?JXV=UDGRZJLRWWRE$BLUBO^B>C$=?>$BLUBO%}OYHO
+pf    s203    500000 pop  12088 selfrep_share 0.50  len  49 q  2 ops  12 rt   173 sel 0.45  EMWDJJPR?XV=UDGRZJLWWRE$BLUBO^B>C$=?>$BLUBO%}OYHO
+pf    s203    600000 pop  12007 selfrep_share 0.39  len  55 q  4 ops  15 rt   188 sel 0.73  EMW^EJJER?JXV=U?EGRZCJ?RDVRE$BLUBO^B>C$=?>$BLUBO%}OQYHO
+pf    s203    700000 pop  12012 selfrep_share 0.44  len  54 q  4 ops  16 rt   189 sel 1.00  ELW^EIIER?JXV=U?EGRXJ?WRV$VRIE$BLUBO^B>C$=?>$BLUBO%}OY
+pf    s203    800000 pop  12092 selfrep_share 0.41  len  54 q  5 ops  16 rt   184 sel 0.91  EMV^EAIJER?KXV=U?EGRZC?R?VWD$CLUBO^B>C$=?>$LUBO%}OQYHO
+pf    s203    900000 pop  12085 selfrep_share 0.38  len  50 q  3 ops  14 rt   174 sel 1.00  EI$IER?JXV=ULEGRXJ?WRVDWRE$BLUBO^B>C$=?>$BLUBO%}OY
+pf    s203   1000000 pop  12049 selfrep_share 0.47  len  54 q  3 ops  12 rt   189 sel 1.00  EMPXFJER?JXVTU?EGERZAEKSW$BLUBO^B>C$=?>I$BRLUBO%}OQYHO
+pf    s203   1100000 pop  12096 selfrep_share 0.32  len  52 q  3 ops  12 rt   182 sel 0.86  EMOXFJER?JXVTU?EGERZAESW$BLUBO^B>C$=?>I$BRLUBO%}OQYH
+pf    s203   1200000 pop  12206 selfrep_share 0.71  len  29 q  1 ops  11 rt   105 sel 0.67  WR$URJE$LUBO^B>C$=?>$LUBO%}OY
+pf    s203   1300000 pop  12286 selfrep_share 0.74  len  29 q  1 ops  11 rt   104 sel 0.36  WR$UHRJE$LBO^B>C$=?>$LUBO%}OY
+pf    s203   1400000 pop  12294 selfrep_share 0.71  len  28 q  1 ops  11 rt   100 sel 0.00  WR$UHRJE$LBO^B>C$=?>$LUB%}OY
+pf    s203   1500000 pop  12303 selfrep_share 0.65  len  28 q  1 ops  11 rt   100 sel 0.18  WR$UOHRJE$LC^B>C$=?>$LUBO%}Y
+pf    s203   1600000 pop  12306 selfrep_share 0.67  len  25 q  1 ops  11 rt    90 sel 0.00  WR$UJE$L^B>C$=?>$LUBO%}OY
+pf    s203   1700000 pop  12126 selfrep_share 0.70  len  28 q  1 ops  11 rt    98 sel 0.27  WR$UBOHRJE$L^B>C$=?>$LUB%}OY
+pf    s203   1800000 pop  11404 selfrep_share 0.78  len  25 q  1 ops  10 rt    93 sel 0.00  WR$UJE$LK^B>C$=?>$LUBO%OY
+pf    s203   1900000 pop  11642 selfrep_share 0.81  len  27 q  1 ops  11 rt    97 sel 0.00  WR$VRJE$LVCO^B>C$=?>$LU%}OY
+pf    s204    100000 pop  11717 selfrep_share 0.50  len  60 q  1 ops  12 rt   217 sel 0.55  WWEWLHHHRLUEUWJJJRU=UDYRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s204    200000 pop  10783 selfrep_share 0.32  len  63 q  1 ops  12 rt   229 sel 0.27  WWWGEWLHRLUEUWJJJRJX=UDYGRHDJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OY
+pf    s204    300000 pop  10988 selfrep_share 0.52  len  57 q  1 ops  12 rt   207 sel 0.91  WWEHGHRVEUWJJJRUJVU=DRHJLRWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s204    400000 pop  11797 selfrep_share 0.48  len  58 q  1 ops  12 rt   210 sel 0.73  WWWEHXGHRVEUWJJJRUJVU=DRGLRWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s204    500000 pop  11957 selfrep_share 0.40  len  57 q  1 ops  12 rt   207 sel 1.00  WWWEHWGHRVEUWJJIRVJVU=DRGLRWRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204    600000 pop  12022 selfrep_share 0.38  len  56 q  1 ops  12 rt   203 sel 0.73  WWVEHWGHRVEUWJJISVVU=DRGLRWRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204    700000 pop  11938 selfrep_share 0.33  len  53 q  1 ops  12 rt   192 sel 0.91  WVVFHWHRVEUWJIIVJU=RGLTRRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204    800000 pop  12055 selfrep_share 0.41  len  52 q  1 ops  12 rt   189 sel 0.91  WVVHWHRVEUWJDIVJU=RGLTRRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204    900000 pop  12072 selfrep_share 0.50  len  50 q  1 ops  12 rt   182 sel 0.55  WVVHWHREUWJDIVJU=GLTRRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204   1000000 pop  12070 selfrep_share 0.59  len  50 q  1 ops  12 rt   182 sel 0.91  WVVIWHREUWJDIWJU=GLTRRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204   1100000 pop  12064 selfrep_share 0.47  len  50 q  1 ops  12 rt   182 sel 0.82  WUVJWHREUWJDJWJU=GLTRRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+pf    s204   1200000 pop  12102 selfrep_share 0.48  len  44 q  1 ops  10 rt   157 sel 1.00  EVITREUWJPJRIVGRRE$BLUBO^B>C$=?>$BLUBO%}OHOB
+pf    s204   1300000 pop  12115 selfrep_share 0.37  len  48 q  1 ops  13 rt   173 sel 0.91  VGWH=REUWJDIQJU=GLTRE$BLUBO^B>C$=?>$$BLUCO%}OHOB
+pf    s204   1400000 pop  12157 selfrep_share 0.47  len  46 q  1 ops  12 rt   165 sel 0.91  VGWH=REUWJDIOJU=GLTRE$BLBO^B>C$=?>$BLUCO%}OHOB
+pf    s204   1500000 pop  12130 selfrep_share 0.43  len  44 q  1 ops  10 rt   158 sel 0.73  EVITEEUWPJRIVHCSRE$BLUBO^B>C$=?>$BLUBO%}OHOB
+pf    s204   1600000 pop  12186 selfrep_share 0.51  len  43 q  1 ops  10 rt   154 sel 0.55  EVITEUWJPJRIHVGRE$BLUBO^B>C$=?>$BLUBO%}OHOB
+pf    s204   1700000 pop  12160 selfrep_share 0.55  len  38 q  1 ops  11 rt   138 sel 0.82  WIWEUWJDJVJ=GLTR$CUB^B>C$=?>$BLUBO%}HO
+pf    s204   1800000 pop  12178 selfrep_share 0.41  len  38 q  1 ops  11 rt   138 sel 0.55  WIWEUWJDJVJ=GLTR$CUB^B>C$=?>$BLUBO%}HO
+pf    s204   1900000 pop  12174 selfrep_share 0.57  len  36 q  1 ops  11 rt   130 sel 0.50  WJWEUWJDJVJ=HLTR$CUB^B>C$=?>$BLB%}HO
+pf    s205    100000 pop  11920 selfrep_share 0.32  len  57 q  1 ops  11 rt   202 sel 0.45  HRLUEUWJJJERJXUUPUDXGRHJLRWWRE$BUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s205    200000 pop  11953 selfrep_share 0.36  len  58 q  1 ops  11 rt   209 sel 0.64  WWEWHHHRLUEUWJJJERJUUYGRGJLRWRE$BUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s205    300000 pop  12008 selfrep_share 0.48  len  44 q  1 ops  10 rt   151 sel 0.91  JERJXMUUYGSYHJLRWRE$BUBO^B>C$=?>$BUBO%}OYHOB
+pf    s205    400000 pop  12156 selfrep_share 0.37  len  50 q  1 ops  12 rt   172 sel 1.00  YHJJERJXUUP=DZGRHRJLRWWRO$BUBO^B>C$=?>$$UBO%}OYHPB
+pf    s205    500000 pop  12135 selfrep_share 0.51  len  42 q  1 ops  13 rt   147 sel 0.91  JER$JXU=XGRGLRWRE$BUBO^B>C$=?>$$ALUBO%}HOB
+pf    s205    600000 pop  12158 selfrep_share 0.51  len  42 q  1 ops  13 rt   148 sel 0.64  JER$JXU=GRGLRWREA$BUBO^B>C$=?>$$ALUBO%}HOB
+pf    s205    700000 pop  12176 selfrep_share 0.36  len  46 q  1 ops  11 rt   158 sel 0.55  JERK$JXMUUGSYHJMRWRETY$BBO^B>C$=?>$BUBO%}OYHOB
+pf    s205    800000 pop  12171 selfrep_share 0.62  len  42 q  1 ops  11 rt   145 sel 0.91  JJERJYUUPDGHJLWWR$BUBO^B>C$=?>$$UBO%}OYHOB
+pf    s205    900000 pop  12207 selfrep_share 0.56  len  41 q  1 ops  13 rt   144 sel 0.73  JERN$JXU=GRGLWR$A$ABO^B>C$=?>I$ALUBO%}HOB
+pf    s205   1000000 pop  12210 selfrep_share 0.49  len  40 q  1 ops  13 rt   140 sel 0.90  JERN$JXU=GRGLWR$Z$ABO^B>C$=?>I$ALBO%}HOB
+pf    s205   1100000 pop  12215 selfrep_share 0.39  len  38 q  1 ops  12 rt   131 sel 0.27  JJERJXUU=DRHWWR$BO^B>C$=?>$$UBO%}OYHOB
+pf    s205   1200000 pop  12236 selfrep_share 0.68  len  37 q  1 ops  11 rt   127 sel 0.18  JJE$RJXUUDRHLWWR$BO^B>C$=?>$UBO%}OHOB
+pf    s205   1300000 pop  12196 selfrep_share 0.63  len  39 q  1 ops  13 rt   136 sel 0.00  JE$N$JXU=GRGLWRCZ$BO^B>C$=?>I$ALBO%}GOB
+pf    s205   1400000 pop  12247 selfrep_share 0.57  len  38 q  1 ops  14 rt   133 sel 0.50  JE$M$XU=GRGLW>CZ$BO^B>C$=?>I$ALBO%}GOB
+pf    s205   1500000 pop  12217 selfrep_share 0.63  len  36 q  1 ops  13 rt   124 sel 1.00  M$OXU=GRGLW>CZ$BO^B>C$=?>I$ALBO%}GOB
+pf    s205   1600000 pop  12246 selfrep_share 0.54  len  36 q  1 ops  13 rt   124 sel 0.00  M$OXU=GRGLW>CZ$BO^B>C$=?>I$ALBO%}GOB
+pf    s205   1700000 pop  12196 selfrep_share 0.49  len  39 q  1 ops  13 rt   140 sel 1.00  JE$M$JXU=GRGLW>CZ$YBO^B>C$=?>I$ALBO%GOB
+pf    s205   1800000 pop  12238 selfrep_share 0.46  len  33 q  1 ops  12 rt   114 sel 0.00  M$OXU=GRGLWZ$BO^B>C$=?>I$LBO%}GOB
+pf    s205   1900000 pop  12277 selfrep_share 0.47  len  32 q  1 ops  11 rt   111 sel 0.00  M$OXUTRGQCZ$BO^B>C$=?>I$ABO%}GOB
+pf    s206    100000 pop  11957 selfrep_share 0.38  len  59 q  2 ops  12 rt   201 sel 0.82  WWEWLHHHRLUEUWJJJRJX?UDZGRHJLRWWRE$BLUBO^B>C$=?>$$BLUB%}OYH
+pf    s206    200000 pop  12082 selfrep_share 0.39  len  46 q  2 ops  12 rt   160 sel 0.91  JJEIRJX?VUUYGSJLSWWRE$BLUB^B>C$=?>$$BLUBO%}OYH
+pf    s206    300000 pop  12021 selfrep_share 0.49  len  48 q  1 ops  12 rt   172 sel 0.91  HHLUEWJJJSXK=UUXGRJLRWVRE$BLUB^B>C$=?>$$BLU%}OYH
+pf    s206    400000 pop  12059 selfrep_share 0.45  len  48 q  1 ops  12 rt   172 sel 0.64  HHLUEWJJJSXK=UUXGRJLRWVRE$BLUB^B>C$=?>$$BLU%}OYH
+pf    s206    500000 pop  12098 selfrep_share 0.54  len  41 q  2 ops  12 rt   144 sel 0.45  EJI>J?UDZRGILRWVRE$LUBO^B>C$=?>$BLUB%}OYH
+pf    s206    600000 pop  12147 selfrep_share 0.51  len  41 q  2 ops  13 rt   144 sel 0.64  EJI>J?UDZ>GILRWVRE$LUBO^B>C$=?>$BLUB%}OYH
+pf    s206    700000 pop  12186 selfrep_share 0.48  len  41 q  2 ops  12 rt   144 sel 0.73  EJIERJ?UD>GILRXVRE$LUCO^B>C$=?>$BLUB%}OYH
+pf    s206    800000 pop  12128 selfrep_share 0.61  len  42 q  2 ops  13 rt   147 sel 0.45  EJIER$J?UD>GILRWURD$MUCO^B>C$=?>$BLUB%}OYH
+pf    s206    900000 pop  12150 selfrep_share 0.53  len  43 q  2 ops  14 rt   151 sel 0.36  EJIER$J?UD>GILRWUR$D$MUCO^B>C$=?>$CLUB%}OYH
+pf    s206   1000000 pop  12184 selfrep_share 0.61  len  43 q  2 ops  14 rt   150 sel 0.45  EJIEQ$J?UD>GMILRWU$D$MUCO^B>C$=?>$CLUB%}OYH
+pf    s206   1100000 pop  12164 selfrep_share 0.56  len  43 q  2 ops  13 rt   149 sel 0.25  EJIEQ$J?UD>GMILRWUD$MUCO^B>C$=?C>$CLUB%}OYH
+pf    s206   1200000 pop  12193 selfrep_share 0.49  len  37 q  1 ops  13 rt   128 sel 0.00  ER$JUD>GILRU=RE$MUCO^B>C$=?>$LUB%}OYH
+pf    s206   1300000 pop  12226 selfrep_share 0.37  len  37 q  2 ops  14 rt   129 sel nan  EJ$J?UD>GILRW$$MUCO^B>C$=?C>$CLU%}OYH
+pf    s206   1400000 pop  12230 selfrep_share 0.39  len  34 q  1 ops  13 rt   117 sel 0.00  ER$JUD>GLR=URE$MU^B>C$=?>$LUB%}OYH
+pf    s206   1500000 pop  12118 selfrep_share 0.39  len  43 q  1 ops  12 rt   152 sel 0.50  EJIESM$JU>GILRUURFB$MUCMPO^B>C$=?D>$MUB%}YH
+pf    s206   1600000 pop  12106 selfrep_share 0.40  len  44 q  1 ops  12 rt   156 sel 0.33  EIIESM$JU>GILRUUSFCA$MUCMPO^B>C$=?D>$MUB%}YH
+pf    s206   1700000 pop  12111 selfrep_share 0.38  len  37 q  1 ops  11 rt   131 sel 0.60  EJDQ$UDGILRUND$MUBO^B>C$=?C>$CLUB%}OH
+pf    s206   1800000 pop  12144 selfrep_share 0.65  len  37 q  1 ops  11 rt   131 sel 0.17  EJDQ$UDGILRUMD$MUBO^B>C$=?C>$CLUB%}OH
+pf    s206   1900000 pop  12138 selfrep_share 0.48  len  36 q  1 ops  11 rt   127 sel 0.50  EJDQ$UDGILRULD$UBO^B>C$=?C>$CLUB%}OH
+pf    s206   2000000 pop  12177 selfrep_share 0.58  len  36 q  1 ops  11 rt   127 sel 0.14  EJDQ$UDGILRULD$UBO^B>C$=?C>$CLUB%}OH
+pf    s207    100000 pop  11890 selfrep_share 0.30  len  61 q  1 ops  11 rt   220 sel 0.09  WWEWLHHHRLUEUWJJJRXUVUDYRHJLRWWRF$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s207    200000 pop  11972 selfrep_share 0.34  len  54 q  1 ops  12 rt   194 sel 0.82  WWWHHHRLUEUWJJJJU=DGRJLRWWRE$BUBO^B>C$=?>$$BUBO%}OYHOB
+pf    s207    300000 pop  11866 selfrep_share 0.51  len  43 q  1 ops  10 rt   155 sel 0.36  JJERKU=DYGRJLRWWRE$BUBO^B>C$=?>$BMUBO%NOHOB
+pf    s207    400000 pop  12104 selfrep_share 0.68  len  46 q  1 ops  11 rt   160 sel 0.00  JJEOJXUUSUDGHJLRWWRD$BYUBO^B>C$=?>$$BMBO%}YHOB
+pf    s207    500000 pop  12184 selfrep_share 0.63  len  44 q  1 ops  12 rt   152 sel 0.27  JJE$JXUUSUDGHJLRWWR$YUBO^B>C$=?>$$BMBO%}YHOB
+pf    s207    600000 pop  12153 selfrep_share 0.39  len  45 q  1 ops  12 rt   156 sel 0.00  JJE$JXUUSUDGHJLRWWRV$YUBO^B>C$=?>$$BMBO%}YHOB
+pf    s207    700000 pop  12200 selfrep_share 0.37  len  46 q  1 ops  12 rt   159 sel 0.00  JJEQO$JXUUSDGHJLRWWRK$YUBO^B>C$=?>$$BMBO%}YHOB
+pf    s207    800000 pop  12165 selfrep_share 0.69  len  44 q  1 ops  12 rt   153 sel 0.09  JJEE$JXUURUDGHJLWWSR$YUBO^B>C$=?>$$BMBO%}YOB
+pf    s207    900000 pop  12139 selfrep_share 0.48  len  45 q  1 ops  12 rt   156 sel 0.55  JJEE$LJXUUSUDGHJLWUSR$YUBO^B>C$=?>$$BMBO%}YOB
+pf    s207   1000000 pop  12130 selfrep_share 0.54  len  44 q  2 ops  13 rt   152 sel 0.36  JIEE$LJXUUSUDGHJ?WVR$XUBO^B>C$=?>$$BMBO%}YOB
+pf    s207   1100000 pop  12115 selfrep_share 0.56  len  46 q  1 ops  12 rt   158 sel 0.70  JIFJ$JMXUVSUDGHJLRWUSW$UBO^B>C$=?>D$BMBO%}Y^OB
+pf    s207   1200000 pop  12147 selfrep_share 0.47  len  46 q  1 ops  12 rt   158 sel 0.50  JIFJ$JMXUVSUDGHJLRWUSX$UBO^B>C$=?>D$BMBO%}Y^OB
+pf    s207   1300000 pop  12156 selfrep_share 0.40  len  43 q  1 ops  12 rt   148 sel 0.67  JJEJ$JYUVSUDGJLRWURU$BO^B>C$=?>D$BMBO%}Y^OB
+pf    s207   1400000 pop  12138 selfrep_share 0.42  len  47 q  1 ops  12 rt   161 sel 0.67  JIFK$IMBXUVSUDGHJLRWUSBX$UBO^B>C$=?>D$BBO%}Y^OB
+pf    s207   1500000 pop  12196 selfrep_share 0.38  len  42 q  1 ops  12 rt   144 sel 0.00  JJEJ$JYUVSUDGJLRWURU$BO^B>C$=?>D$BBO%}Y^OB
+pf    s207   1600000 pop  12206 selfrep_share 0.46  len  40 q  1 ops  12 rt   139 sel 0.57  JIE$LJUUSDGHJLWV=$YUBO^B>C$=?>$BMBO%}YOB
+pf    s207   1700000 pop  12209 selfrep_share 0.56  len  42 q  2 ops  13 rt   144 sel 0.75  FE$LJOXFUUUDGH?V=SV$YUBO^B>C$=?>$BMBO%}YOB
+pf    s207   1800000 pop  12068 selfrep_share 0.52  len  41 q  1 ops  13 rt   143 sel 0.75  JIEI$JVSUG^JLRW=RU$GBO^B>C$=?>F$BMBO%}YOB
+pf    s207   1900000 pop  12238 selfrep_share 0.52  len  37 q  1 ops  13 rt   128 sel 0.00  EI$OJVSU^JLR=RU$BO^B>C$=?>F$BMBO%}YOB
+pf    s207   2000000 pop  12297 selfrep_share 0.46  len  40 q  1 ops  15 rt   100 sel 0.20  $LJOXUU=GHKW=S=$YUBO^B>C$==?Z>$$BMBO%YOB
+pf    s208    100000 pop  11944 selfrep_share 0.44  len  61 q  1 ops  11 rt   220 sel 0.27  WWEWLHHHRLUEUWJJJRXVUUDYGRJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s208    200000 pop  12032 selfrep_share 0.41  len  60 q  1 ops  12 rt   217 sel 0.64  WWELHHHRLUEUWJJIRXV=UYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s208    300000 pop  11974 selfrep_share 0.37  len  56 q  1 ops  11 rt   203 sel 0.82  WWEHHHRLUEWJJIRUVUDXGRJLRVRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s208    400000 pop  12004 selfrep_share 0.42  len  56 q  1 ops  12 rt   204 sel 0.73  WWVEHHLUEUWJJISX=YGRGJLRWWRE$BMUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s208    500000 pop  12050 selfrep_share 0.41  len  52 q  1 ops  11 rt   186 sel 1.00  HLUEUWEEJJIXVUUYG$GJLRWWRE$BLUBO^B>C$=?>$BLUBO%}OYHO
+pf    s208    600000 pop  12063 selfrep_share 0.39  len  39 q  1 ops  10 rt   137 sel 0.55  EJJRXVUJVELRWXE$BUBO^B>C$=?>$BUBO%}OYOB
+pf    s208    700000 pop  12092 selfrep_share 0.47  len  39 q  1 ops  10 rt   137 sel 0.55  EJJRXVUJWELRWWE$BUBO^B>C$=?>$BUBO%}OYOB
+pf    s208    800000 pop  12125 selfrep_share 0.54  len  40 q  1 ops  12 rt   140 sel 0.60  JIR$YVUJVDLR>WVEH$BUBO^B>C$=?>$LUBO%}YOB
+pf    s208    900000 pop  12181 selfrep_share 0.60  len  39 q  1 ops  12 rt   136 sel 0.75  EJJ$R$VUJVDLRWX$BUBO^B>C$=?O>$LUBO%}YOB
+pf    s208   1000000 pop  12227 selfrep_share 0.57  len  38 q  1 ops  10 rt   134 sel 0.71  EIJRXUJVFLRSWE$BUBO^B>C$=?>$BUBO%}OYOB
+pf    s208   1100000 pop  12167 selfrep_share 0.50  len  39 q  1 ops  12 rt   136 sel 0.75  EJK$R$VUJVDLRZX$BUBO^B>C$=?O>$LUBO%}YOB
+pf    s208   1200000 pop  12195 selfrep_share 0.48  len  40 q  1 ops  12 rt   143 sel 0.75  EJK$OR$VUJUDLR$X$BUBO^B>C$=?O>$LUBO%OYOB
+pf    s208   1300000 pop  12194 selfrep_share 0.47  len  36 q  1 ops  11 rt   128 sel 0.60  EIJRYVVLR=WE$BUBO^B>C$=?>$BUBO%}OYOB
+pf    s208   1400000 pop  12210 selfrep_share 0.50  len  40 q  1 ops  12 rt   142 sel 1.00  EJD$VUJUDLRWS$XFQ$UBO^B>C$=?O>$LVBO%}YOB
+pf    s208   1500000 pop  12205 selfrep_share 0.49  len  38 q  1 ops  11 rt   135 sel 0.50  EJK$OS$VUIUDLR$XCBBO^B>C$=?O>$UBO%OYOB
+pf    s208   1600000 pop  12269 selfrep_share 0.53  len  40 q  1 ops  12 rt   102 sel 0.20  SUT$OYUJVDLR>WFHH$BUBO^B>C$==?>$LUBO%YOB
+pf    s208   1700000 pop  12300 selfrep_share 0.55  len  38 q  1 ops  12 rt    95 sel 0.33  EJK$ORUJULR$XDBUBO^B>C$==?O>$LUBO%}YOB
+pf    s208   1800000 pop  12247 selfrep_share 0.70  len  38 q  1 ops  12 rt    95 sel 0.38  EJK$ORUJULR$XDBUBO^B>C$==?O>$LUBO%}YOB
+pf    s208   1900000 pop  12282 selfrep_share 0.70  len  38 q  2 ops  13 rt    94 sel 0.36  EJK$ORVUJU?R$XDBUBO^B>C$==?O>$UBO%}YOB
+pf    s208   2000000 pop  12251 selfrep_share 0.78  len  38 q  2 ops  13 rt    95 sel 0.18  EKK$ORVUJU?R$XEBUBO^B>C$==?O>$LUBO%}OB
+pf    s209    100000 pop  12002 selfrep_share 0.44  len  61 q  1 ops  12 rt   220 sel 0.18  WWEWLHHHRLUEUWJJJRXUU=DYGRJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s209    200000 pop  11955 selfrep_share 0.38  len  62 q  2 ops  12 rt   208 sel 0.82  WWEWLHHRLUFUWEJJJ?JXVUDZGSGJLRWWSE$BLUCO^B>C$=?>$$BLUBO%}OYH
+pf    s209    300000 pop  12073 selfrep_share 0.45  len  51 q  2 ops  13 rt   175 sel 0.55  UWYEJJJRXU=UDXGHJ?RWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s209    400000 pop  12059 selfrep_share 0.45  len  49 q  1 ops  12 rt   174 sel 0.55  UWYEJJJRXU=UDYGHJLSFVRE$BLUBO^B>C$=?>$$BLUBO%}OYH
+pf    s209    500000 pop  12012 selfrep_share 0.50  len  49 q  2 ops  12 rt   174 sel 1.00  HHHRUWEJISWUUVGHLR?XWRE$BLUBO^B>C$=?>$$BLUBO%}OYH
+pf    s209    600000 pop  12120 selfrep_share 0.34  len  48 q  2 ops  12 rt   171 sel 0.82  HHIRUWEISWUUVGHLR?XWRE$BLUBO^B>C$=?>$$BLUBO%}OYH
+pf    s209    700000 pop  12078 selfrep_share 0.43  len  46 q  2 ops  12 rt   163 sel 1.00  HHJRUWEISWUVWGHLR?XWRE$BMUBO^B>C$=?>$$LUB%}OYH
+pf    s209    800000 pop  12133 selfrep_share 0.46  len  49 q  1 ops  12 rt   170 sel 0.91  JJERXUU=DYGRITLRWWRE$ALUBO^B>C$=?>$$LUBO%F}OJYHOB
+pf    s209    900000 pop  12171 selfrep_share 0.39  len  48 q  1 ops  12 rt   167 sel 1.00  JJERXUU=DYGRITLWWRE$ALUBO^B>C$=?>$$LUCO%F}OJYHOB
+pf    s209   1000000 pop  12094 selfrep_share 0.49  len  41 q  1 ops  11 rt   145 sel 0.82  UVAEJJU=UDXGHILRR$BUBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1100000 pop  12205 selfrep_share 0.51  len  40 q  2 ops  12 rt   140 sel 0.45  UVAEJJU=UXGHI?RR$BUBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1200000 pop  12207 selfrep_share 0.49  len  41 q  2 ops  12 rt   143 sel 0.64  UVYFJJU=UDXGHI?SR$BUBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1300000 pop  12159 selfrep_share 0.47  len  39 q  2 ops  12 rt   136 sel 0.91  UVZFEJU=UDXHI?TR$UBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1400000 pop  12223 selfrep_share 0.59  len  39 q  2 ops  12 rt   136 sel 0.27  UVZFEJU=UDXHI?TR$UBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1500000 pop  12214 selfrep_share 0.39  len  37 q  2 ops  13 rt   131 sel 0.18  UVZFEJIU=UXHI?=R$UBO^B>C$=?>$BUBO%}HO
+pf    s209   1600000 pop  12241 selfrep_share 0.43  len  38 q  2 ops  12 rt   132 sel 0.73  UVZEEJIU=UDXHI?R$UBO^B>C$=?>$CUBO%}YHO
+pf    s209   1700000 pop  12205 selfrep_share 0.56  len  36 q  3 ops  13 rt   127 sel 0.45  UV?FEU=UDHI?R$UBO^B>C$=?>$CBUBO%}YHO
+pf    s209   1800000 pop  12201 selfrep_share 0.61  len  36 q  1 ops  12 rt   128 sel 0.64  UVXFEJU=UXHIJ=R$UBO^B>C$=?>$BUBO%}HO
+pf    s209   1900000 pop  12238 selfrep_share 0.67  len  35 q  2 ops  12 rt   125 sel 0.89  UV?EE=UDHILR$UBO^B>C$=?>$CBUBO%}YHO
+pf    s209   2000000 pop  12234 selfrep_share 0.60  len  35 q  2 ops  12 rt   125 sel 0.22  UV?EE=UDHILR$UBO^B>C$=?>$CBUBO%}YHO
+pf    s210    100000 pop  11982 selfrep_share 0.40  len  59 q  1 ops  11 rt   213 sel 0.64  WWEWHHHRLUEUVJJJRUUUDYGHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+pf    s210    200000 pop  11637 selfrep_share 0.36  len  65 q  1 ops  11 rt   236 sel 0.82  WWWEWLHHHRLUEUWJJJRJMXUEUNUDYGJLRWWRE$BLUBO^B>C$=?>$$BMUBO%}
+pf    s210    300000 pop  11637 selfrep_share 0.32  len  58 q  1 ops  12 rt   211 sel 1.00  WWEWHHRLUEUWEJJIJU=DYGRDXHJLWWR$BLUBO^B>C$=?>$$BLUBO%}OYHO
+pf    s210    400000 pop  11836 selfrep_share 0.38  len  54 q  1 ops  10 rt   195 sel 1.00  WWEHHRLUEMSUVJJJBRUUGHJLRWWRE$BLUBO^B>C$=?>$BLUBO%}OYH
+pf    s210    500000 pop  11482 selfrep_share 0.46  len  51 q  1 ops  13 rt   179 sel 1.00  UWDJJRIUXU=DGRDX^HJLWWE$BMUBO^B>C$=?>$$WBLUBO%}OYHO
+pf    s210    600000 pop  12064 selfrep_share 0.42  len  50 q  1 ops  14 rt   175 sel 1.00  UWDJJRI=XU=DGRDX^HJKWVE$BMUBO^B>C$=?>$$WBUBO%}OYHO
+pf    s210    700000 pop  12132 selfrep_share 0.57  len  47 q  1 ops  15 rt   163 sel 0.45  JJE$J=VUDXGR^EMRWWR$CLUBO^B>C$=?>$$BMUBO%}}XHOB
+pf    s210    800000 pop  12138 selfrep_share 0.59  len  43 q  1 ops  12 rt   151 sel 0.45  JJEO$BRU=GHJLRWWRA$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210    900000 pop  12221 selfrep_share 0.49  len  42 q  1 ops  12 rt   148 sel 0.36  JJEZ$BU=GHJLRWWRM$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1000000 pop  12048 selfrep_share 0.56  len  40 q  1 ops  12 rt   142 sel 0.36  JJE$BR=GHLRWWRA$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1100000 pop  11974 selfrep_share 0.53  len  44 q  1 ops  11 rt   155 sel 0.73  JIEACOBU=GHJLRWVTRN$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1200000 pop  12091 selfrep_share 0.58  len  43 q  1 ops  13 rt   152 sel 0.91  YGJJE$BU=G}HJLRWWR$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1300000 pop  12005 selfrep_share 0.48  len  43 q  1 ops  13 rt   152 sel 0.82  YGJJE$BU=G}HJLRYWR$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1400000 pop  12098 selfrep_share 0.51  len  43 q  1 ops  13 rt   152 sel 0.73  YGKJE$BU=G}HJLRXYR$BLUBO^B>C$=?>$BLUCO%}OYH
+pf    s210   1500000 pop  12184 selfrep_share 0.51  len  42 q  1 ops  13 rt   148 sel 0.64  YGKKE$BU=G}HJLRYXR$BLUB^B>C$=?>$BLUCO%}OYH
+pf    s210   1600000 pop  12199 selfrep_share 0.47  len  43 q  2 ops  13 rt   151 sel 1.00  JIEAK$OAU=GHJLWSRN?$LUBO^B>C$=?>$BMUCO%}OYH
+pf    s210   1700000 pop  12193 selfrep_share 0.56  len  42 q  1 ops  13 rt   147 sel 0.82  YGKKE$YBU=G}HJLRYWR$LUB^B>C$=?>$BLUCO%}OYH
+pf    s210   1800000 pop  12156 selfrep_share 0.50  len  41 q  1 ops  12 rt   144 sel 0.91  YGKJE$YBUG}HJLRYVR$LUB^B>C$=?>$BLUCO%}OYH
+pf    s210   1900000 pop  12168 selfrep_share 0.47  len  17 q  2 ops  12 rt   111 sel 0.73  $=?>=^B$=?H>$LT%Y
+pf    s210   2000000 pop  12221 selfrep_share 0.59  len  16 q  2 ops  11 rt   104 sel 0.45  $=?>O^B$=?H>$L%Y
+
+== medians per mode and step (runs with a self-replicating top-K species)
+mode      step   n    pop   len    q   ops     rt   sel
+ctl     100000   8   4486    59  1.0  12.0    213  0.25
+ctl     200000   7   7134    31  2.0  16.0    203  0.44
+ctl     300000   5   8006    29  2.0  16.0    193  0.50
+ctl     400000   5   7518    29  2.0  16.0    190  0.30
+ctl     500000   4   6939    29  2.0  15.5    191  0.17
+ctl     600000   4   6422    28  2.0  15.0    184  0.00
+ctl     700000   4   6540    34  2.5  18.0    230  0.10
+ctl     800000   4   6722    32  2.5  18.5    212  0.00
+ctl     900000   4   7423    34  2.5  17.0    222  0.26
+ctl    1000000   4  10072    28  2.0  15.5    197  0.43
+ctl    1100000   4  10594    23  2.0  13.5    150  0.05
+ctl    1200000   4  10167    27  2.0  14.5    184  0.38
+ctl    1300000   4  10956    26  2.0  14.0    178  0.45
+ctl    1400000   4  10356    28  2.5  15.5    195  0.35
+ctl    1500000   3   8845    29  2.0  18.0    199  0.50
+ctl    1600000   3   7795    26  2.0  13.0    171  0.30
+ctl    1700000   3   8766    27  2.0  14.0    174  0.20
+ctl    1800000   3   7924    27  2.0  15.0    174  0.09
+ctl    1900000   3  10401    25  2.0  15.0    162  0.64
+ctl    2000000   3  10628    28  2.0  13.0    182  0.82
+pf      100000  10  11970    60  1.0  11.0    215  0.50
+pf      200000  10  11954    60  1.0  12.0    208  0.82
+pf      300000  10  11990    54  1.0  12.0    190  0.77
+pf      400000  10  12042    50  1.0  12.0    173  0.73
+pf      500000  10  12088    48  1.0  12.0    170  0.82
+pf      600000  10  12122    46  1.0  12.5    158  0.68
+pf      700000  10  12145    46  1.0  12.0    158  0.64
+pf      800000  10  12130    44  1.0  12.0    152  0.53
+pf      900000  10  12160    44  1.0  12.0    154  0.64
+pf     1000000  10  12124    42  1.0  12.0    151  0.77
+pf     1100000  10  12140    42  1.0  12.0    150  0.71
+pf     1200000  10  12174    40  1.0  12.0    143  0.65
+pf     1300000  10  12166    39  1.0  12.0    136  0.64
+pf     1400000  10  12216    40  1.0  12.0    142  0.48
+pf     1500000  10  12200    40  1.0  12.0    140  0.52
+pf     1600000  10  12206    40  1.0  12.0    140  0.50
+pf     1700000  10  12196    38  1.0  12.5    134  0.68
+pf     1800000  10  12181    38  1.0  12.0    130  0.46
+pf     1900000  10  12218    36  1.0  12.0    119  0.48
+pf     2000000   7  12234    38  2.0  12.0    105  0.20
