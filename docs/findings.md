@@ -743,6 +743,56 @@ does not by itself show resistance is the mechanism. Caveats:
 - The classification is behavioural, over smol's first 20k steps.
 - In our own runs the population rose with little fall in our parasitism measure (section 12).
 
+## 19. Time-shift swaps of replicators and parasites (Nov 16)
+
+Details: `experiments/parasites/` (`swap.py`, `swap.sh`, `pswap.sh`, `results_swap.txt`).
+
+**Method:**
+- For each published run, take the 1M and 2M worlds (converted, old rules), classified as in
+  section 18.
+- Replace one class (replicators R, or parasites P) with molecules drawn by abundance from the
+  same run at the other time. The control replaces that class with fresh draws from its own
+  time, so the disturbance is the same.
+- 8 runs x 4 swaps x 5 seeds, 100k steps, mutation on.
+- Parasite share = molecules whose sequence was classed P at 1M or 2M.
+
+**Results** (median differences from the matched control over 8 runs):
+
+| Swap | +10k population | +100k population | +10k parasite share | +100k parasite share |
+|---|---|---|---|---|
+| 2M replicators into 1M worlds | +2,909 (8/8 up) | +1,745 (8/8) | -0.20 | -0.08 |
+| 1M replicators into 2M worlds | -2,564 (0/8 up) | -713 (0/8) | -0.01 | -0.02 |
+| 2M parasites into 1M worlds | +1,294 (5/8 up) | -117 (3/8) | -0.32 | -0.03 |
+| 1M parasites into 2M worlds | +1,019 (8/8 up) | +491 (6/8) | -0.31 | -0.02 |
+
+**Reading:**
+- **Replicators improve, and the improvement lasts.** Later replicators raise the population
+  of an earlier world for the whole 100k steps. Earlier replicators lower the population of a
+  later world for the whole 100k steps.
+- **Parasites do not improve.**
+  - Moved in either direction, they do worse: their share falls by about 0.3 against the
+    replicators of another time.
+  - The effect fades as the share returns, presumably through fresh parasites mutated from the
+    resident replicators.
+  - This fits the paper's own claim that new parasites arise from mutated replicators rather
+    than from evolving parasite lineages: parasites are matched to the replicators of their own
+    time, not getting better.
+- **The replicators' advantage is not mainly keeping parasites out.**
+  - Against the older 1M parasites, the later replicators do cut the parasite share (-0.20),
+    which is resistance to foreign, older parasites.
+  - But in their own 2M worlds, swapping back to 1M replicators lowers the population with no
+    change in parasite share.
+  - Parasite share at 2M is still 31-40% in most runs (7% in run 4).
+  - So most of the later replicators' advantage is tolerance (losing less to the parasites they
+    have) or productivity, not resistance. "Evolved resistance explains the larger population"
+    overstates it.
+
+**Caveats:**
+- 5 seeds per swap; the populations swing widely.
+- The classification is behavioural, over smol's first 20k steps from each snapshot.
+- These are smol runs under the old rules, not the C++ code.
+- A swap breaks all reactions in the swapped class; the controls share that.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

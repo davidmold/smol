@@ -100,10 +100,14 @@ def partner(idx):
     b = mols[idx][4]
     return int(b[1]) if b[0] in ("A", "P") else None
 
+at = None  # (x, y) -> idx, built on the first --put so many puts don't each scan every molecule
+
 def remove(idx):
     q = partner(idx)
     if q is not None and q in mols:
         mols[q][4] = ["F"]
+    if at is not None:
+        at.pop((mols[idx][0], mols[idx][1]), None)
     del mols[idx]
     free.append(idx)
 
@@ -148,12 +152,16 @@ while k < len(ops):
             if idx == slots:
                 slots += 1
             mols[idx] = [x, y, species[seq], seq, ["F"]]
+            if at is not None: at[(x, y)] = idx
             added += 1
         k += 3
     elif op == "--put":
         (x, y), seq = [int(v) for v in ops[k + 1].split(",")], ops[k + 2]
-        for idx in [j for j, m in mols.items() if m[0] == x and m[1] == y]:
-            if idx in mols: remove(idx); removed += 1
+        if at is None:
+            at = {(m[0], m[1]): j for j, m in mols.items()}
+        j = at.get((x, y))
+        if j is not None and j in mols:
+            remove(j); removed += 1
         if seq not in species:
             species[seq] = nextsp
             spfile.append(f"{nextsp}\t{step}\t-1\t-1\t{seq}\n"); nextsp += 1
@@ -161,6 +169,7 @@ while k < len(ops):
         if idx == slots:
             slots += 1
         mols[idx] = [x, y, species[seq], seq, ["F"]]
+        at[(x, y)] = idx
         added += 1
         k += 3
     elif op == "--set":
