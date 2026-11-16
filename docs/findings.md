@@ -879,6 +879,55 @@ the probe, the world snapshot, and the 100k-step control runs that follow.
 - So the phenomena are real, but they are established early. There is no evidence here of
   evolvability itself increasing over the second million.
 
+## 22. Runs with parasites suppressed from the start (Nov 16)
+
+Details: `experiments/parasites/suppress.py`, results `suppress_*.txt`.
+
+**Method:**
+- 30 runs from the seed replicators (the paper's box config, old rules, COMPAT_DELETION), 2M
+  steps each, in 5k-step chunks.
+- After each chunk: P arm removes every species that was copied exactly but never copied
+  anything and is at least 5k steps old. The cull arm removes the same number at random. The
+  none arm only restarts.
+- 10 seeds each.
+
+**Survival to 2M:**
+- none: 4/10.
+- P: 8/10 (deaths at 0.69M and 1.29M).
+- cull: 3/10, plus one still running.
+
+**How much parasitism the P arm removes:**
+- Established parasite share at chunk ends after 1M (medians): none 0.30, P 0.08 (regrown
+  within 5k steps), cull 0.16.
+- Parasites younger than 5k steps are never removed or counted. So the P arm reduces parasitism
+  a lot but does not remove it, and fresh mutant parasites, the kind that matter most (sections
+  19-20), are still present.
+
+**Results** (top replicator, medians across surviving runs):
+- **Shortening:** length falls from about 60 to 25-30 by 300k in every arm, with or without
+  parasites.
+- **Self-scan:** 2 copy operations per product symbol appears without parasites. At 2M, 6 of 8
+  P-arm runs are self-scanning (`suppress_expo.txt`), as are the none runs. Self-scan is not
+  driven by persistent parasites.
+- **Checks and discrimination:**
+  - The '?' count is 2 in every arm from 200-300k. These are largely the copy loop's own test,
+    so the count is a weak measure of discrimination.
+  - Mutant discrimination is about 0.15-0.25 in the P arm and 0.2-0.35 in the none arm:
+    slightly higher with parasites late on.
+- **Second million:**
+  - Without established parasites, replicators keep getting shorter (about 20) and faster
+    (self-reaction about 120-140 steps).
+  - With parasites (only 3 surviving none runs), they stay longer (30-33), slower (about
+    210-250 steps), and gain a third or fourth '?' in some runs.
+
+**Reading:**
+- The main changes the paper attributes to parasitism (shortening, self-scan, the basic check
+  structure) evolve just the same when established parasites are kept below about 8%.
+- Parasitism is associated only with some late extra length, slowness and checks, in 3 runs.
+- Without parasites the system ends simpler and faster, and survives far more often.
+- Caveat: fresh parasites remain in the P arm. A stronger suppression is needed before
+  concluding that parasitism plays no part in self-scan.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product
