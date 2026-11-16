@@ -165,9 +165,9 @@ fn main() {
             let bound = world.mols.iter().filter(|m| m.alive && m.bond != Bond::Free).count();
             let st = std::mem::take(&mut world.stats);
             println!(
-                "Step {t} done, number of molecules is {n}, nbound = {bound}, {:.0} steps/s | enc {} bind {} kin {} ended {} prod {} pairdecay {} displace {} instr {} damaged {} pprod {} pend {} dmg {}",
+                "Step {t} done, number of molecules is {n}, nbound = {bound}, {:.0} steps/s | enc {} bind {} kin {} ended {} prod {} pairdecay {} displace {} instr {} damaged {} pprod {} pend {} dmg {} blocked {}",
                 t as f64 / start.elapsed().as_secs_f64().max(1e-9),
-                st.encounters, st.binds, st.kin_binds, st.ended, st.products, st.pair_decays, st.displacements, st.instr, st.disp_damaged, st.pas_products, st.pas_ended, st.damage_hits
+                st.encounters, st.binds, st.kin_binds, st.ended, st.products, st.pair_decays, st.displacements, st.instr, st.disp_damaged, st.pas_products, st.pas_ended, st.damage_hits, st.blocked
             );
             if cfg.disturb_every > 0 && st.disturbed > 0 {
                 println!("DISTURB to step {t}: removed {}", st.disturbed);

@@ -30,6 +30,8 @@ pub struct Stats {
     /// DAMAGE: symbols hit
     pub damage_hits: u64,
     pub instr: u64,
+    /// PARASITEFREE: products discarded because they cannot copy themselves
+    pub blocked: u64,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -153,6 +155,9 @@ pub struct World {
     pub stats: Stats,
     tab: Table,
     al: Aligner,
+    /// PARASITEFREE and its cache: sequence -> can copy itself
+    parasite_free: bool,
+    selfcopy: HashMap<Vec<u8>, bool>,
     acted: Vec<u64>,
     order: Vec<usize>,
     comp: Vec<u8>,
@@ -222,6 +227,8 @@ impl World {
             stats: Stats::default(),
             tab: Table::new(),
             al: Aligner::new(),
+            parasite_free: cfg.parasite_free,
+            selfcopy: HashMap::new(),
             acted: Vec::new(),
             order: Vec::new(),
             comp: Vec::new(),
@@ -462,8 +469,54 @@ impl World {
         self.mols[idx].species = sp;
     }
 
+    /// PARASITEFREE: can this sequence copy itself? Bound to a copy of itself (the same
+    /// active/passive choice and starting pointers as a real bind), mutation off, run to the end
+    /// of the reaction (at most 5000 steps); true if an exact copy appears in any of 3 trials
+    /// (the soft search and label tests draw random numbers). Cached per sequence.
+    fn can_self_copy(&mut self, seq: &[u8]) -> bool {
+        if let Some(&b) = self.selfcopy.get(seq) {
+            return b;
+        }
+        let mut comp = Vec::with_capacity(seq.len());
+        let sw = crate::bind_align(seq, seq, &mut self.al, &self.tab, &mut comp);
+        let p = bind_prob_rule(&sw, self.bindlen, self.bind_t);
+        let mut ok = false;
+        if p > 0.0 && !seq.is_empty() {
+            let (act_idx, pas_idx) = if sw.s1 >= sw.s2 { (sw.s1, sw.s2) } else { (sw.s2, sw.s1) };
+            let mut params = self.chem;
+            params.mutate = 0.0;
+            for trial in 0..3u64 {
+                let mut own = Strand::new(seq, params.maxl);
+                let mut partner = Strand::new(seq, params.maxl);
+                let mut ptr = Pointers::at_bind(act_idx, pas_idx);
+                let mut prods: Vec<Vec<u8>> = Vec::new();
+                let mut rng = Xoshiro::new(0x5eed + trial);
+                let mut ctx = Ctx { tab: &self.tab, al: &mut self.al, params, label: Vec::new(), other: Vec::new(), nascent: None };
+                for _ in 0..5000 {
+                    let o = exec_step(&mut ptr, &mut own, &mut partner, &mut ctx, &mut rng, &mut prods);
+                    if prods.iter().any(|q| &q[..] == seq) {
+                        ok = true;
+                        break;
+                    }
+                    if o != Outcome::Continue {
+                        break;
+                    }
+                }
+                if ok {
+                    break;
+                }
+            }
+        }
+        self.selfcopy.insert(seq.to_vec(), ok);
+        ok
+    }
+
     /// near: the molecule that made the product; other: its partner in the reaction.
     fn place_product(&mut self, seq: Vec<u8>, near: usize, other: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
+        if self.parasite_free && !self.can_self_copy(&seq) {
+            self.stats.blocked += 1;
+            return;
+        }
         let (x, y) = (self.mols[near].x, self.mols[near].y);
         let mut empty = [(0usize, 0usize); 26];
         let mut n = 0;

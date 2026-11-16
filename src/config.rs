@@ -57,6 +57,9 @@ pub struct Config {
     pub encounter_turn: bool,
     /// COMPAT_DELETION: a copy-deletion also skips the next instruction, as the C++ code does
     pub compat_deletion: bool,
+    /// PARASITEFREE: a product is placed only if it can copy itself (probe: bound to a copy of
+    /// itself, mutation off, it makes an exact copy). Everything else is discarded.
+    pub parasite_free: bool,
     /// Strand displacement (design note): a free molecule may break into a reaction.
     pub displace: bool,
     /// Copy instructions after which a reaction can no longer be broken into.
@@ -194,6 +197,7 @@ impl Config {
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,
             compat_deletion: num("COMPAT_DELETION", 0.0)? != 0.0,
+            parasite_free: num("PARASITEFREE", 0.0)? != 0.0,
             displace: num("DISPLACE", 0.0)? != 0.0,
             displace_k: num("DISPLACE_K", 10.0)?,
             displace_rate: num("DISPLACE_RATE", 1.0)?,
