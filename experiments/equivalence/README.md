@@ -72,6 +72,17 @@ Per-set results are in `results_*.txt`. Every differing reaction is classified i
   `COMPAT_DELETION` (default 0, so earlier smol runs are unchanged). `tools/pub_to_ckpt.py` turns
   it on along with `COMPAT_PARTNER` and `ENCOUNTER_TURN`.
 
+## Follow-up: the length-limit bug (16 Nov)
+
+Cause: `OpcodeCopyCheckSafe()` finds the write head at maxl, sets `S[maxl] = 0` and returns
+-1, but leaves `safe` set. `OpcodeCopy()` then writes at the write head anyway, over the
+terminator it just placed. The fix sets `safe = 0` in both out-of-bounds branches. It is on
+branch `fix-copy-bounds` in `~/projects/stringmol-uoy` (one commit on dev 109be57, plus a Catch
+test that fails without the fix).
+
+With the fix, all 23,040 reactions are identical to smol, with mutation off and at 0.01
+(`results` sets f0/f1, 160/160 SAME each).
+
 ## Not covered here
 
 This compares reactions, not whole worlds. World-level rules still differ in implementation,
