@@ -793,6 +793,52 @@ Details: `experiments/parasites/` (`swap.py`, `swap.sh`, `pswap.sh`, `results_sw
 - These are smol runs under the old rules, not the C++ code.
 - A swap breaks all reactions in the swapped class; the controls share that.
 
+## 20. Do replicators learn to reject their own parasite mutants? (Nov 16)
+
+Details: `experiments/parasites/mutassay.py`, results `mutassay_paper.txt`.
+
+**Method:**
+- In the 8 published runs, every 100k steps, take the top replicator: the most abundant
+  species that copies itself in the probe.
+- Make all of its single-symbol substitutions and deletions (about 800-2,000 mutants).
+- React the replicator with each mutant, mutation off.
+- Mutants that can no longer copy themselves are its would-be parasites (55-75% of mutants).
+
+**Measures:**
+- Binding: P(bind) with would-be parasites against functional mutants.
+- Copying: binding-weighted share of each kind that gets copied in an encounter.
+- disc = 1 - copyP/copyF.
+
+**Result:**
+- **No exclusion at binding:** P(bind) is the same for would-be parasites and functional mutants
+  (about 0.62-0.65) throughout, in every run.
+- **Discrimination is low and mostly flat:**
+  - Median disc is 0.24-0.31 from 200k to 2M, with no trend.
+  - Would-be parasites are copied in about 65-73% of encounters against about 93-96% for
+    functional kin.
+  - The baseline about 0.25 is present from 200k; it is presumably structural (mutations that
+    break copying also break what the checks read), not an evolved improvement.
+- **Two runs do improve in the second million:**
+  - Run 2: disc rises from about 0.2-0.3 to 0.5-0.7 from 1.1M.
+  - Run 4: disc rises from about 0.25 to 0.55-0.65 from 1.3M.
+  - Run 4 is also the run whose parasite share fell most (26% at 1M to 7% at 2M). Run 2's share
+    did not fall (35% to 32%).
+- **More checks are not better checks:** the number of '?' tests in the top replicator rises
+  from 2 to 3-5 in runs 4, 7 and 8, but discrimination rises only in run 4. In run 7 it falls
+  as the checks accumulate.
+
+**Reading:** the paper's claim holds in a minority of runs, not as a general trend:
+- Explicit discrimination against near-self parasites does evolve in some runs (clearly in run 4,
+  where it matches a large fall in parasites).
+- Most runs keep copying their own parasite mutants about two-thirds as readily as their kin for
+  the whole 2M steps.
+- "Increasingly complex" mechanisms (more '?') appear without becoming more discriminating.
+
+Caveats:
+- One replicator per snapshot.
+- Single-step mutants only.
+- smol's reaction probe; the reactions match the C++ code (section 17).
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

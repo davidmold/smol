@@ -40,6 +40,9 @@ fn main() {
     let strand = args.iter().any(|a| a == "--strand");
     // --self: react each molecule only with itself (screening many species)
     let self_only = args.iter().any(|a| a == "--self");
+    // --hub: react the first molecule with each of the others (it initiates), and each other
+    // molecule with itself (for screening many mutants of one replicator)
+    let hub = args.iter().any(|a| a == "--hub");
     let text = std::fs::read_to_string(&args[1]).expect("pairs file");
     let mols: Vec<(String, Vec<u8>)> = text
         .split_whitespace()
@@ -75,6 +78,9 @@ fn main() {
     for x in &mols {
         for y in &mols {
             if self_only && !std::ptr::eq(x, y) {
+                continue;
+            }
+            if hub && !std::ptr::eq(x, y) && !std::ptr::eq(x, &mols[0]) {
                 continue;
             }
             let (p, sw) = smol::bind_probability_rule(&x.1, &y.1, 0, bind_t, ctx.al, &tab);

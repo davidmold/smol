@@ -1,0 +1,182 @@
+raw/run1           100000 len  62 share 0.04 q  1  nf 0.58 bindP 0.49 bindF 0.49 copyP 0.24 copyF 0.07 disc -2.41 expP 0.12  WWGEWLHHRMUEUWJJJRKXUUDXGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run1           200000 len  29 share 0.51 q  2  nf 0.67 bindP 0.61 bindF 0.62 copyP 0.69 copyF 0.95 disc 0.28 expP 0.42  $=?>$$LUBO^B>C$=?>$$BLUO%}PYH
+raw/run1           300000 len  28 share 0.09 q  2  nf 0.69 bindP 0.66 bindF 0.65 copyP 0.78 copyF 0.95 disc 0.18 expP 0.52  $=?>$LUBO^B>C$=?>D$BLUO%}PYH
+raw/run1           400000 len  28 share 0.17 q  2  nf 0.58 bindP 0.66 bindF 0.65 copyP 0.74 copyF 0.97 disc 0.24 expP 0.49  $=?>$DZHO^BQC$=?>D$BLUO%}PYH
+raw/run1           500000 len  27 share 0.22 q  2  nf 0.69 bindP 0.64 bindF 0.64 copyP 0.70 copyF 0.95 disc 0.26 expP 0.45  $=?>$EZHO^BQC$=?>$BLUO%}PYH
+raw/run1           600000 len  28 share 0.17 q  2  nf 0.58 bindP 0.66 bindF 0.65 copyP 0.74 copyF 0.97 disc 0.24 expP 0.49  $=?>$DZGO^BQC$=?>E$BLUO%}PYH
+raw/run1           700000 len  27 share 0.19 q  2  nf 0.63 bindP 0.70 bindF 0.69 copyP 0.76 copyF 0.96 disc 0.21 expP 0.53  $=?>DZGP^BQC$=?>E$BLUO%}PYH
+raw/run1           800000 len  36 share 0.19 q  3  nf 0.53 bindP 0.70 bindF 0.69 copyP 0.77 copyF 0.85 disc 0.10 expP 0.54  $=?>ZGP^AQC$=?>GP^BQC$=?>E$BLUO%}PYH
+raw/run1           900000 len  34 share 0.20 q  3  nf 0.55 bindP 0.70 bindF 0.69 copyP 0.77 copyF 0.84 disc 0.08 expP 0.53  $=?>G^AQC$=?>G^BQC$=?>E$BLUO%}VPYH
+raw/run1          1000000 no self-replicator in the top 12
+raw/run1          1100000 no self-replicator in the top 12
+raw/run1          1200000 no self-replicator in the top 12
+raw/run1          1300000 no self-replicator in the top 12
+raw/run1          1400000 no self-replicator in the top 12
+raw/run1          1500000 len  45 share 0.05 q  4  nf 0.47 bindP 0.83 bindF 0.86 copyP 0.00 copyF 0.01 disc 1.00 expP 0.00  C=?>G^C>B$=?>$ALUO%}PHP=?>G^BC$=P?>E$BLU%}PYH
+raw/run1          1600000 len  44 share 0.02 q  4  nf 0.47 bindP 0.82 bindF 0.86 copyP 0.00 copyF 0.01 disc 1.00 expP 0.00  P=?>G^C>B$=?>$ALUO%}PHPC=?>G^BB$=?>$BLU%}QYH
+raw/run1          1700000 len  42 share 0.02 q  4  nf 0.49 bindP 0.82 bindF 0.86 copyP 0.00 copyF 0.00 disc 1.00 expP 0.00  P=?>G^C>B$=?>$ALUO%}PPC=?>^BB$=?>$BLU%}QYH
+raw/run1          1800000 no self-replicator in the top 12
+raw/run1          1900000 no self-replicator in the top 12
+raw/run1          2000000 no self-replicator in the top 12
+raw/run2           100000 len  55 share 0.15 q  1  nf 0.67 bindP 0.43 bindF 0.44 copyP 0.23 copyF 0.08 disc -2.04 expP 0.10  HHRLUEUVJJJRXUZUUDYGRILRWWRE$BLVBO^B>C$=?>$$BLUBO%}OYHO
+raw/run2           200000 len  33 share 0.09 q  2  nf 0.67 bindP 0.62 bindF 0.62 copyP 0.73 copyF 0.96 disc 0.25 expP 0.45  $=?>$$BUBO^B>C$=?>$$BLUBO%}P=YHPB
+raw/run2           300000 len  58 share 0.17 q  2  nf 0.61 bindP 0.66 bindF 0.54 copyP 0.59 copyF 0.97 disc 0.39 expP 0.39  EWLHHR?UEUWIIIRJXUU=DGRHJLRWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run2           400000 len  54 share 0.12 q  2  nf 0.63 bindP 0.65 bindF 0.55 copyP 0.63 copyF 0.94 disc 0.33 expP 0.41  EWLHHR?UEUWIIIRJXUU=GRHJLRWRE$BUBO^B>C$=?>$$BLUB%}OYHO
+raw/run2           500000 len  29 share 0.15 q  2  nf 0.62 bindP 0.61 bindF 0.62 copyP 0.67 copyF 0.96 disc 0.30 expP 0.41  $=?>$$BUPOO^B$=?>$$BLUO%}P=YH
+raw/run2           600000 len  28 share 0.28 q  2  nf 0.61 bindP 0.59 bindF 0.61 copyP 0.79 copyF 0.93 disc 0.15 expP 0.47  $=?>$$BUPOO^B$=?>D$BLU%}P=YH
+raw/run2           700000 len  38 share 0.22 q  3  nf 0.54 bindP 0.62 bindF 0.61 copyP 0.69 copyF 0.87 disc 0.21 expP 0.42  $=?>$$UPOO^A$=?>$$UPOO^B$=?>$BLUO%}=YH
+raw/run2           800000 len  26 share 0.10 q  2  nf 0.67 bindP 0.64 bindF 0.64 copyP 0.71 copyF 0.96 disc 0.26 expP 0.46  $=?>$D$UOO^B$=?>$BLUO%}=YH
+raw/run2           900000 len  25 share 0.11 q  2  nf 0.70 bindP 0.60 bindF 0.60 copyP 0.76 copyF 0.95 disc 0.20 expP 0.46  $=?>$$=OO^B$=?>$BLUO%O=YH
+raw/run2          1000000 len  34 share 0.08 q  3  nf 0.53 bindP 0.64 bindF 0.64 copyP 0.69 copyF 0.86 disc 0.20 expP 0.44  $=?>$UO^A$T?>D$VOO^B$=?>$BLUO%}=YH
+raw/run2          1100000 len  33 share 0.26 q  2  nf 0.67 bindP 0.66 bindF 0.65 copyP 0.46 copyF 0.96 disc 0.52 expP 0.30  $=?>$UO^A$T>D$VOO^BC=?>$BLUO%}=YH
+raw/run2          1200000 len  33 share 0.16 q  2  nf 0.67 bindP 0.66 bindF 0.65 copyP 0.46 copyF 0.96 disc 0.52 expP 0.30  $=?>$UO^A$T>D$VOO^BC=?>$BLUO%}=YH
+raw/run2          1300000 len  33 share 0.20 q  2  nf 0.54 bindP 0.70 bindF 0.70 copyP 0.28 copyF 0.95 disc 0.71 expP 0.20  $=?>DIP^ACTL>DVOO^BC=?>$BLUO%}=YH
+raw/run2          1400000 len  32 share 0.03 q  2  nf 0.55 bindP 0.55 bindF 0.69 copyP 0.36 copyF 0.96 disc 0.62 expP 0.20  $=?>DIP^ACT>DVOO^BB=?>$BLUO%}=YH
+raw/run2          1500000 len  30 share 0.04 q  1  nf 0.57 bindP 0.55 bindF 0.68 copyP 0.36 copyF 0.95 disc 0.63 expP 0.19  $=?>DIO^ABL>VOO^BB=>$BLUO%}=YH
+raw/run2          1600000 len  25 share 0.03 q  1  nf 0.60 bindP 0.52 bindF 0.68 copyP 0.34 copyF 0.96 disc 0.65 expP 0.18  $=?>DI^ACT>V^BC>$LUO%}UYH
+raw/run2          1700000 len  24 share 0.03 q  2  nf 0.69 bindP 0.66 bindF 0.65 copyP 0.28 copyF 0.94 disc 0.70 expP 0.18  $=?>^ABL>V^B=?>$BLUO%}YH
+raw/run2          1800000 len  22 share 0.12 q  1  nf 0.66 bindP 0.62 bindF 0.69 copyP 0.40 copyF 0.94 disc 0.58 expP 0.25  $=?>DI^AT>V^BC>$UO%UYH
+raw/run2          1900000 len  24 share 0.27 q  1  nf 0.68 bindP 0.54 bindF 0.64 copyP 0.34 copyF 0.94 disc 0.64 expP 0.18  $=?>^ACTL>O^B>$IBLU%G}YH
+raw/run2          2000000 len  23 share 0.19 q  1  nf 0.70 bindP 0.53 bindF 0.64 copyP 0.35 copyF 0.93 disc 0.62 expP 0.19  $=?>^AHCL>Q^B>$BLU%G}YH
+raw/run3           100000 len  34 share 0.08 q  2  nf 0.57 bindP 0.73 bindF 0.63 copyP 0.59 copyF 0.95 disc 0.38 expP 0.43  $=?>$$BLUBO^B>C$=N?>$$BLUBO%}}Y^OB
+raw/run3           200000 len  33 share 0.14 q  2  nf 0.62 bindP 0.72 bindF 0.63 copyP 0.62 copyF 0.95 disc 0.35 expP 0.44  $=?>$$BUBO^B>C$=N?>$$BLUBO%}}Y^OB
+raw/run3           300000 len  33 share 0.23 q  2  nf 0.62 bindP 0.72 bindF 0.63 copyP 0.62 copyF 0.95 disc 0.35 expP 0.44  $=?>$$BUBO^B>C$=N?>$$BLUBO%}}Y^OB
+raw/run3           400000 len  31 share 0.12 q  2  nf 0.67 bindP 0.72 bindF 0.63 copyP 0.62 copyF 0.94 disc 0.34 expP 0.44  $=?>$$BUBO^B>C$=?>$BLUBO%}}Y^OB
+raw/run3           500000 len  31 share 0.12 q  2  nf 0.67 bindP 0.72 bindF 0.63 copyP 0.62 copyF 0.94 disc 0.34 expP 0.44  $=?>$$BUBO^B>C$=?>$BLUBO%}}Y^OB
+raw/run3           600000 len  31 share 0.19 q  2  nf 0.67 bindP 0.72 bindF 0.63 copyP 0.62 copyF 0.94 disc 0.34 expP 0.44  $=?>$$BUBO^B>C$=?>$BLUBO%}}Y^OB
+raw/run3           700000 len  30 share 0.07 q  2  nf 0.63 bindP 0.73 bindF 0.63 copyP 0.59 copyF 0.94 disc 0.38 expP 0.43  $=?>$$BUBO^B>C$=?>$BUBO%}PYHOB
+raw/run3           800000 len  29 share 0.11 q  2  nf 0.70 bindP 0.72 bindF 0.63 copyP 0.61 copyF 0.92 disc 0.34 expP 0.44  $=?>$$BBO^B>C$=?>$BUBO%}OYHOB
+raw/run3           900000 len  28 share 0.15 q  2  nf 0.63 bindP 0.74 bindF 0.63 copyP 0.56 copyF 0.93 disc 0.39 expP 0.41  $=?>$$BUBO^BC$=?>$BUBO%}PHOB
+raw/run3          1000000 len  27 share 0.15 q  2  nf 0.66 bindP 0.74 bindF 0.63 copyP 0.56 copyF 0.92 disc 0.39 expP 0.41  $=?>$$BUBO^B$=?>$BUBO%}PHOB
+raw/run3          1100000 len  27 share 0.28 q  2  nf 0.66 bindP 0.74 bindF 0.63 copyP 0.56 copyF 0.92 disc 0.39 expP 0.41  $=?>$$BUBO^B$=?>$BUBO%}PHOB
+raw/run3          1200000 len  27 share 0.12 q  2  nf 0.68 bindP 0.73 bindF 0.63 copyP 0.57 copyF 0.91 disc 0.37 expP 0.42  $=?>$$BUBO^B$=?>$BVBO%}PHOB
+raw/run3          1300000 len  24 share 0.31 q  2  nf 0.73 bindP 0.62 bindF 0.62 copyP 0.71 copyF 0.94 disc 0.25 expP 0.44  $=?>$$BUB^B$=?>$ABO%}HOB
+raw/run3          1400000 len  25 share 0.13 q  2  nf 0.70 bindP 0.65 bindF 0.65 copyP 0.70 copyF 0.95 disc 0.27 expP 0.45  $=?>$DBUB^B$=?>$AVBO%}HOB
+raw/run3          1500000 len  25 share 0.35 q  2  nf 0.70 bindP 0.65 bindF 0.65 copyP 0.70 copyF 0.95 disc 0.27 expP 0.45  $=?>$EBUB^B$=?>$AVBO%}HOB
+raw/run3          1600000 len  36 share 0.18 q  3  nf 0.55 bindP 0.64 bindF 0.65 copyP 0.69 copyF 0.87 disc 0.21 expP 0.45  $=?>$DBVB^A$=?>$EAUB^B$=?>$ZVBO%}HOB
+raw/run3          1700000 len  33 share 0.08 q  3  nf 0.58 bindP 0.65 bindF 0.65 copyP 0.69 copyF 0.84 disc 0.18 expP 0.45  $=?>$DBB^A=?>$EAUB^B$=?>$ZVBO%HOB
+raw/run3          1800000 len  27 share 0.08 q  3  nf 0.64 bindP 0.58 bindF 0.58 copyP 0.81 copyF 0.97 disc 0.16 expP 0.46  $=?>$=?$EZUB^B$=?>$ABO%}HOB
+raw/run3          1900000 len  27 share 0.06 q  3  nf 0.64 bindP 0.58 bindF 0.58 copyP 0.81 copyF 0.97 disc 0.16 expP 0.46  $=?>$=?$EZUB^B$=?>$ABO%}HOB
+raw/run3          2000000 len  31 share 0.05 q  2  nf 0.58 bindP 0.64 bindF 0.65 copyP 0.68 copyF 0.83 disc 0.18 expP 0.44  $=?>$DAVB^A$=$AB^B$=?>$VBO%NHOB
+raw/run4           100000 len  29 share 0.29 q  2  nf 0.70 bindP 0.61 bindF 0.62 copyP 0.71 copyF 0.95 disc 0.26 expP 0.43  $=?>$$BLUCO^B>C$=?>$$BLUO%}YH
+raw/run4           200000 len  29 share 0.06 q  2  nf 0.62 bindP 0.62 bindF 0.62 copyP 0.69 copyF 0.96 disc 0.28 expP 0.42  $=?>$$BLUBO^BRC$=?>$$BLUO%}YH
+raw/run4           300000 len  29 share 0.08 q  2  nf 0.61 bindP 0.61 bindF 0.62 copyP 0.66 copyF 0.96 disc 0.31 expP 0.41  $=?>$$LU>CO^B>C$=?>$$CLUO%}YH
+raw/run4           400000 len  26 share 0.24 q  2  nf 0.73 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.95 disc 0.23 expP 0.47  $=?>$UCO^B>C$=?>$DCLUP%}YH
+raw/run4           500000 len  25 share 0.15 q  2  nf 0.69 bindP 0.64 bindF 0.65 copyP 0.70 copyF 0.95 disc 0.26 expP 0.45  $=?>$UCO^B>C$=?>$DCLU%}YH
+raw/run4           600000 len  24 share 0.20 q  2  nf 0.72 bindP 0.62 bindF 0.62 copyP 0.72 copyF 0.93 disc 0.23 expP 0.45  $=?>$=CO^BC$=?>$CLUP%}YH
+raw/run4           700000 len  24 share 0.08 q  2  nf 0.72 bindP 0.62 bindF 0.62 copyP 0.72 copyF 0.93 disc 0.23 expP 0.45  $=?>$=CO^BC$=?>$CLUP%}YH
+raw/run4           800000 len  37 share 0.11 q  3  nf 0.60 bindP 0.65 bindF 0.65 copyP 0.67 copyF 0.90 disc 0.26 expP 0.43  $=?>$UOO^A>CC$=?>$UCO^BC$=?>$CLUP%NYH
+raw/run4           900000 len  35 share 0.18 q  3  nf 0.52 bindP 0.65 bindF 0.65 copyP 0.72 copyF 0.86 disc 0.17 expP 0.46  $=?>$UO^ARC$$=?CUCO^BC$=?>$CLUP%}YH
+raw/run4          1000000 len  36 share 0.23 q  3  nf 0.48 bindP 0.54 bindF 0.64 copyP 0.89 copyF 0.89 disc -0.00 expP 0.49  $=?>$UO^ARC$$U?$UCO^BB$=?E>$CLUP%}YH
+raw/run4          1100000 len  36 share 0.06 q  3  nf 0.48 bindP 0.54 bindF 0.64 copyP 0.89 copyF 0.89 disc -0.00 expP 0.49  $=?>$UO^ARC$$U?$UCO^BB$=?D>$CLUP%}YH
+raw/run4          1200000 len  44 share 0.09 q  4  nf 0.47 bindP 0.66 bindF 0.65 copyP 0.62 copyF 0.91 disc 0.31 expP 0.41  $=?>$VO^A$=?>UO^SC$U?$FUCO^B%C$=?E>$CMUO%}YH
+raw/run4          1300000 len  35 share 0.08 q  3  nf 0.37 bindP 0.61 bindF 0.69 copyP 0.36 copyF 0.87 disc 0.59 expP 0.22  $=?>UO^SC$U?$FUCO^B%C$T?E>$CMUO%}YH
+raw/run4          1400000 len  30 share 0.06 q  3  nf 0.40 bindP 0.62 bindF 0.62 copyP 0.33 copyF 0.84 disc 0.61 expP 0.20  $=?>=^SC$U?$FC^B%B$T?E>$CMU%YH
+raw/run4          1500000 len  30 share 0.04 q  3  nf 0.41 bindP 0.62 bindF 0.62 copyP 0.33 copyF 0.84 disc 0.61 expP 0.21  $=?>=^SA$U?$FC^B%B$T?E>$CMU%YH
+raw/run4          1600000 len  30 share 0.03 q  3  nf 0.35 bindP 0.62 bindF 0.62 copyP 0.38 copyF 0.82 disc 0.54 expP 0.24  $=?>=^SC$U?FC^B%B$T?E>$BMUV%YH
+raw/run4          1700000 len  29 share 0.03 q  3  nf 0.30 bindP 0.62 bindF 0.62 copyP 0.57 copyF 0.84 disc 0.32 expP 0.35  $=?>=^A$U?$FB^B%B$T?E>$CMU%YH
+raw/run4          1800000 len  28 share 0.02 q  2  nf 0.33 bindP 0.62 bindF 0.62 copyP 0.60 copyF 0.82 disc 0.27 expP 0.37  $=?>=^A$U?$FB^B%B$TKE>$CU%YH
+raw/run4          1900000 len  26 share 0.07 q  2  nf 0.48 bindP 0.62 bindF 0.62 copyP 0.28 copyF 0.80 disc 0.65 expP 0.17  $=?>=^S$VLFB^B%B$T?>$$LU%Y
+raw/run4          2000000 len  29 share 0.06 q  3  nf 0.40 bindP 0.78 bindF 0.79 copyP 0.36 copyF 0.84 disc 0.57 expP 0.28  $=?J>=^S$U?FC^B%B$T?E>$CMU%YH
+raw/run5           100000 len  58 share 0.33 q  1  nf 0.67 bindP 0.70 bindF 0.59 copyP 0.00 copyF 0.00 disc 1.00 expP 0.00  WLHHHRLVEUWJJJ>JX=UUDYRHJLRWWRE$BLBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run5           200000 len  58 share 0.38 q  1  nf 0.67 bindP 0.70 bindF 0.59 copyP 0.00 copyF 0.00 disc 1.00 expP 0.00  WLHHHRLVEUWJJJ>JX=UUDYRHJLRWWRE$BLBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run5           300000 len  58 share 0.22 q  1  nf 0.66 bindP 0.70 bindF 0.60 copyP 0.00 copyF 0.00 disc 1.00 expP 0.00  WLHHHRLVEUWJJ>JX=UUDYRHJELRWWRE$BLBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run5           400000 len  54 share 0.18 q  1  nf 0.56 bindP 1.00 bindF 1.00 copyP 0.00 copyF 0.00 disc 1.00 expP 0.00  HHRLEUWJJ>JX=UUDYR$H$LRWVRE$BLBO^B>C$=?>$$BLUCO%}OYHOB
+raw/run5           500000 len  52 share 0.16 q  1  nf 0.58 bindP 1.00 bindF 1.00 copyP 0.00 copyF 0.00 disc 0.54 expP 0.00  HHRLEUJJ>JX=UUDYR$H$LRWVE$BLBO^B>C$=?>$$BLUCO%}OYHOB
+raw/run5           600000 len  32 share 0.33 q  2  nf 0.61 bindP 0.62 bindF 0.62 copyP 0.69 copyF 0.97 disc 0.29 expP 0.42  $=?>$$LUCO^BT>C$=?>$$LUCO%}OYHOB
+raw/run5           700000 len  26 share 0.14 q  2  nf 0.66 bindP 0.64 bindF 0.65 copyP 0.71 copyF 0.96 disc 0.26 expP 0.45  $=?>$UCO^BT>C$=?>$LUO%}OYH
+raw/run5           800000 len  25 share 0.13 q  2  nf 0.68 bindP 0.64 bindF 0.65 copyP 0.70 copyF 0.95 disc 0.27 expP 0.45  $=?>$UCO^B>C$=?>$LUO%}OYH
+raw/run5           900000 len  24 share 0.16 q  2  nf 0.67 bindP 0.64 bindF 0.65 copyP 0.67 copyF 0.94 disc 0.29 expP 0.43  $=?>$UO^BTC$=?>$MUO%}PYH
+raw/run5          1000000 len  23 share 0.06 q  2  nf 0.68 bindP 0.64 bindF 0.65 copyP 0.69 copyF 0.95 disc 0.28 expP 0.44  $=?>$CO^BTC$=?>$UO%}PYH
+raw/run5          1100000 len  25 share 0.38 q  2  nf 0.62 bindP 0.62 bindF 0.62 copyP 0.69 copyF 0.95 disc 0.27 expP 0.43  $=?>$=CO^BTC$=?>$LUO%}PYH
+raw/run5          1200000 len  25 share 0.13 q  2  nf 0.59 bindP 0.60 bindF 0.60 copyP 0.73 copyF 0.97 disc 0.24 expP 0.44  $=?>$=$O^BTC$=?>$LUO%}PYH
+raw/run5          1300000 len  25 share 0.25 q  2  nf 0.59 bindP 0.60 bindF 0.60 copyP 0.73 copyF 0.97 disc 0.24 expP 0.44  $=?>$=$O^BTC$=?>$LUO%}PYH
+raw/run5          1400000 len  25 share 0.25 q  2  nf 0.59 bindP 0.60 bindF 0.60 copyP 0.73 copyF 0.97 disc 0.24 expP 0.44  $=?>$=$O^BTCU$=?>$LUO%}YH
+raw/run5          1500000 len  23 share 0.15 q  2  nf 0.64 bindP 0.59 bindF 0.58 copyP 0.80 copyF 0.98 disc 0.18 expP 0.47  $=?>$=^B=C$=?>O$MU%}PZH
+raw/run5          1600000 len  20 share 0.10 q  2  nf 0.73 bindP 0.59 bindF 0.58 copyP 0.80 copyF 0.96 disc 0.17 expP 0.47  $=?>$=^B=C$=?>O$M%NZ
+raw/run5          1700000 len  21 share 0.15 q  2  nf 0.69 bindP 0.66 bindF 0.65 copyP 0.72 copyF 0.96 disc 0.25 expP 0.47  $=?>$U^BTB$=?>O$M%NPZ
+raw/run5          1800000 len  21 share 0.11 q  2  nf 0.70 bindP 0.69 bindF 0.69 copyP 0.72 copyF 0.94 disc 0.23 expP 0.50  $=?>DU^BUB$=?>O$M%NQZ
+raw/run5          1900000 len  21 share 0.07 q  2  nf 0.69 bindP 0.66 bindF 0.65 copyP 0.72 copyF 0.96 disc 0.25 expP 0.47  $=?>$UD^BBD$=?>O$M%QZ
+raw/run5          2000000 len  19 share 0.19 q  2  nf 0.76 bindP 0.62 bindF 0.62 copyP 0.76 copyF 0.95 disc 0.20 expP 0.48  $=?>$^BAD$=?>O$M%QZ
+raw/run6           100000 len  63 share 0.08 q  2  nf 0.33 bindP 0.63 bindF 0.62 copyP 0.13 copyF 0.26 disc 0.50 expP 0.08  WWEWLHHHRLUFUWJJJRJX?UUUYGSHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+raw/run6           200000 len  62 share 0.11 q  2  nf 0.53 bindP 0.53 bindF 0.54 copyP 0.79 copyF 0.84 disc 0.06 expP 0.42  WEWLGHHLYUFUWJKJRKX?UUYNGSHJBLRWWR$BLUBO^B>C$=?>$DBLUBO%}OYHOB
+raw/run6           300000 len  54 share 0.12 q  1  nf 0.45 bindP 1.00 bindF 1.00 copyP 0.12 copyF 0.00 disc -32.83 expP 0.12  HHMYUFUVJKJRKLUUZ=NGTHJBLRWWR$BLUBO^B>C$=?>$DBLUO%}OYH
+raw/run6           400000 no self-replicator in the top 12
+raw/run6           500000 no self-replicator in the top 12
+raw/run6           600000 no self-replicator in the top 12
+raw/run6           700000 no self-replicator in the top 12
+raw/run6           800000 no self-replicator in the top 12
+raw/run6           900000 no self-replicator in the top 12
+raw/run6          1000000 no self-replicator in the top 12
+raw/run6          1100000 no self-replicator in the top 12
+raw/run6          1200000 no self-replicator in the top 12
+raw/run6          1300000 no self-replicator in the top 12
+raw/run6          1400000 no self-replicator in the top 12
+raw/run6          1500000 no self-replicator in the top 12
+raw/run6          1600000 no self-replicator in the top 12
+raw/run6          1700000 no self-replicator in the top 12
+raw/run6          1800000 no self-replicator in the top 12
+raw/run6          1900000 no self-replicator in the top 12
+raw/run6          2000000 no self-replicator in the top 12
+raw/run7           100000 len  30 share 0.19 q  2  nf 0.62 bindP 0.61 bindF 0.62 copyP 0.69 copyF 0.96 disc 0.29 expP 0.42  $=?>$$BL=BO^B>C$=?>$$BLUBO%}OY
+raw/run7           200000 len  30 share 0.10 q  2  nf 0.62 bindP 0.61 bindF 0.62 copyP 0.69 copyF 0.96 disc 0.29 expP 0.42  $=?>$$BL=BO^B>C$=?>$$BLUBO%}OY
+raw/run7           300000 len  27 share 0.17 q  2  nf 0.68 bindP 0.62 bindF 0.62 copyP 0.71 copyF 0.94 disc 0.24 expP 0.45  $=?>$$BL=BO^B>C$=?>$LUBO%OY
+raw/run7           400000 len  30 share 0.17 q  2  nf 0.63 bindP 0.62 bindF 0.62 copyP 0.74 copyF 0.95 disc 0.22 expP 0.46  $=?>$$BLUBO^B>C$=?>$CBLUAO%}OY
+raw/run7           500000 len  30 share 0.13 q  2  nf 0.58 bindP 0.65 bindF 0.65 copyP 0.72 copyF 0.97 disc 0.25 expP 0.47  $=?>$DBLUBO^BQC$=?>$CBLUAO%}OY
+raw/run7           600000 len  31 share 0.15 q  2  nf 0.59 bindP 0.65 bindF 0.65 copyP 0.72 copyF 0.97 disc 0.25 expP 0.47  $=?>$DBLUBO^BQC$=?>$CBLUAOB%}OY
+raw/run7           700000 len  28 share 0.20 q  2  nf 0.66 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.96 disc 0.24 expP 0.47  $=?>$BL=CO^B>C$=?>$BLUAO%}OY
+raw/run7           800000 len  28 share 0.21 q  2  nf 0.66 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.96 disc 0.24 expP 0.47  $=?>$BL=CO^B>C$=?>$BLUAO%}OY
+raw/run7           900000 len  27 share 0.25 q  2  nf 0.68 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.96 disc 0.24 expP 0.47  $=?>$BLCO^B>C$=?>$BLUAO%}OY
+raw/run7          1000000 len  27 share 0.05 q  2  nf 0.63 bindP 0.65 bindF 0.65 copyP 0.72 copyF 0.97 disc 0.25 expP 0.47  $=?>$BL=CO^BB$=?>$BLUAO%}OY
+raw/run7          1100000 len  24 share 0.15 q  2  nf 0.65 bindP 0.64 bindF 0.65 copyP 0.67 copyF 0.96 disc 0.30 expP 0.43  $=?>$BL=CO^B$=?>$LAQ%}OY
+raw/run7          1200000 len  24 share 0.08 q  2  nf 0.65 bindP 0.64 bindF 0.65 copyP 0.67 copyF 0.96 disc 0.30 expP 0.43  $=?>$BL=CO^B$=?>$LAP%OOY
+raw/run7          1300000 len  24 share 0.07 q  2  nf 0.62 bindP 0.64 bindF 0.65 copyP 0.66 copyF 0.97 disc 0.32 expP 0.42  $=?>$BM=CO^B$=?>$LAP%O}Y
+raw/run7          1400000 len  21 share 0.08 q  2  nf 0.73 bindP 0.64 bindF 0.64 copyP 0.65 copyF 0.95 disc 0.31 expP 0.41  $=?>$BL=^B$=?>$LAP%OY
+raw/run7          1500000 len  35 share 0.07 q  3  nf 0.49 bindP 0.64 bindF 0.64 copyP 0.65 copyF 0.89 disc 0.27 expP 0.41  $=?>$BLCO^ABC=?>BL=$O^B$=?>$LAQ%NOY
+raw/run7          1600000 len  29 share 0.08 q  3  nf 0.56 bindP 0.64 bindF 0.64 copyP 0.63 copyF 0.71 disc 0.10 expP 0.41  $=?>$BO^A=K?=O^A^B$=?>$LAQ%OY
+raw/run7          1700000 len  28 share 0.07 q  4  nf 0.57 bindP 0.64 bindF 0.63 copyP 0.64 copyF 0.69 disc 0.08 expP 0.41  $=?>$B^A=??=O^A^B$=?>$LAQ%OY
+raw/run7          1800000 len  27 share 0.04 q  3  nf 0.60 bindP 0.64 bindF 0.64 copyP 0.63 copyF 0.59 disc -0.06 expP 0.40  $=?>$B^AK?=^A^B$=?>$LAP%OCY
+raw/run7          1900000 len  20 share 0.10 q  3  nf 0.76 bindP 0.64 bindF 0.64 copyP 0.65 copyF 0.94 disc 0.30 expP 0.42  ?=?>$BL=^B$=?>$LZ%QY
+raw/run7          2000000 len  21 share 0.10 q  3  nf 0.72 bindP 0.64 bindF 0.62 copyP 0.67 copyF 0.94 disc 0.29 expP 0.43  $=?>$M?=B^B$=?>$LA%}Y
+raw/run8           100000 len  30 share 0.49 q  2  nf 0.67 bindP 0.62 bindF 0.62 copyP 0.75 copyF 0.95 disc 0.20 expP 0.47  $=?>$$BLUOBO^B>C$=?>$BLUO%}PYH
+raw/run8           200000 len  30 share 0.06 q  2  nf 0.68 bindP 0.64 bindF 0.64 copyP 0.74 copyF 0.96 disc 0.22 expP 0.48  $=?>$S$BLUOO^B>C$=?>$BLUO%}PYH
+raw/run8           300000 len  28 share 0.13 q  2  nf 0.71 bindP 0.62 bindF 0.62 copyP 0.75 copyF 0.94 disc 0.20 expP 0.47  $=?>$$LUOBO^B>C$=?>$BLUO%}YH
+raw/run8           400000 len  29 share 0.13 q  2  nf 0.69 bindP 0.64 bindF 0.65 copyP 0.74 copyF 0.96 disc 0.22 expP 0.48  $=?>$DLUOCO^B>C$=?>$BLUOQ%}YH
+raw/run8           500000 len  28 share 0.30 q  2  nf 0.70 bindP 0.65 bindF 0.65 copyP 0.73 copyF 0.95 disc 0.23 expP 0.47  $=?>$DLUOBO^B>C$=?>$ALUO%OYH
+raw/run8           600000 len  27 share 0.27 q  2  nf 0.71 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.96 disc 0.24 expP 0.47  $=?>$DLUCO^B>C$=?>$LUOQ%NYH
+raw/run8           700000 len  26 share 0.18 q  2  nf 0.62 bindP 0.65 bindF 0.65 copyP 0.69 copyF 0.96 disc 0.28 expP 0.45  $=?>$ELUCO^BC$=?>$LUOQ%NYH
+raw/run8           800000 len  25 share 0.19 q  2  nf 0.76 bindP 0.64 bindF 0.64 copyP 0.73 copyF 0.94 disc 0.23 expP 0.47  $=?>$LUOBO^B>C$=?>$LUO%YH
+raw/run8           900000 len  36 share 0.25 q  3  nf 0.63 bindP 0.64 bindF 0.64 copyP 0.75 copyF 0.84 disc 0.11 expP 0.48  $=?>$LUOB^A$=?>$NLUOB^B>C$=?>$LUO%YH
+raw/run8          1000000 len  25 share 0.12 q  3  nf 0.66 bindP 0.64 bindF 0.65 copyP 0.69 copyF 0.96 disc 0.28 expP 0.44  ?=?>$NLUOB^B>C$=?>$LUO%YH
+raw/run8          1100000 len  36 share 0.11 q  5  nf 0.63 bindP 0.64 bindF 0.65 copyP 0.63 copyF 0.90 disc 0.30 expP 0.40  ?=?>$NLUOB^A>C?=?>$NMUB^BC$=?>$UO%YH
+raw/run8          1200000 len  24 share 0.05 q  3  nf 0.72 bindP 0.64 bindF 0.65 copyP 0.71 copyF 0.95 disc 0.25 expP 0.46  ?=?>$NLUOB^B>C$=?>$UO%ZH
+raw/run8          1300000 len  22 share 0.04 q  3  nf 0.70 bindP 0.65 bindF 0.65 copyP 0.69 copyF 0.94 disc 0.27 expP 0.44  ?=?>$NMUB^BC$=?>$UO%YH
+raw/run8          1400000 len  24 share 0.05 q  2  nf 0.68 bindP 0.64 bindF 0.65 copyP 0.69 copyF 0.96 disc 0.28 expP 0.44  $=?>$NLUOB^B>C$=?>$LU%YH
+raw/run8          1500000 len  22 share 0.05 q  3  nf 0.69 bindP 0.62 bindF 0.62 copyP 0.68 copyF 0.94 disc 0.27 expP 0.43  ?=?>^$NM=B^BC$=?>$U%YH
+raw/run8          1600000 len  32 share 0.07 q  5  nf 0.51 bindP 0.64 bindF 0.64 copyP 0.67 copyF 0.86 disc 0.22 expP 0.43  ?=?>$L=O^AA?U?$NMUB^BRC$=?>$U%ZH
+raw/run8          1700000 len  30 share 0.06 q  5  nf 0.54 bindP 0.64 bindF 0.64 copyP 0.67 copyF 0.85 disc 0.20 expP 0.43  ?=?>$L=^AA?U?$NMUB^BRC$=?>$U%H
+raw/run8          1800000 len  20 share 0.13 q  2  nf 0.76 bindP 0.64 bindF 0.65 copyP 0.67 copyF 0.92 disc 0.27 expP 0.43  ==?>$NMB^BC$=?>$U%YH
+raw/run8          1900000 len  21 share 0.12 q  2  nf 0.74 bindP 0.65 bindF 0.65 copyP 0.69 copyF 0.93 disc 0.26 expP 0.45  $=?>$NLO^BC$=?>$LU%YH
+raw/run8          2000000 len  20 share 0.09 q  2  nf 0.72 bindP 0.64 bindF 0.65 copyP 0.66 copyF 0.93 disc 0.30 expP 0.42  $=?>$NLO^BC$=?>$U%XH
+
+== medians by step
+paper    100000 n= 8  nf 0.65 bindP 0.62 bindF 0.62 copyP 0.42 copyF 0.60 disc 0.27 expP 0.27
+paper    200000 n= 8  nf 0.65 bindP 0.62 bindF 0.62 copyP 0.69 copyF 0.95 disc 0.28 expP 0.42
+paper    300000 n= 8  nf 0.64 bindP 0.66 bindF 0.62 copyP 0.64 copyF 0.95 disc 0.28 expP 0.42
+paper    400000 n= 7  nf 0.63 bindP 0.65 bindF 0.65 copyP 0.73 copyF 0.95 disc 0.24 expP 0.46
+paper    500000 n= 7  nf 0.67 bindP 0.65 bindF 0.65 copyP 0.70 copyF 0.95 disc 0.26 expP 0.45
+paper    600000 n= 7  nf 0.61 bindP 0.64 bindF 0.63 copyP 0.72 copyF 0.96 disc 0.24 expP 0.47
+paper    700000 n= 7  nf 0.63 bindP 0.64 bindF 0.65 copyP 0.71 copyF 0.96 disc 0.24 expP 0.45
+paper    800000 n= 7  nf 0.67 bindP 0.64 bindF 0.65 copyP 0.71 copyF 0.94 disc 0.26 expP 0.46
+paper    900000 n= 7  nf 0.63 bindP 0.64 bindF 0.65 copyP 0.73 copyF 0.93 disc 0.20 expP 0.46
+paper   1000000 n= 6  nf 0.64 bindP 0.64 bindF 0.65 copyP 0.69 copyF 0.94 disc 0.27 expP 0.44
+paper   1100000 n= 6  nf 0.64 bindP 0.64 bindF 0.65 copyP 0.65 copyF 0.94 disc 0.30 expP 0.42
+paper   1200000 n= 6  nf 0.66 bindP 0.65 bindF 0.65 copyP 0.65 copyF 0.95 disc 0.31 expP 0.43
+paper   1300000 n= 6  nf 0.61 bindP 0.63 bindF 0.65 copyP 0.67 copyF 0.95 disc 0.30 expP 0.43
+paper   1400000 n= 6  nf 0.64 bindP 0.63 bindF 0.64 copyP 0.67 copyF 0.95 disc 0.30 expP 0.43
+paper   1500000 n= 7  nf 0.57 bindP 0.62 bindF 0.64 copyP 0.65 copyF 0.94 disc 0.27 expP 0.41
+paper   1600000 n= 7  nf 0.55 bindP 0.64 bindF 0.64 copyP 0.63 copyF 0.86 disc 0.22 expP 0.41
+paper   1700000 n= 7  nf 0.57 bindP 0.65 bindF 0.65 copyP 0.64 copyF 0.84 disc 0.25 expP 0.41
+paper   1800000 n= 6  nf 0.65 bindP 0.63 bindF 0.64 copyP 0.65 copyF 0.93 disc 0.25 expP 0.42
+paper   1900000 n= 6  nf 0.69 bindP 0.63 bindF 0.64 copyP 0.67 copyF 0.94 disc 0.28 expP 0.43
+paper   2000000 n= 6  nf 0.71 bindP 0.64 bindF 0.64 copyP 0.66 copyF 0.93 disc 0.29 expP 0.42
