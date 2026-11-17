@@ -1,0 +1,5 @@
+population, median over 3 worlds x 5 seeds (n)
+  pf1m1: +0k 12285  +2k 12209  +5k 12223  +10k 12217  +20k 12219  +50k 12212  +100k 12226  +150k 12220  +200k 12226
+  pf0m0: +0k 12276  +2k 12209  +5k 12217  +10k 12218  +20k 12212  +50k 12216  +100k 12199  +150k 12209  +200k 12213
+  pf0m1: +0k 12235  +2k 12202  +5k 12187  +10k 11968  +20k 9817  +50k 10017  +100k 8464  +150k 10196  +200k 10362
+pf0m1: steps until the first successful parasite species: median 1000, range 1000-2000 (15/15 runs)

@@ -1022,6 +1022,54 @@ Details: `experiments/parasites/compete.py`, `compete_results.txt`, `compete_pai
 - Together with sections 19-23: self-scan and the early restructuring are parasite-driven, while
   later improvement is mostly tolerance and the parasites do not themselves improve.
 
+## 25. Are parasites like defective interfering particles? Genealogy and regeneration (Nov 17)
+
+Details: `experiments/parasites/dip.py`, `dip_regen_agg.py`, results `dip_genealogy_ctl.txt`,
+`dip_regen_population.txt`, `dip_regen_genealogy.txt`.
+
+**Genealogy** (5 surviving normal runs from section 23, 2M steps each):
+- Method:
+  - A successful parasite is a species copied exactly at least 20 times that never made a copy.
+  - Its template parent is the nearer (edit distance) of its two parent species in species.tsv.
+  - Its lineage is followed back through parasite parents to the first non-parasite ancestor.
+- **Only 42-58% of parasite species are made directly from a non-parasite** (mostly a
+  replicator); the rest descend from other parasites, up to hundreds of generations deep.
+- Weighted by how often they are copied, **only 28-44% of parasitism comes from parasites made
+  directly from replicators.**
+- The largest parasite clades have 200-520 species. Parasite lineages last a median 150k-440k
+  steps, against 23k-85k for replicator species.
+- So the paper's "new parasite species continually arise from mutated replicators, rather than
+  from evolving parasite lineages" does not hold in these runs: parasite lineages are real and
+  long-lived.
+- **The lineages do not get better.** P(bind) x copied by the current top replicator, for
+  parasites made directly from a replicator against those descended from parasites: 0.28 vs 0.32,
+  0.26 vs 0.26, 0.19 vs 0.12, 0.39 vs 0.46, 0.40 vs 0.39. No consistent difference.
+
+**Regeneration** (3 parasite-free worlds at 2M, continued 200k steps, 5 seeds each):
+
+| Steps after the switch | +0 | +10k | +20k | +100k | +200k |
+|---|---|---|---|---|---|
+| Parasites allowed, mutation on (population) | 12,235 | 11,968 | 9,817 | 8,464 | 10,362 |
+| Parasites allowed, mutation off | 12,276 | | | | 12,213 |
+| Still parasite-free | 12,285 | | | | 12,226 |
+
+- With mutation on, the first successful parasite species appears within 1,000-2,000 steps in
+  all 15 runs. 2 of 15 go extinct.
+- With mutation off or parasites still blocked, nothing changes.
+- Within 200k steps the new parasites already form lineages: 41-66% of species, and 12-67% of
+  parasitism (median about 40%), descend from parasites. Exploitation by lineage depth is again
+  about equal (deeper slightly higher in 9 of 15 runs, lower in 3; mostly by 0.01-0.1).
+
+**Reading:**
+- Like defective interfering particles, parasites arise de novo from the replicators almost
+  immediately once mutation can make them, they need the replicators, and they suppress the
+  population.
+- Unlike the "regenerated each time" picture (and the paper's claim), about half of them
+  propagate as parasite lineages that persist for hundreds of thousands of steps.
+- Those lineages drift rather than escalate: no clear improvement in exploitation along them.
+- The best description is persistent, non-escalating parasite lineages, continually topped up
+  from the replicators.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product
