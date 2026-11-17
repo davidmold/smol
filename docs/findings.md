@@ -974,6 +974,54 @@ self-scanning replicator (their figure 6). Self-scan may be absent because paras
 or because the route to it is blocked. The test that would separate the two: let such products
 exist but never be copied.
 
+## 24. Competition: self-scanners against their non-scanning contemporaries (Nov 16)
+
+Details: `experiments/parasites/compete.py`, `compete_results.txt`, `compete_pairs.tsv`,
+`compete_probe.txt`.
+
+**Method:**
+- The chemistry is not changed; only the starting mix is.
+- For 6 published runs, take the first 20k snapshot where a self-scanning replicator (D) is
+  among the top replicators, with the commonest non-scanning replicator (A) of the same
+  snapshot.
+- Take up to 5 of that snapshot's parasites (non-self-copiers that A or D copies).
+- Fresh 125x100 world: 1000 A + 1000 D at random cells, with or without 1000 of the parasites;
+  mutation off or on.
+- 10 seeds per condition, 30k steps.
+
+**Result** (share of D among A + D at 30k, median of 10 seeds):
+
+| Run | mutation off, no parasites | mutation off, parasites | mutation on, no parasites | mutation on, parasites |
+|---|---|---|---|---|
+| 1 | 0.72 | 1.00 | 0.43 | 1.00 |
+| 2 | 0.42 | 1.00 | 0.87 | 1.00 |
+| 3 | 0.25 | 1.00 | 0.76 | 1.00 |
+| 7 | 0.74 | 1.00 | 0.79 | 0.95 |
+| 4 | 0.82 | 0.39 | 0.68 | 0.54 |
+| 5 | 0.99 | 0.00 | 0.99 | 0.61 |
+
+- **In 4 of 6 runs (1, 2, 3, 7) self-scan is an anti-parasite adaptation:**
+  - With parasites, D takes over completely within 10-20k steps, in every seed.
+  - Without parasites and with mutation off, it is neutral or worse (0.25-0.74). In run 3 it
+    loses.
+  - With mutation on and no added parasites, D gains in runs 2 and 3 (0.87, 0.76), as parasites
+    arise from both competitors.
+  - In the probe, those parasites are copied readily by A and hardly at all by D (exposure, i.e.
+    P(bind) x copied: A 0.60-0.91, D 0-0.12), and D lets go of them almost at once (5-26 steps
+    bound against 97-163 for A).
+- **In runs 4 and 5 it is reversed:** D wins without parasites and loses with them (run 5: 0.00
+  in 8 of 8 surviving seeds). D still resists those parasites better than A in the probe
+  (exposure 0.16-0.25 against 0.45-0.57), and neither parasite set copies A, so the pairwise probe
+  does not explain the reversal. It may be a spatial or community effect. Unexplained for now.
+
+**Reading:**
+- This is the strongest support yet for the paper's claim, and it comes without changing the
+  rules. Where self-scan first appears, it is usually favoured because of parasites: it lets a
+  replicator refuse and release the parasites its competitor keeps copying.
+- The advantage is not universal. In 2 of 6 runs the same contrast favours the other replicator.
+- Together with sections 19-23: self-scan and the early restructuring are parasite-driven, while
+  later improvement is mostly tolerance and the parasites do not themselves improve.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

@@ -1,0 +1,6 @@
+run1 reactions where the replicator itself is copied: A 0 D 0; run1 mean steps bound to parasites: A 107 D 6; parasite exposure (mean P(bind) x copied): A 0.63  D 0.00  AxD: []
+run2 reactions where the replicator itself is copied: A 0 D 0; run2 mean steps bound to parasites: A 97 D 5; parasite exposure (mean P(bind) x copied): A 0.91  D 0.00  AxD: []
+run3 reactions where the replicator itself is copied: A 0 D 0; run3 mean steps bound to parasites: A 163 D 26; parasite exposure (mean P(bind) x copied): A 0.60  D 0.12  AxD: []
+run4 reactions where the replicator itself is copied: A 0 D 0; run4 mean steps bound to parasites: A 76 D 40; parasite exposure (mean P(bind) x copied): A 0.57  D 0.25  AxD: []
+run5 reactions where the replicator itself is copied: A 0 D 0; run5 mean steps bound to parasites: A 61 D 37; parasite exposure (mean P(bind) x copied): A 0.45  D 0.16  AxD: []
+run7 reactions where the replicator itself is copied: A 0 D 0; run7 mean steps bound to parasites: A 153 D 7; parasite exposure (mean P(bind) x copied): A 0.82  D 0.00  AxD: []
