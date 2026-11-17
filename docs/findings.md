@@ -1070,6 +1070,35 @@ Details: `experiments/parasites/dip.py`, `dip_regen_agg.py`, results `dip_geneal
 - The best description is persistent, non-escalating parasite lineages, continually topped up
   from the replicators.
 
+## 26. Why self-scan lost in competition runs 4 and 5 (parasites adapt to the scanner; decoys protect A)
+
+The competition (section 24) had D (self-scanner) beat A with parasites present in runs 1, 2, 3 and 7,
+but lose in runs 4 and 5. Scripts and results in `experiments/parasites/`.
+
+- **Run 5:** one fast D-specialist, `$$YHOB`. A and D bind it equally (0.80); A lets go after 8 steps
+  without copying it, D copies it in 37 steps (its own copy takes 211). In the first 1,000 steps D made
+  5,070 copies of it and 841 of itself.
+- **Snapshot pools (`ratio.py`):** same A and D against 31 pools taken from snapshots with different
+  D:A ratios (10 seeds each, mutation off). Pools from snapshots where D's family had taken over beat D
+  in 11 of 13 cases; pools from before D existed beat D in 2 of 6. The original run 4 and 5 pools came
+  from snapshots where D already outnumbered A by 5.7x and 4.2x (other runs 0.7-2.1x).
+- **Evolved pools (`evolve.py`, causal):** parasites evolved for 150k steps in worlds of D alone or
+  A alone (mutation on, 3 seeds per run), then used in the competition. D-evolved pools beat D in
+  35 of 35 (median D share 0.00-0.01); A-evolved pools mostly favour D (median 0.95-0.99), beating it in
+  7 of 28. 4 of 18 A-only worlds went extinct, 0 of 18 D-only.
+- **Prediction (`predict.py`):** each host reacted with each parasite over 10 seeds (`smol-react --seed`,
+  added for this). "The host with the fastest-growing parasite (P(bind) x success x self-copy steps /
+  parasite copy steps) loses" gets the winner right in 85 of 93 pools.
+- **Run 4 (`knockout.py`, `dropone.py`):** D's specialist `>$$OZHOB` matters, but the decisive members
+  are *decoys*: long relatives of A that A copies but that cannot copy themselves. They bind A's
+  parasites for 160-360 steps without copying them and release D's parasite within 10-45 steps (one
+  also copies it). Without the decoy, the original run 4 pool goes from D share 0.39 to 1.00; without
+  both decoys, the 60k pool goes from 0.00 to 1.00 (10/10 seeds). Removing members that copy other
+  parasites ("alternative hosts") did not explain it.
+- **Reading:** self-scan's advantage is real but temporary: it beats parasites adapted to other
+  replicators and loses once parasites adapt to it, an arms race rather than steady improvement.
+  Decoys are a second tolerance mechanism (besides faster self-copy); how common they are is untested.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

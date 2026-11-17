@@ -2,7 +2,7 @@
 //! turn as initiator, mutation off, and report who copied whom and what was produced.
 //! Output format matches the old `sm-react`, so the two can be diffed.
 //!
-//!   smol-react PAIRS [MAXSTEPS] [--compat] [--skip N]
+//!   smol-react PAIRS [MAXSTEPS] [--compat] [--skip N] [--seed N]
 //!
 //! PAIRS lines: "R name seq" or "P name seq". --compat uses the old generator (MT19937,
 //! default seed 4357) and the old deletion quirk, for draw-for-draw comparison; --skip N
@@ -52,7 +52,10 @@ fn main() {
         .map(|c| (c[1].to_string(), c[2].as_bytes().to_vec()))
         .collect();
 
-    let mut rng: Box<dyn Rng> = if compat { Box::new(Mt19937::new(4357)) } else { Box::new(Xoshiro::new(1)) };
+    // --seed N: generator seed (default 4357 with --compat, 1 otherwise), for repeated trials
+    let seed: Option<u64> = args.iter().position(|a| a == "--seed").map(|i| args[i + 1].parse().unwrap());
+    let mt_seed = seed.unwrap_or(4357) as u32;
+    let mut rng: Box<dyn Rng> = if compat { Box::new(Mt19937::new(mt_seed)) } else { Box::new(Xoshiro::new(seed.unwrap_or(1))) };
     for _ in 0..skip {
         rng.next_f64();
     }
@@ -98,7 +101,7 @@ fn main() {
             let mut end = "ran out of steps";
             let mut end_by_pas = false;
             if steptrace {
-                if compat { rng = Box::new(Mt19937::new(4357)); }
+                if compat { rng = Box::new(Mt19937::new(mt_seed)); }
                 writeln!(out, "PAIR {} {} p={:.6} act={}", x.0, y.0, p, an).unwrap();
             }
             let mut nprod = 0;

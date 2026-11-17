@@ -1,0 +1,16 @@
+/home/davidmold/smol/runs/dropone/all.done
+1
+== run4 src60000: full pool D share 0.00
+  without EUWJ                                                           ( 264 in source)  D share 0.12
+  without >$$OZHOB                                                       ( 173 in source)  D share 0.35
+  without UUDYGRHJLRWWRE$BLUBO^RB>C$=?>$$BLUCO^B>C$=?>$$BLUBO%}OYHOB     ( 172 in source)  D share 0.00
+  without $=?>$$OZHOB                                                    ( 147 in source)  D share 0.00
+  without UUUDYGRHJLRWWRE$BLUBO^RB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB    ( 134 in source)  D share 0.00
+== run4 src100000: full pool D share 0.39
+  without $=?>$$                                                         ( 183 in source)  D share 0.11
+  without $OYHOB                                                         ( 123 in source)  D share 0.05
+  without LUEUWJ                                                         ( 112 in source)  D share 0.16
+  without >$$OZHOB                                                       (  91 in source)  D share 0.70
+  without UUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>CC=?>$$BLUBO%}OYHOB$    (  80 in source)  D share 1.00
+run4 src60000 without both long A-relatives: D share median 1.00; per seed 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+run4 src60000 without both long A-relatives and >$$OZHOB: D share median 1.00; per seed 1.00 1.00 0.95 0.81 0.87 1.00 1.00 1.00 1.00 1.00

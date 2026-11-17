@@ -1,0 +1,25 @@
+D share of A+D at 30k (median of 10 seeds); A/D = seeds where that replicator is gone; base = no-parasite baseline
+== run1  baseline 0.72
+   50k  A1 0.55 (0/0)   A2 0.52 (0/0)   A3 dead    D1 0.01 (0/0)   D2 0.00 (0/0)   D3 0.00 (0/0)
+  150k  A1 1.00 (8/0)   A2 1.00 (9/0)   A3 dead    D1 0.00 (0/2)   D2 0.01 (0/0)   D3 0.00 (0/0)
+== run2  baseline 0.42
+   50k  A1 1.00 (10/0)   A2 1.00 (9/0)   A3 1.00 (10/0)   D1 0.01 (0/0)   D2 0.01 (0/0)   D3 0.01 (0/0)
+  150k  A1 dead    A2 dead    A3 0.00 (0/0)   D1 0.00 (0/2)   D2 0.00 (0/3)   D3 0.00 (0/1)
+== run3  baseline 0.25
+   50k  A1 0.96 (2/0)   A2 0.95 (0/0)   A3 0.11 (0/0)   D1 0.00 (0/0)   D2 0.00 (0/1)   D3 0.00 (0/0)
+  150k  A1 1.00 (8/0)   A2 0.98 (1/0)   A3 0.93 (0/0)   D1 0.00 (0/1)   D2 0.00 (0/6)   D3 0.00 (0/0)
+== run4  baseline 0.82
+   50k  A1 0.36 (3/0)   A2 dead    A3 1.00 (7/0)   D1 0.00 (0/0)   D2 0.01 (0/0)   D3 0.01 (0/0)
+  150k  A1 nan (10/10)   A2 dead    A3 dead    D1 nan (10/10)   D2 0.00 (0/0)   D3 0.00 (0/1)
+== run5  baseline 0.99
+   50k  A1 0.03 (0/0)   A2 1.00 (10/0)   A3 0.02 (0/0)   D1 0.00 (0/8)   D2 0.00 (0/4)   D3 0.00 (0/1)
+  150k  A1 0.00 (0/3)   A2 1.00 (9/0)   A3 0.00 (0/1)   D1 0.00 (0/10)   D2 0.00 (0/1)   D3 0.01 (0/0)
+== run7  baseline 0.74
+   50k  A1 1.00 (10/0)   A2 0.03 (0/0)   A3 0.99 (0/0)   D1 0.01 (0/0)   D2 0.01 (0/0)   D3 0.01 (0/0)
+  150k  A1 1.00 (10/0)   A2 0.00 (0/3)   A3 1.00 (0/0)   D1 0.00 (0/0)   D2 0.00 (0/0)   D3 0.00 (0/1)
+
+Over runs x evolution seeds:
+  parasites evolved on A, harvested  50k: median D share 0.95, median minus baseline +0.09, D below baseline in 7/16, D share < 0.1 in 3/16
+  parasites evolved on D, harvested  50k: median D share 0.01, median minus baseline -0.72, D below baseline in 18/18, D share < 0.1 in 18/18
+  parasites evolved on A, harvested 150k: median D share 0.99, median minus baseline +0.26, D below baseline in 4/12, D share < 0.1 in 4/12
+  parasites evolved on D, harvested 150k: median D share 0.00, median minus baseline -0.72, D below baseline in 17/17, D share < 0.1 in 17/17

@@ -1,0 +1,13 @@
+kind  run   pool         copiers  E3(A) E3(D) rule says   D share: full pool -> copiers removed   base   rule right after?
+miss  run4  src60000       1      5.58  2.72 D wins      0.00 ->  0.00                        0.82   no
+miss  run4  src100000      0      6.03  2.72 D wins      0.39 ->   nan                        0.82   -
+miss  run1  onA1_50k       0      5.50  0.00 D wins      0.55 ->   nan                        0.72   -
+miss  run1  onA2_50k       0      2.98  0.00 D wins      0.52 ->   nan                        0.72   -
+miss  run3  onA3_50k       0      3.11  1.09 D wins      0.11 ->   nan                        0.25   -
+miss  run4  onA1_50k       0      1.71  0.96 D wins      0.36 ->   nan                        0.82   -
+miss  run5  onA1_50k       0     32.33  0.98 D wins      0.03 ->   nan                        0.99   -
+miss  run5  onA3_50k       0     32.33  0.98 D wins      0.02 ->   nan                        0.99   -
+ctl   run1  onA2_150k      1      5.19  0.00 D wins      1.00 ->  1.00                        0.72   yes
+ctl   run2  onA2_50k       2      5.65  0.00 D wins      1.00 ->  1.00                        0.42   yes
+ctl   run3  src20000       1      1.49  1.09 D wins      1.00 ->  1.00                        0.25   yes
+ctl   run5  onA2_150k      1     32.33  0.96 D wins      1.00 ->  0.07                        0.99   no
