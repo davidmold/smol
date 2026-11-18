@@ -1138,6 +1138,49 @@ pressure. Multiplying parasites supply selection: with them, self-scan wins and 
 control survivor; competition, section 24); without them it comes and goes (about half of pf2
 snapshots), as in the competition without parasites, where D is roughly neutral.
 
+## 28. How later replicators cope: stalling on parasites, not decoys (Nov 17)
+
+Details: `experiments/parasites/decoy.py`, `decoy_survey.txt`, `swapprobe.py`,
+`swapprobe_results.txt`.
+
+**Method:** the 8 published runs at 100k and every 200k to 2M (86 snapshots). The 30 commonest
+species of each snapshot are reacted pairwise (smol-react --compat, one trial). Replicator: makes
+an exact copy of its partner or itself in some pair. Parasite: never does, but is copied exactly by
+a replicator. (A self-copy test alone misses runs where replication is by partners, e.g. run 6
+after 400k and run 1 after 1M.) Each parasite's expected bound time (parasite x partner abundance x
+P(bind) x steps) is split into: copied; held >= 50 steps with no copy, by a replicator ("stalled")
+or by a non-replicator ("decoy"); released sooner.
+
+**Decoys (findings 26) are rare:** decoy molecules are 0% of the population in the median
+snapshot and >= 2% in 10 of 86; decoy holding is a median 1-4% of parasite-bound time and does not
+track population (Spearman -0.05).
+
+**Stalling grows:**
+
+| Period | Median pop | Copied | Stalled by replicators | Held by decoys |
+|---|---|---|---|---|
+| <= 600k (32 snapshots) | 5,754 | 0.65 | 0.08 | 0.04 |
+| 0.8-1.2M (24) | 7,350 | 0.70 | 0.18 | 0.01 |
+| 1.4-2M (30) | 9,462 | 0.30 | 0.59 | 0.02 |
+
+- Stalls produce no product at all (not botched copies).
+- 1M -> 2M: stalling rises and copying falls in 8 of 8 runs.
+- Spearman with population: stalled +0.47, copied -0.44, parasite share of the top 30 -0.71.
+
+**Swap (findings 20):** against the 2M parasites, the 1M top replicator copies (0.75-0.97) where
+the 2M one holds them in runs 1, 3 and 5; in run 4 the 2M replicator does not bind them at all.
+These are four of the five largest population drops when 1M replicators replaced 2M ones
+(-6,929, -4,114, -3,309, -1,947 at +10k). Runs 2 and 8, where both hold, had the two smallest drops
+(-613, -326). Run 7 (both hold, drop -3,181) is the exception; run 6 (both copy, -1,720) is middling.
+
+**Reading:** what findings 20 called tolerance is mostly resistance by stalling on the established
+parasites, not discrimination of own mutants (fresh mutants are still copied 65-73% of the time,
+findings 21), which is why parasite share stays up: new parasites keep arising, and parasite
+lineages adapt to the new replicators (findings 26).
+
+**Caveats:** one trial per pair; only the 30 commonest species; the swap probe uses only the top
+replicator. A direct intervention on stalling has not been done.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

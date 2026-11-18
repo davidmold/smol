@@ -1,0 +1,19 @@
+run   host     vs 2M parasites:  copied  held  brief
+run1  1M rep                     0.94    0.06   0.00
+run1  2M rep                     0.08    0.87   0.05
+run2  1M rep                     0.00    1.00   0.00
+run2  2M rep                     0.00    1.00   0.00
+run3  1M rep                     0.97    0.00   0.03
+run3  2M rep                     0.66    0.34   0.00
+run4  1M rep                     0.00    1.00   0.00
+run4  2M rep                     0.00    0.00   0.00
+run5  1M rep                     0.75    0.21   0.04
+run5  2M rep                     0.29    0.69   0.02
+run6  1M rep                     0.97    0.00   0.03
+run6  2M rep                     1.00    0.00   0.00
+run7  1M rep                     0.03    0.97   0.00
+run7  2M rep                     0.02    0.98   0.00
+run8  1M rep                     0.00    0.99   0.00
+run8  2M rep                     0.01    0.99   0.00
+median 1M rep: copied 0.39, held 0.59
+median 2M rep: copied 0.05, held 0.78
