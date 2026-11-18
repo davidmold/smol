@@ -1099,6 +1099,45 @@ but lose in runs 4 and 5. Scripts and results in `experiments/parasites/`.
   replicators and loses once parasites adapt to it, an arms race rather than steady improvement.
   Decoys are a second tolerance mechanism (besides faster self-copy); how common they are is untested.
 
+## 27. The stepping-stone confound: PARASITEFREE 2 and the genealogy of the first self-scanner (Nov 17)
+
+Section 23's confound: PARASITEFREE 1 blocks every product that cannot copy itself, which also
+blocks the non-viable intermediates on the way to self-scan. (The test proposed there, "let such
+products exist but never be copied", cannot work: a molecule that cannot copy itself only has
+descendants if it is copied.) Details: `experiments/parasites/scanpath.py`, `scanpath_ctl.txt`,
+`scanpath_pf2.txt`, `pfree_complexity_pf2.txt`, `pfree_expo_pf2.txt`.
+
+**Genealogy (controls):** the first self-scanner (self-copier, copy ops per product symbol >= 1.5,
+>= 20 molecules) traced back through species.tsv to the nearest non-scanning self-copier. In all 6
+control runs where self-scan appeared, the path runs through 1-8 species that cannot copy
+themselves, typically a long mutant with a duplicated copy loop that replicators copied (up to
+hundreds of times); the self-scanner is a truncated copy of it.
+
+**PARASITEFREE 2:** a product that cannot copy itself is placed unless it is an exact copy of
+either reactant. Non-copying mutants appear (and are re-made by mutation) but never multiply.
+Same 10 seeds and set-up as section 23, 2M steps.
+
+| | ctl | pf (1) | pf2 |
+|---|---|---|---|
+| Survive to 2M | 5/10 | 10/10 | 9/10 (one died at 1.97M) |
+| Population, median at 1M | ~10,100 | ~12,100 | ~12,200 |
+| Self-scan appears (>= 20 molecules) | 6/10, 21k-182k | 1 snapshot, at 2M | 10/10, 49k-288k |
+| Top replicator self-scans, 300k / 1M / 2M | every survivor | 0 / 0 / 1 | 5/10, 3/10, 5/9 |
+| Top replicator length at 2M | 28 | 38 | 17 |
+| '?' tests | 2 | 1 | 2 |
+| Self-reaction steps at 2M | ~180 | ~120 | ~92 |
+
+- In pf2 the paths to the first self-scanner have 1-18 non-copying intermediates, none of them ever
+  copied exactly: their numbers come from recurrent mutation.
+- pf2 blocks 400-1,500 exact copies per 1,000 steps: fresh non-copying mutants still waste copier
+  time, but the population stays at the parasite-free level.
+
+**Reading:** PARASITEFREE 1's result was mostly the blocked route. Shortening, the second '?' and
+self-scan come from the mutational route through non-copying intermediates, not from parasite
+pressure. Multiplying parasites supply selection: with them, self-scan wins and stays (every
+control survivor; competition, section 24); without them it comes and goes (about half of pf2
+snapshots), as in the competition without parasites, where D is roughly neutral.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

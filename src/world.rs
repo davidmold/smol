@@ -156,7 +156,7 @@ pub struct World {
     tab: Table,
     al: Aligner,
     /// PARASITEFREE and its cache: sequence -> can copy itself
-    parasite_free: bool,
+    parasite_free: u8,
     selfcopy: HashMap<Vec<u8>, bool>,
     acted: Vec<u64>,
     order: Vec<usize>,
@@ -513,9 +513,17 @@ impl World {
 
     /// near: the molecule that made the product; other: its partner in the reaction.
     fn place_product(&mut self, seq: Vec<u8>, near: usize, other: usize, sp_act: u32, sp_pas: u32, obs: &mut dyn Observer) {
-        if self.parasite_free && !self.can_self_copy(&seq) {
-            self.stats.blocked += 1;
-            return;
+        // PARASITEFREE 1: block every product that cannot copy itself.
+        // PARASITEFREE 2: block only exact copies of such molecules (of either reactant), so
+        // mutants that cannot copy themselves still appear (mutational stepping stones) but
+        // cannot multiply.
+        if self.parasite_free != 0 && !self.can_self_copy(&seq) {
+            let exact = self.mols[near].strand.seq() == &seq[..]
+                || (other != near && self.mols[other].strand.seq() == &seq[..]);
+            if self.parasite_free == 1 || exact {
+                self.stats.blocked += 1;
+                return;
+            }
         }
         let (x, y) = (self.mols[near].x, self.mols[near].y);
         let mut empty = [(0usize, 0usize); 26];
