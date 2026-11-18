@@ -62,6 +62,7 @@ prevents the next transition.
 | File | What it holds |
 |---|---|
 | [findings.md](findings.md) | Everything learned, experiment by experiment, with the numbers |
+| [parasitism.md](parasitism.md) | Parasitism in Stringmol: what the evidence shows. Summary of findings 17-30 against the 2021 paper (snapshot of the Claude Doc) |
 | [experiments.md](experiments.md) | Every run condition: where it is on aida, how it was configured, its outcome |
 | [switches.md](switches.md) | Every config key of the simulator, its default and what it does |
 | [tools.md](tools.md) | Machines, code locations, binaries, analysis scripts, dashboard, deploying, data handling |
