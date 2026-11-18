@@ -1,0 +1,50 @@
+doseview/q000/s201 Step 2000000
+doseview/q000/s202 EXTINCT at step 166726
+doseview/q000/s203 EXTINCT at step 306996
+doseview/q000/s204 Step 2000000
+doseview/q000/s205 EXTINCT at step 107577
+doseview/q000/s206 Step 2000000
+doseview/q000/s207 Step 2000000
+doseview/q000/s208 EXTINCT at step 268266
+doseview/q000/s209 EXTINCT at step 73198
+doseview/q000/s210 Step 2000000
+doseview/q025/s201 EXTINCT at step 136766
+doseview/q025/s202 EXTINCT at step 1494720
+doseview/q025/s203 Step 2000000
+doseview/q025/s204 EXTINCT at step 638044
+doseview/q025/s205 Step 2000000
+doseview/q025/s206 EXTINCT at step 1654444
+doseview/q025/s207 Step 2000000
+doseview/q025/s208 Step 2000000
+doseview/q025/s209 Step 2000000
+doseview/q025/s210 Step 2000000
+doseview/q050/s201 Step 2000000
+doseview/q050/s202 Step 2000000
+doseview/q050/s203 Step 2000000
+doseview/q050/s204 Step 2000000
+doseview/q050/s205 EXTINCT at step 1060678
+doseview/q050/s206 EXTINCT at step 758880
+doseview/q050/s207 Step 2000000
+doseview/q050/s208 EXTINCT at step 620286
+doseview/q050/s209 Step 2000000
+doseview/q050/s210 Step 2000000
+doseview/q075/s201 Step 2000000
+doseview/q075/s202 Step 2000000
+doseview/q075/s203 Step 2000000
+doseview/q075/s204 Step 2000000
+doseview/q075/s205 Step 2000000
+doseview/q075/s206 Step 2000000
+doseview/q075/s207 Step 2000000
+doseview/q075/s208 Step 2000000
+doseview/q075/s209 EXTINCT at step 1197704
+doseview/q075/s210 EXTINCT at step 1905700
+doseview/q100/s201 Step 2000000
+doseview/q100/s202 EXTINCT at step 1966708
+doseview/q100/s203 Step 2000000
+doseview/q100/s204 Step 2000000
+doseview/q100/s205 Step 2000000
+doseview/q100/s206 Step 2000000
+doseview/q100/s207 Step 2000000
+doseview/q100/s208 Step 2000000
+doseview/q100/s209 Step 2000000
+doseview/q100/s210 Step 2000000

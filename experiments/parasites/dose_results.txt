@@ -1,0 +1,40 @@
+q     survive  first self-scan (median; runs with one)   top replicator self-scans: share of snapshots 0.2-2M  [at 0.4M, 1M, 2M]
+q000  5/10         121500 (6/10)                         0.90 (38/42)  [4/4, 4/4, 4/4]
+q025  6/10         124500 (8/10)                         0.65 (41/63)  [5/8, 4/7, 5/5]
+q050  7/10         114000 (8/10)                         0.53 (42/80)  [5/10, 5/8, 4/6]
+q075  8/10          76000 (10/10)                         0.48 (45/94)  [5/10, 3/10, 4/8]
+q100  9/10          82500 (10/10)                         0.49 (48/98)  [3/10, 3/10, 5/8]
+
+q     exact copies of non-self-copiers let through (share, median per run)
+q025  0.75
+q050  0.50
+q075  0.25
+q100  0.00
+
+Complexity medians (top replicator): runs, pop, len, '?', ops, self-reaction steps
+    200000 q000  n= 7 pop   7134 len  31 ?  2.0 ops  16.0 rt  203
+    200000 q025  n= 9 pop   7116 len  34 ?  2.0 ops  16.0 rt  213
+    200000 q050  n=10 pop   9404 len  43 ?  2.0 ops  14.0 rt  210
+    200000 q075  n=10 pop  11315 len  32 ?  2.0 ops  16.0 rt  200
+    200000 q100  n=10 pop  11840 len  32 ?  2.0 ops  16.0 rt  214
+    600000 q000  n= 4 pop   6422 len  28 ?  2.0 ops  15.0 rt  184
+    600000 q025  n= 9 pop   8576 len  31 ?  2.0 ops  16.0 rt  186
+    600000 q050  n=10 pop   8718 len  28 ?  2.0 ops  13.5 rt  152
+    600000 q075  n=10 pop  12115 len  27 ?  2.0 ops  14.0 rt  160
+    600000 q100  n=10 pop  12106 len  26 ?  2.0 ops  13.0 rt  122
+   1000000 q000  n= 4 pop  10072 len  28 ?  2.0 ops  15.5 rt  197
+   1000000 q025  n= 7 pop   7086 len  23 ?  2.0 ops  13.0 rt  152
+   1000000 q050  n= 8 pop   9847 len  26 ?  2.0 ops  13.5 rt  150
+   1000000 q075  n=10 pop  11658 len  26 ?  2.0 ops  14.0 rt  121
+   1000000 q100  n=10 pop  12201 len  26 ?  2.0 ops  13.0 rt  114
+   2000000 q000  n= 4 pop   9910 len  24 ?  2.0 ops  13.5 rt  165
+   2000000 q025  n= 5 pop  10402 len  23 ?  3.0 ops  15.0 rt  154
+   2000000 q050  n= 6 pop  10291 len  20 ?  2.0 ops  12.0 rt  118
+   2000000 q075  n= 8 pop  12086 len  20 ?  2.0 ops  12.0 rt  104
+   2000000 q100  n= 9 pop  12269 len  17 ?  2.0 ops  12.0 rt   92
+q=0.00 runs=4 per-run self-scan share: median 1.00  values 0.90 1.00 1.00 1.00
+q=0.25 runs=7 per-run self-scan share: median 0.80  values 0.33 0.38 0.50 0.80 0.89 1.00 1.00
+q=0.50 runs=10 per-run self-scan share: median 0.50  values 0.00 0.20 0.33 0.40 0.50 0.50 0.60 0.67 0.90 1.00
+q=0.75 runs=10 per-run self-scan share: median 0.40  values 0.00 0.10 0.11 0.20 0.40 0.40 0.80 0.80 0.90 1.00
+q=1.00 runs=10 per-run self-scan share: median 0.63  values 0.00 0.10 0.10 0.20 0.60 0.67 0.70 0.80 0.80 0.90
+Spearman rho(q, per-run share) = -0.39 over 41 runs (t = -2.62)

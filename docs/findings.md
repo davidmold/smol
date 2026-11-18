@@ -1214,6 +1214,40 @@ it would need ~100 smol runs and fresh C++ runs (the paper's 8 runs are all ther
 parasitism results (sections 18-28) do not depend on it: they use the paper's own worlds converted
 to smol, or compare smol conditions with each other.
 
+## 30. Dose-response: graded parasite amplification (Nov 18)
+
+Details: `experiments/parasites/dose.sh`, `dose_summary.py`, `dose_results.txt`, `dose_*.txt`.
+
+**Method:** PARASITEFREE 2 with `PFPROB` q: every product is placed except that an exact copy of a
+non-self-copier is blocked with probability q. Mutants that cannot copy themselves always appear,
+so the route to self-scan (section 27) is open at every level; only parasite amplification varies.
+q = 0.25, 0.5, 0.75 run fresh; q = 0 is the section 23 controls, q = 1 the section 27 pf2 runs.
+Same seeds 201-210 and set-up throughout, 2M steps. Measured share of exact copies let through:
+0.75, 0.50, 0.25 (as set).
+
+| q | 0 | 0.25 | 0.5 | 0.75 | 1 |
+|---|---|---|---|---|---|
+| Survive to 2M | 5/10 | 6/10 | 7/10 | 8/10 | 9/10 |
+| Self-scan appears (>= 20 molecules) | 6/10 | 8/10 | 8/10 | 10/10 | 10/10 |
+| Median first appearance | 122k | 125k | 114k | 76k | 83k |
+| Top replicator self-scans, per-run share of snapshots (median) | 1.00 (n=4) | 0.80 (7) | 0.50 (10) | 0.40 (10) | 0.63 (10) |
+| Self-reaction steps at 2M (median) | 165 | 154 | 118 | 104 | 92 |
+| Length at 2M | 24 | 23 | 20 | 20 | 17 |
+| Population at 2M | 9,910 | 10,402 | 10,291 | 12,086 | 12,269 |
+
+- Spearman rho(q, per-run self-scan share) = -0.39 over 41 runs with >= 3 scored snapshots
+  (t = -2.62).
+- The fall is mostly between q = 0 and 0.5; from 0.5 to 1 self-scan holds the top spot about half
+  the time.
+- Self-reaction time, length, survival and population all move steadily with q.
+
+**Reading:** parasite amplification selects for self-scan in a graded way, and self-scan costs
+copying speed; without the pressure it is roughly neutral (comes and goes). Together with section
+27: the route makes self-scan, multiplying parasites make it win.
+
+**Caveats:** at q = 0 only 4 runs live long enough to score (survivors may be biased towards
+self-scan); one trend test on 41 runs; snapshots scored every 200k.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

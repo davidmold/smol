@@ -32,6 +32,8 @@ pub struct Stats {
     pub instr: u64,
     /// PARASITEFREE: products discarded because they cannot copy themselves
     pub blocked: u64,
+    /// PARASITEFREE 2 with PFPROB < 1: exact copies of non-self-copiers let through
+    pub pf_passed: u64,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -157,6 +159,7 @@ pub struct World {
     al: Aligner,
     /// PARASITEFREE and its cache: sequence -> can copy itself
     parasite_free: u8,
+    pf_prob: f64,
     selfcopy: HashMap<Vec<u8>, bool>,
     acted: Vec<u64>,
     order: Vec<usize>,
@@ -228,6 +231,7 @@ impl World {
             tab: Table::new(),
             al: Aligner::new(),
             parasite_free: cfg.parasite_free,
+            pf_prob: cfg.pf_prob,
             selfcopy: HashMap::new(),
             acted: Vec::new(),
             order: Vec::new(),
@@ -520,9 +524,16 @@ impl World {
         if self.parasite_free != 0 && !self.can_self_copy(&seq) {
             let exact = self.mols[near].strand.seq() == &seq[..]
                 || (other != near && self.mols[other].strand.seq() == &seq[..]);
-            if self.parasite_free == 1 || exact {
+            // PFPROB < 1 (mode 2 only): an exact copy is blocked with that probability. The draw
+            // is made only when PFPROB < 1, so PFPROB 1 leaves the random sequence unchanged.
+            let block = self.parasite_free == 1
+                || (exact && (self.pf_prob >= 1.0 || self.rng.next_f64() < self.pf_prob));
+            if block {
                 self.stats.blocked += 1;
                 return;
+            }
+            if exact {
+                self.stats.pf_passed += 1;
             }
         }
         let (x, y) = (self.mols[near].x, self.mols[near].y);

@@ -1,0 +1,461 @@
+=== doseview/q000/s201
+  first self-scanner: species 26685 at 182000 (born 180000)  $=?>$$MUBO^B>C$=?>$$BMUBO%}OYHO
+   <-  22376  CANNOT copy itself     peak    14  present 153000-188000  copied     16  RJVUUNYRHKLRWWRE$BMUBO^>C$=?>$$MUBO^B>C$=?>$$BMUBO%}OYHO
+   <-  21695  CANNOT copy itself     peak   124  present 149000-183000  copied    186  RJVUUNYRHKLRWWRE$BMUBO^>C$=?>$$MUBO^B>C$=?>$$BLUBO%}OYHO
+   <-  13729  self-copier, no scan   peak  1428  present 107000-218000  copied  89857  EWHHHRLUEUWKJRJVUUNYRHKLRWWRE$BMUBO^B>C$=?>$$BLUBO%}OYHO
+  non-self-copying intermediates on the path: 2
+=== doseview/q000/s202
+  no self-scanner up to 600000
+=== doseview/q000/s203
+  first self-scanner: species 24128 at 149000 (born 147000)  $=?>$$BLUBOO^B>C$=?>$$BL=BO%}OY
+   <-  23918  CANNOT copy itself     peak     8  present 146000-150000  copied      5  RHJLRWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BL=BO%}OY
+   <-  18917  self-copier, no scan   peak   306  present 130000-186000  copied   9444  EUWJJJRJXUUDGRHJLRW?WRE$BLUBO^B>C$=?>$$BL=BO%}OY
+  non-self-copying intermediates on the path: 1
+=== doseview/q000/s204
+  first self-scanner: species 21072 at 141000 (born 137000)  $=?>$$UBO^B>C$=?>$$BUBO%}OYH}B
+   <-  21010  CANNOT copy itself     peak     1  present 136000-147000  copied      0  JRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BUBO%}OYH}B
+   <-  16413  CANNOT copy itself     peak    72  present 117000-154000  copied    402  JRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BUBO%}OYHOB
+   <-  16271  CANNOT copy itself     peak    45  present 116000-146000  copied    744  JRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BUBO%}OYHOBBB
+   <-  15652  CANNOT copy itself     peak     3  present 113000-117000  copied      5  JJRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BUBO%}OYHOBBB
+   <-  14860  CANNOT copy itself     peak    38  present 108000-137000  copied    108  JJRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BLUBO%}OYHOBB
+   <-  13314  CANNOT copy itself     peak   170  present 91000-149000  copied    499  JJRJXUUDXGRJMRWWRE$BUBO^GB>C$=?>$$UBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   9420  self-copier, no scan   peak   178  present 73000-126000  copied   5060  WWEWLHHRLUEUWJJJRJXUUDXGRJMRWWRE$BUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 6
+=== doseview/q000/s205
+  no self-scanner up to 600000
+=== doseview/q000/s206
+  first self-scanner: species 1085 at 21000 (born 19000)  $=?>$$BLUBO^B>C$=?>$$BLUB%}OY^O
+   <-   1020  CANNOT copy itself     peak     5  present 17000-25000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUBO^B>C$=?>$$BLUB%}OY^O
+   <-    318  CANNOT copy itself     peak    51  present 9000-31000  copied    102  JJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUBO^B>C$=?>$$BLUB%}OYHO
+   <-    272  CANNOT copy itself     peak     1  present 9000-13000  copied      1  JJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUB
+   <-    247  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUBO%}OYHOB
+   <-    220  CANNOT copy itself     peak     1  present 8000-13000  copied      2  JJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUBO%}OYHOB?>$$BLUBO%}OYHOB
+   <-    203  CANNOT copy itself     peak     1  present 8000-8000  copied      1  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^TB>C$=?>$$BLUBO%}OYHOB
+   <-      1  self-copier, no scan   peak   646  present 1000-36000  copied  12026  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 6
+=== doseview/q000/s207
+  first self-scanner: species 10339 at 102000 (born 98000)  $=?>$$BUBOUB^B>C$=?>$$BUBO%}OYOB
+   <-  10290  CANNOT copy itself     peak     9  present 98000-101000  copied      0  RHJLRWRE$BLUBO^>C$=?>$$BUBOUB^B>C$=?>$$BUBO%}OYOB
+   <-  10193  CANNOT copy itself     peak     6  present 96000-103000  copied      0  RHJLRWRE$BLUBO^>C$=?>$$BUBOUB^B>C$=?>$$BUBO%}OYHOB
+   <-   9896  CANNOT copy itself     peak    51  present 92000-104000  copied      0  RHJLRWRE$BLUBO^>C$=?>$$BUBOUBO^B>C$=?>$$BUBO%}OYHOB
+   <-   7218  CANNOT copy itself     peak    59  present 76000-118000  copied    210  JJRJXUUUDXGRHJLRWRE$BLUBO^>C$=?>$$BUBOUBO^B>C$=?>$$BUBO%}OYHOB
+   <-   7158  CANNOT copy itself     peak    20  present 75000-90000  copied     23  JJRJXUUUDXGRHJLRWRE$BLUBO^>C$=?>$$BUBO
+   <-   6962  CANNOT copy itself     peak    22  present 74000-85000  copied     81  JJRJXUUUDXGRHJLRWRE$BLUBO^>C$=?>$$BUBO%}OYHOB
+   <-   5790  CANNOT copy itself     peak     3  present 74000-78000  copied      4  JJRJXUUUDXGRHJLRWRE$BLUBO^>C$=?>$$BUBO%}OYHOB$=?>$$BUBO%}OYHOB
+   <-   5772  CANNOT copy itself     peak     1  present 73000-77000  copied      1  WWGEWLHHHRLUEUWJJJRJXUUUDXGRHJLRWRE$BLUBO^>C$=?>$$BUBO%}OYHOB
+   <-   4591  self-copier, no scan   peak  1013  present 48000-98000  copied  29561  WWGEWLHHHRLUEUWJJJRJXUUUDXGRHJLRWRE$BLUBO^B>C$=?>$$BUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q000/s208
+  no self-scanner up to 600000
+=== doseview/q000/s209
+  no self-scanner up to 600000
+=== doseview/q000/s210
+  first self-scanner: species 3925 at 51000 (born 49000)  $=?>$$LUBO^B>C$=?>$$BL=BO%}OY
+   <-   3882  CANNOT copy itself     peak     6  present 47000-51000  copied      0  JJRJXU$UUDGRHJLRWWRE$BLUBO^HB>C$=?>$$LUBO^B>C$=?>$$BL=BO%}OY
+   <-   3853  CANNOT copy itself     peak     3  present 47000-54000  copied      2  JJRJXU$UUDGRHJLRWWRE$BLUBO^HB>C$=?>$$LUBO^B>C$=?>$$BL=BO%}OYHOB
+   <-   3635  CANNOT copy itself     peak    94  present 42000-92000  copied    393  JJRJXU$UUDGRHJLRWWRE$BLUBO^HB>C$=?>$$LUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   3411  self-copier, no scan   peak   113  present 37000-61000  copied   2131  WWGEWLHHHRLUEUWJJJRJXVUUDGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 3
+=== doseview/q025/s201
+  no self-scanner up to 600000
+=== doseview/q025/s202
+  first self-scanner: species 10083 at 52000 (born 49000)  $=?>$$BLUBOOB^B>C$=?>$$BLUO%}OYH
+   <-   9941  CANNOT copy itself     peak    10  present 49000-59000  copied      2  JJRJXUUUDYGRHJLRWWRE$BLMUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUO%}OYH
+   <-   9798  CANNOT copy itself     peak     2  present 48000-55000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLMUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUO%}OYHOB
+   <-   9473  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUO%}OYHOB
+   <-    604  CANNOT copy itself     peak    33  present 14000-56000  copied    195  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}OYHOB
+   <-    186  CANNOT copy itself     peak    10  present 9000-20000  copied     14  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB
+   <-     81  CANNOT copy itself     peak    18  present 5000-19000  copied     16  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-     71  CANNOT copy itself     peak    10  present 5000-14000  copied     26  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     57  CANNOT copy itself     peak     1  present 7000-8000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-      1  self-copier, no scan   peak  1031  present 1000-60000  copied  44292  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q025/s203
+  first self-scanner: species 19240 at 141000 (born 140000)  $=?>$$UBO^B>C$=?>$$BLUBO%}OHOB
+   <-  19189  CANNOT copy itself     peak     2  present 140000-161000  copied      0  RHJLRWWRE$BLUO^>C$=?>$$UBO^B>C$=?>$$BLUBO%}OHOB
+   <-  19081  CANNOT copy itself     peak     2  present 138000-139000  copied      0  RHJLRWWRE$BLUO^>C$=?>$$UBO^B>C$=?>$$BLUBO%}OHOBB
+   <-  18641  CANNOT copy itself     peak    59  present 130000-171000  copied    517  RHJLRWWRE$BLUBO^>C$=?>$$UBO^B>C$=?>$$BLUBO%}OHOBB
+   <-  18499  CANNOT copy itself     peak    11  present 127000-134000  copied      8  UU$YGRHJLRWWRE$BLUBO^>C$=?>$$UBO^B>C$=?>$$BLUBO%}OHOB
+   <-  14002  CANNOT copy itself     peak   421  present 93000-143000  copied   7567  JXUU$YGRHJLRWWRE$BLUBO^>C$=?>$$
+   <-  13905  CANNOT copy itself     peak     1  present 93000-93000  copied      0  WHHHRLUEUWJJJJXUU$YGRHJLRWWRE$BLUBO^>C$=?>$$
+   <-  13864  CANNOT copy itself     peak     0  present ---  copied      0  WHHHRLUEUWJJJJXUU$YGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-  11860  self-copier, no scan   peak   458  present 77000-120000  copied  10719  WHHHRLUEUWJJJJXUU$YGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 7
+=== doseview/q025/s204
+  no self-scanner up to 600000
+=== doseview/q025/s205
+  first self-scanner: species 13055 at 116000 (born 114000)  $=?>$$$LUBO^B>C$=?>$$BLVB%}OYHO
+   <-  12947  CANNOT copy itself     peak     4  present 113000-116000  copied      1  YGRHJLRWWRE$LUBO^>C$=?>$$$LUBO^B>C$=?>$$BLVB%}OYHO
+   <-  12463  self-copier, no scan   peak    87  present 107000-120000  copied    729  LUEUWJJJRJXU=DYGRHJLRWWRE$LUBO^B>C$=?>$$BLVB%}OYHO
+  non-self-copying intermediates on the path: 1
+=== doseview/q025/s206
+  first self-scanner: species 14070 at 92000 (born 91000)  $=?>$$E$BLUCO^B>C$=?>$$LUBO%}OHOB
+   <-  14021  CANNOT copy itself     peak     6  present 90000-101000  copied      0  WLUVUDGRHJLRWWRE$BLUCO^>C$=?>$$E$BLUCO^B>C$=?>$$LUBO%}OHOB
+   <-  13869  CANNOT copy itself     peak     2  present 89000-96000  copied      1  JJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$E$BLUCO^B>C$=?>$$LUBO%}OHOB
+   <-   9229  CANNOT copy itself     peak    37  present 66000-95000  copied    107  JJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$E$BLUCO^B>C$=?>$$LUBO%}OYHOB
+   <-   8856  CANNOT copy itself     peak     7  present 64000-74000  copied      6  JJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$
+   <-   8853  CANNOT copy itself     peak     7  present 64000-77000  copied     12  JJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$LUBO%}OYHOB
+   <-   8814  CANNOT copy itself     peak     2  present 63000-72000  copied      0  JJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$LUBO%}OYHOB$=?>$$LUBO%}OYHOB
+   <-   8139  CANNOT copy itself     peak     1  present 63000-73000  copied      3  WWGEWLHHHRLUEUWJJJRKXUVUDGRHJLRWWRE$BLUCO^>C$=?>$$LUBO%}OYHOB
+   <-   7567  self-copier, no scan   peak   868  present 52000-108000  copied  35452  WWGEWLHHHRLUEUWJJJRKXUVUDGRHJLRWWRE$BLUCO^B>C$=?>$$LUBO%}OYHOB
+  non-self-copying intermediates on the path: 7
+=== doseview/q025/s207
+  first self-scanner: species 9285 at 53000 (born 50000)  $=?>$$CLUBOUBO^B>C$=?>$$BL=BO%}OY
+   <-   9095  CANNOT copy itself     peak    71  present 46000-99000  copied      0  >$$LRWWRE$BLUBO^>C$=?>$$CLUBOUBO^B>C$=?>$$BL=BO%}OY
+   <-   8999  CANNOT copy itself     peak     1  present 46000-46000  copied      0  JJRJXVUUDY>$$LRWWRE$BLUBO^>C$=?>$$CLUBOUBO^B>C$=?>$$BL=BO%}OY
+   <-   8876  CANNOT copy itself     peak     1  present 45000-45000  copied      0  JJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$CLUBOUBO^B>C$=?>$$BL=BO%}OY
+   <-   7033  CANNOT copy itself     peak    45  present 38000-57000  copied     51  JJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$CLUBOUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   5929  CANNOT copy itself     peak     4  present 35000-44000  copied      4  JJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$CLUBO
+   <-   5774  CANNOT copy itself     peak     5  present 34000-40000  copied      1  JJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   5370  CANNOT copy itself     peak     6  present 33000-35000  copied      8  JJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   5215  CANNOT copy itself     peak     0  present ---  copied      0  WWGEWLHHHRLUEUWJJJRJXVUUDYGRJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   2253  self-copier, no scan   peak    99  present 26000-49000  copied   1911  WWGEWLHHHRLUEUWJJJRJXVUUDYGRJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q025/s208
+  first self-scanner: species 21045 at 178000 (born 172000)  $=?>$$E$BLUBO^B>C$=?>$$BLUB%}OHO
+   <-  20833  CANNOT copy itself     peak     2  present 170000-174000  copied      0  JJRJUVUDGRJMRXWRE$BLUBO^>C$=?>$$E$BLUBO^B>C$=?>$$BLUB%}OHO
+   <-  20436  CANNOT copy itself     peak     2  present 168000-172000  copied      1  JJRJUVUDGRJMRXWRE$BLUBO^>C$=?>$$
+   <-  18901  CANNOT copy itself     peak     2  present 161000-168000  copied      0  JJRJUVUDGRJMRXWRE$BLUBO^>C$=?>$$BUBO%}OHOB
+   <-  14213  CANNOT copy itself     peak   314  present 124000-211000  copied   1871  JJRJUVUDGRJMRXWRE$BLUBO^>C$=?>$$BLUBO%}OHOB
+   <-  14204  CANNOT copy itself     peak     5  present 126000-206000  copied     33  JJRJUVUDGRJMRXWRE$BLUBO^>C$=?>$$BLUBO%}OHOB=?>$$BLUBO%}OHOB
+   <-  12780  CANNOT copy itself     peak   168  present 101000-236000  copied   2174  JJRJUVUDGRJMRWWRE$BLUBO^>C$=?>$$BLUBO%}OHOB
+   <-  12750  CANNOT copy itself     peak     0  present ---  copied      0  JJRJUVUDGRJMRWWRE$BLUBO^>C$=?>$$BLUBO%}OHOBB>$$BLUBO%}OHOB
+   <-  12730  CANNOT copy itself     peak     0  present ---  copied      0  WWEWLHHHRLUEUWJJJRJUVUDGRJMRWWRE$BLUBO^>C$=?>$$BLUBO%}OHOBB
+   <-  12665  CANNOT copy itself     peak     1  present 100000-101000  copied      0  WWEWLHHHRLUEUWJJJRJUVUDGRJMRWWRE$BLUBO^>C$=?>$$BLUBO%}OHOB
+   <-  12477  self-copier, no scan   peak    11  present 99000-105000  copied     68  WWEWLHHHRLUEUWJJJRJUVUDGRJMRWWRE$BLUBO^B>C$=?>$$BLUBO%}OHOB
+  non-self-copying intermediates on the path: 9
+=== doseview/q025/s209
+  first self-scanner: species 51274 at 326000 (born 324000)  $=?>$$MUBPO^B>C$=?>$$LUBP%}OY}HO
+   <-  51186  CANNOT copy itself     peak     2  present 323000-326000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$MUBPO^B>C$=?>$$LUBP%}OY}HO
+   <-  49329  CANNOT copy itself     peak    60  present 311000-340000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$MUBPO^B>C$=?>$$LUBP%}OYHO
+   <-  49218  CANNOT copy itself     peak     4  present 311000-316000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$MUBP
+   <-  48793  CANNOT copy itself     peak    11  present 310000-320000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$LUBP
+   <-  48730  CANNOT copy itself     peak     8  present 308000-313000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$LUBP%}OYHO
+   <-  48678  CANNOT copy itself     peak     1  present 308000-313000  copied      0  UUDZGRHYJRVWRE$BLUBO^>C$=?>$$LUBP%}OYHO=?>$$LUBP%}OYHO
+   <-  48646  CANNOT copy itself     peak     0  present ---  copied      0  HHRMUEUWT}JJRXUUDZGRHYJRVWRE$BLUBO^>C$=?>$$LUBP%}OYHO
+   <-  47279  self-copier, no scan   peak  1494  present 297000-433000  copied 120473  HHRMUEUWT}JJRXUUDZGRHYJRVWRE$BLUBO^B>C$=?>$$LUBP%}OYHO
+  non-self-copying intermediates on the path: 7
+=== doseview/q025/s210
+  first self-scanner: species 21462 at 133000 (born 122000)  $=?>$$BBUBO^B>C$=?>$$BLUBO%}PYHPB
+   <-  20915  CANNOT copy itself     peak     4  present 120000-134000  copied      2  UUU$DXGRHJLRWWRE$BUBO^>C$=?>$$BBUBO^B>C$=?>$$BLUBO%}PYHPB
+   <-  12173  CANNOT copy itself     peak     3  present 77000-164000  copied     16  UUU$DXGRHJLRWWRE$BUBO^>C$=?>$$B
+   <-  12161  CANNOT copy itself     peak     6  present 76000-161000  copied     32  UUU$DXGRHJLRWWRE$BUBO^>C$=?>$$BLUBO%}PYHOB
+   <-  12102  CANNOT copy itself     peak     1  present 76000-127000  copied      0  UUU$DXGRHJLRWWRE$BUBO^>C$=?>$$BLUBO%}PYHOB$$BLUBO%}PYHOBB
+   <-  12074  CANNOT copy itself     peak     1  present 117000-153000  copied      0  HHHRLUEUWJJJRXUUU$DXGRHJLRWWRE$BUBO^>C$=?>$$BLUBO%}PYHOBB
+   <-  11909  CANNOT copy itself     peak     2  present 75000-153000  copied     15  HHHRLUEUWJJJRXUUU$DXGRHJLRWWRE$BUBO^>C$=?>$$BLUBO%}PYHOB
+   <-   8896  self-copier, no scan   peak  1199  present 51000-185000  copied 105668  HHHRLUEUWJJJRXUUU$DXGRHJLRWWRE$BUBO^B>C$=?>$$BLUBO%}PYHOB
+  non-self-copying intermediates on the path: 6
+=== doseview/q050/s201
+  first self-scanner: species 59507 at 309000 (born 304000)  $=?>$$LUBO^B>C$=?>$$BLUCO%}OHOB
+   <-  59378  CANNOT copy itself     peak     5  present 303000-306000  copied      0  UYRGJLSWWRE$B?BO^>C$=?>$$LUBO^B>C$=?>$$BLUCO%}OHOB
+   <-  52827  self-copier, no scan   peak   852  present 261000-370000  copied  60489  HLEUJKJRJ=J=UYRGILRWWRE$BLUBO^B>C$=?>$$BLUCO%}OHOB
+  non-self-copying intermediates on the path: 1
+=== doseview/q050/s202
+  no self-scanner up to 600000
+=== doseview/q050/s203
+  first self-scanner: species 9950 at 145000 (born 142000)  $=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYH
+   <-   9935  CANNOT copy itself     peak     1  present 142000-170000  copied      0  JJRKXUUDYGSHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYH
+   <-   9861  CANNOT copy itself     peak     1  present 140000-141000  copied      1  JJRKXUUDYGSHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYHB
+   <-   9725  CANNOT copy itself     peak   156  present 131000-214000  copied    976  JJRKXUUDYGSHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYHOB
+   <-   7791  self-copier, no scan   peak   254  present 89000-203000  copied   9608  WWGEWLHHRLUEUWJJJRKXUUDYGSHJLRWWRE$BLUCO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 3
+=== doseview/q050/s204
+  first self-scanner: species 11272 at 63000 (born 59000)  $=?>$$BLUBOJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYH
+   <-  11126  CANNOT copy itself     peak     1  present 58000-65000  copied      0  HO$=?>$$BLUBOJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYH
+   <-  10535  CANNOT copy itself     peak     1  present 55000-57000  copied      0  HOJJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYH
+   <-  10223  CANNOT copy itself     peak     1  present 54000-57000  copied      0  HOJJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYHHO
+   <-  10100  CANNOT copy itself     peak     5  present 52000-58000  copied      3  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYHHO
+   <-   9839  CANNOT copy itself     peak     3  present 51000-59000  copied      1  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYH
+   <-   9760  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYHPHOB
+   <-   9617  CANNOT copy itself     peak     1  present 50000-63000  copied      1  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BMUBPBO^B>C$=?>$$BLUBP%}OYHOHOB
+   <-   6842  CANNOT copy itself     peak     8  present 40000-62000  copied     16  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBPBO^B>C$=?>$$BLUBP%}OYHOHOB
+   <-   5213  CANNOT copy itself     peak    24  present 34000-78000  copied     54  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBPBO^B>C$=?>$$BLUBP%}OYHO
+   <-   4956  CANNOT copy itself     peak     4  present 33000-42000  copied      3  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBP
+   <-   4915  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBP%}OYHO
+   <-   4555  CANNOT copy itself     peak     1  present 32000-32000  copied      0  JJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBP%}OYHO$=?>$$BLUBP%}OYHO
+   <-   4280  CANNOT copy itself     peak     2  present 31000-32000  copied      6  WWGEWLHHHRLUEUWJJJRJXUUUDYRJLRWWRE$BLUBO^>C$=?>$$BLUBP%}OYHO
+   <-   2976  self-copier, no scan   peak    53  present 26000-53000  copied   1163  WWGEWLHHHRLUEUWJJJRJXUUUDYRJLRWWRE$BLUBO^B>C$=?>$$BLUBP%}OYHO
+  non-self-copying intermediates on the path: 13
+=== doseview/q050/s205
+  first self-scanner: species 69756 at 326000 (born 324000)  $=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOB
+   <-  66434  CANNOT copy itself     peak    33  present 306000-346000  copied    103  DDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOB
+   <-  65343  CANNOT copy itself     peak    28  present 299000-345000  copied    120  DDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOBB
+   <-  61374  CANNOT copy itself     peak   105  present 277000-465000  copied    950  DDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  60079  CANNOT copy itself     peak    11  present 271000-455000  copied     27  DDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-  59918  CANNOT copy itself     peak    18  present 270000-453000  copied     47  DDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-  59842  CANNOT copy itself     peak     2  present 293000-340000  copied      4  QQLUEUWJKJSJXVUUDDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-  53100  self-copier, no scan   peak  1273  present 237000-401000  copied 131410  QQLUEUWJKJSJXVUUDDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 6
+=== doseview/q050/s206
+  first self-scanner: species 4008 at 31000 (born 29000)  $=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-   3214  CANNOT copy itself     peak    12  present 27000-39000  copied      9  JJRJXUUUDYGRHJLRWWRE$BLBO^LB>C$=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-   2929  CANNOT copy itself     peak     3  present 26000-33000  copied      1  JJRJXUUUDYGRHJLRWWRE$BLBO^LB>C$=?>$$BLUBO^B>C$=?>$$BL=BO%}OYHOB
+   <-   1985  CANNOT copy itself     peak    24  present 23000-48000  copied     45  JJRJXUUUDYGRHJLRWWRE$BLBO^LB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   1056  CANNOT copy itself     peak    54  present 18000-44000  copied     89  JJRJXUUUDYGRHJLRWWRE$BLUBO^LB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-    687  CANNOT copy itself     peak     4  present 16000-20000  copied      2  JJRJXUUUDYGRHJLRWWRE$BLUBO^LB>C$=?>$$BLUBO
+   <-    370  CANNOT copy itself     peak     7  present 12000-15000  copied      7  JJRJXUUUDYGRHJLRWWRE$BLUBO^LB>C$=?>$$BLUBO%}OYHOB
+   <-    330  CANNOT copy itself     peak     3  present 11000-17000  copied      1  JJRJXUUUDYGRHJLRWWRE$BLUBO^LB>C$=?>$$BLUBO%}OYHOB>$$BLUBO%}OYHOB
+   <-    309  CANNOT copy itself     peak     1  present 11000-13000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^LB>C$=?>$$BLUBO%}OYHOB
+   <-      1  self-copier, no scan   peak  2020  present 1000-59000  copied  81747  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q050/s207
+  first self-scanner: species 20418 at 83000 (born 80000)  $=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYH
+   <-  20260  CANNOT copy itself     peak     6  present 79000-82000  copied      0  UUDYGHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYH
+   <-  20154  CANNOT copy itself     peak     1  present 79000-79000  copied      0  UUDYGHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYHB
+   <-  18204  CANNOT copy itself     peak    31  present 72000-86000  copied     29  UUDYGHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYHOB
+   <-   9340  CANNOT copy itself     peak    69  present 41000-100000  copied    239  JJRJXUUUDYGHJLRWWRE$BLUCO^>C$=?>$$$BLUCO^B>C$=?>$$BLUBO%}OYHOB
+   <-   4846  CANNOT copy itself     peak    20  present 30000-55000  copied     21  JJRJXUUUDYGHJLRWWRE$BLUCO^>C$=?>$$
+   <-   4773  CANNOT copy itself     peak    59  present 30000-74000  copied     53  JJRJXUUUDYGHJLRWWRE$BLUCO^>C$=?>$$BLUBO%}OYHOB
+   <-   4611  CANNOT copy itself     peak     0  present ---  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGHJLRWWRE$BLUCO^>C$=?>$$BLUBO%}OYHOB
+   <-   2342  self-copier, no scan   peak    34  present 24000-43000  copied    366  WWGEWLHHHRLUEUWJJJRJXUUUDYGHJLRWWRE$BLUCO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 7
+=== doseview/q050/s208
+  first self-scanner: species 14407 at 80000 (born 78000)  $=?>$$BLUBOOB^B>C$=?>$$BLUBO%}YH
+   <-  14357  CANNOT copy itself     peak     1  present 78000-81000  copied      0  RHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}YH
+   <-  14138  CANNOT copy itself     peak     2  present 77000-79000  copied      0  RHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}YHB
+   <-  12324  CANNOT copy itself     peak    76  present 67000-97000  copied      0  LURHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}YHOB
+   <-   7917  CANNOT copy itself     peak    50  present 38000-109000  copied    242  JJRJXUUUDYRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}YHOB
+   <-   7189  CANNOT copy itself     peak     3  present 36000-41000  copied      4  JJRJXUUUDYRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB
+   <-   4425  CANNOT copy itself     peak     9  present 29000-38000  copied     14  JJRJXUUUDYRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   4206  CANNOT copy itself     peak     9  present 29000-36000  copied     12  JJRJXUUUDYRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   3679  CANNOT copy itself     peak     5  present 28000-33000  copied     18  WWGEWLHHHRLUEUWJJJRJXUUUDYRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   1007  self-copier, no scan   peak   172  present 17000-48000  copied   4342  WWGEWLHHHRLUEUWJJJRJXUUUDYRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q050/s209
+  no self-scanner up to 600000
+=== doseview/q050/s210
+  first self-scanner: species 79546 at 322000 (born 316000)  $=?>$$$=?>$$$SE$BLUC^B>C$=?>$$BLUBO%}OYH
+   <-  79249  CANNOT copy itself     peak     1  present 315000-315000  copied      0  YSHJLRWWSE$CLUBYSHJLRWWSE$CLUBYSHXJLRWDWSEXDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$SE$BLUC^B>C$=?>$$BLUBO%}OYH
+   <-  79036  CANNOT copy itself     peak     1  present 314000-315000  copied      0  LFUWJIKRXUUYSHJLRWSE$BLUC^B>C$=?>$$BLUBYSHJLRWWSE$CLUBYSHJLRWWSE$CLUBYSHXJLRWDWSEXDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  78933  CANNOT copy itself     peak     1  present 314000-314000  copied      0  LFUWJIJRXUUYSHJLRWWSE$CLUBYSHJLRWWSE$CLUBYSHXJLRWDWSEXDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  77963  CANNOT copy itself     peak     1  present 311000-314000  copied      1  LFUWJIKRXUUYHJLRWSE$BLUC^B>C$=?>$$BLUBYSHJLRWWSE$CLUBYSHXJLRWDWSEDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  76805  CANNOT copy itself     peak     6  present 307000-311000  copied      6  LFUWJIJRXUUYSHJLRWWSE$CLUBYSHXJLRWDWSEDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  76638  CANNOT copy itself     peak     9  present 306000-314000  copied      3  YSHXJLRWDWSEDBLUBLFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  73855  CANNOT copy itself     peak     6  present 296000-307000  copied     93  LFUY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  72278  CANNOT copy itself     peak     5  present 291000-296000  copied      0  $OYHOB$BLUB$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  66994  CANNOT copy itself     peak    56  present 277000-303000  copied      0  $OYHOB$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  66923  CANNOT copy itself     peak     2  present 277000-281000  copied      0  WELHHRLEURXUUYSHJLRWWSE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  66151  CANNOT copy itself     peak    15  present 276000-289000  copied      0  $OYHOB$BLUBRXUUYSHJLRWWSE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  61924  CANNOT copy itself     peak    36  present 267000-284000  copied      0  $OY^HOB$BLUBRXUUYSHJLRWWSE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  60481  CANNOT copy itself     peak     7  present 264000-283000  copied      9  WELHHRLFUWJIJRUVUDYSHJLRWWSE$BLUBRXUUYSHJLRWWSE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  56780  CANNOT copy itself     peak    80  present 252000-302000  copied      0  LFUWJIKRXUUYSHJLRWWSE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  55995  CANNOT copy itself     peak    21  present 250000-258000  copied      0  WWWE$ALUBJJJRKXUUYGRJLRWWRE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  54448  CANNOT copy itself     peak     4  present 245000-250000  copied      3  WWGEXLHHLUEUWJJJRKXUUYGRJLRWWRE$BLUB$OY^HOB$HOAB>C$=?>$C>C$=?>$$$=?>$$$
+   <-  34547  self-copier, no scan   peak   658  present 182000-269000  copied  17795  WWGEXLHHLUEUWJJJRKXUUYGRJLRWWRE$BLUBO^B>C$=?>$$BUBO%}OYHOB
+  non-self-copying intermediates on the path: 16
+=== doseview/q075/s201
+  first self-scanner: species 16985 at 81000 (born 70000)  $=?>$$BLUBO^B>C$=?>$$BLUO%}OYH
+   <-  16354  CANNOT copy itself     peak    12  present 68000-73000  copied      0  $BLUBO^IB>C$=?>$$BLUBO^B>C$=?>$$BLUO%}OYH
+   <-  14635  CANNOT copy itself     peak    14  present 62000-75000  copied      0  YGRHJLRWWRE$BLUBO^IB>C$=?>$$BLUBO^B>C$=?>$$BLUO%}OYH
+   <-  14550  CANNOT copy itself     peak     1  present 62000-67000  copied      0  YGRHJLRWWRE$BLUBO^IB>C$=?>$$BLUBO^B>C$=?>$$BLUO%}OYHOB
+   <-  11801  CANNOT copy itself     peak    64  present 50000-75000  copied      0  YGRHJLRWWRE$BLUBO^IB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  11373  CANNOT copy itself     peak     9  present 48000-62000  copied      5  JJRJXUUDYGRHJLRWWRE$BLUBO^IB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-    147  self-copier, no scan   peak   689  present 8000-59000  copied  24872  WWGEWLHHHRLUEUWJJJRJXUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 5
+=== doseview/q075/s202
+  first self-scanner: species 17903 at 67000 (born 62000)  $=?>$$OYHPBRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  17728  CANNOT copy itself     peak     1  present 61000-61000  copied      0  $BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOBBUUUDXGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  14670  CANNOT copy itself     peak     2  present 55000-62000  copied      0  WWGEWLUUUDXGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOBBUUUDXGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  12666  CANNOT copy itself     peak     4  present 49000-59000  copied      0  WWGEWLHHHRLUEUWJJJRJXVUUDYGSRLHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYGOBUUUDXGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   3558  self-copier, no scan   peak   330  present 27000-85000  copied  14128  WWGEWLHHHRLUEUWJJJRJXVUUDYGSRLHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYGOB
+  non-self-copying intermediates on the path: 3
+=== doseview/q075/s203
+  first self-scanner: species 7310 at 38000 (born 36000)  $=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-   7112  self-copier, scans     peak     3  present 36000-36000  copied      5  $=?>$$BLUBO^B>C$=?>$$BL=BO%}OYB
+   <-   7028  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUUDYGRHJLRWWRF$BLUBO^>CS$=?>$$BLUBO^B>C$=?>$$BL=BO%}OYB
+   <-   6698  CANNOT copy itself     peak     2  present 35000-37000  copied      0  JJRJXUUUDYGRHJLRWWRF$BLUBO^>CS$=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-   6532  CANNOT copy itself     peak     1  present 35000-35000  copied      0  JJRJXUUUDYGRHJLRWWRF$BLUBO^>CS$=?>$$BLUBO^B>C$=?>$$BL=BO%}OYHOB
+   <-   5695  CANNOT copy itself     peak     3  present 33000-35000  copied      0  JJRJXUUUDYGRHJLRWWRF$BLUBO^>CS$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   3927  CANNOT copy itself     peak    15  present 28000-42000  copied     12  JJRJXUUUDYGRHJLRWWRF$BLUBO^>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   2493  CANNOT copy itself     peak    10  present 24000-35000  copied      6  JJRJXUUUDYGRHJLRWWRF$BLUBO^>C$=?>$$BLUBO
+   <-   2184  CANNOT copy itself     peak    10  present 23000-28000  copied      7  JJRJXUUUDYGRHJLRWWRF$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   2067  CANNOT copy itself     peak     1  present 22000-22000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRF$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     46  self-copier, no scan   peak   371  present 5000-48000  copied  11734  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRF$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q075/s204
+  first self-scanner: species 8088 at 42000 (born 39000)  $=?>$$$OYH^OBB>C$=?>$$$BLUBO^B>C$=?>$$BLUB%}OYHO
+   <-   7951  CANNOT copy itself     peak     6  present 38000-50000  copied      2  $OYH^OBB>C$=?>$$$OYH^OBB>C$=?>$$$BLUBO^B>C$=?>$$BLUB%}OYHO
+   <-   7262  self-copier, no scan   peak   225  present 37000-209000  copied  33854  $OYH^OBB>C$=?>$$$BLUBO^B>C$=?>$$BLUB%}OYHO
+  non-self-copying intermediates on the path: 1
+=== doseview/q075/s205
+  first self-scanner: species 27271 at 109000 (born 102000)  $=?>$$BLUCO^B>C$=?>$$BLUBO%}OY
+   <-  27189  CANNOT copy itself     peak     6  present 102000-112000  copied      5  JJRJUUDYGRHJLRWWRE$BLUBO^ZB>C$=?>$$BLUCO^B>C$=?>$$BLUBO%}OY
+   <-  26974  CANNOT copy itself     peak     1  present 101000-101000  copied      0  JJRJUUDYGRHJLRWWRE$BLUBO^ZB>C$=?>$$BLUCO^B>C$=?>$$BLUBO%}OYG
+   <-  26287  CANNOT copy itself     peak     2  present 99000-101000  copied      1  JJRJUUDYGRHJLRWWRE$BLUBO^ZB>C$=?>$$BLUCO^B>C$=?>$$BLUBO%}OYH
+   <-  26154  CANNOT copy itself     peak     1  present 98000-99000  copied      0  JJRJUUDYGRHJLRWWRE$BLUBO^ZB>C$=?>$$BLUCO^B>C$=?>$$BLUBO%}OYHB
+   <-  20547  self-copier, no scan   peak   512  present 78000-171000  copied  26940  WWGEWLHHHRLUEUWJJKRJ=UUDGHJLRWWRE$BLUBO^B>C$=?>$$BLUO%}OYH
+  non-self-copying intermediates on the path: 4
+=== doseview/q075/s206
+  first self-scanner: species 15347 at 71000 (born 68000)  $=?>$$BLUBOBO^B>C$=?>$$BLUBO%}PYHO
+   <-  11145  CANNOT copy itself     peak    22  present 50000-75000  copied      0  UDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}PYHO
+   <-  11037  CANNOT copy itself     peak     4  present 49000-69000  copied      0  UDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}PYHOO
+   <-  10741  CANNOT copy itself     peak    25  present 48000-84000  copied     51  JJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}PYHOO
+   <-  10352  CANNOT copy itself     peak     1  present 47000-68000  copied      0  JJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOO
+   <-   7363  CANNOT copy itself     peak    19  present 38000-81000  copied     46  JJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHO
+   <-   7234  CANNOT copy itself     peak    11  present 37000-48000  copied      3  JJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBO
+   <-   6481  CANNOT copy itself     peak     6  present 35000-38000  copied      9  JJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBO%}OYHO
+   <-   3480  CANNOT copy itself     peak     1  present 33000-35000  copied      1  WWGEWLHHHRLUEUWJJJRNKXUUUDYGRQHJLRVWRE$BLUBO^>C$=?>$$BLUBO%}OYHO
+   <-   1011  self-copier, no scan   peak   311  present 16000-64000  copied  10655  WWGEWLHHHRLUEUWJJJRNKXUUUDYGRQHJLRVWRE$BLUBO^B>C$=?>$$BLUBO%}OYHO
+  non-self-copying intermediates on the path: 8
+=== doseview/q075/s207
+  first self-scanner: species 18413 at 87000 (born 85000)  $=?>$$BLUBO^B>C$=?>$$BLUBO%}PYH}B
+   <-  18249  CANNOT copy itself     peak     4  present 84000-91000  copied      0  WLUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}PYH}B
+   <-  17679  CANNOT copy itself     peak    18  present 81000-108000  copied      0  WLUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYH}B
+   <-  11543  CANNOT copy itself     peak    75  present 50000-97000  copied     66  JJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYH}B
+   <-   2814  CANNOT copy itself     peak    68  present 25000-125000  copied    368  JJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   2274  CANNOT copy itself     peak     3  present 23000-29000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO
+   <-   2233  CANNOT copy itself     peak     1  present 23000-26000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO%}OYHOB
+   <-   2181  CANNOT copy itself     peak     0  present ---  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO%}OYHOB>$$BLUBO%}OYHOB
+   <-   2143  CANNOT copy itself     peak     1  present 22000-22000  copied      0  WWGEWLHHHRLUEUWWJJJRJUUUDYGRHJLRWWRE$BLUBO^EB>C$=?>$$BLUBO%}OYHOB
+   <-    416  self-copier, no scan   peak   201  present 12000-49000  copied   4519  WWGEWLHHHRLUEUWWJJJRJUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q075/s208
+  first self-scanner: species 2973 at 27000 (born 24000)  $=?>$$BLUBOO^B>C$=?>$$BLUO%}OYH
+   <-    940  CANNOT copy itself     peak     1  present 16000-29000  copied      0  LUBO^>C$=?>$$BLUBOO^B>C$=?>$$BLUO%}OYH
+   <-    329  CANNOT copy itself     peak    27  present 10000-43000  copied     38  JJRJXUVUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BLUO%}OYH
+   <-    208  CANNOT copy itself     peak     1  present 8000-10000  copied      1  JJRJXUVUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-    196  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUVUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-    156  CANNOT copy itself     peak     1  present 7000-7000  copied      1  WWGEWLHHHRLUEUWJJJRJXUVUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     27  self-copier, no scan   peak   567  present 3000-51000  copied  15849  WWGEWLHHHRLUEUWJJJRJXUVUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 5
+=== doseview/q075/s209
+  first self-scanner: species 51181 at 176000 (born 172000)  $=?>$$BLUBO^B>C$=?>D$BLUBO%}ONYH}B
+   <-  51061  self-copier, scans     peak     1  present 171000-172000  copied      2  $=?>$$BLUBO^B>C$=?>D$BLUBO%}ONYH}BB
+   <-  50861  CANNOT copy itself     peak     1  present 171000-171000  copied      0  JJRJUUDYRHILSWXRE$BLUBO^>C$=?>$$BLUBO^B>C$=?>D$BLUBO%}ONYH}BB
+   <-  49402  CANNOT copy itself     peak     5  present 166000-178000  copied      1  JJRJUUDYRHILSWXRE$BLUBO^>C$=?>$$BLUBO^B>C$=?>D$BLUBO%}OYH}B
+   <-  42328  self-copier, no scan   peak    39  present 143000-179000  copied   1414  WWEWLHHHRUEUWKJJJXUUUADYRHLSWRE$BLUBO^B>C$=?>D$BLUBO%}OYH}B
+  non-self-copying intermediates on the path: 2
+=== doseview/q075/s210
+  first self-scanner: species 43699 at 170000 (born 167000)  $=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-  43088  CANNOT copy itself     peak     9  present 164000-174000  copied      6  JXUUYRHJLRWWSE$BLUBO^>C$=?>$$BLUBO^B>C$=?>$$BL=BO%}OY
+   <-  42868  CANNOT copy itself     peak     2  present 163000-167000  copied      3  JXUUYRHJLRWWSE$BLUBO^>C$=?>$$BLUBO^B>C$=?>$$BL=BO%}OYHOB
+   <-  40781  CANNOT copy itself     peak    58  present 157000-214000  copied    142  JXUUYRHJLRWWSE$BLUBO^>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  40621  CANNOT copy itself     peak     1  present 157000-159000  copied      1  JJRJXUUYRHJLRWWSE$BLUBO^>C$=?>$$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+   <-  29150  self-copier, no scan   peak   130  present 125000-189000  copied   8221  WWEWLHHHRUEUWJJJRJXUUYRHJLRWWSE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 4
+=== doseview/q100/s201
+  first self-scanner: species 19180 at 75000 (born 63000)  $=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOB
+   <-  18882  CANNOT copy itself     peak     1  present 62000-63000  copied      0  JJRJXUUDYGRHILRWWRE$BLUBP^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOB
+   <-  13933  CANNOT copy itself     peak    58  present 51000-89000  copied      0  JJRJXUUDYGRHILRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OHOB
+   <-   7412  CANNOT copy itself     peak   111  present 37000-123000  copied      0  JJRJXUUDYGRHILRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   6197  CANNOT copy itself     peak     9  present 34000-48000  copied      0  JJRJXUUDYGRHILRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   5243  CANNOT copy itself     peak     9  present 32000-67000  copied      0  JJRJXUUDYGRHILRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   4544  CANNOT copy itself     peak     1  present 31000-46000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUDYGRHILRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-    406  self-copier, no scan   peak  1357  present 11000-89000  copied  69848  WWGEWLHHHRLUEUWJJJRJXUUDYGRHILRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 6
+=== doseview/q100/s202
+  first self-scanner: species 28241 at 85000 (born 82000)  $=?>$$BLUBOOB^B>C$=?>$$BL=BO%}OY
+   <-  28171  CANNOT copy itself     peak     2  present 82000-94000  copied      0  OB$=?>$$BLUBOOB^B>C$=?>$$BL=BO%}OY
+   <-  26560  CANNOT copy itself     peak     8  present 79000-92000  copied      0  JJRJRXUUUDYGRHJLRWWRDBLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BL=BO%}OY
+   <-  26378  CANNOT copy itself     peak     2  present 77000-86000  copied      0  JJRJRXUUUDYGRHJLRWWRDBLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BL=BO%}OYHOB
+   <-  22553  CANNOT copy itself     peak    18  present 68000-95000  copied      0  JJRJRXUUUDYGRHJLRWWRDBLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}OYHOB
+   <-  16637  CANNOT copy itself     peak     7  present 55000-72000  copied      0  JJRJRXUUUDYGRHJLRWWR$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}OYHOB
+   <-   6477  CANNOT copy itself     peak    49  present 34000-110000  copied      0  JJRJRXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}OYHOB
+   <-    586  CANNOT copy itself     peak    43  present 14000-128000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB^B>C$=?>$$BLUBO%}OYHOB
+   <-    285  CANNOT copy itself     peak     1  present 9000-15000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOB
+   <-    269  CANNOT copy itself     peak     2  present 9000-15000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-    244  CANNOT copy itself     peak     2  present 9000-13000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-    197  CANNOT copy itself     peak     2  present 8000-12000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-      1  self-copier, no scan   peak  1358  present 1000-55000  copied  41040  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 11
+=== doseview/q100/s203
+  first self-scanner: species 15288 at 80000 (born 78000)  $=?>$$BLUBOBO^B>C$=?>$$BLUO%}OYH
+   <-  15177  CANNOT copy itself     peak     1  present 55000-78000  copied      0  LUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUO%}OYH
+   <-  11384  CANNOT copy itself     peak    15  present 47000-85000  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUO%}OYH
+   <-  11181  CANNOT copy itself     peak     2  present 46000-64000  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUO%}OYHOB
+   <-   8446  CANNOT copy itself     peak    60  present 40000-130000  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   7754  CANNOT copy itself     peak     5  present 38000-57000  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   7560  CANNOT copy itself     peak     4  present 39000-54000  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   7426  CANNOT copy itself     peak     0  present ---  copied      0  JJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB=?>$$BLUBO%}OYHOB
+   <-   6122  CANNOT copy itself     peak     2  present 37000-52000  copied      0  WWGEWLHHHRLUEUWJJJRXUUUYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-    667  self-copier, no scan   peak   749  present 18000-101000  copied  44950  WWGEWLHHHRLUEUWJJJRXUUUYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 8
+=== doseview/q100/s204
+  first self-scanner: species 12198 at 49000 (born 47000)  $=?>$$BLU>BO^B>C$=?>$$BLU>BO%}YH
+   <-  11756  self-copier, scans     peak     5  present 46000-52000  copied     36  $=?>$$BLU>BO^B>C$=?>$$BLU>BO%}YHH
+   <-  11681  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXUUVDYGRHJLRWWRE$BLUBO^>C$=?>$$BLU>BO^B>C$=?>$$BLU>BO%}YHH
+   <-   3963  CANNOT copy itself     peak    47  present 28000-64000  copied      0  JJRJXUUVDYGRHJLRWWRE$BLUBO^>C$=?>$$BLU>BO^B>C$=?>$$BLU>BO%}OYH
+   <-   3138  CANNOT copy itself     peak     4  present 26000-32000  copied      0  JJRJXUUVDYGRHJLRWWRE$BLUBO^>C$=?>$$BLU>BO
+   <-   3001  CANNOT copy itself     peak     2  present 26000-27000  copied      0  JJRJXUUVDYGRHJLRWWRE$BLUBO^>C$=?>$$BLU>BO%}OYH
+   <-   2785  CANNOT copy itself     peak     1  present 25000-25000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUVDYGRHJLRWWRE$BLUBO^>C$=?>$$BLU>BO%}OYH
+   <-    630  self-copier, no scan   peak   353  present 15000-52000  copied   9197  WWGEWLHHHRLUEUWJJJRJXUUVDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLU>BO%}OYH
+  non-self-copying intermediates on the path: 5
+=== doseview/q100/s205
+  first self-scanner: species 16207 at 62000 (born 59000)  $=?>$$BLUBOO^B>C$=?>$$BLUBO%}OY
+   <-  15964  CANNOT copy itself     peak     4  present 57000-63000  copied      0  JJRJXVUUDYGRHIJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OY
+   <-  15789  CANNOT copy itself     peak     1  present 57000-57000  copied      0  JJRJXVUUDYGRHIJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYO
+   <-  12167  CANNOT copy itself     peak    33  present 48000-68000  copied      0  JJRJXVUUDYGRHIJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHO
+   <-  11758  CANNOT copy itself     peak     4  present 47000-60000  copied      0  JJRJXVUUDYGRHIJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHO$B
+   <-   2070  CANNOT copy itself     peak   101  present 23000-90000  copied      0  JJRJXVUUDYGRHIJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHOB
+   <-   1963  CANNOT copy itself     peak     2  present 23000-26000  copied      0  JJRJXVUUDYGRHJLRWWRE$BLUBO^>CH$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHOB
+   <-   1710  CANNOT copy itself     peak     2  present 22000-26000  copied      0  JJRJXVUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHOB
+   <-   1357  CANNOT copy itself     peak     1  present 20000-22000  copied      0  JJRJXVUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   1337  CANNOT copy itself     peak     0  present ---  copied      0  JJRJXVUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   1070  CANNOT copy itself     peak     1  present 19000-19000  copied      0  WWGEWLHHHRLUEUWJJJRJXVUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     76  self-copier, no scan   peak   722  present 5000-43000  copied  16099  WWGEWLHHHRLUEUWJJJRJXVUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 10
+=== doseview/q100/s206
+  first self-scanner: species 117429 at 288000 (born 281000)  $=?>$$$BLVBO^B>C$=?>$$BLUBO%}OHOB
+   <- 117314  CANNOT copy itself     peak     6  present 280000-295000  copied      0  WRE$BLUBO^>C$=?>$$$BLVBO^B>C$=?>$$BLUBO%}OHOB
+   <-  98295  self-copier, no scan   peak   276  present 238000-391000  copied  37986  JERXUUVLDGRGILRWRE$BLVBO^B>C$=?>$$BLUBO%}OHOB
+  non-self-copying intermediates on the path: 1
+=== doseview/q100/s207
+  first self-scanner: species 19418 at 67000 (born 66000)  $=?>$$BLUBOOX^B>C$=?>$V$BLUC%}OYH
+   <-  19319  CANNOT copy itself     peak     1  present 65000-67000  copied      0  JJRJXUUUDYGRHJLRWWRE$BMUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUC%}OYH
+   <-  10737  CANNOT copy itself     peak    23  present 47000-74000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUC%}OYH
+   <-  10315  CANNOT copy itself     peak     4  present 46000-51000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUC%}OYHO
+   <-   8988  CANNOT copy itself     peak     2  present 42000-46000  copied      0  BJJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUB%}OYHO
+   <-   8799  CANNOT copy itself     peak     1  present 42000-46000  copied      0  BJJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUB%}OYHOB
+   <-   8627  CANNOT copy itself     peak     3  present 42000-46000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOOX^B>C$=?>$V$BLUB%}OYHOB
+   <-   6977  CANNOT copy itself     peak     2  present 38000-50000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$V$BLUB%}OYHOB
+   <-   6377  CANNOT copy itself     peak    10  present 36000-58000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$V$BLUB%}OYHO
+   <-   6144  CANNOT copy itself     peak     1  present 36000-36000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$V$BLUB%}OYHOBB
+   <-   5747  CANNOT copy itself     peak     2  present 35000-35000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BLUB%}OYHOBB
+   <-   2159  CANNOT copy itself     peak    15  present 24000-52000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUB%}OYHOB
+   <-   1154  CANNOT copy itself     peak    73  present 19000-87000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUB%}OYHO
+   <-   1079  CANNOT copy itself     peak     5  present 18000-37000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUB%}OYHOBB
+   <-     63  CANNOT copy itself     peak    40  present 5000-109000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-     56  CANNOT copy itself     peak     3  present 4000-18000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-     43  CANNOT copy itself     peak     3  present 4000-16000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     31  CANNOT copy itself     peak     1  present 3000-4000  copied      0  JJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB=?>$$BLUBO%}OYHOB
+   <-     24  CANNOT copy itself     peak     1  present 3000-15000  copied      0  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-      1  self-copier, no scan   peak  1340  present 1000-62000  copied  47609  WWGEWLHHHRLUEUWJJJRJXUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 18
+=== doseview/q100/s208
+  first self-scanner: species 31254 at 94000 (born 92000)  $=?>$$BLUBOO^B>C$=?>$$BL=BO%}OY
+   <-  30099  CANNOT copy itself     peak     2  present 89000-95000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BL=BO%}OY
+   <-  29929  CANNOT copy itself     peak     2  present 89000-92000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BL=BO%}OYHOB
+   <-   3214  CANNOT copy itself     peak    72  present 26000-105000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBOO^B>C$=?>$$BLUBO%}OYHOB
+   <-   2404  CANNOT copy itself     peak     5  present 24000-28000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBO
+   <-   2012  CANNOT copy itself     peak     4  present 22000-35000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   1943  CANNOT copy itself     peak     1  present 25000-25000  copied      0  JJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBO%}OYHOB$=?>$$BLUBO%}OYHOB
+   <-   1801  CANNOT copy itself     peak     1  present 21000-22000  copied      0  WWGEWLHHHRLUEUWJJJRJXUVUDYGRHJLRWWREDBLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-     27  self-copier, no scan   peak   821  present 3000-55000  copied  22156  WWGEWLHHHRLUEUWJJJRJXUVUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 7
+=== doseview/q100/s209
+  first self-scanner: species 49077 at 140000 (born 138000)  $=?>$$BLUBOBP^B>C$=?>$$BLUBSO%}OHO
+   <-  48829  CANNOT copy itself     peak     2  present 136000-143000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBP^B>C$=?>$$BLUBSO%}OHO
+   <-  47938  CANNOT copy itself     peak     4  present 133000-143000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBP^B>C$=?>$$BLUBSO%}OYHO
+   <-  47474  CANNOT copy itself     peak     1  present 132000-137000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBP^B>C$=?>$$BLUBSO%}OYHOB
+   <-  30953  CANNOT copy itself     peak    21  present 89000-147000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBP^B>C$=?>$$BLUBO%}OYHOB
+   <-  30086  CANNOT copy itself     peak    12  present 87000-141000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBP^B>C$=?>$$BLUBO%}OYHOBB
+   <-   5704  CANNOT copy itself     peak    78  present 33000-134000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%}OYHOB
+   <-   5642  CANNOT copy itself     peak     0  present ---  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBO
+   <-   5596  CANNOT copy itself     peak     1  present 33000-33000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   5499  CANNOT copy itself     peak     1  present 32000-33000  copied      0  JJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBO%}OYHOB=?>$$BLUBO%}OYHOB
+   <-   5424  CANNOT copy itself     peak     1  present 32000-32000  copied      0  WWGEWLHHHRLUEUWJJJRXUUUDYGRHJLRWWRCE$BLUBO^>C$=?>$$BLUBO%}OYHOB
+   <-   2331  self-copier, no scan   peak    87  present 23000-55000  copied   2201  WWGEWLHHHRLUEUWJJJRXUUUDYGRHJLRWWRCE$BLUBO^B>C$=?>$$BLUBO%}OYHOB
+  non-self-copying intermediates on the path: 10
+=== doseview/q100/s210
+  first self-scanner: species 40316 at 125000 (born 121000)  $=?>$$BLUBOBO^B>C$=?>$$BLUBO%OGZHOB
+   <-  40188  CANNOT copy itself     peak     1  present 120000-121000  copied      0  UBP^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%OGZHOB
+   <-  34749  CANNOT copy itself     peak    14  present 105000-123000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%OGZHOB
+   <-  28918  CANNOT copy itself     peak    11  present 90000-118000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%OZHOB
+   <-   2018  CANNOT copy itself     peak    21  present 25000-106000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBOBO^B>C$=?>$$BLUBO%OYHOB
+   <-   1264  CANNOT copy itself     peak     7  present 19000-29000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO
+   <-   1261  CANNOT copy itself     peak     2  present 20000-26000  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%OYHOB
+   <-   1205  CANNOT copy itself     peak     0  present ---  copied      0  JJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%OYHOBB?>$$BLUBO%OYHOB
+   <-   1180  CANNOT copy itself     peak     0  present ---  copied      0  WWGEWLHHHRLUEUWJJJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%OYHOBB
+   <-   1082  CANNOT copy itself     peak     1  present 18000-19000  copied      0  WWGEWLHHHRLUEUWJJJRJUUUDYGRHJLRWWRE$BLUBO^>C$=?>$$BLUBO%OYHOB
+   <-    483  self-copier, no scan   peak   222  present 13000-69000  copied   8092  WWGEWLHHHRLUEUWJJJRJUUUDYGRHJLRWWRE$BLUBO^B>C$=?>$$BLUBO%OYHOB
+  non-self-copying intermediates on the path: 9
