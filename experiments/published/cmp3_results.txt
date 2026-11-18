@@ -1,0 +1,16 @@
+== mean over 1000k-1200k, median across surviving runs [range]; p = Mann-Whitney vs paper
+  paper (8/20)                     n=8  N   7450 [4640-10559]  selfrep    0.74 [0.00-0.95]  mutual    0.35 [0.14-0.81]  parasitic    0.65 [0.19-0.86]  rtime    196 [105-300]  toplen     23 [2-40]
+  Oct rerun, old rules (5/15)      n=5  N   9431 [8955-11411]  selfrep    0.77 [0.69-0.90]  mutual    0.31 [0.23-0.65]  parasitic    0.69 [0.35-0.77]  rtime    154 [120-360]  toplen     27 [16-35]
+  rerun + COMPAT_DELETION (7/24)   n=7  N   9620 [4596-11132]  selfrep    0.90 [0.00-0.99]  mutual    0.23 [0.00-0.57]  parasitic    0.77 [0.43-1.00]  rtime    174 [5-216]  toplen     30 [2-35]
+  Oct rerun, old rules (5/15)      vs paper: N p=0.06  selfrep p=0.77  mutual p=0.66  parasitic p=0.66  rtime p=1.00  toplen p=0.66
+  rerun + COMPAT_DELETION (7/24)   vs paper: N p=0.30  selfrep p=0.16  mutual p=0.16  parasitic p=0.16  rtime p=0.20  toplen p=0.56
+== mean over 1900k-2000k, median across surviving runs [range]; p = Mann-Whitney vs paper
+  paper (8/20)                     n=8  N  10130 [8140-11413]  selfrep    0.83 [0.00-0.96]  mutual    0.53 [0.11-0.83]  parasitic    0.47 [0.17-0.89]  rtime    175 [104-908]  toplen     22 [14-37]
+  Oct rerun, old rules (5/15)      n=5  N   9690 [4568-11396]  selfrep    0.91 [0.81-0.97]  mutual    0.50 [0.30-0.66]  parasitic    0.50 [0.34-0.70]  rtime    178 [130-316]  toplen     25 [17-28]
+  rerun + COMPAT_DELETION (7/24)   n=7  N   9999 [4242-11212]  selfrep    0.95 [0.00-1.00]  mutual    0.28 [0.00-0.61]  parasitic    0.72 [0.39-1.00]  rtime    158 [4-1078]  toplen     28 [10-34]
+  Oct rerun, old rules (5/15)      vs paper: N p=1.00  selfrep p=0.12  mutual p=0.77  parasitic p=0.77  rtime p=0.77  toplen p=0.66
+  rerun + COMPAT_DELETION (7/24)   vs paper: N p=0.82  selfrep p=0.22  mutual p=0.12  parasitic p=0.12  rtime p=0.49  toplen p=0.39
+== change from 1.0-1.2M to 1.9-2.0M within each surviving run (median [range])
+  paper (8/20)                     parasitic -0.19 [-0.42,+0.17]  mutual +0.19 [-0.17,+0.42]  rtime +6  N +1612
+  Oct rerun, old rules (5/15)      parasitic -0.08 [-0.20,-0.00]  mutual +0.08 [+0.00,+0.20]  rtime -24  N -16
+  rerun + COMPAT_DELETION (7/24)   parasitic -0.04 [-0.24,+0.07]  mutual +0.04 [-0.06,+0.23]  rtime -0  N +379

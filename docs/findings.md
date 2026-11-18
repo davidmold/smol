@@ -248,7 +248,8 @@ their configs. Runs 1-4 use exactly our baseline config (125x100, 121 seeds in a
 
   Mutual copying rises and parasitism falls in all three, but less in ours, and reaction time
   rises only with the old rules. Length does not rise in any of them. Small numbers of
-  surviving runs (5-18), so this is a direction, not a measured difference.
+  surviving runs (5-18), so this is a direction, not a measured difference. Rechecked with
+  COMPAT_DELETION in section 29: still no significant difference, still a weaker shift.
 - Caveat: "parasitic" and "mutual" here are weighted by abundance and binding probability over
   the top 12 species (`tools/assay.py`); the paper's percentage is over observed reactions.
 
@@ -1180,6 +1181,38 @@ lineages adapt to the new replicators (findings 26).
 
 **Caveats:** one trial per pair; only the 30 commonest species; the swap probe uses only the top
 replicator. A direct intervention on stalling has not been done.
+
+## 29. World-level statistical check against the paper, with COMPAT_DELETION (Nov 17)
+
+Details: `experiments/published/cmp3.py`, `cmp3_results.txt`, `assay_pubdel.txt`,
+`pooled_assay_pubdel.txt`. Runs on aida in `~/smol/runs/pubdel/`.
+
+**Method:** the paper's three configs (box, random pairs, slot) with the old rules and
+COMPAT_DELETION, 8 seeds each, 2M steps. Seeds 1101-5505 have the same starting worlds as the
+October rerun (section 12); 6606-8808 are new (the random-pairs ones reuse seed 1101's layout).
+`tools/assay.py` every 100k, compared over runs that survived to 2M, averaged over 1.0-1.2M and
+1.9-2.0M; Mann-Whitney U against the paper's 8 runs.
+
+| Survivors | paper (8/20) | Oct rerun, old rules (5/15) | rerun + COMPAT_DELETION (7/24) |
+|---|---|---|---|
+| Population, 1.9-2.0M | 10,130 | 9,690 | 9,999 |
+| Parasitic share, 1.9-2.0M | 0.47 | 0.50 | 0.72 |
+| Mutual share, 1.9-2.0M | 0.53 | 0.50 | 0.28 |
+| Reaction time, 1.9-2.0M | 175 | 178 | 158 |
+| Change in parasitic share, 1.0-1.2M -> 1.9-2.0M | -0.19 | -0.08 | -0.04 |
+
+- Survival by config: box 3/8, random pairs 1/8, slot 3/8.
+- No difference from the paper is significant (all p >= 0.06, 12 tests); ranges overlap widely
+  (paper's parasitic share at 2M spans 0.17-0.89).
+- Both smol reruns show a weaker second-million shift than the paper; COMPAT_DELETION does not
+  close it (if anything the shift is smaller).
+- Identical starting worlds diverge at once (chaos), so seeds 1101-5505 are not a paired test.
+
+**Reading:** smol is statistically indistinguishable from the paper at n = 7-8 survivors, but a
+modest difference in the second million cannot be excluded; it is not the deletion rule. Settling
+it would need ~100 smol runs and fresh C++ runs (the paper's 8 runs are all there is). The
+parasitism results (sections 18-28) do not depend on it: they use the paper's own worlds converted
+to smol, or compare smol conditions with each other.
 
 ## Caveats on the measurements (review, 20 Oct)
 
