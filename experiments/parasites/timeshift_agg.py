@@ -19,7 +19,7 @@ import sys, os, re, glob, statistics as S, collections
 D = sys.argv[1]
 OFF = int(sys.argv[2]) if len(sys.argv) > 2 else 10000
 pop = collections.defaultdict(list)
-for f in glob.glob(f"{D}/r*/h*_p*/s*/log.txt"):
+for f in glob.glob(f"{D}/*/h*_p*/s*/log.txt"):
     r, cell = f.split("/")[-4], f.split("/")[-3]
     m = re.match(r"h(\d+)k_p(\d+)k", cell); h, p = int(m.group(1)) * 1000, int(m.group(2)) * 1000
     v = None

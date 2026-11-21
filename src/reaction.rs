@@ -86,6 +86,9 @@ pub struct ChemParams {
     /// TRANSLATE_STOP: in translate mode, a symbol under R that is not the start of a letter
     /// pair is a stop codon: the reaction ends and the nascent strand is released.
     pub translate_stop: bool,
+    /// QSEARCH: a `?` label test (label of 2+ letters) looks for its label anywhere in the
+    /// strand under the read pointer (best local match), not only at the read pointer.
+    pub qsearch: bool,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -214,12 +217,17 @@ pub fn exec_step(
                         ctx.label.push(complement(src.at(next + k)));
                     }
                     let rs = s!(p.side[R]);
-                    for k in 0..len {
-                        let ch = rs.at(rp + k);
-                        if ch == 0 {
-                            break;
+                    if ctx.params.qsearch {
+                        // the whole strand under the read pointer: a tag anywhere passes
+                        ctx.other.extend_from_slice(rs.seq());
+                    } else {
+                        for k in 0..len {
+                            let ch = rs.at(rp + k);
+                            if ch == 0 {
+                                break;
+                            }
+                            ctx.other.push(ch);
                         }
-                        ctx.other.push(ch);
                     }
                     let al = ctx.al.align(&ctx.label, &ctx.other, ctx.tab);
                     let prob = label_prob(&al, len);

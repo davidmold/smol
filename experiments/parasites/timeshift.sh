@@ -18,12 +18,14 @@ for t in $TIMES; do
   fi
 done
 touch $O/prep.done
+# Each swap run deletes its copies of species.tsv, copies.tsv and grid.snap when done: with
+# smol's own 2M runs the species list is large and 1,000+ copies filled the disk (21 Nov).
 # 2. one job per cell and seed: build the edited world, then run it
 jobs=$O/jobs.txt; : > $jobs
 for r in 1 2 3 4 5 6 7 8; do
   for h in $TIMES; do for p in $TIMES; do for seed in 1 2 3; do
     d=$O/r$r/h$((h/1000))k_p$((p/1000))k/s$seed
-    echo "python3 ~/smol-src/experiments/parasites/swap.py $P/s$h/r$r/src $h $P/s$p/r$r/src $p $d $seed $N P && cd $d && $B resume checkpoint_$h.txt.gz --reseed $((seed+10)) > log.txt 2>&1" >> $jobs
+    echo "python3 ~/smol-src/experiments/parasites/swap.py $P/s$h/r$r/src $h $P/s$p/r$r/src $p $d $seed $N P && cd $d && $B resume checkpoint_$h.txt.gz --reseed $((seed+10)) > log.txt 2>&1; rm -f species.tsv copies.tsv grid.snap" >> $jobs
   done; done; done
 done
 xargs -P 12 -I{} bash -c "{}" < $jobs || true

@@ -37,6 +37,7 @@ every checkpoint, so a resumed run keeps its switches.
 | `ENCOUNTER_TURN` | 0 | 1 = a failed binding attempt also uses up the partner's turn |
 | `PARASITEFREE` | 0 | 1 = a product is placed only if it can copy itself: bound to a copy of itself, mutation off, it makes an exact copy within 5000 steps in any of 3 trials (cached per sequence). Other products are discarded and counted as `blocked` in the log. Removes parasites at source; also removes molecules that only copy partners. 2 = only exact copies of such molecules are blocked: mutants that cannot copy themselves are placed (so mutational routes through them stay open) but never multiply. With `PFPROB` q < 1 (mode 2 only), each such exact copy is blocked with probability q (counted as `blocked`; the rest as `pfpassed`), for graded parasite amplification |
 | `COMPAT_DELETION` | 0 | 1 = a deletion during copying also skips the next instruction, as the C++ code does (checked draw-for-draw against it) |
+| `QSEARCH` | 0 | 1 = a `?` label test (2+ letters) passes if its label matches anywhere in the strand under the read pointer (best local match, same probability rule), not only at the read pointer: a "password" check on the partner. `smol-react --qsearch` |
 | `DECAY_INDEPENDENT` | 0 | 1 = partners in a reaction decay separately; a survivor is freed |
 
 ## Binding

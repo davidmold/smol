@@ -1289,6 +1289,56 @@ common) and the stalling of section 28, and it does not fit escalating complexit
 **Caveats:** d is relative to population, so small early worlds give large values; classes come
 from one 20k window; only parasites are swapped (the replicator half was done for 1M/2M only).
 
+## 32. QSEARCH: a "password" label test, and whether it brings escalation (Nov 21)
+
+Details: `experiments/parasites/qsearch_summary.py`, `qsearch_summary.txt`, `timeshift_smol.sh`,
+`ts_ctl.results.txt`, `ts_qsearch.results.txt`, `mutassay_qsearch.txt`. Runs on aida in
+`~/smol/runs/qsearch/`, `ts_ctl/`, `ts_qsearch/`.
+
+**Why:** section 31 found turnover, not escalation. One explanation: recognition is too narrow.
+A `?` label test (2+ letters) compares its label only with the partner at the read pointer, where a
+deletion-mutant parasite usually matches. Label tests do appear in the published runs (molecules
+carrying one: ~0 at 100k, 15-36% by 2M in runs 1, 3, 4, 8), so evolution reaches for them.
+
+**Switch:** `QSEARCH 1`: a `?` label test passes if its label matches anywhere in the strand under
+the read pointer (best local match, same probability rule): a check that the partner carries a
+tag, which tag and check can change together. With QSEARCH 0 a run is identical to before
+(checked to 60k); with 1 it diverges once a label test first runs (9k in seed 201).
+
+**Runs:** the section 23 control set-up and seeds 201-210 plus QSEARCH 1, 2M steps. Time-shift
+matrices (as section 31, from smol's own checkpoints, 2 seeds, 20k steps) for these runs and for
+the 10 controls.
+
+| | ctl | QSEARCH |
+|---|---|---|
+| Survive to 2M | 5/10 | 7/10 |
+| Molecules with a label test, median, 1.2-1.4M | 0.011-0.041 | 0.119-0.163 |
+| Top species carries one | 0 of 5 throughout | 0-2 of 8 |
+| Population at 2M (median) | 10,628 | 11,275 |
+| Parasite share at 2M (median) | 0.27 | 0.26 |
+| Own-mutant discrimination after 1.5M | ~0.25-0.32 | 0.33-0.46 (3 runs) |
+| Time-shift: past parasites, median d (> 0) | +0.13 (86/105) | +0.08 (279/354) |
+| Time-shift: future parasites, median d (> 0) | +0.05 (88/129) | +0.13 (255/354) |
+
+- Escalation would make future parasites more harmful (d < 0). With QSEARCH they are less
+  harmful, the more so the further ahead (+0.03 at +0.2M rising to +0.43 at +1.6M), and past
+  parasites are less harmful by a near-constant margin: the same turnover as sections 31 and the
+  smol controls. From about 1M the late block is nearly flat (d +0.0 to +0.15).
+- Password checks spread somewhat more but stay in minor species; discrimination of own mutants
+  rises a little late in the 3 runs assayed.
+
+**Reading:** giving recognition a much larger space did not produce escalation within 2M steps.
+The checks are taken up only weakly, probably because deletion-mutant parasites keep the tag and
+each check costs time. So the ceiling is not (only) the narrowness of recognition.
+
+**Caveats:** 10 runs, 2 seeds per matrix cell; the control matrix rests on the 4-5 surviving
+control runs; the mutant assay covered 3 QSEARCH runs.
+
+**Housekeeping:** the two matrices first filled aida's disk (323 GB: every swap run kept a copy of
+the run's large species list). With David's OK the copies of species.tsv, copies.tsv and grid.snap
+in the swap-run folders were deleted (logs, popdy, checkpoints and classes kept); both time-shift
+scripts now delete them as each run finishes.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

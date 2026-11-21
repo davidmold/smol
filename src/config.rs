@@ -57,6 +57,8 @@ pub struct Config {
     pub encounter_turn: bool,
     /// COMPAT_DELETION: a copy-deletion also skips the next instruction, as the C++ code does
     pub compat_deletion: bool,
+    /// QSEARCH: `?` label tests search the whole partner strand
+    pub qsearch: bool,
     /// PARASITEFREE: a product is placed only if it can copy itself (probe: bound to a copy of
     /// itself, mutation off, it makes an exact copy). Everything else is discarded.
     pub parasite_free: u8,
@@ -199,6 +201,7 @@ impl Config {
             decay_independent: num("DECAY_INDEPENDENT", 0.0)? != 0.0,
             encounter_turn: num("ENCOUNTER_TURN", 0.0)? != 0.0,
             compat_deletion: num("COMPAT_DELETION", 0.0)? != 0.0,
+            qsearch: num("QSEARCH", 0.0)? != 0.0,
             parasite_free: num("PARASITEFREE", 0.0)? as u8,
             pf_prob: num("PFPROB", 1.0)?,
             displace: num("DISPLACE", 0.0)? != 0.0,

@@ -14,7 +14,7 @@ import sys, os, gzip, glob, re, subprocess, collections, statistics, tempfile
 
 D = sys.argv[1]
 K = int(sys.argv[sys.argv.index("--top") + 1]) if "--top" in sys.argv else 12
-REACT = os.path.expanduser("~/smol-src/target/release/smol-react")
+REACT = os.environ.get("SMOLREACT", os.path.expanduser("~/smol-src/target/release/smol-react"))
 OPS = set("$>^?=%}+")
 
 def snapshot(path):

@@ -226,6 +226,7 @@ impl World {
                 compat_deletion_skip: cfg.compat_deletion,
                 codon: if cfg.translate && cfg.strandcopy { Some(crate::symbols::codon_table(cfg.translate_seed)) } else { None },
                 translate_stop: cfg.translate_stop,
+                qsearch: cfg.qsearch,
             },
             stats: Stats::default(),
             tab: Table::new(),

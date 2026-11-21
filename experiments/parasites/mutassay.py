@@ -18,7 +18,7 @@ react the replicator with each mutant (smol-react --hub, mutation off). A mutant
 """
 import sys, os, re, glob, gzip, collections, subprocess, tempfile, statistics
 
-REACT = os.path.expanduser("~/smol-src/target/release/smol-react")
+REACT = os.environ.get("SMOLREACT", os.path.expanduser("~/smol-src/target/release/smol-react"))
 KEY = "ABC$DEF%GH^IJK?LMN}OPQ>RST=UVWXYZ"
 mode, paths = sys.argv[1], sys.argv[2:]
 

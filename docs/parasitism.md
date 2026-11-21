@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–31) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–32) and `experiments/`.
 
 ## Summary
 
@@ -224,6 +224,24 @@ So the way variation is produced does shift, but mostly early, and only slightly
    - **Caveats:** changes are relative, so small early worlds give large values; only parasites were swapped (replicators were swapped for 1M/2M only).
 
    Scripts and results: `timeshift.sh`, `timeshift_agg.py`, `timeshift_results.txt`.
+
+7. **Does richer recognition bring escalation? (tested: no, not within 2M steps.)** The idea: parasites are mostly the replicator's own deletion mutants, so they are near-self by construction, and Stringmol's recognition is narrow. A `?` label test compares its label only with the partner at the read pointer, where such a mutant usually matches. Label tests do evolve (15–36% of molecules by 2M in four published runs), but they can't tell kin from near-copies. A new switch, `QSEARCH`, lets a label test pass if its label is found anywhere in the partner: a password check, where tag and check can change together and parasites would have to follow. Same seeds and set-up as the controls, 2M steps, plus time-shift matrices for both sets.
+
+   |  | Controls | Password check |
+   | --- | --- | --- |
+   | Survive to 2M | 5/10 | 7/10 |
+   | Molecules with a label test, 1.2–1.4M | 1–4% | 12–16% |
+   | Top species carries one | never | 0–2 of 8 |
+   | Own-mutant discrimination after 1.5M | ~0.25–0.32 | 0.33–0.46 (3 runs) |
+   | Parasites from the past: population change | +13% | +8% |
+   | Parasites from the future: population change | +5% | +13% |
+
+   - **Still turnover.** Escalation would make future parasites more harmful than a world's own; with the password check they are less harmful, increasingly so the further ahead, exactly the pattern of item 6.
+   - **Weak uptake.** Password checks spread somewhat more but stay in minor species, and own-mutant discrimination rises only a little, late.
+   - **Reading.** A much larger recognition space didn't produce escalation. Deletion-mutant parasites keep the tag, and every check costs copying time, so the checks rarely pay. The ceiling isn't only the narrowness of recognition.
+   - **Next candidates:** separating machinery from template (a gene-and-machine set-up, so parasites must mimic the gene), a weapon that harms non-kin partners, or compartments.
+
+   Scripts and results: `qsearch_summary.py`, `timeshift_smol.sh`, `ts_ctl.results.txt`, `ts_qsearch.results.txt`, `mutassay_qsearch.txt`; switch `QSEARCH`.
 
 **Still open.**
 
