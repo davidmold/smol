@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–32) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–33) and `experiments/`.
 
 ## Summary
 
@@ -242,6 +242,22 @@ So the way variation is produced does shift, but mostly early, and only slightly
    - **Next candidates:** separating machinery from template (a gene-and-machine set-up, so parasites must mimic the gene), a weapon that harms non-kin partners, or compartments.
 
    Scripts and results: `qsearch_summary.py`, `timeshift_smol.sh`, `ts_ctl.results.txt`, `ts_qsearch.results.txt`, `mutassay_qsearch.txt`; switch `QSEARCH`.
+
+8. **Does separating machinery from template bring escalation? (tested: no; it removes the turnover instead.)** The October gene-and-machine design: an inert 100-letter gene, and a 42-symbol machine that copies the gene blind and translates it into a new machine. Parasites now have to mimic the gene. 10 seeds, 2M steps, same rules as the controls. Molecules are classed as machines, working genes (one of the commonest machines translates them into a machine that, bound to them, copies them and makes itself), or gene-parasites (copied, but encode no working machine). The time-shift matrix swaps gene-parasites only.
+
+   |  | Gene and machine | Controls | Password check |
+   | --- | --- | --- | --- |
+   | Survive to 2M | 10/10 | 5/10 | 7/10 |
+   | Parasites from 0.2–0.4M against other times | +6 to +7% | +8 to +26% | +10 to +23% |
+   | Parasites from 0.6M on against other times | −3 to +1% | +1 to +31% | +4 to +15% |
+   | Lag trend, hosts and parasites both from 0.6M | none (+0.03) | −0.18 | +0.12 |
+
+   - **One early step, then nothing.** Gene-parasites got better once, by about 0.6M, so overall future parasites look more harmful (the escalation sign). After that, parasites from any time are as harmful as any other: no adaptation to their own time, no turnover, no further escalation.
+   - **The machine is frozen.** The commonest machine stays at 42 symbols with the same core in every run. Machines hold at 26–27% of molecules, working genes and gene-parasites at about 22–45% each.
+   - **Reading.** An arms race needs both sides to keep changing. Here the host side barely evolves (any change must come through a translated gene, and the blind copier has no recognition step to improve), so parasites improve once and then have nothing to track. The system is robust (10 of 10 survive) but static.
+   - **Caveats:** 10 runs, 2 seeds per matrix cell; the 2M host row is odd (old parasites more harmful there), unexplained. A first version of the gene classification was wrong (it required genes to be all letters) and its swap runs were discarded.
+
+   Scripts and results: `classify_gm.py`, `gm_summary.py`, `gm_summary.txt`, `ts_gm.results.txt`, `timeshift_extra.py`.
 
 **Still open.**
 

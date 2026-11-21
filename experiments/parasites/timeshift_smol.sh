@@ -17,7 +17,7 @@ for run in $SET/s*; do
     [ -f $run/checkpoint_$t.txt.gz ] || continue
     src=$O/$r/w$((t/1000))k
     [ -f $src/classes.tsv ] && continue
-    echo "python3 $T/ckpt_edit.py $run checkpoint_$t.txt.gz $src --set NSTEPS $((t+20000)) --set POPDYEVERY 1000 --set COPYEVERY 1000 > /dev/null 2>&1 && cd $src && $B resume checkpoint_$t.txt.gz --reseed 1 > log.txt 2>&1; python3 $E/classify.py $src $t > /dev/null" >> $wjobs
+    echo "python3 $T/ckpt_edit.py $run checkpoint_$t.txt.gz $src --set NSTEPS $((t+20000)) --set POPDYEVERY 1000 --set COPYEVERY 1000 > /dev/null 2>&1 && cd $src && $B resume checkpoint_$t.txt.gz --reseed 1 > log.txt 2>&1; python3 $E/${CLASSIFY:-classify.py} $src $t > /dev/null" >> $wjobs
   done
 done
 xargs -P 12 -I{} bash -c "{}" < $wjobs || true

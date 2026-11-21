@@ -1339,6 +1339,60 @@ the run's large species list). With David's OK the copies of species.tsv, copies
 in the swap-run folders were deleted (logs, popdy, checkpoints and classes kept); both time-shift
 scripts now delete them as each run finishes.
 
+## 33. Gene and machine: does separating machinery from template bring escalation? (Nov 21)
+
+Details: `experiments/parasites/classify_gm.py`, `gm_summary.py`, `gm_summary.txt`,
+`ts_gm.results.txt`, `timeshift_extra.py`, `timeshift_extra_results.txt`. Runs on aida in
+`~/smol/runs/gm/`, `ts_gm/`.
+
+**Set-up:** the section 8 design (gene G, 100 letters, inert as code; machine M, 42 symbols, copies G
+blind and translates it into a new M), with STRANDCOPY, TRANSLATE and TRANSLATE_STOP, the old
+partner and turn rules and COMPAT_DELETION (as the controls), 10 seeds, 2M steps.
+
+**Classes (`classify_gm.py`):** over a 20k window, R = makes exact copies (machines); species that
+are copied but never copy are a working gene (G) if one of the three commonest machines, bound to
+it, copies it and translates it into a machine that, bound to it again, copies it and makes itself;
+otherwise a gene-parasite (P). A first version required genes to be all letters; evolved genes
+carry the odd non-letter outside the coded part, so most working genes were classed P and the first
+swap set was invalid (kept in `~/smol/runs/ts_gm_invalid/`, not deleted). The tables below are
+from the corrected classification.
+
+| Step | 200k | 600k | 1M | 1.4M | 2M |
+|---|---|---|---|---|---|
+| Runs alive | 10 | 10 | 10 | 10 | 10 |
+| Population (median) | 9,061 | 9,336 | 9,312 | 8,720 | 9,166 |
+| Machines / working genes / gene-parasites | .27/.31/.36 | .27/.44/.23 | .27/.43/.22 | .26/.40/.28 | .26/.28/.43 |
+| Commonest machine length | 42 | 42 | 42 | 42 | 42 |
+
+- All 10 runs survive (controls 5/10). The machine barely changes: 42 symbols and the same core
+  in every run (e.g. run 301 at 2M: `WGXWEHHR=XEK^B?WGEW}$=?>%^F$LUBO>B^C$=?>P`).
+
+**Time-shift matrix** (as section 32, swapping gene-parasites only; 1,000 cells, 2 seeds):
+
+| | gene and machine | controls | QSEARCH |
+|---|---|---|---|
+| d by lag, all hosts: Spearman (t) | -0.15 (-4.6) | -0.12 (-1.8) | +0.10 (+2.6) |
+| past / future parasites, median d | +0.030 / -0.025 | +0.128 / +0.052 | +0.083 / +0.129 |
+| hosts and parasites both from 0.6M: Spearman | +0.03 | -0.18 | +0.12 |
+| parasites from 0.2-0.4M vs other times, median d | +0.06 to +0.07 | +0.08 to +0.26 | +0.10 to +0.23 |
+| parasites from 0.6M on vs other times, median d | -0.03 to +0.01 | +0.01 to +0.31 | +0.04 to +0.15 |
+
+- Future gene-parasites are more harmful than a world's own (the escalation sign), but only
+  because parasites from 0.2-0.4M are weaker: gene-parasites improved once, by about 0.6M.
+- From 0.6M on, parasites from any time are as harmful as any other (d ~ 0, no lag trend): no
+  local adaptation in time, no turnover, no further escalation.
+- In the ordinary-replicator systems parasites from every other time are less harmful than a
+  world's own (turnover).
+
+**Reading:** separating machine from template removes the turnover rather than producing an arms
+race. The host side (the machine) does not evolve, so gene-parasites improve once and then have
+nothing to track; the system is stable (10/10 survive) and static. An arms race needs both sides to
+keep changing; here the machine is frozen, probably because any change to it must come through a
+translated gene mutation and the blind copier has no recognition step to improve.
+
+**Caveats:** 10 runs, 2 seeds per cell; the 2M host row is odd (old parasites more harmful,
+d -0.06 to -0.18), unexplained.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

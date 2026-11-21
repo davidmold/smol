@@ -1,0 +1,48 @@
+######## ts_gm
+all hosts                                    n= 900  rho(lag, d) = -0.15 (t = -4.6)  past +0.030  future -0.025
+hosts 0.6-1.8M                               n= 630  rho(lag, d) = -0.11 (t = -2.9)  past +0.031  future -0.002
+hosts and parasites both from 0.6M on        n= 560  rho(lag, d) = +0.03 (t = +0.6)  past +0.011  future -0.002
+
+Parasites from time P against all other host times: median d (< 0: more harmful than the host's own)
+  P = 0.2M   +0.072   (< 0 in 23/90)
+  P = 0.4M   +0.056   (< 0 in 31/90)
+  P = 0.6M   -0.010   (< 0 in 47/90)
+  P = 0.8M   -0.020   (< 0 in 54/90)
+  P = 1.0M   -0.009   (< 0 in 49/90)
+  P = 1.2M   +0.000   (< 0 in 45/90)
+  P = 1.4M   -0.012   (< 0 in 55/90)
+  P = 1.6M   -0.014   (< 0 in 49/90)
+  P = 1.8M   -0.028   (< 0 in 52/90)
+  P = 2.0M   +0.009   (< 0 in 40/90)
+######## ts_ctl
+all hosts                                    n= 234  rho(lag, d) = -0.12 (t = -1.8)  past +0.128  future +0.052
+hosts 0.6-1.8M                               n= 162  rho(lag, d) = -0.27 (t = -3.6)  past +0.161  future +0.011
+hosts and parasites both from 0.6M on        n= 140  rho(lag, d) = -0.18 (t = -2.2)  past +0.077  future +0.011
+
+Parasites from time P against all other host times: median d (< 0: more harmful than the host's own)
+  P = 0.2M   +0.260   (< 0 in 3/23)
+  P = 0.4M   +0.078   (< 0 in 6/23)
+  P = 0.6M   +0.156   (< 0 in 4/23)
+  P = 0.8M   +0.066   (< 0 in 6/23)
+  P = 1.0M   +0.306   (< 0 in 1/23)
+  P = 1.2M   +0.101   (< 0 in 4/23)
+  P = 1.4M   +0.087   (< 0 in 5/24)
+  P = 1.6M   +0.006   (< 0 in 12/24)
+  P = 1.8M   +0.011   (< 0 in 10/24)
+  P = 2.0M   +0.017   (< 0 in 9/24)
+######## ts_qsearch
+all hosts                                    n= 708  rho(lag, d) = +0.10 (t = +2.6)  past +0.083  future +0.129
+hosts 0.6-1.8M                               n= 499  rho(lag, d) = -0.06 (t = -1.4)  past +0.098  future +0.071
+hosts and parasites both from 0.6M on        n= 434  rho(lag, d) = +0.12 (t = +2.4)  past +0.046  future +0.071
+
+Parasites from time P against all other host times: median d (< 0: more harmful than the host's own)
+  P = 0.2M   +0.234   (< 0 in 4/73)
+  P = 0.4M   +0.099   (< 0 in 17/73)
+  P = 0.6M   +0.041   (< 0 in 26/73)
+  P = 0.8M   +0.102   (< 0 in 13/71)
+  P = 1.0M   +0.078   (< 0 in 18/71)
+  P = 1.2M   +0.051   (< 0 in 26/71)
+  P = 1.4M   +0.110   (< 0 in 18/71)
+  P = 1.6M   +0.148   (< 0 in 13/71)
+  P = 1.8M   +0.039   (< 0 in 25/71)
+  P = 2.0M   +0.129   (< 0 in 13/63)
