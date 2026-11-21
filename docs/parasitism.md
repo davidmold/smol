@@ -2,11 +2,11 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 20 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–31) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–31) and `experiments/`.
 
 ## Summary
 
-Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: an arms race, not steady improvement.
+Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: a turnover that is fast in the first million steps and nearly settled in the second, not an escalating arms race (section 7, item 6).
 
 | Claim in the paper | Verdict | Key evidence |
 | --- | --- | --- |
