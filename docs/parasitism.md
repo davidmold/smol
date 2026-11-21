@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 18 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–30) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 20 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–31) and `experiments/`.
 
 ## Summary
 
@@ -209,6 +209,21 @@ So the way variation is produced does shift, but mostly early, and only slightly
    - **Reading.** Later replicators resist the established parasites by stalling on them, not by discriminating their own mutants. Fresh mutants are still copied 65–73% of the time, so parasites keep arising, and their lineages adapt (item 1).
 
    Caveats: one reaction trial per pair; only the 30 commonest species; the swap comparison uses only the top replicator. Not yet tested: a direct intervention on stalling. Scripts and results: `decoy.py`, `decoy_survey.txt`, `swapprobe.py`, `swapprobe_results.txt`.
+
+6. **Escalation or turnover? (done: turnover that settles, not escalation.)** A full time-shift matrix: for each of the 8 published runs, the world at every 200k from 200k to 2M had its parasites replaced by parasites from every other time (own-time parasites redrawn as the control). 3 seeds, 20k steps, 2,400 runs, no extinctions. Measure: population change at +10k against the control (positive means the foreign parasites are less harmful).
+
+   | Parasites from | 1.8M earlier | 1M earlier | 0.2M earlier | 0.2M later | 0.6M later | 1M later | 1.4M later |
+   | --- | --- | --- | --- | --- | --- | --- | --- |
+   | Median change in population | +25% | +12% | +8% | −1% | +13% | +36% | +59% |
+
+   - **Own-time parasites are the most harmful.** Parasites from the past do less harm in 300 of 360 cells, and from the future in 253 of 360. Only parasites from just after the host's time are about as harmful as its own.
+   - **Not escalation.** In an arms race, future parasites would be more harmful than a world's own. They never are on median, and the further in the future, the less harmful they are.
+   - **Not cycling either.** Old parasites don't come back: past parasites stay less harmful by a roughly constant margin, however old.
+   - **Two phases.** Before about 1M everything turns over fast. From 1.2M on, parasites from anywhere in 1.2–2M are interchangeable in late worlds (median +2%), while those from 1M or earlier stay less harmful there (+12%).
+   - **Reading.** Parasites are adapted to their own time and replicators move away from them for good, but parasites don't get generally better: directional turnover, fast in the first million steps and nearly settled in the second. That fits self-scan being fixed early, parasites adapting to whatever replicator is common (item 1) and stalling (item 5), and it doesn't fit escalating complexity.
+   - **Caveats:** changes are relative, so small early worlds give large values; only parasites were swapped (replicators were swapped for 1M/2M only).
+
+   Scripts and results: `timeshift.sh`, `timeshift_agg.py`, `timeshift_results.txt`.
 
 **Still open.**
 

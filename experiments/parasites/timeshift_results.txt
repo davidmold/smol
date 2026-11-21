@@ -1,0 +1,77 @@
+Relative population change at +10000 steps when a world's parasites come from another time
+(d > 0: foreign parasites less harmful than its own). 8 runs, 10 times, 800 cells.
+
+lag (parasite time - host time)   median d   cells with d > 0
+   -1.8M                          +0.252     8/8
+   -1.6M                          +0.192     15/16
+   -1.4M                          +0.126     21/24
+   -1.2M                          +0.113     29/32
+   -1.0M                          +0.120     36/40
+   -0.8M                          +0.117     41/48
+   -0.6M                          +0.096     47/56
+   -0.4M                          +0.105     50/64
+   -0.2M                          +0.077     53/72
+   +0.2M                          -0.006     34/72
+   +0.4M                          +0.041     37/64
+   +0.6M                          +0.128     40/56
+   +0.8M                          +0.309     36/48
+   +1.0M                          +0.362     32/40
+   +1.2M                          +0.440     29/32
+   +1.4M                          +0.590     23/24
+   +1.6M                          +0.581     15/16
+   +1.8M                          +0.386     7/8
+
+Median d over runs (rows: host time, columns: parasite time, in M)
+host\par     0.2    0.4    0.6    0.8    1.0    1.2    1.4    1.6    1.8    2.0
+   0.2         .  +0.02  +0.17  +0.06  +0.47  +0.44  +0.33  +0.38  +0.48  +0.39
+   0.4     +0.65      .  -0.04  +0.05  +0.83  +0.95  +0.91  +0.88  +0.90  +0.76
+   0.6     +0.75  +0.22      .  +0.15  +0.11  +0.36  +0.50  +0.56  +0.34  +0.12
+   0.8     +0.46  +0.10  +0.03      .  +0.35  +0.34  +0.54  +0.42  +0.17  +0.31
+   1.0     +0.38  +0.22  +0.12  +0.05      .  +0.01  +0.09  +0.14  +0.17  +0.21
+   1.2     +0.30  +0.15  +0.15  +0.09  +0.09      .  -0.02  +0.00  +0.00  +0.04
+   1.4     +0.29  +0.16  +0.17  +0.06  +0.16  +0.06      .  -0.00  -0.02  +0.03
+   1.6     +0.08  +0.02  +0.03  +0.01  +0.03  +0.00  +0.00      .  -0.14  -0.02
+   1.8     +0.19  +0.18  +0.17  +0.14  +0.18  +0.14  +0.14  +0.16      .  -0.02
+   2.0     +0.25  +0.14  +0.15  +0.13  +0.10  +0.10  +0.09  +0.09  +0.03      .
+
+Per run: mean d for parasites from the past vs from the future (all hosts)
+  r1: past +0.371  future +0.232
+  r2: past +0.434  future +0.540
+  r3: past +0.345  future +0.296
+  r4: past +0.098  future +0.297
+  r5: past +0.688  future +0.275
+  r6: past +0.090  future +0.592
+  r7: past +0.119  future +0.212
+  r8: past +0.092  future +0.624
+
+All: past parasites d median +0.109 (> 0 in 300/360); future parasites d median +0.172 (> 0 in 253/360)
+
+Relative population change at +20000 steps when a world's parasites come from another time
+(d > 0: foreign parasites less harmful than its own). 8 runs, 10 times, 800 cells.
+
+lag (parasite time - host time)   median d   cells with d > 0
+   -1.8M                          +0.141     8/8
+   -1.6M                          +0.170     15/16
+   -1.4M                          +0.128     22/24
+   -1.2M                          +0.112     26/32
+   -1.0M                          +0.161     33/40
+   -0.8M                          +0.151     40/48
+   -0.6M                          +0.193     46/56
+   -0.4M                          +0.150     50/64
+   -0.2M                          +0.146     56/72
+   +0.2M                          -0.019     34/72
+   +0.4M                          -0.006     31/64
+   +0.6M                          +0.062     38/56
+   +0.8M                          +0.283     34/48
+   +1.0M                          +0.326     29/40
+   +1.2M                          +0.427     29/32
+   +1.4M                          +0.464     21/24
+   +1.6M                          +0.535     14/16
+   +1.8M                          +0.334     6/8
+
+Median d over runs (rows: host time, columns: parasite time, in M)
+0
+past side: rho(distance, d) = 0.10 over 360 cells
+future side: rho(distance, d) = 0.40 over 360 cells
+late hosts (>=1.2M) with other late parasites: median d +0.018 (>0 in 99/160)
+late hosts with parasites from <=1M: median d +0.118 (>0 in 173/200)

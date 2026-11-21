@@ -1248,6 +1248,47 @@ copying speed; without the pressure it is roughly neutral (comes and goes). Toge
 **Caveats:** at q = 0 only 4 runs live long enough to score (survivors may be biased towards
 self-scan); one trend test on 41 runs; snapshots scored every 200k.
 
+## 31. Time-shift matrix: parasites against host worlds from every other time (Nov 20)
+
+Details: `experiments/parasites/timeshift.sh`, `timeshift_agg.py`, `timeshift_results.txt`. Runs on aida
+in `~/smol/runs/parasites/timeshift/`.
+
+**Method:** the 8 published runs at 200k, 400k, ..., 2M (10 times), converted and classified as
+in section 18 (20k window). For every host time H and parasite time P of the same run, the H
+world's parasites (class P) were replaced by parasites drawn by abundance from the P world
+(`swap.py ... P`); H = P (own parasites redrawn) is the control. 3 seeds, 20k steps; 2,400 runs,
+no extinctions. d = relative change in population at +10k against the control: d > 0 means the
+foreign parasites are less harmful than the world's own.
+
+| Lag (parasite time - host time) | -1.8M | -1.0M | -0.4M | -0.2M | +0.2M | +0.4M | +0.6M | +1.0M | +1.4M |
+|---|---|---|---|---|---|---|---|---|---|
+| median d | +0.25 | +0.12 | +0.11 | +0.08 | -0.01 | +0.04 | +0.13 | +0.36 | +0.59 |
+| cells with d > 0 | 8/8 | 36/40 | 50/64 | 53/72 | 34/72 | 37/64 | 40/56 | 32/40 | 23/24 |
+
+(+20k gives the same picture.)
+
+- **Own-time parasites are the most harmful.** Parasites from the past are less harmful in 300 of
+  360 cells (median d +0.11); from the future in 253 of 360 (+0.17). Only parasites from just
+  after the host's time (+0.2M, +0.4M) are about as harmful as its own.
+- **Not escalation:** under an arms race, future parasites would be more harmful than the host's
+  own. They never are on median; the further in the future, the less harmful (Spearman +0.40).
+- **Not cycling either:** old parasites do not regain their effect at long lags. Past
+  parasites are less harmful by a roughly constant margin however old (Spearman +0.10).
+- **Two phases.** Before about 1M everything changes fast (large d off the diagonal). From 1.2M
+  on, parasites from 1.2-2M are interchangeable in late worlds (median d +0.02, > 0 in 99/160),
+  while parasites from 1M or earlier stay less harmful there (+0.12, > 0 in 173/200).
+- Runs differ: in runs 1, 3 and 5 past parasites are the less harmful; in 4, 6, 7 and 8 future
+  ones.
+
+**Reading:** parasites are adapted to their own time, and replicators move away from them for
+good, but parasites do not get generally better: directional turnover (Red Queen without
+recurrence), fast in the first million and nearly settled in the second. This fits the fixed-early
+self-scan (section 21), the arms race of section 26 (parasites adapt to whatever replicator is
+common) and the stalling of section 28, and it does not fit escalating complexity.
+
+**Caveats:** d is relative to population, so small early worlds give large values; classes come
+from one 20k window; only parasites are swapped (the replicator half was done for 1M/2M only).
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product
