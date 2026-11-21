@@ -1425,9 +1425,29 @@ worse (a longer machine translates more slowly). A blind copier has no recogniti
 change could improve against gene-parasites (the label search is passed by any gene-parasite that
 keeps the label). This is the "short and fast wins" pressure again, now on the machine.
 
-**Reading:** a more robust codon table would not unfreeze the machine; the test of whether
-machine change can be selected would be a competition, as in section 24: a duplicated-loop
-machine against the seed machine, with and without gene-parasites.
+**Reading:** a more robust codon table would not unfreeze the machine.
+
+**4. Competition (`gm_compete.py`, `gm_compete_results.txt`, `gm_compete_probe.txt`):** the seed
+pair (G0, M0) against a variant pair whose machine has a duplicated copy loop (Gv = G0's head +
+encode(Mv); all three variants close the loop, taking 482-494 steps against 455). Fresh world, 500
+of each of M0, G0, Mv, Gv, with or without 1,000 gene-parasites (each run's 5 commonest at 1M),
+mutation off or on, 10 seeds, 30k steps. Share of Gv among both genes at 30k (0.5 = a draw):
+
+| Variant | m0, no parasites | m0, parasites | m1, no parasites | m1, parasites |
+|---|---|---|---|---|
+| loop 1 duplicated `}$=?>$=?>%` | 0.39 | 0.38 | 0.38 | 0.14 |
+| loop 2 duplicated `$=?>$=?>%}` | 0.25 | 0.24 | 0.24 | 0.07 |
+| half loop `}$=?$=?>%` | 0.39 | 0.40 | 0.41 | 0.15 |
+
+- Every machine, seed or variant, copies every gene-parasite it binds, for the same time (probe:
+  copied share 1.00, bound time x P(bind) 220-223): a duplicated loop does not change how a blind
+  copier treats parasites, unlike in ordinary replicators where it made the self-scan.
+- So the variants only pay the cost (slower) and lose in every condition; parasites give them no
+  edge. With mutation and parasites together they lose further (unexplained).
+
+**Conclusion:** the machine is frozen because it is at an optimum: reachable changes are neutral
+or costly, and a blind copier has nothing that a change could improve against gene-parasites. A
+machine would need a recognition step on the gene before parasites could select for change.
 
 ## Caveats on the measurements (review, 20 Oct)
 

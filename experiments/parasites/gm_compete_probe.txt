@@ -1,0 +1,5 @@
+machine vs each run's 5 gene-parasites (abundance-weighted): share of bound time copied, mean steps bound; self-loop steps
+  seed   copied 1.00  bound-steps x P(bind)    220
+  loop1  copied 1.00  bound-steps x P(bind)    223
+  loop2  copied 1.00  bound-steps x P(bind)    221
+  half   copied 1.00  bound-steps x P(bind)    220

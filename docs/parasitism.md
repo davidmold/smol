@@ -31,7 +31,7 @@ All experiments ran in smol, a Rust reimplementation of spatial Stringmol, using
   - *other*: neither.
 - **World level.** World-level rules (update order, partner choice, product placement) haven't been matched draw for draw, but a statistical check against the paper's runs found no significant difference (section 7, item 4).
 
-Details, scripts and raw results are in the smol repo: `docs/findings.md` sections 17–30 and `experiments/parasites/`.
+Details, scripts and raw results are in the smol repo: `docs/findings.md` sections 17–34 and `experiments/parasites/`.
 
 ## 1. Parasites hold the population down
 
@@ -263,7 +263,9 @@ So the way variation is produced does shift, but mostly early, and only slightly
    - **A fragile genetic code? No.** Of all 2,100 single-letter changes in the coded part of the gene, 38% give a different machine that still works (ordinary replicators: 25–45% of single mutants still copy themselves). The label head tolerates 92–98% of changes and the working core 0–6%, but in-frame duplications inside the core work 19–60% of the time, including duplications of the copy loop, the kind of change that built self-scan in ordinary replicators. Insertions and deletions shift the reading frame and break the machine 95% of the time.
    - **No link between a machine and its own gene? No.** In all 10 runs, machines copy the gene that encodes them 23–55 times more often than chance, because products are placed next to their makers.
    - **So the machine sits at an optimum.** Working variants exist and are linked to their genes, but none spreads: they are neutral (head edits, which drift) or worse (a longer machine translates more slowly). A blind copier has no recognition step to improve against gene-parasites. It's the same "short and fast wins" pressure as before, now acting on the machine.
-   - **Implication:** a more robust codon table wouldn't help. The direct test would be a competition between a duplicated-loop machine and the seed machine, with and without gene-parasites.
+   - **Implication:** a more robust codon table wouldn't help.
+
+   **Competition confirms it.** Three machines with a duplicated copy loop (each working, 482–494 steps against 455) were pitted against the seed machine, 500 machines and 500 genes each, with or without gene-parasites, mutation off or on, 10 seeds, 30k steps. The variant's share of genes at the end (0.5 = a draw): 0.24–0.41 without parasites, 0.24–0.40 with them, and 0.07–0.15 with mutation and parasites together. Every machine copies every gene-parasite it binds, for the same time, so a duplicated loop gives a blind copier no defence, and the variants only pay the cost. A machine would need a recognition step on the gene before parasites could select for change.
 
    Scripts and results: `gm_scan.py`, `gm_scan2.py`, `gm_scan3.py`, `gm_linkage.py` and their results.
 

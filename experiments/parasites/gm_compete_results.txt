@@ -1,0 +1,7 @@
+share of the variant's gene among both genes at 30k: median over 10 seeds (seeds where both genes are gone excluded)
+  loop1  WGEWLHHRJXQQ^B?WGEW}$=?>$=?>%^F$LUBO>B^C$=?>%}
+         m0p0 0.39 (10)   m0p1 0.38 (10)   m1p0 0.38 (10)   m1p1 0.14 (10)
+  loop2  WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>$=?>%}
+         m0p0 0.25 (10)   m0p1 0.24 (10)   m1p0 0.24 (10)   m1p1 0.07 (10)
+  half   WGEWLHHRJXQQ^B?WGEW}$=?$=?>%^F$LUBO>B^C$=?>%}
+         m0p0 0.39 (10)   m0p1 0.40 (10)   m1p0 0.41 (10)   m1p1 0.15 (10)
