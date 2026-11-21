@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–33) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–34) and `experiments/`.
 
 ## Summary
 
@@ -258,6 +258,14 @@ So the way variation is produced does shift, but mostly early, and only slightly
    - **Caveats:** 10 runs, 2 seeds per matrix cell; the 2M host row is odd (old parasites more harmful there), unexplained. A first version of the gene classification was wrong (it required genes to be all letters) and its swap runs were discarded.
 
    Scripts and results: `classify_gm.py`, `gm_summary.py`, `gm_summary.txt`, `ts_gm.results.txt`, `timeshift_extra.py`.
+
+9. **Why is the machine frozen? (diagnosed: it sits at an optimum.)** Three candidate causes, tested on the seed gene and machine and on the 10 runs:
+   - **A fragile genetic code? No.** Of all 2,100 single-letter changes in the coded part of the gene, 38% give a different machine that still works (ordinary replicators: 25–45% of single mutants still copy themselves). The label head tolerates 92–98% of changes and the working core 0–6%, but in-frame duplications inside the core work 19–60% of the time, including duplications of the copy loop, the kind of change that built self-scan in ordinary replicators. Insertions and deletions shift the reading frame and break the machine 95% of the time.
+   - **No link between a machine and its own gene? No.** In all 10 runs, machines copy the gene that encodes them 23–55 times more often than chance, because products are placed next to their makers.
+   - **So the machine sits at an optimum.** Working variants exist and are linked to their genes, but none spreads: they are neutral (head edits, which drift) or worse (a longer machine translates more slowly). A blind copier has no recognition step to improve against gene-parasites. It's the same "short and fast wins" pressure as before, now acting on the machine.
+   - **Implication:** a more robust codon table wouldn't help. The direct test would be a competition between a duplicated-loop machine and the seed machine, with and without gene-parasites.
+
+   Scripts and results: `gm_scan.py`, `gm_scan2.py`, `gm_scan3.py`, `gm_linkage.py` and their results.
 
 **Still open.**
 

@@ -1,0 +1,37 @@
+gene 100 letters, machine 42 symbols, coded part from 16
+check: M with G gives copy+M
+machine symbol: share of substitutions in its codon that keep a working machine
+  W:0.00  G:0.54  E:0.96  W:0.92  L:0.92  H:0.94  H:0.94  R:0.92  J:0.94  X:0.96  Q:0.98  Q:0.98  ^:0.02  B:0.02  ?:0.02  W:0.00  G:0.02  E:0.02  W:0.00  }:1.00  $:0.00  =:0.02  ?:0.02  >:0.00  %:0.02  ^:0.02  F:0.62  $:0.00  L:0.86  U:0.56  B:0.30  O:0.06  >:0.00  B:0.02  ^:0.02  C:0.02  $:0.06  =:0.02  ?:0.94  >:0.00  %:0.98  }:1.00
+  opcode positions 18, letter positions 24
+single deletions                   n=  84  synonymous 0.00  works 0.05  broken 0.95  no product 0.00
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>G
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>P
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%
+single insertions                  n= 420  synonymous 0.00  works 0.05  broken 0.95  no product 0.00
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>OG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>KG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>PG
+in-frame duplication of 2 letters  n=  42  synonymous 0.00  works 0.69  broken 0.31  no product 0.00
+      e.g. WWGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+in-frame duplication of 4 letters  n=  41  synonymous 0.00  works 0.63  broken 0.37  no product 0.00
+      e.g. WGWGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWLWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWLHLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+in-frame duplication of 6 letters  n=  40  synonymous 0.00  works 0.62  broken 0.38  no product 0.00
+      e.g. WGEWGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWLEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+in-frame duplication of 8 letters  n=  39  synonymous 0.00  works 0.46  broken 0.54  no product 0.00
+      e.g. WGEWWGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWLHHWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+      e.g. WGEWLHHRLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+out-of-frame duplication of 1      n=  84  synonymous 0.01  works 0.05  broken 0.94  no product 0.00
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>RG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>SG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%G
+out-of-frame duplication of 3      n=  82  synonymous 0.00  works 0.06  broken 0.94  no product 0.00
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>IRG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>ERG
+      e.g. WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%RG

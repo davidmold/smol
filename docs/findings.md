@@ -1393,6 +1393,42 @@ translated gene mutation and the blind copier has no recognition step to improve
 **Caveats:** 10 runs, 2 seeds per cell; the 2M host row is odd (old parasites more harmful,
 d -0.06 to -0.18), unexplained.
 
+## 34. Why is the gene-and-machine machine frozen? (Nov 21)
+
+Details: `experiments/parasites/gm_scan.py`, `gm_scan2.py`, `gm_scan3.py` (seed gene and machine,
+`gm_scan*_seed.txt`), `gm_linkage.py`, `gm_linkage_results.txt`.
+
+Section 33: the commonest machine stays at 42 symbols with the same core in all 10 runs. Three
+candidate causes, tested:
+
+**1. A fragile genetic code? No.** Every single-letter substitution in the coded part of the seed
+gene (2,100), translated by the seed machine, then tested for a closed loop:
+- synonymous 1.6% (the balanced random table keeps the symbol for 2.9% of single-letter codon
+  changes, and the letter/opcode kind for 66.5%); a different working machine 38%; broken 60%.
+  For comparison, 25-45% of an ordinary replicator's single mutants still copy themselves.
+- But by position: the label head (`WGEWLHHRJXQQ`) tolerates 92-98% of substitutions; the working
+  core (`^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}`) tolerates 0-6% at most positions (exceptions: `}`,
+  and a few symbols near the end).
+- Single insertions and deletions shift the reading frame: 95% broken.
+- In-frame duplications inside the core work in 19-60% of cases (2-30 letters), including
+  duplications of the copy loop (e.g. `...}$=?$=?>%...`), the kind of change that built self-scan in
+  ordinary replicators. So structural variation of the core is reachable.
+
+**2. No genotype-phenotype linkage (a better machine helps all genes)? No.** Over 1-2M, each of
+the 20 commonest machines copies the gene that encodes it 23-55 times (run medians) more often
+than that gene's share of all gene copies would give: products are placed next to their makers,
+so space links a machine to its own gene.
+
+**3. Remaining explanation: the machine sits at an optimum.** Viable variants exist and are
+linked to their genes, yet none spreads, so they are neutral (head edits, which do drift) or
+worse (a longer machine translates more slowly). A blind copier has no recognition step that a
+change could improve against gene-parasites (the label search is passed by any gene-parasite that
+keeps the label). This is the "short and fast wins" pressure again, now on the machine.
+
+**Reading:** a more robust codon table would not unfreeze the machine; the test of whether
+machine change can be selected would be a competition, as in section 24: a duplicated-loop
+machine against the seed machine, with and without gene-parasites.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

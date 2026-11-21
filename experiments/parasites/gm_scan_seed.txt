@@ -1,0 +1,22 @@
+gene 100 letters, machine 42 symbols, coded part from 16
+check: M with G gives copy+M
+
+single-letter substitutions in the coded part: 2100
+  synonymous      33  0.016
+  works          799  0.380
+  broken        1268  0.604
+  no product       0  0.000
+  codon letter 1: synonymous 0.02  works 0.37  broken 0.60  no product 0.00
+  codon letter 2: synonymous 0.01  works 0.39  broken 0.61  no product 0.00
+
+examples of working new machines:
+  pos 18 -> C: WHEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> D: WNEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> F: WEEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> G: WCEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> K: WJEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> L: WAEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> N: WEEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  pos 18 -> Q: W=EWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+
+codon table: 676 codons, 33 symbols; single-letter codon changes that keep the symbol 0.029, that keep its kind (letter/opcode) 0.665

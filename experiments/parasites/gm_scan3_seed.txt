@@ -1,0 +1,12 @@
+gene 100 letters, machine 42 symbols, coded part from 16
+check: M with G gives copy+M
+core starts at machine symbol 12 (^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}), gene letter 40
+core in-frame duplication of  2 letters  n= 30  works 0.60  broken 0.40  WGEWLHHRJXQQ^^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^BB?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of  4 letters  n= 29  works 0.55  broken 0.45  WGEWLHHRJXQQ^B?B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?W?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of  6 letters  n= 28  works 0.54  broken 0.46  WGEWLHHRJXQQ^B?WB?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEW}$=?$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of  8 letters  n= 27  works 0.37  broken 0.63  WGEWLHHRJXQQ^B?WGB?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEW}$=?>$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of 10 letters  n= 26  works 0.31  broken 0.69  WGEWLHHRJXQQ^B?WG^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEB?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of 12 letters  n= 25  works 0.36  broken 0.64  WGEWLHHRJXQQ^B?WGE^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEWB?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of 16 letters  n= 23  works 0.30  broken 0.70  WGEWLHHRJXQQ^B?WGEW}$B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEW}$=?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+core in-frame duplication of 20 letters  n= 21  works 0.19  broken 0.81  WGEWLHHRJXQQ^B?WGEW}$=?B?WGEW}$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^^F$LUBO>B^C$=?>%}
+core in-frame duplication of 30 letters  n= 16  works 0.25  broken 0.75  WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^$=?>%^F$LUBO>B^C$=?>%}  WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=>%^F$LUBO>B^C$=?>%}
