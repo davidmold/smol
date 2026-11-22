@@ -5,13 +5,14 @@
 #   archive_s3.sh [--delete] RUNPATH...      RUNPATH relative to aida:~/smol/runs, e.g. long/seed59059
 #
 # Each directory becomes one uncompressed tar (its logs are already gzipped):
-#   s3://lantic-smol-archive/runs/<RUNPATH>.tar
-# The tar stream's SHA-256 and byte count go to s3://lantic-smol-archive/manifest/<RUNPATH>.sha256
+#   s3://$SMOL_S3_BUCKET/runs/<RUNPATH>.tar
+# The tar stream's SHA-256 and byte count go to s3://$SMOL_S3_BUCKET/manifest/<RUNPATH>.sha256
 # and to the local manifest archive_manifest.tsv. The object's size in S3 is checked against the
 # byte count; with --delete the directory is removed on aida only after that check passes.
-# Restore:  aws --profile lantic s3 cp s3://lantic-smol-archive/runs/long/seed59059.tar - | tar -xf -
+# Restore:  aws s3 cp s3://$SMOL_S3_BUCKET/runs/long/seed59059.tar - | tar -xf -
 set -o pipefail
-P="--profile lantic --region us-east-1"; B=lantic-smol-archive
+B=${SMOL_S3_BUCKET:?set SMOL_S3_BUCKET to your bucket}
+P="--region ${AWS_REGION:-us-east-1}"   # credentials: AWS_PROFILE or the default chain
 DEL=0; [ "$1" = "--delete" ] && { DEL=1; shift; }
 MAN=${MANIFEST:-$HOME/projects/smol/experiments/archive_manifest.tsv}
 tmp=$(mktemp -d)

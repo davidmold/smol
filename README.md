@@ -10,6 +10,17 @@ core, and much larger worlds are practical.
 It reads Stringmol-style configs (`GRIDX`, `GRIDY`, `DECAY`, `MUTATE`, `RANDSEED`, `AGENT`,
 `GRIDPOS`, ...), plus switches for the variations studied here (`docs/switches.md`).
 
+## What it has been used for
+
+The main study so far tests the account of parasitism in Hickinbotham, Stepney & Hogeweg (2021):
+**[`docs/parasitism.md`](docs/parasitism.md)** summarises what the evidence shows, with
+`docs/findings.md` and `experiments/` holding every script and raw result behind it. In brief:
+parasites are real and limiting, but in the published setup they settle into a turnover rather
+than an escalating arms race. A gene-and-machine variant whose machine checks a second tag on its
+gene does show a continuing arms race through 2M steps. That last result is **preliminary**: the
+check was designed in rather than evolved, and it rests on 10 runs per condition. Replication
+is under way.
+
 ## How it relates to Stringmol
 
 **The same chemistry, not the same program.**
@@ -50,4 +61,6 @@ working lab book, so they mention the machines and storage the runs used.
 
 ## Licence
 
-GPL-3.0-or-later (see `LICENSE`). Stringmol itself is GPL-2.0-or-later.
+GPL-3.0-or-later (see `LICENSE`). smol is a separate program, not derived from Stringmol's code.
+(Stringmol's repository ships the GPL v2 licence text, while its source headers say GPL v3 or
+later.)

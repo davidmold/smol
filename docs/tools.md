@@ -11,7 +11,7 @@
 | Python env for analysis | aida `~/smenv` (`~/smenv/bin/python`) | rapidfuzz, numpy |
 | Design files for seeds | `designs/` in the repo | cross pair, G+M, cell, evolved seeds, strand seed |
 
-Commits use `git -c user.name=davidmold -c user.email=davidmold@gmail.com`.
+Commits are made as `davidmold`.
 
 ## Deploying a change to aida
 
@@ -147,7 +147,7 @@ most molecules are rare variants (column `cover` then means the fraction of the 
 ## Archiving to S3
 
 `tools/archive_s3.sh [--delete] RUNPATH...` (run on chasca): streams each `aida:~/smol/runs/RUNPATH`
-as a tar to `s3://lantic-smol-archive/runs/RUNPATH.tar` (Glacier Instant Retrieval), records the
+as a tar to `s3://$SMOL_S3_BUCKET/runs/RUNPATH.tar` (Glacier Instant Retrieval), records the
 SHA-256 and size, checks the object's size in S3, and with `--delete` then removes the aida copy.
 It skips directories a running `smol` or scan is using, and objects already uploaded.
 

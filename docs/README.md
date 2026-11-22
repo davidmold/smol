@@ -75,8 +75,8 @@ prevents the next transition.
 - **aida** (`ssh aida`, Ubuntu, 12 threads, 2x RTX 5060 Ti): runs everything. `~/smol` is a
   deployed copy of the Rust code plus all runs in `~/smol/runs`. `~/stringmol` is the C++ fork
   and the Python analysis scripts (families, novelty, drift null).
-- **Dashboard / live viewer:** http://192.168.1.129:8095 (runs list) and
-  `http://192.168.1.129:8095/live?run=<condition>/<run>` (live grid while a run is going).
+- **Dashboard / live viewer:** http://<aida>:8095 (runs list) and
+  `http://<aida>:8095/live?run=<condition>/<run>` (live grid while a run is going).
 
 ## Running right now (on aida)
 
