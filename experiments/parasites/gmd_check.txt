@@ -1,0 +1,7 @@
+50 windows of gene-parasites from /home/davidmold/smol/runs/ts_gm
+M0: 42 symbols  loop closes: True  steps: 455  share copied (median over runs) 0.92  range 0.55-1.00
+    M        initiates with G        P(bind)=1.000  copier=M        copied=G        steps=455   unbound normally
+MT: 48 symbols  loop closes: True  steps: 510  share copied (median over runs) 0.08  range 0.00-0.37
+    M        initiates with G        P(bind)=1.000  copier=M        copied=G        steps=510   unbound normally
+MD: 48 symbols  loop closes: True  steps: 510  share copied (median over runs) 0.89  range 0.38-1.00
+    M        initiates with G        P(bind)=1.000  copier=M        copied=G        steps=510   unbound normally

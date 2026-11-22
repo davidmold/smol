@@ -7,7 +7,7 @@
 set -e
 SET=$1; O=$2; mkdir -p $O
 B=~/smol-src/target/release/smol; T=~/smol-src/tools; E=~/smol-src/experiments/parasites
-TIMES="200000 400000 600000 800000 1000000 1200000 1400000 1600000 1800000 2000000"
+TIMES=${TIMES:-"200000 400000 600000 800000 1000000 1200000 1400000 1600000 1800000 2000000"}
 N=20000
 # 1. classification windows
 wjobs=$O/wjobs.txt; : > $wjobs
