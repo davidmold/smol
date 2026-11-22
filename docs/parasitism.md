@@ -6,7 +6,7 @@ Nov 17, 2026 · David Mold
 
 ## Summary
 
-Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: a turnover that is fast in the first million steps and nearly settled in the second, not an escalating arms race (section 7, item 6).
+Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: a turnover that is fast in the first million steps and nearly settled in the second, not an escalating arms race (section 7, item 6). A possible arms race, still being confirmed, appears once a gene-and-machine system is given a machine with a real recognition step (section 7, item 10).
 
 | Claim in the paper | Verdict | Key evidence |
 | --- | --- | --- |
@@ -270,7 +270,7 @@ So the way variation is produced does shift, but mostly early, and only slightly
    Scripts and results: `gm_scan.py`, `gm_scan2.py`, `gm_scan3.py`, `gm_linkage.py` and their results.
 
 10. 
-    1. **A machine with a recognition step: the first continuing escalation.** Gene-parasites mostly keep the head tag the machine already checks, but 70% have a broken tail, and the tail encodes the machine's end. So the machine got a second test, `?OMSJ}`: the gene must carry its tail tag (`BZFW`), searched anywhere with `QSEARCH`, or the reaction ends. Before any evolution, this machine copies 28% of real gene-parasites it binds, against 98% for the seed machine. 10 runs, with a control set using the same rules minus the tail check; all 20 survive to 2M.
+    1. **A machine with a recognition step: a possible continuing escalation (preliminary, being re-tested).** Gene-parasites mostly keep the head tag the machine already checks, but 70% have a broken tail, and the tail encodes the machine's end. So the machine got a second test, `?OMSJ}`: the gene must carry its tail tag (`BZFW`), searched anywhere with `QSEARCH`, or the reaction ends. Before any evolution, this machine copies 28% of real gene-parasites it binds, against 98% for the seed machine. 10 runs, with a control set using the same rules minus the tail check; all 20 survive to 2M.
 
     |  | Gene and machine | Control (same rules) | Tail check |
     | --- | --- | --- | --- |
@@ -279,10 +279,10 @@ So the way variation is produced does shift, but mostly early, and only slightly
     | Lag trend, both from 0.6M | +0.03 | +0.21 | −0.39 (t −10) |
     | Machine of 2M vs parasites of 2M: share copied | 0.40 | 0.33 | 1.00 |
 
-    - **Continuing escalation.** With the tail check, parasites from the future are increasingly harmful (−1% at 0.2M ahead to −12% at 1.8M ahead), right through to 2M, while parasite share falls: both sides keep moving. Without it (the control), there's no escalation.
+    - **Escalation within the set; not yet shown against the controls.** With the tail check, parasites from the future are increasingly harmful (−1% at 0.2M ahead to −12% at 1.8M ahead), right through to 2M, while parasite share falls: both sides keep moving. Without it (the control), there's no escalation. But those figures pool all 900 matrix cells as if they were independent, and cells from one run share a world. Counting each run once, escalation shows in 9 of 10 tail-check runs (p ≈ 0.02–0.05), but the difference from the control is not yet significant (p = 0.06), and the gene-and-machine set without QSEARCH (item 8) doesn't differ from the tail-check set at all (p = 0.5): two of its runs escalate as strongly as any tail-check run.
     - **The mechanism.** In all three sets, machines change a password, the label they use to find where to start translating (changed in 6–7 of 10 runs), and late machines can't copy early parasites at all. The tail check doesn't cause that turnover; it changes the parasites. Those that get past it are complete mimics (99% carry the tag), fully exploit their contemporary machines, and keep improving.
-    - **Reading.** Neither richer recognition alone (item 7) nor separating gene from machine alone (item 8) produced an arms race. Together they do: a machine that excludes most current parasites forces parasites to become ever better mimics, while machines keep changing the password.
-    - **Caveats:** the tail check was designed in, not evolved; 10 runs per set; whether the race continues past 2M is untested.
+    - **Reading.** Neither richer recognition alone (item 7) nor separating gene from machine alone (item 8) produced an arms race. Together they may: a machine that excludes most current parasites forces parasites to become ever better mimics, while machines keep changing the password.
+    - **Caveats:** the tail check was designed in, not evolved; 10 runs per set; whether the race continues past 2M is untested. The tail-check machine is also longer and slower than the seed machine (510 steps per copy against 455), a confound. A confirmation round is running: 30 new runs each of the tail check, the same rules without it, and a dummy-check machine of the same length and speed that lets parasites through like the seed machine; plus the original runs continued to 6M. Its tests and thresholds were fixed before the runs, in `experiments/parasites/CONFIRM_PLAN.md`.
 
     Scripts and results: `gm_parasites.py`, `gmt_setup.py`, `gmt_pipeline.sh`, `gmt_mech.py`, `gm_mech_compare.txt`, `ts_gmt.*`, `ts_gmq.*`.
 

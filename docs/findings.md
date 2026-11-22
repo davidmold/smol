@@ -1449,7 +1449,7 @@ mutation off or on, 10 seeds, 30k steps. Share of Gv among both genes at 30k (0.
 or costly, and a blind copier has nothing that a change could improve against gene-parasites. A
 machine would need a recognition step on the gene before parasites could select for change.
 
-## 35. Gene and machine with a recognition step: the first continuing escalation (Nov 22)
+## 35. Gene and machine with a recognition step: a possible continuing escalation (Nov 22; preliminary)
 
 Details: `experiments/parasites/gm_parasites.py` (`gm_parasites_results.txt`), `gmt_setup.py`,
 `gmt_pipeline.sh`, `gmt_mech.py` (`gmt_mech_results.txt`, `gm_mech_compare.txt`),
@@ -1509,6 +1509,26 @@ alone (section 33) did this.
 **Caveats:** 10 runs per set, 2 seeds per matrix cell; the mechanism probe uses only the top
 machine and 5 parasites per window; the tail check was designed in, not evolved; whether the race
 continues past 2M is untested.
+
+**Re-analysis with runs as the units (Nov 22, later; `confirm_stats.py`, `confirm_existing.txt`).**
+The rho and t above pool all 900 off-diagonal cells as if independent; cells of one run share a
+world and each row shares a baseline, so t overstates the evidence. Per run (Spearman of d with
+lag over that run's cells):
+
+| | runs escalating (rho_run < 0) | median rho_run | within-set p (sign / Wilcoxon) |
+|---|---|---|---|
+| gmt | 9/10 | -0.60 | 0.02 / 0.05 |
+| gmq | 3/10 | +0.30 | 0.34 / 0.51 |
+| gm (section 33) | 6/10 | -0.20 | 0.75 / 0.39 |
+
+gmt vs gmq: Mann-Whitney p = 0.06; gmt vs gm: p = 0.5 (gm runs s301 and s307 escalate as strongly
+as any gmt run). Separating the two sides (least squares of log population on host time and
+parasite time): in gmt later hosts do better (beta_H > 0 in 9/10) and later parasites hurt more
+(beta_P < 0 in 8/10), both in 8/10 runs, against 3/10 in gmq and 5/10 in gm.
+
+So the escalation within gmt is clear, but that the tail check causes it is not yet shown, and MT
+is longer and slower than the seed machine (510 steps per copy against 455). A confirmation round
+with tests fixed in advance is running: `experiments/parasites/CONFIRM_PLAN.md`.
 
 ## Caveats on the measurements (review, 20 Oct)
 
