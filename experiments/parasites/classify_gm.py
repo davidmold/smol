@@ -8,6 +8,7 @@ copying are then split:
      --translate 1 --stop, mutation off), copies it and translates it into a machine that, bound
      to it again, copies it AND makes itself (a closed gene-machine loop);
   P  anything else that machines copy: a gene-parasite (copied, but encodes no working machine).
+GMFLAGS (environment): extra smol-react flags, e.g. --qsearch for QSEARCH worlds.
 N  neither. Writes classes.tsv (species, class, molecules at STEP), so swap.py ... P swaps only
 gene-parasites, and prints the molecule shares."""
 import sys, gzip, collections, subprocess, tempfile, os, re
@@ -36,7 +37,7 @@ def react(m, g):
     """product sequences when machine m is bound to string g (m initiates)."""
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         f.write(f"R M {m}\nR G {g}\n"); n = f.name
-    out = subprocess.run([f"{B}/smol-react", n, "5000", "--strand", "--translate", "1", "--stop"],
+    out = subprocess.run([f"{B}/smol-react", n, "5000", "--strand", "--translate", "1", "--stop"] + os.environ.get("GMFLAGS", "").split(),
                          capture_output=True, text=True).stdout
     os.unlink(n)
     block = re.search(r"^M\s+initiates with G.*?(?=^\S|\Z)", out, re.M | re.S)

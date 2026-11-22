@@ -1,0 +1,15 @@
+all hosts                                    n= 900  rho(lag, d) = -0.38 (t = -12.4)  past +0.007  future -0.043
+hosts 0.6-1.8M                               n= 630  rho(lag, d) = -0.31 (t = -8.0)  past +0.007  future -0.029
+hosts and parasites both from 0.6M on        n= 560  rho(lag, d) = -0.39 (t = -10.0)  past +0.007  future -0.029
+
+Parasites from time P against all other host times: median d (< 0: more harmful than the host's own)
+  P = 0.2M   -0.002   (< 0 in 46/90)
+  P = 0.4M   +0.008   (< 0 in 39/90)
+  P = 0.6M   +0.007   (< 0 in 41/90)
+  P = 0.8M   +0.003   (< 0 in 43/90)
+  P = 1.0M   -0.000   (< 0 in 45/90)
+  P = 1.2M   -0.008   (< 0 in 51/90)
+  P = 1.4M   -0.030   (< 0 in 65/90)
+  P = 1.6M   -0.032   (< 0 in 61/90)
+  P = 1.8M   -0.039   (< 0 in 72/90)
+  P = 2.0M   -0.047   (< 0 in 71/90)

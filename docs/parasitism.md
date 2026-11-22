@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 21 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–34) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 22 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–35) and `experiments/`.
 
 ## Summary
 
@@ -31,7 +31,7 @@ All experiments ran in smol, a Rust reimplementation of spatial Stringmol, using
   - *other*: neither.
 - **World level.** World-level rules (update order, partner choice, product placement) haven't been matched draw for draw, but a statistical check against the paper's runs found no significant difference (section 7, item 4).
 
-Details, scripts and raw results are in the smol repo: `docs/findings.md` sections 17–34 and `experiments/parasites/`.
+Details, scripts and raw results are in the smol repo: `docs/findings.md` sections 17–35 and `experiments/parasites/`.
 
 ## 1. Parasites hold the population down
 
@@ -268,6 +268,23 @@ So the way variation is produced does shift, but mostly early, and only slightly
    **Competition confirms it.** Three machines with a duplicated copy loop (each working, 482–494 steps against 455) were pitted against the seed machine, 500 machines and 500 genes each, with or without gene-parasites, mutation off or on, 10 seeds, 30k steps. The variant's share of genes at the end (0.5 = a draw): 0.24–0.41 without parasites, 0.24–0.40 with them, and 0.07–0.15 with mutation and parasites together. Every machine copies every gene-parasite it binds, for the same time, so a duplicated loop gives a blind copier no defence, and the variants only pay the cost. A machine would need a recognition step on the gene before parasites could select for change.
 
    Scripts and results: `gm_scan.py`, `gm_scan2.py`, `gm_scan3.py`, `gm_linkage.py` and their results.
+
+10. 
+    1. **A machine with a recognition step: the first continuing escalation.** Gene-parasites mostly keep the head tag the machine already checks, but 70% have a broken tail, and the tail encodes the machine's end. So the machine got a second test, `?OMSJ}`: the gene must carry its tail tag (`BZFW`), searched anywhere with `QSEARCH`, or the reaction ends. Before any evolution, this machine copies 28% of real gene-parasites it binds, against 98% for the seed machine. 10 runs, with a control set using the same rules minus the tail check; all 20 survive to 2M.
+
+    |  | Gene and machine | Control (same rules) | Tail check |
+    | --- | --- | --- | --- |
+    | Gene-parasites, 200k → 2M | 36% → 43% | 26% → 28% | 28% → 19% |
+    | Lag trend, all hosts | −0.15 | +0.16 | −0.38 (t −12) |
+    | Lag trend, both from 0.6M | +0.03 | +0.21 | −0.39 (t −10) |
+    | Machine of 2M vs parasites of 2M: share copied | 0.40 | 0.33 | 1.00 |
+
+    - **Continuing escalation.** With the tail check, parasites from the future are increasingly harmful (−1% at 0.2M ahead to −12% at 1.8M ahead), right through to 2M, while parasite share falls: both sides keep moving. Without it (the control), there's no escalation.
+    - **The mechanism.** In all three sets, machines change a password, the label they use to find where to start translating (changed in 6–7 of 10 runs), and late machines can't copy early parasites at all. The tail check doesn't cause that turnover; it changes the parasites. Those that get past it are complete mimics (99% carry the tag), fully exploit their contemporary machines, and keep improving.
+    - **Reading.** Neither richer recognition alone (item 7) nor separating gene from machine alone (item 8) produced an arms race. Together they do: a machine that excludes most current parasites forces parasites to become ever better mimics, while machines keep changing the password.
+    - **Caveats:** the tail check was designed in, not evolved; 10 runs per set; whether the race continues past 2M is untested.
+
+    Scripts and results: `gm_parasites.py`, `gmt_setup.py`, `gmt_pipeline.sh`, `gmt_mech.py`, `gm_mech_compare.txt`, `ts_gmt.*`, `ts_gmq.*`.
 
 **Still open.**
 

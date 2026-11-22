@@ -1449,6 +1449,67 @@ mutation off or on, 10 seeds, 30k steps. Share of Gv among both genes at 30k (0.
 or costly, and a blind copier has nothing that a change could improve against gene-parasites. A
 machine would need a recognition step on the gene before parasites could select for change.
 
+## 35. Gene and machine with a recognition step: the first continuing escalation (Nov 22)
+
+Details: `experiments/parasites/gm_parasites.py` (`gm_parasites_results.txt`), `gmt_setup.py`,
+`gmt_pipeline.sh`, `gmt_mech.py` (`gmt_mech_results.txt`, `gm_mech_compare.txt`),
+`{gmt,gmq}_summary.txt`, `ts_{gmt,gmq}.results.txt`, `ts_{gmt,gmq}.extra.txt`. Runs on aida in
+`~/smol/runs/gmt/`, `gmq/`, `ts_gmt/`, `ts_gmq/`.
+
+**What gene-parasites look like (section 33 runs):** against the commonest working gene of the same
+window, 63% are shorter (median 1 letter), 69% keep the head tag the seed machine's `?WGEW` test
+checks, but 70% have a different tail (last 6 letters). The tail encodes the machine's end.
+
+**Design:** the tail-check machine MT = seed + `?OMSJ}` after the head test: the gene must carry
+`BZFW` (its tail tag) or the reaction ends; with QSEARCH the test searches the whole gene, and a
+partial match passes with lower probability. Gene GT = seed head + encode(MT). MT closes the loop
+with GT in 510 steps (seed 455) and, against real gene-parasites from the section 33 runs, copies
+28% of the bound ones (median over 10 pools; seed machine 98%).
+
+**Runs:** gmt = MT/GT, QSEARCH 1; control gmq = seed pair, QSEARCH 1; both 10 seeds (301-310, the
+section 33 layout), 2M steps. All 20 survive. Time-shift matrices as section 33 (gene-parasites
+swapped; classify_gm with --qsearch).
+
+| | gm (section 33) | gmq (QSEARCH) | gmt (QSEARCH + tail check) |
+|---|---|---|---|
+| Gene-parasite share, 200k -> 2M (median) | .36 -> .43 | .26 -> .28 | .28 -> .19 |
+| Working genes at 2M | .28 | .27 | .45 |
+| Time shift, d by lag, all hosts: Spearman (t) | -0.15 (-4.6) | +0.16 (+4.8) | -0.38 (-12.4) |
+| ... hosts and parasites both from 0.6M | +0.03 | +0.21 | -0.39 (-10.0) |
+| Past / future parasites, median d | +.030 / -.025 | +.011 / +.007 | +.007 / -.043 |
+| Future parasites less harmful than own (d > 0) | 177/450 | -- | 109/450 |
+
+- gmt: future parasites are increasingly harmful (median d -0.007 at +0.2M down to -0.121 at
+  +1.8M); parasites from 1.4-2M are more harmful than the host's own in 65-72 of 90 cells. It does
+  not stop after an early step (unlike gm), and the hosts keep up: parasite share falls.
+- gmq (same rules, no tail check): no escalation; if anything the opposite sign.
+- The tail check stays in the commonest machine in 10/10 gmt runs (48 symbols).
+
+**Mechanism (`gmt_mech.py`, 2x2: machine of time A vs parasites of time B, share copied):**
+
+| | gm | gmq | gmt |
+|---|---|---|---|
+| machine 200k vs parasites 200k | 0.58 | 0.52 | 0.28 |
+| machine 200k vs parasites 2M | 1.00 | 0.91 | 1.00 |
+| machine 2M vs parasites 200k | 0.00 | 0.00 | 0.00 |
+| machine 2M vs parasites 2M | 0.40 | 0.33 | 1.00 |
+
+- In all three sets machines change a password, the translation-start label (`$LUBO` in the
+  seed: changed in 6/10, 7/10 and 6/10 runs), and late machines are immune to early parasites.
+- The tail check does not cause that turnover; it changes the parasites. Those that pass it (99%
+  carry the tag) are complete mimics, fully exploit their contemporary machines (1.00 against
+  0.33-0.40) and keep improving.
+
+**Reading:** a machine with a real recognition step (one that excludes most current parasites)
+turns password turnover into a continuing arms race: hosts change the password, parasites become
+ever better mimics of the current gene, and both sides keep moving through 2M steps. Neither
+recognition alone (QSEARCH on ordinary replicators, section 32) nor separating gene from machine
+alone (section 33) did this.
+
+**Caveats:** 10 runs per set, 2 seeds per matrix cell; the mechanism probe uses only the top
+machine and 5 parasites per window; the tail check was designed in, not evolved; whether the race
+continues past 2M is untested.
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

@@ -1,0 +1,11 @@
+step      alive  pop(med)   R     G     P     N    machine len  '?'  label-test  (medians; top machine of run s301)
+  200000  10     9251  0.28  0.39  0.26  0.06      42       3    10/10   WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  400000  10     8907  0.27  0.36  0.32  0.06      42       3    10/10   WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  600000  10     8954  0.26  0.39  0.28  0.06      42       3    10/10   WGEWLHHRJXQQ^B?WGEW}$=?>%^F$LUBO>B^C$=?>%}
+  800000  10     9083  0.26  0.39  0.30  0.06      42       3    10/10   WGEWOHHRJXQQ^B?PGEW}$=?>%^F$LUBO>B^C$=?>%}
+ 1000000  10     9058  0.26  0.41  0.30  0.06      42       3    10/10   WGEWOHHRJXQQ^B?PGEW}$=?>%^F$LUBO>B^C$=?>%}
+ 1200000  10     9046  0.26  0.38  0.30  0.06      42       3    10/10   WGEWOHHRJXQQ^B?PGEW}$=?>%^F$LUBO>B^C$=>RG
+ 1400000  10     9485  0.27  0.28  0.32  0.06      41       3    10/10   WGQWLHHPJXSD^B?WGEW}$=?>%^F$LEBO>B^C$=?>G
+ 1600000  10     9696  0.28  0.37  0.29  0.06      41       3    10/10   WGQWLHHPJXSD^B?WGEW}$=?>%^F$LEBO>B^C$=?>G
+ 1800000  10    10038  0.29  0.30  0.26  0.06      41       3    10/10   WGQWLHAPJXSD^B?WGEW}$=?>%^F$LEBO>B^C$=?>G
+ 2000000  10    10040  0.29  0.27  0.28  0.06      41       2    10/10   WGQWLHAPJXSD^B?WGEW}$=?>%^F$LEBO>B^C$=?>G

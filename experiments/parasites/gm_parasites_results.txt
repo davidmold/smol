@@ -1,0 +1,9 @@
+gene-parasite molecules: 243873; length difference from the commonest working gene: median -1.0, quartiles [-2.0, -1.0, 0.0]
+  same length                                             0.22
+  shorter                                                 0.63
+  longer                                                  0.15
+  head tag intact (first 4)                               0.69
+  tail intact (last 6)                                    0.30
+  first difference in head                                0.82
+  all differences in coded part                           0.18
+  differs only in one stretch <= 4 letters (point-like)   0.00

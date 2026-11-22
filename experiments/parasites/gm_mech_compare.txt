@@ -1,0 +1,12 @@
+gmt_mech.py on the three gene-and-machine sets (top machine of time A vs the 5 commonest gene-parasites
+of time B, share copied, median over 10 runs; 3 trials per pair):
+
+                         gm (no QSEARCH)   gmq (QSEARCH)   gmt (QSEARCH + tail check)
+machine 200k, P 200k          0.58             0.52              0.28
+machine 200k, P 2M            1.00             0.91              1.00
+machine 2M,   P 200k          0.00             0.00              0.00
+machine 2M,   P 2M            0.40             0.33              1.00
+
+Translation-start label of the commonest machine at 2M changed from the seed's LUBO in 6/10 (gm),
+7/10 (gmq) and 6/10 (gmt) runs. In gmt, 99% of gene-parasite molecules carry the tail tag at 200k,
+1M and 2M.
