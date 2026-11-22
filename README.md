@@ -1,5 +1,7 @@
 # smol
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24443700.svg)](https://doi.org/10.5281/zenodo.24443700)
+
 A fast reimplementation, in Rust, of the spatial **Stringmol** automata chemistry
 (Hickinbotham, Stepney et al., University of York;
 [uoy-research/stringmol](https://github.com/uoy-research/stringmol)). It was written from a
