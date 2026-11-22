@@ -11,6 +11,7 @@ abstract: >-
 authors:
   - family-names: Mold
     given-names: David
+    orcid: "https://orcid.org/0009-0000-3441-3506"
 version: 0.1.0
 date-released: 2026-11-22
 license: GPL-3.0-or-later
