@@ -1530,6 +1530,23 @@ So the escalation within gmt is clear, but that the tail check causes it is not 
 is longer and slower than the seed machine (510 steps per copy against 455). A confirmation round
 with tests fixed in advance is running: `experiments/parasites/CONFIRM_PLAN.md`.
 
+**Wider mechanism assay on the original sets (Nov 22, after an outside review; `mech2.py`,
+`mech2_existing.txt`).** Machines, parasites and genes covering 80% of each class, all 10 x 10
+window times. Per run, mean Spearman trends of share copied (median over runs; runs with the
+arms-race sign):
+
+| | host trend (later machines vs fixed parasites) | parasite trend (later parasites vs fixed machines) | gene trend (later machines vs fixed genes) | specificity trend (genes minus parasites) |
+|---|---|---|---|---|
+| gmt | -0.38 (10/10) | +0.76 (10/10) | -0.43 (6/10) | +0.29 (7/10) |
+| gmq | -0.85 (10/10) | +0.29 (7/10) | -0.75 (10/10) | -0.21 (4/10) |
+| gm | -0.60 (9/10) | +0.72 (9/10) | -0.53 (9/10) | -0.06 (3/10) |
+
+In all three sets later machines resist earlier parasites, but in gmq and gm mostly because they
+no longer copy earlier genes either: a password change, not a defence. In gmt the resistance is
+more parasite-specific (specificity trend gmt vs gmq p = 0.026, vs gm p = 0.12) and parasites
+improve more consistently (gmt vs gmq p = 0.04). Suggestive of reciprocal, parasite-directed
+adaptation in gmt only; the confirmation runs test it (plan addendum).
+
 ## Caveats on the measurements (review, 20 Oct)
 
 - **Copy attempts are not offspring.** Until `OFFSPRINGLOG`, `copies.tsv` counted a product

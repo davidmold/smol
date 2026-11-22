@@ -1,102 +1,128 @@
 #!/usr/bin/env python3
-"""confirm_stats.py TS_DIR... -> run-level tests of escalation on time-shift matrices.
+"""confirm_stats.py SET [SET...] [--allow-incomplete] -> run-level tests of escalation on
+time-shift matrices (SET or ts_SET, e.g. cf_gmt; matrices in ~/smol/runs/ts_SET).
 
-The pooled rank correlation in timeshift_extra.py treats every cell as independent, but the cells
-of one run share a world (and each row shares its baseline pop(H,H)), so its t overstates the
-evidence. Here each run gives one number and runs are the units:
+Before scoring, confirm_check.py checks each set; a set with any technical gap is not scored
+unless --allow-incomplete is given (then the gaps are listed with the results).
 
-1. rho_run: Spearman rank correlation of d(H,P) with the lag P - H over that run's off-diagonal
-   cells (escalation: negative). Also on the late block (H, P >= 0.6M).
-2. Two-way decomposition of raw outcomes: least squares of log(1 + pop(H,P)) on H and P (in M),
-   all cells including the diagonal. An arms race needs both sides to move:
-     beta_P < 0  later parasites hurt any fixed host more   (parasites improve)
-     beta_H > 0  later hosts do better against any fixed parasites (hosts improve)
-   Parasites improving against static hosts gives beta_P < 0 with beta_H ~ 0; hosts winning a
-   one-sided race gives beta_H > 0 with beta_P ~ 0.
-Across runs: median, count of runs with the escalation sign, and a two-sided sign test and
-Wilcoxon signed-rank p (exact for n <= 30 via enumeration-free normal approx otherwise).
-With two or more TS_DIRs, also Mann-Whitney between the first and each other (rho_run).
+Data rules (CONFIRM_PLAN.md and its addendum):
+- a cell counts only if both assay seeds are present (an assay extinction counts as population 0);
+- runs that went extinct in evolution before the last matrix time are excluded and reported;
+- d(H,P) = (pop(H,P) - pop(H,H)) / pop(H,H), mean of the two seeds, population at +10k steps.
+
+Per run (the unit):
+1. rho_run: Spearman correlation of d with the lag P - H over the run's off-diagonal cells
+   (escalation: negative); rho_late on cells with H, P >= 0.6M (sets whose times start at 0.2M).
+2. beta_H, beta_P: least squares of log(1 + pop(H,P)) on host time and parasite time (in M),
+   all cells including the diagonal. beta_P < 0: later parasites hurt any fixed host more;
+   beta_H > 0: later host worlds do better against any fixed parasites. Indirect evidence only:
+   later worlds differ in more than their machines (see mech2.py for the direct assay).
+Across runs: median with a bootstrap 95% CI, number of runs with the escalation sign, exact
+binomial sign test, Wilcoxon signed-rank (scipy, exact where possible). Between the first set and
+each other: Mann-Whitney U (scipy), the difference of medians with a bootstrap 95% CI, and the
+rank-biserial correlation as effect size.
 """
-import sys, os, re, glob, math, statistics as S, collections
+import sys, os
+try:
+    import scipy  # noqa
+except ImportError:  # re-run under the analysis venv, which has scipy
+    py = os.path.expanduser("~/smenv/bin/python")
+    if os.path.exists(py) and sys.executable != py: os.execv(py, [py] + sys.argv)
+    raise
+import re, glob, math, collections, statistics as S
+import numpy as np
+from scipy import stats
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import confirm_check as CC
+R = CC.R; OFF = CC.OFF
+rng = np.random.default_rng(1)
 
-def load(D, OFF=10000):
-    pop = collections.defaultdict(list)
-    for f in glob.glob(f"{D}/*/h*_p*/s*/log.txt"):
-        r, cell = f.split("/")[-4], f.split("/")[-3]
+def load(name):
+    seeds = collections.defaultdict(dict)
+    for f in glob.glob(f"{R}/ts_{name}/*/h*_p*/s*/log.txt"):
+        parts = f.split("/"); r, cell, sd = parts[-4], parts[-3], parts[-2]
         m = re.match(r"h(\d+)k_p(\d+)k", cell); h, p = int(m.group(1)) * 1000, int(m.group(2)) * 1000
-        v = None
-        for l in open(f, errors="replace"):
-            mm = re.match(r"Step (\d+) done, number of molecules is (\d+)", l)
-            if mm and int(mm.group(1)) == h + OFF: v = int(mm.group(2))
-            if l.startswith("EXTINCT"):
-                st = int(re.search(r"step (\d+)", l).group(1))
-                if st <= h + OFF: v = 0
-        if v is not None: pop[(r, h, p)].append(v)
-    return {k: sum(v) / len(v) for k, v in pop.items() if v}
+        o = CC.swap_outcome(f, h)
+        if o == "assay_extinct": v = 0
+        elif o == "ok":
+            v = int(re.search(rf"^Step {h + OFF} done, number of molecules is (\d+)", open(f, errors="replace").read(), re.M).group(1))
+        else: continue
+        seeds[(r, h, p)][sd] = v
+    return {k: sum(v.values()) / 2 for k, v in seeds.items() if len(v) == 2}
 
-def rank(v):
-    s = sorted(v); return [(s.index(a) + len(s) - 1 - s[::-1].index(a)) / 2 for a in v]
-def spear(x, y):
-    a, b = rank(x), rank(y); n = len(x); ma, mb = sum(a) / n, sum(b) / n
-    den = math.sqrt(sum((i - ma) ** 2 for i in a) * sum((j - mb) ** 2 for j in b))
-    return sum((i - ma) * (j - mb) for i, j in zip(a, b)) / den if den else 0.0
 def ols2(H, P, Y):
-    n = len(Y); mh, mp, my = sum(H) / n, sum(P) / n, sum(Y) / n
-    h = [x - mh for x in H]; p = [x - mp for x in P]; y = [x - my for x in Y]
-    shh = sum(a * a for a in h); spp = sum(a * a for a in p); shp = sum(a * b for a, b in zip(h, p))
-    shy = sum(a * b for a, b in zip(h, y)); spy = sum(a * b for a, b in zip(p, y))
-    det = shh * spp - shp * shp
-    return (spp * shy - shp * spy) / det, (shh * spy - shp * shy) / det
-def phi(z): return 0.5 * (1 + math.erf(z / math.sqrt(2)))
-def sign_p(k, n):
-    m = min(k, n - k); return min(1.0, 2 * sum(math.comb(n, i) for i in range(m + 1)) / 2 ** n)
-def wilcoxon_p(v):
-    v = [x for x in v if x != 0]; n = len(v)
-    if n < 5: return float("nan")
-    r = rank([abs(x) for x in v]); w = sum(ri + 1 for ri, x in zip(r, v) if x > 0)
-    mu = n * (n + 1) / 4; sd = math.sqrt(n * (n + 1) * (2 * n + 1) / 24)
-    return 2 * (1 - phi(abs(w - mu) / sd))
-def mannwhitney_p(a, b):
-    r = rank(a + b); ra = sum(x + 1 for x in r[:len(a)]); n1, n2 = len(a), len(b)
-    u = ra - n1 * (n1 + 1) / 2; mu = n1 * n2 / 2; sd = math.sqrt(n1 * n2 * (n1 + n2 + 1) / 12)
-    return 2 * (1 - phi(abs(u - mu) / sd))
+    X = np.column_stack([np.ones(len(H)), H, P]); b = np.linalg.lstsq(X, np.array(Y), rcond=None)[0]
+    return b[1], b[2]
 
-def analyse(D):
-    mean = load(D); runs = sorted({k[0] for k in mean}, key=lambda x: int(x[1:]))
-    out = collections.defaultdict(dict)
-    for r in runs:
+def analyse(name, chk):
+    mean = load(name); times = CC.EXPECT[name][1]
+    excl = {r for r, v in chk["runs"].items() if v["extinct"] is not None and v["extinct"] < times[-1]}
+    out = {}
+    for r in sorted({k[0] for k in mean} - excl, key=lambda x: int(x[1:])):
         cells = {(h, p): v for (rr, h, p), v in mean.items() if rr == r}
-        d = {(h, p): (v - cells[(h, h)]) / cells[(h, h)] for (h, p), v in cells.items()
-             if p != h and cells.get((h, h))}
-        if len(d) >= 10:
-            out[r]["rho"] = spear([p - h for h, p in d], list(d.values()))
-            late = {k: x for k, x in d.items() if k[0] >= 600000 and k[1] >= 600000}
-            if len(late) >= 10: out[r]["rho_late"] = spear([p - h for h, p in late], list(late.values()))
-        if len(cells) >= 10:
-            bh, bp = ols2([h / 1e6 for h, p in cells], [p / 1e6 for h, p in cells],
-                          [math.log1p(v) for v in cells.values()])
-            out[r]["bH"], out[r]["bP"] = bh, bp
-    return out
+        d = {(h, p): (v - cells[(h, h)]) / cells[(h, h)] for (h, p), v in cells.items() if p != h and cells.get((h, h))}
+        o = {"cells": len(d)}
+        if len(d) >= 3:
+            o["rho"] = stats.spearmanr([p - h for h, p in d], list(d.values())).statistic
+            if times[0] < 600000:
+                late = {k: x for k, x in d.items() if k[0] >= 600000 and k[1] >= 600000}
+                if len(late) >= 3: o["rho_late"] = stats.spearmanr([p - h for h, p in late], list(late.values())).statistic
+        if len(cells) >= 4:
+            o["bH"], o["bP"] = ols2([h / 1e6 for h, p in cells], [p / 1e6 for h, p in cells], [math.log1p(v) for v in cells.values()])
+        out[r] = o
+    return out, excl
 
-def report(D, out):
-    print(f"\n== {D}: {len(out)} runs")
+def ci_median(v):
+    if len(v) < 3: return (float("nan"), float("nan"))
+    res = stats.bootstrap((np.array(v),), np.median, n_resamples=9999, method="percentile", random_state=rng)
+    return res.confidence_interval.low, res.confidence_interval.high
+
+def report(name, out, excl, chk):
+    print(f"\n== {name}: {len(out)} runs scored; excluded (extinct in evolution): {sorted(excl) or 'none'}")
+    print(f"   off-diagonal cells per run: min {min((o['cells'] for o in out.values()), default=0)}, "
+          f"max {max((o['cells'] for o in out.values()), default=0)}; windows without parasites: "
+          f"{chk['count'].get('no_parasite_windows', 0)}; assay extinctions: {chk['count'].get('swaps_assay_extinct', 0)}")
     for key, lab, esc in (("rho", "rho(lag, d), all cells", -1), ("rho_late", "rho(lag, d), H,P >= 0.6M", -1),
                           ("bP", "beta_P (parasite time)", -1), ("bH", "beta_H (host time)", +1)):
-        v = [o[key] for o in out.values() if key in o]
-        if not v: continue
-        k = sum(1 for x in v if x * esc > 0)
-        print(f"  {lab:28} median {S.median(v):+.3f}  escalation sign in {k}/{len(v)} runs"
-              f"  sign p={sign_p(k, len(v)):.2g}  Wilcoxon p={wilcoxon_p(v):.2g}")
+        v = [o[key] for o in out.values() if key in o and not math.isnan(o[key])]
+        if len(v) < 3: continue
+        k = sum(1 for x in v if x * esc > 0); lo, hi = ci_median(v)
+        nz = [x for x in v if x != 0]
+        wp = stats.wilcoxon(nz).pvalue if len(nz) >= 3 else float("nan")
+        print(f"  {lab:28} median {S.median(v):+.3f} [95% CI {lo:+.3f}, {hi:+.3f}]  escalation sign {k}/{len(v)}"
+              f"  sign p={stats.binomtest(k, len(v)).pvalue:.2g}  Wilcoxon p={wp:.2g}")
     both = sum(1 for o in out.values() if o.get("bP", 0) < 0 and o.get("bH", 0) > 0)
-    print(f"  runs with both sides moving (beta_P < 0 and beta_H > 0): {both}/{len(out)}")
+    print(f"  runs with beta_P < 0 and beta_H > 0: {both}/{len(out)}")
     for r, o in out.items():
-        print(f"    {r}: " + "  ".join(f"{k} {o[k]:+.3f}" for k in ("rho", "rho_late", "bP", "bH") if k in o))
+        print(f"    {r}: cells {o['cells']}  " + "  ".join(f"{k} {o[k]:+.3f}" for k in ("rho", "rho_late", "bP", "bH") if k in o))
+
+def compare(n1, a, n2, b):
+    if len(a) < 3 or len(b) < 3: return
+    u = stats.mannwhitneyu(a, b, alternative="two-sided")
+    rb = 1 - 2 * u.statistic / (len(a) * len(b))       # rank-biserial: > 0 means a tends lower
+    diff = lambda x, y: np.median(x) - np.median(y)
+    res = stats.bootstrap((np.array(a), np.array(b)), diff, n_resamples=9999, method="percentile", random_state=rng)
+    print(f"\nrho_run, {n1} vs {n2}: median difference {S.median(a) - S.median(b):+.3f} "
+          f"[95% CI {res.confidence_interval.low:+.3f}, {res.confidence_interval.high:+.3f}]  "
+          f"Mann-Whitney p={u.pvalue:.2g}  rank-biserial {rb:+.2f} (> 0: {n1} lower)")
 
 if __name__ == "__main__":
-    res = [(D, analyse(D)) for D in sys.argv[1:]]
-    for D, o in res: report(D, o)
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    allow = "--allow-incomplete" in sys.argv
+    names = [a[3:] if a.startswith("ts_") else a for a in args]
+    res = []; failed = False
+    print("Completeness check (confirm_check.py):")
+    for n in names:
+        chk = CC.check(n); CC.report(n, chk)
+        if chk["technical"] and not allow:
+            failed = True; continue
+        out, excl = analyse(n, chk); res.append((n, out, excl, chk))
+    if failed:
+        print("\nNOT SCORED: technical gaps above. Fix and rerun the missing jobs, or score with "
+              "--allow-incomplete and report the gaps.")
+    for n, out, excl, chk in res: report(n, out, excl, chk)
     if len(res) > 1:
         a = [o["rho"] for o in res[0][1].values() if "rho" in o]
-        for D, o in res[1:]:
-            b = [x["rho"] for x in o.values() if "rho" in x]
-            print(f"\nMann-Whitney rho_run, {res[0][0]} vs {D}: p={mannwhitney_p(a, b):.2g}")
+        for n, out, _, _ in res[1:]:
+            compare(res[0][0], a, n, [o["rho"] for o in out.values() if "rho" in o])
+    sys.exit(2 if failed else 0)

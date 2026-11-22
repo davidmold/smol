@@ -79,3 +79,51 @@ off-diagonal cells. Runs that go extinct before 2M are reported and excluded fro
   in the published runs).
 
 Not tested here: whether a recognition step like this can evolve rather than being designed in.
+
+## Addendum, 22 Nov 2026, 12:00 EST: clarifications after an outside review, before any results
+
+The text above is unchanged from the version committed before the runs (git 18fbe22). A review of
+that plan raised five points; they are recorded here as clarifications, decided before any
+confirmation runs have finished (none had reached a matrix when this was written).
+
+1. **P1-P3 show escalation, not an arms race.** The rank correlation of d with the lag cannot
+   tell reciprocal adaptation from parasites improving against static hosts: with fixed hosts and
+   steadily improving parasites it gives rho near -1. So P1-P3 passing supports "future parasites
+   are increasingly harmful" (escalation), and the words **arms race** (both sides adapting) are
+   used only if, in addition, the direct assay `mech2.py` shows in cf_gmt a negative host trend
+   (later machines resist a fixed set of parasites better) and a positive parasite trend (later
+   parasites exploit a fixed set of machines better), each with Wilcoxon p < 0.05 across runs,
+   and the host trend is not explained by lost compatibility (later machines still copy earlier
+   working genes, or the specificity trend is positive). beta_H / beta_P stay as supporting,
+   indirect evidence: later worlds differ in more than their machines.
+   Run on the original sets first (`mech2_existing.txt`), the assay showed that in gmq and gm
+   later machines resist earlier parasites mainly because they no longer copy earlier genes
+   either (gene trend negative in 10/10 and 9/10 runs: a password change), while in gmt the
+   gene trend is weaker (6/10) and the specificity trend positive in 7/10 (p = 0.13). So for
+   cf_gmt the compatibility condition is made concrete: specificity trend > 0 with Wilcoxon
+   p < 0.05, and higher than in cf_gmq and cf_gmd (Mann-Whitney p < 0.025 each).
+2. **The mechanism assay is widened** (`mech2.py`, replacing gmt_mech.py's top machine x 5
+   parasites x 2 times): machines, parasites and genes covering 80% of each class's molecules
+   (caps 8 / 15 / 5), all 10 x 10 window times, abundance- and binding-weighted, in a fixed
+   reaction setting, with machine-on-gene copying measured alongside machine-on-parasite copying.
+   It is run on all sets, including the original gmt, gmq and gm, for comparison.
+3. **Completeness is checked before scoring** (`confirm_check.py`, called by
+   `confirm_stats.py`). A matrix cell counts only if both assay seeds are present; runs extinct
+   in evolution before the last time are excluded and reported; gaps are reported by class
+   (evolutionary extinction, assay extinction, window without parasites, technical). A set with
+   any technical gap is not scored until the missing jobs are rerun. Statistics now use scipy
+   (exact Wilcoxon where possible; for the original gmt rho_run, p = 0.049 rather than 0.047).
+4. **Readings allow "inconclusive", with effect sizes.** Every test is reported with the median
+   (or median difference) and a bootstrap 95% CI, and Mann-Whitney comparisons with the
+   rank-biserial correlation. The readings fixed above are replaced by:
+   - P3 failing does not show that escalation comes from the longer machine. If cf_gmt and
+     cf_gmd do not differ, the reading is *inconclusive about recognition* unless cf_gmd
+     escalates as clearly as cf_gmt on its own (P1 applied to cf_gmd), in which case the
+     machine's extra length or speed is the likelier cause.
+   - S2 failing does not show that the race settled. "Settles after 2M" needs the 2-6M rho_run
+     to be near zero with a CI that excludes the 0.2-2M effect; otherwise *inconclusive*.
+   - P1 failing still withdraws section 35's claim.
+5. **Scope of a positive result.** It would support: this recognition-bearing machine design
+   promotes escalation (or, with point 1, an arms race) under these rules. It would not show
+   that such recognition evolves on its own, that recognition is necessary for an arms race, or
+   that it leads to increasing complexity. Whether the check can evolve is a separate study.

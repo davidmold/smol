@@ -1,55 +1,62 @@
+Completeness check (confirm_check.py):
+gmt: 10 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 2000, assay-extinct: 0; technical gaps: 0
+gmq: 10 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 2000, assay-extinct: 0; technical gaps: 0
+gm: 10 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 2000, assay-extinct: 0; technical gaps: 0
 
-== ts_gmt: 10 runs
-  rho(lag, d), all cells       median -0.597  escalation sign in 9/10 runs  sign p=0.021  Wilcoxon p=0.047
-  rho(lag, d), H,P >= 0.6M     median -0.669  escalation sign in 9/10 runs  sign p=0.021  Wilcoxon p=0.074
-  beta_P (parasite time)       median -0.037  escalation sign in 8/10 runs  sign p=0.11  Wilcoxon p=0.093
-  beta_H (host time)           median +0.091  escalation sign in 9/10 runs  sign p=0.021  Wilcoxon p=0.074
-  runs with both sides moving (beta_P < 0 and beta_H > 0): 8/10
-    s301: rho -0.852  rho_late -0.889  bP -0.076  bH +0.138
-    s302: rho -0.223  rho_late -0.207  bP +0.010  bH +0.086
-    s303: rho -0.592  rho_late -0.664  bP -0.038  bH +0.057
-    s304: rho -0.602  rho_late -0.719  bP -0.037  bH +0.057
-    s305: rho +0.808  rho_late +0.930  bP +0.421  bH -0.209
-    s306: rho -0.710  rho_late -0.637  bP -0.033  bH +0.130
-    s307: rho -0.477  rho_late -0.851  bP -0.064  bH +0.066
-    s308: rho -0.868  rho_late -0.774  bP -0.055  bH +0.097
-    s309: rho -0.782  rho_late -0.673  bP -0.059  bH +0.133
-    s310: rho -0.244  rho_late -0.081  bP -0.027  bH +0.095
+== gmt: 10 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 90, max 90; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median -0.597 [95% CI -0.782, -0.244]  escalation sign 9/10  sign p=0.021  Wilcoxon p=0.049
+  rho(lag, d), H,P >= 0.6M     median -0.669 [95% CI -0.785, -0.207]  escalation sign 9/10  sign p=0.021  Wilcoxon p=0.084
+  beta_P (parasite time)       median -0.037 [95% CI -0.059, -0.011]  escalation sign 8/10  sign p=0.11  Wilcoxon p=0.11
+  beta_H (host time)           median +0.091 [95% CI +0.057, +0.130]  escalation sign 9/10  sign p=0.021  Wilcoxon p=0.084
+  runs with beta_P < 0 and beta_H > 0: 8/10
+    s301: cells 90  rho -0.852  rho_late -0.889  bP -0.076  bH +0.138
+    s302: cells 90  rho -0.223  rho_late -0.207  bP +0.010  bH +0.086
+    s303: cells 90  rho -0.592  rho_late -0.664  bP -0.038  bH +0.057
+    s304: cells 90  rho -0.602  rho_late -0.719  bP -0.037  bH +0.057
+    s305: cells 90  rho +0.808  rho_late +0.930  bP +0.421  bH -0.209
+    s306: cells 90  rho -0.710  rho_late -0.637  bP -0.033  bH +0.130
+    s307: cells 90  rho -0.477  rho_late -0.851  bP -0.064  bH +0.066
+    s308: cells 90  rho -0.868  rho_late -0.774  bP -0.055  bH +0.097
+    s309: cells 90  rho -0.782  rho_late -0.673  bP -0.059  bH +0.133
+    s310: cells 90  rho -0.244  rho_late -0.081  bP -0.027  bH +0.095
 
-== ts_gmq: 10 runs
-  rho(lag, d), all cells       median +0.295  escalation sign in 3/10 runs  sign p=0.34  Wilcoxon p=0.51
-  rho(lag, d), H,P >= 0.6M     median +0.240  escalation sign in 3/10 runs  sign p=0.34  Wilcoxon p=0.33
-  beta_P (parasite time)       median +0.092  escalation sign in 3/10 runs  sign p=0.34  Wilcoxon p=0.093
-  beta_H (host time)           median +0.045  escalation sign in 6/10 runs  sign p=0.75  Wilcoxon p=0.8
-  runs with both sides moving (beta_P < 0 and beta_H > 0): 3/10
-    s301: rho +0.316  rho_late +0.129  bP +0.209  bH +0.045
-    s302: rho -0.630  rho_late -0.672  bP -0.055  bH +0.046
-    s303: rho +0.717  rho_late +0.790  bP +0.133  bH -0.057
-    s304: rho +0.669  rho_late +0.879  bP +0.333  bH -0.404
-    s305: rho +0.811  rho_late +0.612  bP +0.376  bH -0.236
-    s306: rho -0.437  rho_late -0.120  bP -0.027  bH +0.151
-    s307: rho -0.897  rho_late -0.876  bP -0.159  bH +0.195
-    s308: rho +0.391  rho_late +0.659  bP +0.127  bH -0.295
-    s309: rho +0.273  rho_late +0.351  bP +0.057  bH +0.215
-    s310: rho +0.250  rho_late +0.058  bP +0.046  bH +0.085
+== gmq: 10 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 90, max 90; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median +0.295 [95% CI -0.437, +0.669]  escalation sign 3/10  sign p=0.34  Wilcoxon p=0.56
+  rho(lag, d), H,P >= 0.6M     median +0.240 [95% CI -0.307, +0.701]  escalation sign 3/10  sign p=0.34  Wilcoxon p=0.38
+  beta_P (parasite time)       median +0.092 [95% CI -0.027, +0.233]  escalation sign 3/10  sign p=0.34  Wilcoxon p=0.11
+  beta_H (host time)           median +0.045 [95% CI -0.236, +0.151]  escalation sign 6/10  sign p=0.75  Wilcoxon p=0.85
+  runs with beta_P < 0 and beta_H > 0: 3/10
+    s301: cells 90  rho +0.316  rho_late +0.129  bP +0.209  bH +0.045
+    s302: cells 90  rho -0.630  rho_late -0.672  bP -0.055  bH +0.046
+    s303: cells 90  rho +0.717  rho_late +0.790  bP +0.133  bH -0.057
+    s304: cells 90  rho +0.669  rho_late +0.879  bP +0.333  bH -0.404
+    s305: cells 90  rho +0.811  rho_late +0.612  bP +0.376  bH -0.236
+    s306: cells 90  rho -0.437  rho_late -0.120  bP -0.027  bH +0.151
+    s307: cells 90  rho -0.897  rho_late -0.876  bP -0.159  bH +0.195
+    s308: cells 90  rho +0.391  rho_late +0.659  bP +0.127  bH -0.295
+    s309: cells 90  rho +0.273  rho_late +0.351  bP +0.057  bH +0.215
+    s310: cells 90  rho +0.250  rho_late +0.058  bP +0.046  bH +0.085
 
-== ts_gm: 10 runs
-  rho(lag, d), all cells       median -0.197  escalation sign in 6/10 runs  sign p=0.75  Wilcoxon p=0.39
-  rho(lag, d), H,P >= 0.6M     median -0.065  escalation sign in 5/10 runs  sign p=1  Wilcoxon p=0.88
-  beta_P (parasite time)       median -0.017  escalation sign in 5/10 runs  sign p=1  Wilcoxon p=0.8
-  beta_H (host time)           median -0.064  escalation sign in 5/10 runs  sign p=1  Wilcoxon p=0.44
-  runs with both sides moving (beta_P < 0 and beta_H > 0): 5/10
-    s301: rho -0.931  rho_late -0.907  bP -0.179  bH +0.183
-    s302: rho +0.036  rho_late +0.616  bP +0.006  bH -0.249
-    s303: rho -0.749  rho_late -0.468  bP -0.099  bH +0.178
-    s304: rho +0.334  rho_late +0.520  bP +0.136  bH -0.158
-    s305: rho -0.375  rho_late -0.323  bP -0.039  bH +0.029
-    s306: rho -0.018  rho_late +0.192  bP +0.070  bH -0.294
-    s307: rho -0.910  rho_late -0.883  bP -0.193  bH +0.293
-    s308: rho -0.619  rho_late -0.436  bP -0.066  bH +0.121
-    s309: rho +0.633  rho_late +0.917  bP +0.287  bH -0.200
-    s310: rho +0.774  rho_late +0.549  bP +0.758  bH -0.511
+== gm: 10 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 90, max 90; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median -0.197 [95% CI -0.765, +0.335]  escalation sign 6/10  sign p=0.75  Wilcoxon p=0.43
+  rho(lag, d), H,P >= 0.6M     median -0.065 [95% CI -0.660, +0.568]  escalation sign 5/10  sign p=1  Wilcoxon p=0.92
+  beta_P (parasite time)       median -0.017 [95% CI -0.109, +0.179]  escalation sign 5/10  sign p=1  Wilcoxon p=0.85
+  beta_H (host time)           median -0.064 [95% CI -0.249, +0.178]  escalation sign 5/10  sign p=1  Wilcoxon p=0.49
+  runs with beta_P < 0 and beta_H > 0: 5/10
+    s301: cells 90  rho -0.931  rho_late -0.907  bP -0.179  bH +0.183
+    s302: cells 90  rho +0.036  rho_late +0.616  bP +0.006  bH -0.249
+    s303: cells 90  rho -0.749  rho_late -0.468  bP -0.099  bH +0.178
+    s304: cells 90  rho +0.334  rho_late +0.520  bP +0.136  bH -0.158
+    s305: cells 90  rho -0.375  rho_late -0.323  bP -0.039  bH +0.029
+    s306: cells 90  rho -0.018  rho_late +0.192  bP +0.070  bH -0.294
+    s307: cells 90  rho -0.910  rho_late -0.883  bP -0.193  bH +0.293
+    s308: cells 90  rho -0.619  rho_late -0.436  bP -0.066  bH +0.121
+    s309: cells 90  rho +0.633  rho_late +0.917  bP +0.287  bH -0.200
+    s310: cells 90  rho +0.774  rho_late +0.549  bP +0.758  bH -0.511
 
-Mann-Whitney rho_run, ts_gmt vs ts_gmq: p=0.059
+rho_run, gmt vs gmq: median difference -0.892 [95% CI -1.290, -0.117]  Mann-Whitney p=0.064  rank-biserial +0.50 (> 0: gmt lower)
 
-Mann-Whitney rho_run, ts_gmt vs ts_gm: p=0.5
+rho_run, gmt vs gm: median difference -0.400 [95% CI -1.002, +0.288]  Mann-Whitney p=0.52  rank-biserial +0.18 (> 0: gmt lower)
