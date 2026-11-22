@@ -13,7 +13,14 @@ authors:
     given-names: David
     orcid: "https://orcid.org/0009-0000-3441-3506"
 version: 0.1.0
-doi: 10.5281/zenodo.24443700
+doi: 10.5281/zenodo.24443699
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24443699
+    description: "All versions (resolves to the latest release)"
+  - type: doi
+    value: 10.5281/zenodo.24443700
+    description: "Version 0.1.0"
 date-released: 2026-11-22
 license: GPL-3.0-or-later
 repository-code: "https://github.com/davidmold/smol"
