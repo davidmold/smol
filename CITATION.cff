@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use smol or its results, please cite it as below."
+type: software
+title: "smol: a fast Rust reimplementation of the Stringmol automata chemistry"
+abstract: >-
+  smol reimplements the spatial Stringmol automata chemistry (Hickinbotham, Stepney et al.)
+  in Rust, from a description of the model rather than a translation of the C++ code, for long
+  and large evolution experiments. The repository also holds a study of parasitism in Stringmol
+  that tests the account in Hickinbotham, Stepney & Hogeweg (2021), with every script and raw
+  result behind it (docs/parasitism.md, docs/findings.md, experiments/).
+authors:
+  - family-names: Mold
+    given-names: David
+version: 0.1.0
+date-released: 2026-11-22
+license: GPL-3.0-or-later
+repository-code: "https://github.com/davidmold/smol"
+keywords:
+  - artificial life
+  - artificial chemistry
+  - Stringmol
+  - automata chemistry
+  - parasitism
+  - open-ended evolution
+  - host-parasite coevolution
+references:
+  - type: article
+    title: "Nothing in evolution makes sense except in the light of parasitism: evolution of complex replication strategies"
+    authors:
+      - family-names: Hickinbotham
+        given-names: Simon
+      - family-names: Stepney
+        given-names: Susan
+      - family-names: Hogeweg
+        given-names: Paulien
+    journal: "Royal Society Open Science"
+    volume: 8
+    start: 210441
+    year: 2021
+    doi: 10.1098/rsos.210441
+  - type: software
+    title: "Stringmol"
+    authors:
+      - name: "University of York (uoy-research)"
+    repository-code: "https://github.com/uoy-research/stringmol"
