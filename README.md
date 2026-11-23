@@ -19,9 +19,9 @@ The main study so far tests the account of parasitism in Hickinbotham, Stepney &
 `docs/findings.md` and `experiments/` holding every script and raw result behind it. In brief:
 parasites are real and limiting, but in the published setup they settle into a turnover rather
 than an escalating arms race. A gene-and-machine variant whose machine checks a second tag on its
-gene does show a continuing arms race through 2M steps. That last result is **preliminary**: the
-check was designed in rather than evolved, and it rests on 10 runs per condition. Replication
-is under way.
+gene first looked like a continuing arms race, but a 110-run confirmation with its tests fixed in
+advance did not confirm it (`docs/findings.md` section 36): every gene-and-machine variant shows
+the same password turnover.
 
 ## How it relates to Stringmol
 
