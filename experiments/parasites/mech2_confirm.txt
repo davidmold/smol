@@ -1,0 +1,120 @@
+
+== cf_gmt: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.679  arms-race sign 28/30  sign p=8.7e-07  Wilcoxon p=2.6e-07
+  parasite trend (later parasites vs fixed machines)   median +0.512  arms-race sign 26/30  sign p=5.9e-05  Wilcoxon p=5.3e-05
+  gene trend (later machines vs fixed genes)           median -0.668  arms-race sign 27/30  sign p=8.4e-06  Wilcoxon p=2.6e-07
+  specificity trend (gene minus parasite copying)      median -0.207  arms-race sign 9/30  sign p=0.043  Wilcoxon p=0.022
+  runs with host trend < 0 and parasite trend > 0: 24/30
+  contemporary exploitation infect[t,t], median over runs: 0.46
+    s311: host -0.62  para +0.60  gene -0.71  spec -0.58  contemp +0.27
+    s312: host -0.68  para -0.70  gene -0.45  spec +0.07  contemp +0.31
+    s313: host -0.77  para +0.27  gene -0.67  spec -0.14  contemp +0.43
+    s314: host +0.36  para +0.49  gene -0.62  spec -0.64  contemp +0.28
+    s315: host -0.39  para -0.07  gene -0.92  spec -0.91  contemp +0.16
+    s316: host -0.74  para +0.86  gene -0.41  spec +0.59  contemp +0.60
+    s317: host -0.65  para +0.50  gene -0.49  spec -0.05  contemp +0.48
+    s318: host -0.36  para +0.76  gene +0.14  spec +0.44  contemp +0.55
+    s319: host -0.41  para +0.94  gene -0.02  spec +0.48  contemp +0.61
+    s320: host -0.74  para +0.15  gene -0.87  spec -0.93  contemp +0.23
+    s321: host -0.74  para -0.33  gene -0.76  spec -0.55  contemp +0.37
+    s322: host -0.91  para +0.76  gene -0.83  spec -0.22  contemp +0.53
+    s323: host -0.79  para +0.51  gene -0.96  spec -0.69  contemp +0.34
+    s324: host -0.17  para +0.84  gene +0.29  spec +0.29  contemp +0.60
+    s325: host -0.60  para +0.27  gene -0.84  spec -0.34  contemp +0.60
+    s326: host -0.84  para +0.78  gene -0.82  spec -0.36  contemp +0.36
+    s327: host -0.81  para +0.36  gene -0.62  spec -0.20  contemp +0.28
+    s328: host -0.94  para +0.91  gene -0.95  spec +0.01  contemp +0.63
+    s329: host -0.75  para -0.47  gene -0.82  spec -0.61  contemp +0.20
+    s330: host -0.79  para +0.82  gene -0.73  spec -0.37  contemp +0.42
+    s331: host -0.51  para +0.44  gene -0.03  spec +0.18  contemp +0.53
+    s332: host -0.66  para +0.18  gene -0.81  spec -0.65  contemp +0.24
+    s333: host -0.67  para +0.49  gene -0.46  spec +0.48  contemp +0.72
+    s334: host -0.67  para +0.91  gene -0.41  spec -0.15  contemp +0.60
+    s335: host +0.63  para +0.51  gene +0.42  spec -0.28  contemp +0.59
+    s336: host -0.50  para +0.76  gene -0.52  spec -0.21  contemp +0.52
+    s337: host -0.36  para +0.23  gene -0.66  spec -0.48  contemp +0.44
+    s338: host -0.80  para +0.58  gene -0.70  spec -0.09  contemp +0.56
+    s339: host -0.75  para +0.70  gene -0.33  spec +0.22  contemp +0.43
+    s340: host -0.91  para +0.88  gene -0.83  spec -0.03  contemp +0.58
+
+== cf_gmq: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.719  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=2.6e-08
+  parasite trend (later parasites vs fixed machines)   median +0.699  arms-race sign 26/30  sign p=5.9e-05  Wilcoxon p=6.9e-07
+  gene trend (later machines vs fixed genes)           median -0.447  arms-race sign 25/30  sign p=0.00032  Wilcoxon p=1.2e-05
+  specificity trend (gene minus parasite copying)      median -0.036  arms-race sign 13/30  sign p=0.58  Wilcoxon p=0.73
+  runs with host trend < 0 and parasite trend > 0: 25/30
+  contemporary exploitation infect[t,t], median over runs: 0.62
+    s311: host +0.49  para +0.87  gene +0.67  spec +0.09  contemp +0.76
+    s312: host -0.84  para +0.87  gene -0.44  spec -0.05  contemp +0.23
+    s313: host -0.43  para +0.62  gene -0.23  spec -0.03  contemp +0.66
+    s314: host -0.50  para +0.79  gene +0.00  spec +0.57  contemp +0.71
+    s315: host -0.64  para +0.58  gene -0.55  spec -0.23  contemp +0.60
+    s316: host -0.90  para +0.89  gene -0.80  spec +0.08  contemp +0.53
+    s317: host -0.66  para +0.75  gene -0.15  spec +0.53  contemp +0.64
+    s318: host -0.90  para +0.10  gene -0.73  spec -0.64  contemp +0.26
+    s319: host -0.72  para +0.43  gene +0.04  spec +0.36  contemp +0.32
+    s320: host -0.71  para +0.86  gene -0.42  spec +0.14  contemp +0.80
+    s321: host -0.41  para +0.85  gene -0.38  spec -0.11  contemp +0.80
+    s322: host -0.71  para +0.16  gene -0.55  spec -0.02  contemp +0.48
+    s323: host -0.39  para +0.25  gene -0.88  spec -0.60  contemp +0.28
+    s324: host -0.73  para +0.28  gene -0.30  spec -0.08  contemp +0.43
+    s325: host -0.76  para -0.49  gene -0.57  spec -0.10  contemp +0.68
+    s326: host -0.81  para +0.75  gene -0.77  spec -0.08  contemp +0.56
+    s327: host -0.80  para -0.06  gene -0.69  spec -0.04  contemp +0.65
+    s328: host -0.73  para -0.29  gene -0.89  spec -0.19  contemp +0.63
+    s329: host -0.60  para +0.46  gene +0.27  spec +0.58  contemp +0.35
+    s330: host -0.61  para +0.63  gene -0.31  spec +0.46  contemp +0.75
+    s331: host -0.89  para +0.90  gene -0.51  spec +0.19  contemp +0.52
+    s332: host -0.74  para +0.80  gene +0.04  spec +0.67  contemp +0.72
+    s333: host -0.81  para +0.75  gene -0.73  spec -0.21  contemp +0.35
+    s334: host -0.56  para +0.88  gene -0.45  spec -0.32  contemp +0.64
+    s335: host -0.23  para +0.66  gene -0.15  spec -0.07  contemp +0.42
+    s336: host -0.96  para -0.05  gene -0.94  spec -0.70  contemp +0.31
+    s337: host -0.42  para +0.73  gene -0.16  spec +0.41  contemp +0.71
+    s338: host -0.80  para +0.75  gene -0.55  spec -0.12  contemp +0.36
+    s339: host -0.57  para +0.87  gene -0.01  spec +0.32  contemp +0.79
+    s340: host -0.82  para +0.62  gene -0.79  spec +0.29  contemp +0.71
+
+== cf_gmd: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.702  arms-race sign 27/30  sign p=8.4e-06  Wilcoxon p=2.6e-07
+  parasite trend (later parasites vs fixed machines)   median +0.544  arms-race sign 27/30  sign p=8.4e-06  Wilcoxon p=3.9e-07
+  gene trend (later machines vs fixed genes)           median -0.606  arms-race sign 28/30  sign p=8.7e-07  Wilcoxon p=1e-06
+  specificity trend (gene minus parasite copying)      median +0.159  arms-race sign 24/30  sign p=0.0014  Wilcoxon p=0.0043
+  runs with host trend < 0 and parasite trend > 0: 24/30
+  contemporary exploitation infect[t,t], median over runs: 0.83
+    s311: host -0.44  para -0.01  gene -0.16  spec +0.36  contemp +0.96
+    s312: host -0.55  para +0.52  gene -0.59  spec -0.52  contemp +0.54
+    s313: host -0.16  para +0.43  gene -0.33  spec -0.10  contemp +0.89
+    s314: host -0.90  para +0.84  gene -0.74  spec +0.84  contemp +0.87
+    s315: host +0.29  para +0.24  gene +0.44  spec +0.09  contemp +0.85
+    s316: host -0.27  para +0.81  gene -0.13  spec +0.27  contemp +0.88
+    s317: host -0.55  para +0.57  gene -0.51  spec +0.11  contemp +0.85
+    s318: host -0.90  para +0.08  gene -0.91  spec +0.05  contemp +0.65
+    s319: host -0.91  para +0.73  gene -0.90  spec +0.00  contemp +0.65
+    s320: host -0.57  para -0.46  gene -0.88  spec -0.61  contemp +0.23
+    s321: host -0.90  para -0.19  gene -0.89  spec +0.16  contemp +0.62
+    s322: host -0.56  para +0.81  gene -0.48  spec +0.25  contemp +0.91
+    s323: host -0.85  para +0.71  gene -0.87  spec +0.21  contemp +0.62
+    s324: host -0.80  para +0.61  gene -0.54  spec +0.42  contemp +0.59
+    s325: host -0.77  para +0.76  gene -0.70  spec +0.14  contemp +0.80
+    s326: host -0.50  para +0.85  gene -0.47  spec -0.09  contemp +0.81
+    s327: host +0.51  para +0.75  gene +0.58  spec +0.00  contemp +0.87
+    s328: host -0.82  para +0.86  gene -0.75  spec +0.23  contemp +0.87
+    s329: host -0.39  para +0.64  gene -0.31  spec +0.20  contemp +0.85
+    s330: host -0.36  para +0.63  gene -0.10  spec +0.37  contemp +0.94
+    s331: host -0.94  para +0.67  gene -0.94  spec +0.13  contemp +0.62
+    s332: host -0.65  para +0.39  gene -0.53  spec +0.45  contemp +0.81
+    s333: host -0.75  para +0.51  gene -0.71  spec +0.34  contemp +0.92
+    s334: host +0.03  para +0.41  gene -0.23  spec -0.15  contemp +0.87
+    s335: host -0.86  para +0.35  gene -0.78  spec +0.40  contemp +0.56
+    s336: host -0.82  para +0.28  gene -0.79  spec +0.37  contemp +0.75
+    s337: host -0.97  para +0.12  gene -0.87  spec +0.03  contemp +0.51
+    s338: host -0.75  para +0.50  gene -0.63  spec +0.15  contemp +0.82
+    s339: host -0.51  para +0.67  gene -0.19  spec +0.36  contemp +0.86
+    s340: host -0.79  para +0.32  gene -0.82  spec -0.22  contemp +0.94
+host trend, cf_gmt vs cf_gmq: medians -0.679 vs -0.719  Mann-Whitney p=0.64  rank-biserial -0.07
+host trend, cf_gmt vs cf_gmd: medians -0.679 vs -0.702  Mann-Whitney p=0.72  rank-biserial -0.06
+para trend, cf_gmt vs cf_gmq: medians +0.512 vs +0.699  Mann-Whitney p=0.49  rank-biserial +0.10
+para trend, cf_gmt vs cf_gmd: medians +0.512 vs +0.544  Mann-Whitney p=0.78  rank-biserial -0.04
+spec trend, cf_gmt vs cf_gmq: medians -0.207 vs -0.036  Mann-Whitney p=0.026  rank-biserial +0.34
+spec trend, cf_gmt vs cf_gmd: medians -0.207 vs +0.159  Mann-Whitney p=0.0014  rank-biserial +0.48

@@ -1,0 +1,40 @@
+Completeness check (confirm_check.py):
+cf_gmd: 30 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 6000, assay-extinct: 0; technical gaps: 0
+
+== cf_gmd: 30 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 90, max 90; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median -0.161 [95% CI -0.561, +0.140]  escalation sign 18/30  sign p=0.36  Wilcoxon p=0.088
+  rho(lag, d), H,P >= 0.6M     median -0.118 [95% CI -0.475, +0.317]  escalation sign 17/30  sign p=0.58  Wilcoxon p=0.3
+  beta_P (parasite time)       median -0.021 [95% CI -0.042, +0.020]  escalation sign 18/30  sign p=0.36  Wilcoxon p=0.18
+  beta_H (host time)           median +0.062 [95% CI +0.033, +0.118]  escalation sign 23/30  sign p=0.0052  Wilcoxon p=0.0035
+  runs with beta_P < 0 and beta_H > 0: 13/30
+    s311: cells 90  rho -0.111  rho_late +0.368  bP -0.002  bH +0.048
+    s312: cells 90  rho +0.679  rho_late +0.805  bP +0.412  bH -0.334
+    s313: cells 90  rho -0.515  rho_late -0.123  bP -0.031  bH +0.024
+    s314: cells 90  rho +0.571  rho_late +0.634  bP +0.027  bH +0.115
+    s315: cells 90  rho -0.211  rho_late -0.502  bP -0.025  bH +0.059
+    s316: cells 90  rho -0.941  rho_late -0.952  bP -0.111  bH +0.028
+    s317: cells 90  rho -0.719  rho_late -0.625  bP -0.106  bH +0.157
+    s318: cells 90  rho +0.431  rho_late +0.547  bP +0.069  bH +0.083
+    s319: cells 90  rho -0.420  rho_late -0.552  bP -0.024  bH +0.096
+    s320: cells 90  rho +0.363  rho_late +0.154  bP +0.030  bH +0.145
+    s321: cells 90  rho +0.808  rho_late +0.808  bP +0.080  bH +0.120
+    s322: cells 90  rho -0.868  rho_late -0.858  bP -0.115  bH -0.067
+    s323: cells 90  rho +0.495  rho_late +0.450  bP +0.045  bH +0.126
+    s324: cells 90  rho -0.068  rho_late -0.393  bP -0.001  bH +0.187
+    s325: cells 90  rho -0.687  rho_late -0.439  bP -0.060  bH +0.039
+    s326: cells 90  rho -0.885  rho_late -0.947  bP -0.132  bH +0.129
+    s327: cells 90  rho -0.795  rho_late -0.629  bP -0.110  bH +0.028
+    s328: cells 90  rho -0.464  rho_late -0.114  bP -0.043  bH -0.071
+    s329: cells 90  rho -0.887  rho_late -0.906  bP -0.133  bH -0.022
+    s330: cells 90  rho -0.912  rho_late -0.864  bP -0.110  bH -0.065
+    s331: cells 90  rho +0.200  rho_late +0.289  bP +0.022  bH +0.130
+    s332: cells 90  rho +0.349  rho_late +0.509  bP +0.019  bH -0.009
+    s333: cells 90  rho -0.644  rho_late -0.375  bP -0.041  bH +0.144
+    s334: cells 90  rho -0.421  rho_late -0.457  bP -0.041  bH +0.108
+    s335: cells 90  rho +0.439  rho_late +0.559  bP +0.036  bH +0.064
+    s336: cells 90  rho +0.068  rho_late +0.341  bP +0.020  bH +0.147
+    s337: cells 90  rho +0.521  rho_late +0.294  bP +0.083  bH +0.122
+    s338: cells 90  rho -0.606  rho_late -0.494  bP -0.042  bH +0.045
+    s339: cells 90  rho +0.019  rho_late -0.048  bP +0.012  bH +0.040
+    s340: cells 90  rho -0.026  rho_late +0.421  bP -0.018  bH -0.128

@@ -1,0 +1,9 @@
+share of gene-parasite molecules carrying the machine's tail tag (median over runs):
+    200k  0.99  (runs 30)
+   1000k  0.99  (runs 30)
+   2000k  0.98  (runs 28)
+top machine of time A vs gene-parasites of time B: share copied (median over runs)
+  machine   200k  parasites   200k   0.31   range 0.19-0.68
+  machine   200k  parasites  2000k   0.83   range 0.00-1.00
+  machine  2000k  parasites   200k   0.00   range 0.00-1.00
+  machine  2000k  parasites  2000k   0.16   range 0.00-1.00

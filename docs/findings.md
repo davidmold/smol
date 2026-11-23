@@ -1449,7 +1449,7 @@ mutation off or on, 10 seeds, 30k steps. Share of Gv among both genes at 30k (0.
 or costly, and a blind copier has nothing that a change could improve against gene-parasites. A
 machine would need a recognition step on the gene before parasites could select for change.
 
-## 35. Gene and machine with a recognition step: a possible continuing escalation (Nov 22; preliminary)
+## 35. Gene and machine with a recognition step: a possible continuing escalation (Nov 22; not confirmed, see section 36)
 
 Details: `experiments/parasites/gm_parasites.py` (`gm_parasites_results.txt`), `gmt_setup.py`,
 `gmt_pipeline.sh`, `gmt_mech.py` (`gmt_mech_results.txt`, `gm_mech_compare.txt`),
@@ -1575,3 +1575,69 @@ place, and only the designed cross pair held its length. But length is not the w
 interactions keep changing after lengths settle (parasitism down, mutual copying up), and the
 one new organisation that evolved by itself, obligate partnerships, forms self-maintaining
 ecologies. Whether it builds on itself is the current question.
+
+## 36. Confirmation round: the tail-check arms race is not confirmed (Nov 23)
+
+Plan and tests fixed before the runs: `experiments/parasites/CONFIRM_PLAN.md` (with its dated
+addendum). Scripts: `confirm_setup.py`, `confirm_pipeline.sh`, `confirm_after.sh`,
+`confirm_check.py`, `confirm_stats.py`, `mech2.py`. Results: `confirm_primary.txt`,
+`confirm_gmd_alone.txt`, `confirm_long.txt`, `mech2_confirm.txt`, `mech2_long.txt`,
+`cf_*_summary.txt`, `cf_*_mech.txt`, `ts_cf_*.results.txt`, `ts_gm?6.results.txt`. Runs on aida in
+`~/smol/runs/cf_gmt`, `cf_gmq`, `cf_gmd`, `gmt6`, `gmq6` and the matching `ts_*`.
+
+**Data.** 30 new seeds (311-340) each of cf_gmt (tail check), cf_gmq (same rules, no extra test)
+and cf_gmd (dummy check: same length and copying time as the tail check, excludes nothing new);
+the 10 original gmt and gmq runs continued to 6M. All 110 runs survived; the completeness check
+found no gaps (6,000 swaps per new set, 1,620 per extension set, both seeds in every cell, no
+assay extinctions, every window with parasites).
+
+**Primary tests (rho_run = per-run Spearman of d with the lag; negative = escalation):**
+
+| | median rho_run [95% CI] | runs escalating | Wilcoxon p |
+|---|---|---|---|
+| cf_gmt | -0.46 [-0.57, -0.07] | 20/30 | 0.077 |
+| cf_gmq | -0.27 [-0.69, -0.12] | 22/30 | 0.013 |
+| cf_gmd | -0.16 [-0.56, +0.13] | 18/30 | 0.088 |
+
+- P1 (cf_gmt escalates, p < 0.01): **fails** (p = 0.077).
+- P2 (cf_gmt vs cf_gmq, p < 0.025): **fails**: Mann-Whitney p = 0.76, rank-biserial -0.05.
+- P3 (cf_gmt vs cf_gmd, p < 0.025): **fails**: p = 0.82, rank-biserial +0.04.
+
+The three sets are indistinguishable. The control without the check escalates on this measure at
+least as clearly as the tail check: original gmq's 3/10 was a small sample.
+
+**Direct mechanism assay (addendum point 1; per-run mean Spearman trends, median over runs):**
+
+| | host trend | parasite trend | gene trend | specificity trend |
+|---|---|---|---|---|
+| cf_gmt | -0.68 (28/30) | +0.51 (26/30) | -0.67 (27/30) | -0.21 (9/30 positive) |
+| cf_gmq | -0.72 (29/30) | +0.70 (26/30) | -0.45 (25/30) | -0.04 (13/30) |
+| cf_gmd | -0.70 (27/30) | +0.54 (27/30) | -0.61 (28/30) | +0.16 (24/30) |
+
+In all three sets later machines resist earlier parasites and later parasites exploit earlier
+machines, but later machines equally lose the ability to copy earlier genes. Both sides change,
+but the host side is a change of compatibility (password turnover), not a defence aimed at
+parasites. The addendum's arms-race condition (cf_gmt specificity trend > 0 and higher than both
+controls) **fails, reversed**: cf_gmt has the lowest specificity trend (vs cf_gmq p = 0.026, vs
+cf_gmd p = 0.0014, both in the wrong direction). The section 35 hint (gmt 7/10) does not
+replicate.
+
+**Continuation, 2-6M (S2):** gmt6 median rho_run -0.29 [-0.57, +0.25], 6/10 escalating (Wilcoxon
+p = 0.38); gmq6 +0.52 [+0.19, +0.72], future parasites less harmful (turnover, as in the
+published runs). gmt6 vs gmq6 p = 0.014. No sign of continuing escalation in gmt after 2M; by the
+addendum's rule the CI only just excludes the 0.2-2M effect (-0.60), so "settled" is borderline;
+read as no continuing race.
+
+**Exploratory (not in the plan; `confirm_pshare.py`):** gene-parasite molecule share falls from
+0.2M to 2M in cf_gmt (0.31 -> 0.21, 22/30 runs, Wilcoxon p = 0.009), not in cf_gmq (0.29 -> 0.28)
+and rises in cf_gmd (0.18 -> 0.24). At 2M the three sets do not differ (cf_gmt vs cf_gmq p = 0.18,
+vs cf_gmd p = 0.72). The sets start at different parasite levels and end at similar ones; whatever the tail check does
+to parasite numbers, it is a population effect, not an arms race.
+
+**Reading (by the readings fixed in advance):** P1 fails, so section 35's claim is withdrawn.
+The tail-check machine does not produce an arms race that the controls lack. What all
+gene-and-machine worlds with QSEARCH show is reciprocal *change*: machines drift to new
+compatibility (a new translation-start password) and parasites follow, so later parasites look
+more harmful to earlier worlds. That is the turnover of section 30 / item 6 in a new form, not
+escalation of defence and counter-defence. The section 35 result came from 10 runs per set, a
+pooled statistic that treated matrix cells as independent, and an unlucky control.

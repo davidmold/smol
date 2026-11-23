@@ -1,0 +1,5 @@
+cf_gmt P share 0.2M 0.31 2M 0.21  change median -0.087  falls in 22/30  Wilcoxon p=0.0087
+cf_gmq P share 0.2M 0.29 2M 0.28  change median -0.023  falls in 18/30  Wilcoxon p=0.69
+cf_gmd P share 0.2M 0.18 2M 0.24  change median +0.063  falls in 11/30  Wilcoxon p=0.015
+2M P share cf_gmt vs cf_gmq MW p=0.18
+2M P share cf_gmt vs cf_gmd MW p=0.72

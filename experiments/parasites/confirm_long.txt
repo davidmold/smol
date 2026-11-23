@@ -1,0 +1,39 @@
+Completeness check (confirm_check.py):
+gmt6: 10 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 1620, assay-extinct: 0; technical gaps: 0
+gmq6: 10 runs expected; evo-extinct before the last time: 0; windows without parasites: 0; swaps ok: 1620, assay-extinct: 0; technical gaps: 0
+
+== gmt6: 10 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 72, max 72; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median -0.285 [95% CI -0.570, +0.254]  escalation sign 6/10  sign p=0.75  Wilcoxon p=0.38
+  beta_P (parasite time)       median -0.001 [95% CI -0.009, +0.037]  escalation sign 6/10  sign p=0.75  Wilcoxon p=0.77
+  beta_H (host time)           median +0.006 [95% CI -0.018, +0.032]  escalation sign 6/10  sign p=0.75  Wilcoxon p=0.62
+  runs with beta_P < 0 and beta_H > 0: 6/10
+    s301: cells 72  rho +0.098  bP +0.012  bH -0.006
+    s302: cells 72  rho -0.759  bP -0.012  bH +0.032
+    s303: cells 72  rho +0.786  bP +0.169  bH -0.297
+    s304: cells 72  rho +0.173  bP +0.023  bH -0.013
+    s305: cells 72  rho -0.523  bP -0.063  bH +0.044
+    s306: cells 72  rho -0.454  bP -0.002  bH +0.005
+    s307: cells 72  rho -0.620  bP -0.006  bH +0.034
+    s308: cells 72  rho -0.521  bP -0.009  bH +0.021
+    s309: cells 72  rho -0.116  bP -0.001  bH +0.007
+    s310: cells 72  rho +0.410  bP +0.061  bH -0.030
+
+== gmq6: 10 runs scored; excluded (extinct in evolution): none
+   off-diagonal cells per run: min 72, max 72; windows without parasites: 0; assay extinctions: 0
+  rho(lag, d), all cells       median +0.515 [95% CI +0.190, +0.723]  escalation sign 2/10  sign p=0.11  Wilcoxon p=0.0098
+  beta_P (parasite time)       median +0.039 [95% CI +0.010, +0.096]  escalation sign 1/10  sign p=0.021  Wilcoxon p=0.0098
+  beta_H (host time)           median -0.019 [95% CI -0.043, +0.007]  escalation sign 4/10  sign p=0.75  Wilcoxon p=0.38
+  runs with beta_P < 0 and beta_H > 0: 1/10
+    s301: cells 72  rho +0.762  bP +0.025  bH -0.018
+    s302: cells 72  rho -0.098  bP -0.018  bH +0.072
+    s303: cells 72  rho +0.675  bP +0.053  bH -0.043
+    s304: cells 72  rho +0.546  bP +0.107  bH -0.019
+    s305: cells 72  rho +0.723  bP +0.096  bH -0.043
+    s306: cells 72  rho +0.484  bP +0.010  bH -0.021
+    s307: cells 72  rho +0.895  bP +0.426  bH -0.468
+    s308: cells 72  rho +0.375  bP +0.056  bH +0.005
+    s309: cells 72  rho +0.190  bP +0.001  bH +0.031
+    s310: cells 72  rho -0.021  bP +0.018  bH +0.007
+
+rho_run, gmt6 vs gmq6: median difference -0.800 [95% CI -1.211, -0.138]  Mann-Whitney p=0.014  rank-biserial +0.66 (> 0: gmt6 lower)
