@@ -1,0 +1,67 @@
+t000 cf_gmt s311  HUBO->LUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 recip=1.0  fwd no unique codons  recip ok
+t001 cf_gmt s312   LUB->LUBO  old gene: 13/1.00 vs 13/1.00 S  new gene: 13/1.00 vs 13/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t002 cf_gmt s313  LUBO->HUBO  old gene: 14/1.00 vs 14/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t003 cf_gmt s316  LUBO->OUB   old gene: 14/1.00 vs 14/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t004 cf_gmt s318  LUBO->EUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t005 cf_gmt s319  LUBO->OUBO  old gene: 15/1.00 vs 15/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t006 cf_gmt s323  HUBO->OUZO  old gene: 15/1.00 vs 15/1.00 S  new gene: 19/1.00 vs 19/1.00 S  works old=1.0 new=0.5 recip=0.5  fwd no unique codons  recip ok
+t007 cf_gmt s327  LUBO->LEBO  old gene: 16/1.00 vs 25/1.00 *  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0  fwd loop fails  recip no unique codons
+t008 cf_gmt s328  LUBO->LHBO  old gene: 16/1.00 vs 6/1.00 *  new gene: 16/1.00 vs 6/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t009 cf_gmt s331  LUBO->EUBO  old gene: 12/1.00 vs 12/1.00 S  new gene: 11/0.61 vs 13/1.00 *  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t010 cf_gmt s333   LUB->OUBO  old gene: 13/1.00 vs 13/1.00 S  new gene: 15/1.00 vs 16/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip loop fails
+t011 cf_gmt s334  LUBO->LTBO  old gene: 15/1.00 vs 15/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t012 cf_gmt s337  LUBO->LUCO  old gene: 16/1.00 vs 16/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t013 cf_gmq s311  LUCO->LPBO  old gene: 16/1.00 vs 16/0.75 *  new gene: 64/1.00 vs 15/1.00 *  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t014 cf_gmq s315  LPBO->LUBO  old gene: 18/1.00 vs 18/1.00 S  new gene: 18/1.00 vs 18/1.00 S  works old=1.0 new=1.0 recip=1.0  fwd no unique codons  recip ok
+t015 cf_gmq s316  LUBO->LUB   old gene: 14/1.00 vs 14/1.00 S  new gene: 14/1.00 vs 14/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t016 cf_gmq s320  LUBO->LHBO  old gene: 15/1.00 vs 6/1.00 *  new gene: 16/1.00 vs 6/1.00 *  works old=1.0 new=1.0  fwd loop fails  recip no unique codons
+t017 cf_gmq s321  LUBO->LUZO  old gene: 15/1.00 vs 15/0.92 *  new gene: 5/1.00 vs 5/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t018 cf_gmq s322  LTBO->OTBO  old gene: 17/1.00 vs 17/1.00 S  new gene: 17/1.00 vs 17/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t019 cf_gmq s324  LUBO->LHBO  old gene: 16/1.00 vs 6/1.00 *  new gene: 16/1.00 vs 6/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t020 cf_gmq s325  LUBO->LPBO  old gene: 16/1.00 vs 16/0.36 *  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0  fwd loop fails  recip no unique codons
+t021 cf_gmq s326  EUBO->LUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 recip=1.0  fwd no unique codons  recip ok
+t022 cf_gmq s328  LUBO->LUBL  old gene: 16/1.00 vs 15/1.00 *  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t023 cf_gmq s330  LUBO->LHCO  old gene: 16/1.00 vs 6/1.00 *  new gene: 16/1.00 vs 6/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t024 cf_gmq s331  LUBO->HUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t025 cf_gmq s332  LHWO->LHBO  old gene: 6/1.00 vs 6/1.00 S  new gene: 6/1.00 vs 6/1.00 S  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t026 cf_gmq s334  LUBO->LUCO  old gene: 15/1.00 vs 15/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t027 cf_gmq s335  LUBO->LUBL  old gene: 17/1.00 vs 16/1.00 *  new gene: 14/1.00 vs 12/1.00 *  works old=1.0 new=1.0  fwd loop fails  recip loop fails
+t028 cf_gmq s337  LUBO->LUCO  old gene: 16/1.00 vs 16/0.96 S  new gene: 13/1.00 vs 13/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t029 cf_gmq s339  OUBO->LUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 14/1.00 vs 14/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t030 cf_gmq s340  LEBO->LUBO  old gene: 5/1.00 vs 14/1.00 *  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 recip=1.0  fwd no unique codons  recip ok
+t031 cf_gmd s311  EUBO->EUBL  old gene: 15/1.00 vs 15/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t032 cf_gmd s315  LUBO->OUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t033 cf_gmd s316  LUBO->LPBO  old gene: 15/1.00 vs 15/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t034 cf_gmd s317  LUBO->OUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 17/1.00 vs 17/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t035 cf_gmd s318  LUBO->LUBL  old gene: 15/1.00 vs 15/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0 recip=1.0  fwd ok  recip ok
+t036 cf_gmd s321  LUBO->LUZL  old gene: 16/1.00 vs 14/1.00 *  new gene: 16/1.00 vs 14/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip loop fails
+t037 cf_gmd s322  LUBO->LPBO  old gene: 16/1.00 vs 16/0.75 *  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t038 cf_gmd s323  LUBO->HUBO  old gene: 17/1.00 vs 17/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t039 cf_gmd s324  LUBO->HUBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t040 cf_gmd s325  LUBO->LUCO  old gene: 15/1.00 vs 15/0.96 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t041 cf_gmd s327  LUBO->LTBO  old gene: 16/1.00 vs 16/0.61 *  new gene: 16/0.61 vs 16/1.00 *  works old=1.0 new=1.0 fwd=0.7 recip=0.7  fwd ok  recip ok
+t042 cf_gmd s330  LUBO->LPBO  old gene: 17/1.00 vs 17/1.00 S  new gene: 15/1.00 vs 15/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t043 cf_gmd s331  EEBO->LUBO  old gene: 13/1.00 vs 13/1.00 S  new gene: 17/1.00 vs 17/1.00 S  works old=1.0 new=1.0 recip=1.0  fwd no unique codons  recip ok
+t044 cf_gmd s333  EUBO->OEHO  old gene: 16/1.00 vs 16/1.00 S  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t045 cf_gmd s334  LPBO->LUX   old gene: 14/1.00 vs 12/1.00 *  new gene: 14/1.00 vs 12/1.00 *  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t046 cf_gmd s337  LUBO->LEBO  old gene: 17/1.00 vs 17/1.00 S  new gene: 14/1.00 vs 14/1.00 S  works old=0.8 new=1.0 fwd=0.8  fwd ok  recip no unique codons
+t047 cf_gmd s338  LHWO->LUBS  old gene: 6/1.00 vs 15/1.00 *  new gene: 6/1.00 vs 12/1.00 *  works old=1.0 new=1.0  fwd no unique codons  recip no unique codons
+t048 cf_gmd s339  LUBO->LEBO  old gene: 16/1.00 vs 16/1.00 S  new gene: 15/1.00 vs 5/1.00 *  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+t049 cf_gmd s340  LUBO->LPBO  old gene: 16/1.00 vs 16/0.75 *  new gene: 16/1.00 vs 16/1.00 S  works old=1.0 new=1.0 fwd=1.0  fwd ok  recip no unique codons
+
+50 transitions. Label change silent (same start position, success prob within 0.05):
+  on the old gene: 33/50; on the new gene: 37/50; on both: 30/50
+Exact complement of the label in its own gene: old pairs 18/50, new pairs 1/50
+Working machine made, old   pairs: mean 1.00 of trials; all 10 trials in 49/50
+Working machine made, new   pairs: mean 0.99 of trials; all 10 trials in 49/50
+Working machine made, fwd   pairs: mean 0.98 of trials; all 10 trials in 30/32
+Working machine made, recip pairs: mean 0.96 of trials; all 10 trials in 17/19
+Swap attempts:
+  fwd -: no unique codons: 14
+  fwd codons: loop fails: 4
+  fwd codons: ok: 14
+  fwd exact: ok: 18
+  recip -: no unique codons: 28
+  recip codons: loop fails: 3
+  recip codons: ok: 18
+  recip exact: ok: 1

@@ -1698,6 +1698,34 @@ the pools cleaned, a reciprocal swap and more seeds is running (`pw_compete2.py`
 test aligns, so a partial match finds the start. "Password" is a loose term for a label whose
 matching is approximate.
 
+**Terms.** From here, "label change" means the sequence observation (the letters after `^F$` in
+the commonest machine changed); "change in recognition" is kept for a measured change in what the
+`$` search does. The search aligns the complemented label to the gene (Smith-Waterman) and, with a
+success probability computed from the alignment, moves the flow pointer to the alignment's end;
+the `?` tail check is a separate instruction.
+
+**Readout: does a label change change translation? (`smol-search`, a new binary that does the
+`$` instruction's own computation; `pw_readout.py`, `pwc2_readout.txt`).** For each of the 50
+transitions, old and new labels on the old and the new gene:
+- **Silent in 30/50 on both genes** (same start position, success probability within 0.05): the
+  label changed but translation starts in the same place as reliably. 33/50 silent on the old
+  gene, 37/50 on the new.
+- In the other 20 the change is behavioural on at least one gene: the start moves (e.g. LUBO ->
+  LHBO moves it from position 16 to 6 in three independent runs) or becomes less reliable (success
+  0.36-0.92 instead of 1.0). Even so, every old and new pair, and nearly every swapped pair, still
+  makes its working machine: old 49/50 and new 49/50 pairs in all 10 trials; forward swaps 30/32,
+  reciprocal 17/19 (one swapped pair in each direction at 0.7).
+- Exact complement of the label in its own gene: 18/50 old pairs, 1/50 new pairs. Round 1's
+  forward hybrids needed it, so its 18 hybrids are exactly the exact-match old pairs: its small
+  effect describes that subset.
+- Swap construction: forward 18 exact + 14 by codons; 14 had no unique codons for the label; 4
+  were built but did not close a loop (disruptive edits the contests leave out). Reciprocal 1 exact
+  + 18 by codons; 28 no unique codons; 3 did not close a loop.
+
+So most label changes leave translation function intact, which is how a label can travel with a
+fitter lineage at little cost. Whether chance, linkage or weak direct selection drove a given
+label's spread is a separate inference.
+
 **Reading.**
 - Later machine-gene pairs usually retain an advantage **without parasites**. A contest of two
   common types from 50:50 in a fresh world is not the same as a rare variant establishing in its
