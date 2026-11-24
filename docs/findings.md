@@ -1666,7 +1666,8 @@ the commonest machine's password changed 136 times between consecutive windows, 
 forth. Taking, per run, the first change whose new password was still on top at the next window,
 and whose before and after machines each close a loop with a working gene of their time: 50
 independent transitions (13 cf_gmt, 18 cf_gmq, 19 cf_gmd; 36 candidates dropped because the new
-password did not persist, 16 because a pair did not close a loop).
+password did not persist, 16 because a pair did not close a loop). Correction (review, Nov 24):
+5 of the 50 end at 2M, where there is no later window, so their persistence was not checked.
 
 **Contests.** Fresh 125 x 100 worlds with the run's rules, mutation off, 30k steps: 500 old
 machines + 500 old genes against 500 new machines + 500 new genes, at random cells; with no
@@ -1684,18 +1685,33 @@ transition is one replicate. All 816 runs completed.
 (Shares are medians over transitions; p from Wilcoxon signed-rank. By set, evolved pairs in
 p0: cf_gmt 0.90, cf_gmq 0.58, cf_gmd 0.58.)
 
+**Contamination found by review (Nov 24).** In 5 of the 50 transitions a parasite-pool sequence
+was identical to a competing gene: two before-pools added 149 and 155 extra copies of the new gene,
+three after-pools 69-120 extra copies of the old gene, biasing pB and pA in the directions
+predicted for escape and erosion (p0 unaffected). Rescored without them (45 transitions; hybrids
+14): evolved pairs pB - p0 +0.007 (26/45, p = 0.095), pA - pB -0.008 (18/45 positive, p = 0.028);
+password alone pB - p0 +0.023 (11/14, p = 0.12), pA - pB -0.008 (5/14 positive, p = 0.39). The
+escape signal of the password alone is not significant once they are removed. A second round with
+the pools cleaned, a reciprocal swap and more seeds is running (`pw_compete2.py`).
+
+**Also:** evolved genes rarely carry the exact complement of their machine's password; the label
+test aligns, so a partial match finds the start. "Password" is a loose term for a label whose
+matching is approximate.
+
 **Reading.**
-- The new machine-gene pairs win clearly **without parasites**: a general reproductive advantage
-  is the main reason later pairs replace earlier ones. But the evolved pairs differ in more than
+- Later machine-gene pairs usually retain an advantage **without parasites**. A contest of two
+  common types from 50:50 in a fresh world is not the same as a rare variant establishing in its
+  own neighbourhood, so this shows an advantage, not how the replacement happened. But the evolved pairs differ in more than
   the password (200k steps of other changes), so this does not say the password change itself
   is advantageous.
 - The password change on its own is close to **neutral without parasites** (0.52) and gives a
   **small advantage against earlier parasites** that later parasites partly remove (+0.025, then
   -0.014): the pattern of parasite-driven escape, but small, marginal (p = 0.04 and 0.15, 18
   transitions, uncorrected) and from the subset of transitions where a clean swap was possible.
-- So: turnover is mostly carried by generally better machine-gene pairs, with at most a weak
-  parasite-escape component in the password itself. Parasite selection is not shown to drive the
-  turnover; it is not ruled out either.
+- So: later machine-gene pairs usually retained a competitive advantage without parasites;
+  isolated password substitutions had small median effects on the ancestral backgrounds tested.
+  This is consistent with passwords hitchhiking during adaptation, while the contribution of
+  parasite-mediated selection remains unresolved.
 
 **Wider mechanism assay (`mech2.py`, caps raised to 25 machines / 50 parasites / 15 genes;
 `mech2_confirm_wide.txt`).** With the original caps the assay covered only 35-55% of each class's
