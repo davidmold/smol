@@ -1748,3 +1748,39 @@ unchanged (host trend -0.69 in all three sets; specificity trend cf_gmt -0.20, c
 cf_gmd +0.10; cf_gmt vs cf_gmd p = 0.002). Binding, now reported separately, falls with machine
 time for parasites and genes alike (binding trend -0.56 to -0.79 in all sets, 28-30/30 runs): the
 loss of binding is also a compatibility change, not one aimed at parasites.
+
+**Round 2 (Nov 24; `pw_compete2.py`, `pw_pipeline2.sh`, `pwc2_score.txt`,
+`pwc2_transitions.json`).** Parasite pools cleaned of competitor sequences and rescaled; 6 assay
+seeds; forward swaps (new label on the old pair) for 32 transitions, reciprocal swaps (old label
+on the new pair) for 19; 1,818 runs, none missing or extinct. Focal share of genes at 30k minus
+0.5, mean over transitions [bootstrap 95% CI]:
+
+| contest | p0 | pB - p0 | pA - pB |
+|---|---|---|---|
+| main: new pair vs old pair (50) | +0.21 [+0.15, +0.27], 44/50 | +0.024 [-0.004, +0.050], p = 0.03 | -0.020 [-0.045, +0.003], p = 0.10 |
+| forward: new label on old pair vs old pair (32) | -0.03 [-0.08, +0.02], 17/32 | +0.027 [+0.008, +0.048], p = 0.054 | -0.008 [-0.029, +0.011], p = 0.88 |
+| reciprocal: new pair vs old label on new pair (19) | +0.03 [-0.03, +0.09], 11/19 | +0.007 [-0.012, +0.026], p = 0.52 | -0.001 [-0.017, +0.016], p = 0.83 |
+
+(p: Wilcoxon signed-rank. The 45 transitions with verified persistence give the same picture:
+main p0 +0.21, forward -0.03, reciprocal +0.03.)
+
+- **The later pair's advantage without parasites is about +0.21; the label accounts for little
+  of it.** Moving the new label onto the old pair gains nothing (-0.03), and taking it off the
+  new pair costs little (+0.03, upper limit +0.09). So the later pairs win mainly through the
+  rest of what changed, and the label is close to neutral on both backgrounds tested. This is
+  the pattern hitchhiking predicts.
+- **Parasite-specific effects are small and inconsistent.** Against earlier parasites the new
+  label gains about 2-3 points on the old background (CI excludes 0, Wilcoxon p = 0.054) but
+  not on the new background (+0.007); later parasites do not measurably erode it. On the whole
+  pair the pB - p0 gain is +0.024 (p = 0.03, CI touching 0).
+
+**Reading for section 37 as a whole.** Later machine-gene pairs usually retained a competitive
+advantage without parasites (about +0.21 in gene share from an equal start). Label changes are
+mostly silent in translation (30/50 on both genes), and isolated label substitutions had small
+effects on both the ancestral and the later backgrounds tested (-0.03 and +0.03 in gene share).
+These results are consistent with labels hitchhiking during adaptation of the machine-gene pair.
+A parasite-mediated component is at most a few points of gene share and was not consistent across
+contests; its contribution to the historical turnover remains unresolved. These are 30k-step
+contests from an equal start in fresh worlds, not the establishment of a rare variant in its
+original neighbourhood; uncorrected p values; exploratory throughout.
+

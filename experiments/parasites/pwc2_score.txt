@@ -1,0 +1,43 @@
+missing assay runs (technical): 0; extinct: 0
+
+== main (new pair vs old pair), all transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=50  mean +0.209 [95% CI +0.153, +0.265]  > 0 in 44/50  Wilcoxon p=5.9e-10
+  pB share - 0.5                     n=50  mean +0.233 [95% CI +0.183, +0.282]  > 0 in 47/50  Wilcoxon p=1.9e-12
+  pA share - 0.5                     n=50  mean +0.213 [95% CI +0.161, +0.265]  > 0 in 47/50  Wilcoxon p=4.4e-11
+  pB - p0 (vs earlier parasites)     n=50  mean +0.024 [95% CI -0.004, +0.050]  > 0 in 32/50  Wilcoxon p=0.03
+  pA - pB (later parasites)          n=50  mean -0.020 [95% CI -0.045, +0.003]  > 0 in 23/50  Wilcoxon p=0.099
+
+== fwd (new password on OLD background vs old pair), all transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=32  mean -0.029 [95% CI -0.082, +0.016]  > 0 in 17/32  Wilcoxon p=0.92
+  pB share - 0.5                     n=32  mean -0.002 [95% CI -0.060, +0.046]  > 0 in 22/32  Wilcoxon p=0.062
+  pA share - 0.5                     n=32  mean -0.009 [95% CI -0.067, +0.039]  > 0 in 23/32  Wilcoxon p=0.062
+  pB - p0 (vs earlier parasites)     n=32  mean +0.027 [95% CI +0.008, +0.048]  > 0 in 21/32  Wilcoxon p=0.054
+  pA - pB (later parasites)          n=32  mean -0.008 [95% CI -0.029, +0.011]  > 0 in 16/32  Wilcoxon p=0.88
+
+== recip (new pair vs OLD password on NEW background), all transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=19  mean +0.028 [95% CI -0.025, +0.091]  > 0 in 11/19  Wilcoxon p=0.54
+  pB share - 0.5                     n=19  mean +0.034 [95% CI -0.016, +0.099]  > 0 in 12/19  Wilcoxon p=0.37
+  pA share - 0.5                     n=19  mean +0.034 [95% CI -0.018, +0.098]  > 0 in 12/19  Wilcoxon p=0.28
+  pB - p0 (vs earlier parasites)     n=19  mean +0.007 [95% CI -0.012, +0.026]  > 0 in 10/19  Wilcoxon p=0.52
+  pA - pB (later parasites)          n=19  mean -0.001 [95% CI -0.017, +0.016]  > 0 in 10/19  Wilcoxon p=0.83
+
+== main (new pair vs old pair), verified transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=45  mean +0.213 [95% CI +0.155, +0.272]  > 0 in 41/45  Wilcoxon p=9.6e-10
+  pB share - 0.5                     n=45  mean +0.233 [95% CI +0.181, +0.285]  > 0 in 43/45  Wilcoxon p=1.2e-11
+  pA share - 0.5                     n=45  mean +0.223 [95% CI +0.174, +0.273]  > 0 in 43/45  Wilcoxon p=6.3e-12
+  pB - p0 (vs earlier parasites)     n=45  mean +0.019 [95% CI -0.008, +0.046]  > 0 in 28/45  Wilcoxon p=0.056
+  pA - pB (later parasites)          n=45  mean -0.009 [95% CI -0.030, +0.012]  > 0 in 21/45  Wilcoxon p=0.2
+
+== fwd (new password on OLD background vs old pair), verified transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=30  mean -0.031 [95% CI -0.087, +0.016]  > 0 in 16/30  Wilcoxon p=0.92
+  pB share - 0.5                     n=30  mean -0.004 [95% CI -0.066, +0.046]  > 0 in 20/30  Wilcoxon p=0.1
+  pA share - 0.5                     n=30  mean -0.013 [95% CI -0.075, +0.040]  > 0 in 21/30  Wilcoxon p=0.1
+  pB - p0 (vs earlier parasites)     n=30  mean +0.026 [95% CI +0.006, +0.049]  > 0 in 19/30  Wilcoxon p=0.096
+  pA - pB (later parasites)          n=30  mean -0.009 [95% CI -0.031, +0.010]  > 0 in 15/30  Wilcoxon p=0.75
+
+== recip (new pair vs OLD password on NEW background), verified transitions: focal share of genes at 30k
+  p0 share - 0.5                     n=16  mean +0.034 [95% CI -0.028, +0.108]  > 0 in 9/16  Wilcoxon p=0.35
+  pB share - 0.5                     n=16  mean +0.042 [95% CI -0.017, +0.117]  > 0 in 10/16  Wilcoxon p=0.32
+  pA share - 0.5                     n=16  mean +0.032 [95% CI -0.028, +0.106]  > 0 in 10/16  Wilcoxon p=0.53
+  pB - p0 (vs earlier parasites)     n=16  mean +0.007 [95% CI -0.016, +0.030]  > 0 in 9/16  Wilcoxon p=0.56
+  pA - pB (later parasites)          n=16  mean -0.010 [95% CI -0.024, +0.003]  > 0 in 8/16  Wilcoxon p=0.32
