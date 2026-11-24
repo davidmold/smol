@@ -21,8 +21,10 @@ parasites are real and limiting, but in the published setup they settle into a t
 than an escalating arms race. A gene-and-machine variant whose machine checks a second tag on its
 gene first looked like a continuing arms race, but a 110-run confirmation with its tests fixed in
 advance did not support it (`docs/findings.md` section 36). All the gene-and-machine variants
-show changing host-parasite compatibility; whether defence improves cumulatively, and what drives
-the turnover, remain open.
+show changing host-parasite compatibility. Contests of evolved before-and-after pairs suggest that
+turnover is mostly hitchhiking: the machine's translation-start label changes with little effect
+of its own, carried by machine-gene pairs that are better overall; any part played by parasites
+is small and unresolved (section 37).
 
 ## How it relates to Stringmol
 

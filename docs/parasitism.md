@@ -2,11 +2,11 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 23 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–36) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 24 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–37) and `experiments/`.
 
 ## Summary
 
-Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: a turnover that is fast in the first million steps and nearly settled in the second, not an escalating arms race (section 7, item 6). A gene-and-machine system whose machine has a designed-in recognition step at first seemed to show one, but a larger test with its criteria fixed in advance did not confirm it (section 7, item 10).
+Parasitism is real and limiting, but the evidence supports only part of the story in Hickinbotham, Stepney & Hogeweg (2021, *R. Soc. Open Sci.* 8: 210441). Parasites hold the population down, and they are what make self-scan win. But self-scan itself is built by a mutational route through parasite-like intermediates, later gains come mostly from replicators stalling on established parasites rather than from better discrimination (which stays weak), and parasite lineages persist and adapt to new defences: a turnover that is fast in the first million steps and nearly settled in the second, not an escalating arms race (section 7, item 6). A gene-and-machine system whose machine has a designed-in recognition step at first seemed to show one, but a larger test with its criteria fixed in advance did not confirm it (section 7, item 10). In those worlds the turnover looks like hitchhiking: the machine's translation-start label changes with little effect of its own, carried along by machine–gene pairs that are better overall, while any role for parasites in driving it remains unresolved (section 7, item 11).
 
 | Claim in the paper | Verdict | Key evidence |
 | --- | --- | --- |
@@ -270,7 +270,7 @@ So the way variation is produced does shift, but mostly early, and only slightly
    Scripts and results: `gm_scan.py`, `gm_scan2.py`, `gm_scan3.py`, `gm_linkage.py` and their results.
 
 10. 
-    1. **A machine with a recognition step: an apparent escalation that did not replicate.** Gene-parasites mostly keep the head tag the machine already checks, but 70% have a broken tail, and the tail encodes the machine's end. So the machine got a second test, `?OMSJ}`: the gene must carry its tail tag (`BZFW`), searched anywhere with `QSEARCH`, or the reaction ends. Before any evolution, this machine copies 28% of real gene-parasites it binds, against 98% for the seed machine. 10 runs, with a control set using the same rules minus the tail check; all 20 survive to 2M.
+    10. **A machine with a recognition step: an apparent escalation that did not replicate.** Gene-parasites mostly keep the head tag the machine already checks, but 70% have a broken tail, and the tail encodes the machine's end. So the machine got a second test, `?OMSJ}`: the gene must carry its tail tag (`BZFW`), searched anywhere with `QSEARCH`, or the reaction ends. Before any evolution, this machine copies 28% of real gene-parasites it binds, against 98% for the seed machine. 10 runs, with a control set using the same rules minus the tail check; all 20 survive to 2M.
 
     |  | Gene and machine | Control (same rules) | Tail check |
     | --- | --- | --- | --- |
@@ -286,6 +286,15 @@ So the way variation is produced does shift, but mostly early, and only slightly
     - **Caveats:** the tail check was designed in, not evolved; 10 runs per set; whether the race continues past 2M is untested. The tail-check machine is also longer and slower than the seed machine (510 steps per copy against 455), a confound. The confirmation round addressed all three: 30 new runs each of the tail check, the same rules without it, and a dummy-check machine of the same length and speed that lets parasites through like the seed machine; plus the original runs continued to 6M. Its tests and thresholds were fixed before the runs, in experiments/parasites/CONFIRM_PLAN.md.
 
     Scripts and results: `gm_parasites.py`, `gmt_setup.py`, `gmt_pipeline.sh`, `gmt_mech.py`, `gm_mech_compare.txt`, `ts_gmt.*`, `ts_gmq.*`.
+    11. **What drives the label turnover? Mostly hitchhiking, not parasites.** In every gene-and-machine design, the commonest machine's translation-start label keeps changing, and later parasites match later machines. To find out why, 50 independent label changes from the confirmation runs (one per run) were rebuilt as before-and-after machine–gene pairs and competed from an equal start in fresh worlds (mutation off, 30k steps), with no parasites, with parasites from before the change, or with parasites from after it. Each change is one replicate.
+    - **Later pairs win without parasites.** The later pair's gene share ends +0.21 above an even split (95% CI +0.15 to +0.27; ahead in 44 of 50).
+    - **The label itself is close to neutral.** Putting the new label on the earlier pair: −0.03 (CI −0.08 to +0.02; 32 changes). Putting the old label back on the later pair: +0.03 (CI −0.03 to +0.09; 19 changes).
+    - **Most label changes are silent in translation.** In 30 of 50, the old and new labels direct translation to the same start, equally reliably, on both genes; in the rest the start moves or becomes less reliable, yet nearly every pair, swapped or not, still makes its working machine.
+    - **The parasite part is small and inconsistent.** Against earlier parasites the new label gains about 2–3 points on the earlier pair, but nothing on the later pair, and later parasites don't measurably erode it.
+    - **Reading.** Consistent with labels hitchhiking as machine–gene pairs adapt: the label changes, carried along by pairs that are better overall, while what the label does mostly stays the same. Whether parasites contributed to the historical turnover remains unresolved.
+    - **Caveats:** contests between two common types from an equal start in a fresh world, not a rare variant establishing in its own neighbourhood; exploratory, with uncorrected p values. An outside review found 5 parasite pools in the first round that contained a competing gene; the second round (reported here) removed them.
+
+    Scripts and results: `pw_scan.py`, `pw_compete2.py`, `pw_readout.py`, the `smol-search` binary, `pwc2_score.txt`, `pwc2_readout.txt`; findings section 37.
 
 **Still open.**
 
