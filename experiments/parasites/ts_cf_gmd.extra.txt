@@ -1,1 +1,15 @@
-python3: can't open file '/home/davidmold/smol-src/experiments/parasites/timeshift_extra.py': [Errno 2] No such file or directory
+all hosts                                    n=2700  rho(lag, d) = -0.21 (t = -11.0)  past +0.021  future -0.012
+hosts 0.6-1.8M                               n=1890  rho(lag, d) = -0.18 (t = -8.1)  past +0.024  future -0.006
+hosts and parasites both from 0.6M on        n=1680  rho(lag, d) = -0.14 (t = -5.7)  past +0.017  future -0.006
+
+Parasites from time P against all other host times: median d (< 0: more harmful than the host's own)
+  P = 0.2M   +0.028   (< 0 in 87/270)
+  P = 0.4M   +0.028   (< 0 in 88/270)
+  P = 0.6M   +0.020   (< 0 in 104/270)
+  P = 0.8M   +0.009   (< 0 in 117/270)
+  P = 1.0M   -0.005   (< 0 in 142/270)
+  P = 1.2M   -0.016   (< 0 in 157/270)
+  P = 1.4M   -0.001   (< 0 in 136/270)
+  P = 1.6M   +0.006   (< 0 in 128/270)
+  P = 1.8M   -0.003   (< 0 in 145/270)
+  P = 2.0M   +0.007   (< 0 in 125/270)

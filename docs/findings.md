@@ -1603,8 +1603,9 @@ assay extinctions, every window with parasites).
 - P2 (cf_gmt vs cf_gmq, p < 0.025): **fails**: Mann-Whitney p = 0.76, rank-biserial -0.05.
 - P3 (cf_gmt vs cf_gmd, p < 0.025): **fails**: p = 0.82, rank-biserial +0.04.
 
-The three sets are indistinguishable. The control without the check escalates on this measure at
-least as clearly as the tail check: original gmq's 3/10 was a small sample.
+No difference between the sets was detected on this measure; that is not equivalence (the CIs are
+wide). The control without the check escalates on it at least as clearly as the tail check:
+original gmq's 3/10 was a small sample.
 
 **Direct mechanism assay (addendum point 1; per-run mean Spearman trends, median over runs):**
 
@@ -1615,18 +1616,22 @@ least as clearly as the tail check: original gmq's 3/10 was a small sample.
 | cf_gmd | -0.70 (27/30) | +0.54 (27/30) | -0.61 (28/30) | +0.16 (24/30) |
 
 In all three sets later machines resist earlier parasites and later parasites exploit earlier
-machines, but later machines equally lose the ability to copy earlier genes. Both sides change,
-but the host side is a change of compatibility (password turnover), not a defence aimed at
-parasites. The addendum's arms-race condition (cf_gmt specificity trend > 0 and higher than both
+machines, but later machines also lose the ability to copy earlier genes. The results are
+consistent with compatibility turnover rather than progressively improving discrimination.
+Whether parasites select for that turnover (a password change can be adaptive escape even though
+it also breaks compatibility with ancestral genes) is untested; the specificity comparison is an
+operational criterion for this experiment, not a general definition of coevolution. The addendum's arms-race condition (cf_gmt specificity trend > 0 and higher than both
 controls) **fails, reversed**: cf_gmt has the lowest specificity trend (vs cf_gmq p = 0.026, vs
 cf_gmd p = 0.0014, both in the wrong direction). The section 35 hint (gmt 7/10) does not
 replicate.
 
 **Continuation, 2-6M (S2):** gmt6 median rho_run -0.29 [-0.57, +0.25], 6/10 escalating (Wilcoxon
 p = 0.38); gmq6 +0.52 [+0.19, +0.72], future parasites less harmful (turnover, as in the
-published runs). gmt6 vs gmq6 p = 0.014. No sign of continuing escalation in gmt after 2M; by the
-addendum's rule the CI only just excludes the 0.2-2M effect (-0.60), so "settled" is borderline;
-read as no continuing race.
+published runs). gmt6 vs gmq6 p = 0.014. No continuing escalation is demonstrated in gmt after 2M, but
+the CI still allows substantial negative trends, so it is not shown to have stopped either.
+Paired per run (`confirm_paired.py`, `confirm_paired.txt`; exploratory, suggested after the
+results): rho_run is less negative late in 7/10 gmt runs, median change +0.50 [95% CI -0.14,
++0.81], Wilcoxon p = 0.19: no decline demonstrated. gmq: median change -0.03, p = 0.56.
 
 **Exploratory (not in the plan; `confirm_pshare.py`):** gene-parasite molecule share falls from
 0.2M to 2M in cf_gmt (0.31 -> 0.21, 22/30 runs, Wilcoxon p = 0.009), not in cf_gmq (0.29 -> 0.28)
@@ -1635,9 +1640,15 @@ vs cf_gmd p = 0.72). The sets start at different parasite levels and end at simi
 to parasite numbers, it is a population effect, not an arms race.
 
 **Reading (by the readings fixed in advance):** P1 fails, so section 35's claim is withdrawn.
-The tail-check machine does not produce an arms race that the controls lack. What all
-gene-and-machine worlds with QSEARCH show is reciprocal *change*: machines drift to new
-compatibility (a new translation-start password) and parasites follow, so later parasites look
-more harmful to earlier worlds. That is the turnover of section 30 / item 6 in a new form, not
-escalation of defence and counter-defence. The section 35 result came from 10 runs per set, a
-pooled statistic that treated matrix cells as independent, and an unlucky control.
+The confirmation round did not support a tail-check-specific arms race. All three designs show
+changing host-parasite compatibility (machines move to a new translation-start password, later
+parasites match later machines); cumulative improvement of defence was not shown, and what
+drives the turnover (selection by parasites, or something else) is unresolved. The sets are not
+identical: the mechanism assay separates them on specificity, and 2-6M differs between gmt6 and
+gmq6 (p = 0.014). The section 35 result came from 10 runs per set, a pooled statistic that
+treated matrix cells as independent, and a control that came out flat by chance.
+
+*Files:* the time-shift summaries `ts_cf_*.results.txt`, `ts_cf_*.extra.txt` and
+`ts_gm?6.results.txt` first contained only a missing-script error (the pipeline called
+`timeshift_agg.py` from a path where it did not exist); they were regenerated on Nov 23. The
+primary analysis (`confirm_stats.py`) reads the simulation logs directly and was not affected.

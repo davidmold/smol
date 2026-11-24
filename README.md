@@ -20,8 +20,9 @@ The main study so far tests the account of parasitism in Hickinbotham, Stepney &
 parasites are real and limiting, but in the published setup they settle into a turnover rather
 than an escalating arms race. A gene-and-machine variant whose machine checks a second tag on its
 gene first looked like a continuing arms race, but a 110-run confirmation with its tests fixed in
-advance did not confirm it (`docs/findings.md` section 36): every gene-and-machine variant shows
-the same password turnover.
+advance did not support it (`docs/findings.md` section 36). All the gene-and-machine variants
+show changing host-parasite compatibility; whether defence improves cumulatively, and what drives
+the turnover, remain open.
 
 ## How it relates to Stringmol
 

@@ -1,1 +1,69 @@
-python3: can't open file '/home/davidmold/smol-src/experiments/parasites/timeshift_agg.py': [Errno 2] No such file or directory
+Relative population change at +10000 steps when a world's parasites come from another time
+(d > 0: foreign parasites less harmful than its own). 30 runs, 10 times, 3000 cells.
+
+lag (parasite time - host time)   median d   cells with d > 0
+   -1.8M                          +0.031     19/30
+   -1.6M                          +0.038     43/60
+   -1.4M                          +0.023     64/90
+   -1.2M                          +0.023     80/120
+   -1.0M                          +0.031     102/150
+   -0.8M                          +0.026     114/180
+   -0.6M                          +0.022     137/210
+   -0.4M                          +0.020     154/240
+   -0.2M                          +0.013     166/270
+   +0.2M                          -0.011     114/270
+   +0.4M                          -0.016     95/240
+   +0.6M                          -0.013     90/210
+   +0.8M                          -0.010     85/180
+   +1.0M                          -0.009     68/150
+   +1.2M                          -0.004     58/120
+   +1.4M                          -0.010     41/90
+   +1.6M                          -0.009     26/60
+   +1.8M                          -0.010     14/30
+
+Median d over runs (rows: host time, columns: parasite time, in M)
+host\par     0.2    0.4    0.6    0.8    1.0    1.2    1.4    1.6    1.8    2.0
+   0.2         .  -0.03  -0.03  -0.03  -0.04  -0.04  -0.04  -0.02  -0.04  -0.01
+   0.4     +0.01      .  -0.02  -0.02  -0.04  -0.05  -0.03  +0.01  -0.01  -0.00
+   0.6     +0.02  +0.03      .  -0.02  -0.03  -0.05  -0.02  +0.00  -0.01  +0.00
+   0.8     +0.02  +0.04  +0.04      .  -0.02  -0.03  -0.01  -0.01  -0.01  +0.02
+   1.0     +0.04  +0.04  +0.04  +0.02      .  -0.04  -0.00  +0.01  +0.01  +0.02
+   1.2     +0.07  +0.07  +0.06  +0.05  +0.02      .  +0.02  +0.02  +0.02  +0.03
+   1.4     +0.03  +0.02  +0.03  +0.02  +0.01  -0.00      .  -0.01  -0.01  -0.00
+   1.6     +0.02  +0.03  +0.03  +0.02  +0.01  +0.01  +0.01      .  -0.01  -0.01
+   1.8     +0.04  +0.02  +0.03  +0.03  +0.01  +0.01  +0.01  +0.01      .  +0.01
+   2.0     +0.03  +0.04  +0.02  +0.02  +0.02  +0.00  +0.01  +0.01  -0.00      .
+
+Per run: mean d for parasites from the past vs from the future (all hosts)
+  s311: past +0.012  future -0.015
+  s312: past -0.286  future +0.025
+  s313: past +0.024  future -0.018
+  s314: past -0.000  future +0.035
+  s315: past +0.036  future -0.008
+  s316: past +0.099  future -0.076
+  s317: past +0.210  future -0.012
+  s318: past -0.012  future +0.093
+  s319: past +0.016  future -0.040
+  s320: past +0.031  future +0.109
+  s321: past -0.037  future +0.091
+  s322: past +0.109  future -0.069
+  s323: past -0.012  future +0.039
+  s324: past -0.003  future -0.006
+  s325: past +0.095  future -0.035
+  s326: past +0.151  future -0.061
+  s327: past +0.100  future -0.063
+  s328: past +0.032  future -0.032
+  s329: past +0.124  future -0.082
+  s330: past +0.096  future -0.078
+  s331: past +0.005  future +0.025
+  s332: past -0.023  future +0.019
+  s333: past +0.060  future -0.024
+  s334: past +0.007  future -0.059
+  s335: past -0.024  future +0.024
+  s336: past +0.019  future +0.022
+  s337: past -0.042  future +0.065
+  s338: past +0.010  future -0.048
+  s339: past +0.002  future +0.005
+  s340: past +0.009  future +0.002
+
+All: past parasites d median +0.021 (> 0 in 879/1350); future parasites d median -0.012 (> 0 in 591/1350)
