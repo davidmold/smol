@@ -11,7 +11,12 @@ Each machine is reacted with each target in a fixed standard setting (smol-react
 --translate 1 --stop --hub, plus GMFLAGS, mutation off, 2 trials), abundance-weighted on both
 sides:
   infect[A,B]  share of binding-weighted parasite encounters in which the parasite was copied
+               (copying conditional on binding)
   gcopy[A,B]   the same for working genes: can A's machines still copy B's genes?
+  bind[A,B]    mean P(bind) per encounter, parasites and genes separately: a defence can also
+               work by binding less, which copying-given-binding would miss
+Coverage: the share of each class's molecules the chosen species actually cover is recorded
+(below 80% when the species cap binds) and reported.
 Per run:
   host trend      for each parasite time B, Spearman of infect[A,B] with A; averaged over B.
                   Negative: later machines resist a fixed set of parasites better.
@@ -37,13 +42,16 @@ import numpy as np
 from scipy import stats
 R = os.path.expanduser("~/smol/runs"); B = os.path.expanduser("~/smol-src/target/release")
 FLAGS = os.environ.get("GMFLAGS", "--qsearch").split()
+CAPS = [int(x) for x in os.environ.get("MECH_CAPS", "8,15,5").split(",")]  # species caps: machines, parasites, genes
 
 def top(lst, share, cap):
+    """commonest species up to `share` of the class's molecules or `cap` species; returns them and
+    the share of the class's molecules they actually cover (below `share` when the cap binds)."""
     lst = sorted(lst, reverse=True); tot = sum(c for c, _ in lst); out = []; acc = 0
     for c, s in lst:
         if acc >= share * tot or len(out) >= cap: break
         out.append((c, s)); acc += c
-    return out
+    return out, (acc / tot if tot else float("nan"))
 
 def window(w):
     seq = {}
@@ -54,7 +62,8 @@ def window(w):
     for l in open(f"{w}/classes.tsv"):
         a, b, c = l.split()
         if b in by and int(a) in seq: by[b].append((int(c), seq[int(a)]))
-    return top(by["R"], .8, 8), top(by["P"], .8, 15), top(by["G"], .8, 5)
+    (m, cm), (p, cp), (g, cg) = top(by["R"], .8, CAPS[0]), top(by["P"], .8, CAPS[1]), top(by["G"], .8, CAPS[2])
+    return m, p, g, (cm, cp, cg)
 
 def react(m, targets, trial):
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
@@ -74,21 +83,24 @@ def one_run(args):
     W = {}
     for w in ws:
         if os.path.exists(f"{w}/classes.tsv"): W[int(re.search(r"w(\d+)k", w).group(1)) * 1000] = window(w)
-    T = sorted(W); inf = {}; gc = {}
+    T = sorted(W); inf = {}; gc = {}; bd = {}; bg = {}
     for a in T:
         for b in T:
             ms, ps, gs = W[a][0], W[b][1], W[b][2]
             if not ms: continue
             targets = [s for _, s in ps] + [s for _, s in gs]; wts = [c for c, _ in ps] + [c for c, _ in gs]
-            num = [0.0, 0.0]; den = [0.0, 0.0]
+            num = [0.0, 0.0]; den = [0.0, 0.0]; enc = [0.0, 0.0]
             for cm, m in ms:
                 for trial in (1, 2):
                     for i, (pb, cp) in enumerate(react(m, targets, trial)):
                         k = 0 if i < len(ps) else 1; w = cm * wts[i] * pb
-                        den[k] += w; num[k] += w * cp
+                        enc[k] += cm * wts[i]; den[k] += w; num[k] += w * cp
             if den[0]: inf[(a, b)] = num[0] / den[0]
             if den[1]: gc[(a, b)] = num[1] / den[1]
-    return r, T, inf, gc
+            if enc[0]: bd[(a, b)] = den[0] / enc[0]
+            if enc[1]: bg[(a, b)] = den[1] / enc[1]
+    cov = {t: W[t][3] for t in T}
+    return r, T, inf, gc, bd, bg, cov
 
 def trend(M, T, along):
     """mean over the fixed axis of Spearman(M, varying time)."""
@@ -102,16 +114,20 @@ def trend(M, T, along):
 
 def summarise(name, res):
     rows = {}
-    for r, T, inf, gc in res:
+    for r, T, inf, gc, bd, bg, cov in res:
         spec = {k: gc[k] - inf[k] for k in inf if k in gc}
         rows[r] = {"host": trend(inf, T, "A"), "para": trend(inf, T, "B"), "gene": trend(gc, T, "A"),
-                   "spec": trend(spec, T, "A"),
+                   "spec": trend(spec, T, "A"), "hbind": trend(bd, T, "A"), "gbind": trend(bg, T, "A"),
+                   "covM": float(np.median([c[0] for c in cov.values()])), "covP": float(np.median([c[1] for c in cov.values()])),
+                   "covG": float(np.median([c[2] for c in cov.values()])),
                    "contemp": float(np.mean([inf[(t, t)] for t in T if (t, t) in inf])) if T else float("nan")}
     print(f"\n== {name}: {len(rows)} runs")
     for key, lab, esc in (("host", "host trend (later machines vs fixed parasites)", -1),
                           ("para", "parasite trend (later parasites vs fixed machines)", +1),
                           ("gene", "gene trend (later machines vs fixed genes)", -1),
-                          ("spec", "specificity trend (gene minus parasite copying)", +1)):
+                          ("spec", "specificity trend (gene minus parasite copying)", +1),
+                          ("hbind", "binding trend (later machines binding fixed parasites)", -1),
+                          ("gbind", "binding trend (later machines binding fixed genes)", -1)):
         v = [x[key] for x in rows.values() if not np.isnan(x[key])]
         if len(v) < 3: continue
         k = sum(1 for x in v if x * esc > 0); nz = [x for x in v if x != 0]
@@ -120,8 +136,11 @@ def summarise(name, res):
     both = sum(1 for x in rows.values() if x["host"] < 0 and x["para"] > 0)
     print(f"  runs with host trend < 0 and parasite trend > 0: {both}/{len(rows)}")
     print(f"  contemporary exploitation infect[t,t], median over runs: {S.median([x['contemp'] for x in rows.values()]):.2f}")
+    print("  abundance actually covered (median over runs of each run's median window): machines "
+          + "  ".join(f"{S.median([x[k] for x in rows.values()]):.2f}" for k in ("covM",))
+          + f"  parasites {S.median([x['covP'] for x in rows.values()]):.2f}  genes {S.median([x['covG'] for x in rows.values()]):.2f}")
     for r, x in rows.items():
-        print(f"    {r}: " + "  ".join(f"{k} {x[k]:+.2f}" for k in ("host", "para", "gene", "spec", "contemp")))
+        print(f"    {r}: " + "  ".join(f"{k} {x[k]:+.2f}" for k in ("host", "para", "gene", "spec", "hbind", "contemp", "covM", "covP")))
     return rows
 
 if __name__ == "__main__":
@@ -131,9 +150,10 @@ if __name__ == "__main__":
         name = a[3:] if a.startswith("ts_") else a; ts = f"{R}/ts_{name}"
         runs = sorted((os.path.basename(x) for x in glob.glob(f"{ts}/s*")), key=lambda x: int(x[1:]))
         with Pool(j) as pool: res = pool.map(one_run, [(ts, r) for r in runs])
-        json.dump({r: {"times": T, "infect": {f"{a_}:{b_}": v for (a_, b_), v in inf.items()},
-                       "gcopy": {f"{a_}:{b_}": v for (a_, b_), v in gc.items()}} for r, T, inf, gc in res},
-                  open(f"{ts}/mech2.json", "w"))
+        J = lambda M: {f"{a_}:{b_}": v for (a_, b_), v in M.items()}
+        json.dump({r: {"times": T, "infect": J(inf), "gcopy": J(gc), "bind_p": J(bd), "bind_g": J(bg),
+                       "coverage": {str(t): c for t, c in cov.items()}} for r, T, inf, gc, bd, bg, cov in res},
+                  open(f"{ts}/mech2" + os.environ.get("MECH_TAG", "") + ".json", "w"))
         allrows.append((name, summarise(name, res)))
     for key in ("host", "para", "spec"):
         if len(allrows) < 2: break
