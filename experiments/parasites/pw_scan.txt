@@ -1,0 +1,232 @@
+== cf_gmt
+  s311: LUBO LUBO HUBO LUBO LUBO LUBO LUBO LUBO LUBO HUBO
+     transition 400k -> 600k: LUBO -> HUBO (top machine share 0.27 -> 0.20)
+     transition 600k -> 800k: HUBO -> LUBO (top machine share 0.20 -> 0.14)
+     transition 1800k -> 2000k: LUBO -> HUBO (top machine share 0.12 -> 0.17)
+  s312: LUBO LUBO LUBO LUBO LUB LUBO LUBO LUBO LUBO LUBO
+     transition 800k -> 1000k: LUBO -> LUB (top machine share 0.12 -> 0.09)
+     transition 1000k -> 1200k: LUB -> LUBO (top machine share 0.09 -> 0.13)
+  s313: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO HUBO HUBO
+     transition 1600k -> 1800k: LUBO -> HUBO (top machine share 0.11 -> 0.43)
+  s314: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO - -
+  s315: LUBO LUBO LUBO LUBO LUBO LUBO UBO UBP - UBO
+     transition 1200k -> 1400k: LUBO -> UBO (top machine share 0.12 -> 0.13)
+     transition 1400k -> 1600k: UBO -> UBP (top machine share 0.13 -> 0.12)
+  s316: LUBO LUBO LUBO LUBO LUBO LUBO LUBO OUB OUB OUB
+     transition 1400k -> 1600k: LUBO -> OUB (top machine share 0.21 -> 0.25)
+  s317: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s318: LUBO LUBO LUBO LUBO LUBO LUBO LUBO EUBO EUBO LUBO
+     transition 1400k -> 1600k: LUBO -> EUBO (top machine share 0.36 -> 0.17)
+     transition 1800k -> 2000k: EUBO -> LUBO (top machine share 0.10 -> 0.06)
+  s319: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO OUBO
+     transition 1800k -> 2000k: LUBO -> OUBO (top machine share 0.16 -> 0.25)
+  s320: LUBO LUBO LUBO LUBO LUBO ETBO ETBO ETBO ETBO ETBO
+     transition 1000k -> 1200k: LUBO -> ETBO (top machine share 0.17 -> 0.29)
+  s321: LUBO LUBO LUBO LUBO LUBO LUBO - LUBO LUBO LUBO
+  s322: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s323: LUBO LUBO LUBO LUBO LUBO LUBO HUBO OUZO OUZO OUZO
+     transition 1200k -> 1400k: LUBO -> HUBO (top machine share 0.06 -> 0.07)
+     transition 1400k -> 1600k: HUBO -> OUZO (top machine share 0.07 -> 0.08)
+  s324: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s325: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s326: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s327: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LEBO LEBO LEBO
+     transition 1400k -> 1600k: LUBO -> LEBO (top machine share 0.09 -> 0.17)
+  s328: LUBO LUBO LUBO LHBO LHBO - - - - -
+     transition 600k -> 800k: LUBO -> LHBO (top machine share 0.11 -> 0.07)
+  s329: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s330: LUBO LUBO LUBO LUBO LHB LHB LHB LHB LHB LHB
+     transition 800k -> 1000k: LUBO -> LHB (top machine share 0.09 -> 0.16)
+  s331: LUBO LUBO LUBO LUBO LUBO LUBO LUBO EUBO LUBO EUBO
+     transition 1400k -> 1600k: LUBO -> EUBO (top machine share 0.18 -> 0.15)
+     transition 1600k -> 1800k: EUBO -> LUBO (top machine share 0.15 -> 0.17)
+     transition 1800k -> 2000k: LUBO -> EUBO (top machine share 0.17 -> 0.18)
+  s332: LUBO LUBO LUBO LUBO LUBO LUBO - EUBO EUBO EPBO
+     transition 1800k -> 2000k: EUBO -> EPBO (top machine share 0.27 -> 0.16)
+  s333: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUB OUBO OUBO
+     transition 1400k -> 1600k: LUBO -> LUB (top machine share 0.09 -> 0.18)
+     transition 1600k -> 1800k: LUB -> OUBO (top machine share 0.18 -> 0.15)
+  s334: LUBO LUBO LUBO LUBO LUBO LTBO LTBO - - LTBO
+     transition 1000k -> 1200k: LUBO -> LTBO (top machine share 0.09 -> 0.28)
+  s335: LUBO LUBO LUBO LUBO - - - - - LUBO
+  s336: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO - LUBO
+  s337: LUBO LUBO LUBO LUCO LUCO LUBO - - - -
+     transition 600k -> 800k: LUBO -> LUCO (top machine share 0.12 -> 0.21)
+     transition 1000k -> 1200k: LUCO -> LUBO (top machine share 0.12 -> 0.07)
+  s338: LUBO LUBO OUBO OUBO - OUB OUB LUBO LUBO -
+     transition 400k -> 600k: LUBO -> OUBO (top machine share 0.09 -> 0.11)
+     transition 1400k -> 1600k: OUB -> LUBO (top machine share 0.17 -> 0.25)
+  s339: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s340: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  29 transitions
+== cf_gmq
+  s311: LUBO LUBO LUBO LUCO LPBO LPBO LPBO LPBO LPBO LPBO
+     transition 600k -> 800k: LUBO -> LUCO (top machine share 0.14 -> 0.07)
+     transition 800k -> 1000k: LUCO -> LPBO (top machine share 0.07 -> 0.23)
+  s312: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s313: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s314: LUBO LUBO LUBO LUBO - OUBO - - - -
+  s315: LUBO LUBO LUBO LPBO LPBO LPBO LUBO LUBO LUBO LUBO
+     transition 600k -> 800k: LUBO -> LPBO (top machine share 0.20 -> 0.31)
+     transition 1200k -> 1400k: LPBO -> LUBO (top machine share 0.15 -> 0.13)
+  s316: LUBO LUBO LUBO LHBO LUBO LUBO LUB LUB LUBO HUBO
+     transition 600k -> 800k: LUBO -> LHBO (top machine share 0.15 -> 0.07)
+     transition 800k -> 1000k: LHBO -> LUBO (top machine share 0.07 -> 0.09)
+     transition 1200k -> 1400k: LUBO -> LUB (top machine share 0.14 -> 0.09)
+     transition 1600k -> 1800k: LUB -> LUBO (top machine share 0.08 -> 0.12)
+     transition 1800k -> 2000k: LUBO -> HUBO (top machine share 0.12 -> 0.16)
+  s317: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s318: LUBO LUBO - - LUCO LUCO LUBO LUBO LUBO LUBO
+     transition 1200k -> 1400k: LUCO -> LUBO (top machine share 0.23 -> 0.17)
+  s319: LUBO - LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s320: LUBO LUBO LUBO LUBO LUBO LUBO LHBO LHBO LHBO -
+     transition 1200k -> 1400k: LUBO -> LHBO (top machine share 0.13 -> 0.13)
+  s321: LUBO LUBO LUBO LUBO LUZO LUZO LUZO LUZO LUZO LUZO
+     transition 800k -> 1000k: LUBO -> LUZO (top machine share 0.13 -> 0.21)
+  s322: LUBO LUBO LUBO LUBO LTBO LUBO LTBO LTBO LTBO OTBO
+     transition 800k -> 1000k: LUBO -> LTBO (top machine share 0.14 -> 0.12)
+     transition 1000k -> 1200k: LTBO -> LUBO (top machine share 0.12 -> 0.14)
+     transition 1200k -> 1400k: LUBO -> LTBO (top machine share 0.14 -> 0.11)
+     transition 1800k -> 2000k: LTBO -> OTBO (top machine share 0.38 -> 0.29)
+  s323: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LTBO
+     transition 1800k -> 2000k: LUBO -> LTBO (top machine share 0.13 -> 0.24)
+  s324: LUBO LUBO LUBO LHBO LHBO LHBO LHBO LHBO LHBO LHBO
+     transition 600k -> 800k: LUBO -> LHBO (top machine share 0.29 -> 0.12)
+  s325: LUBO LUBO LPBO LPBO LPBO - - - - -
+     transition 400k -> 600k: LUBO -> LPBO (top machine share 0.17 -> 0.09)
+  s326: LUBO LUBO EUBO LUBO LUBO LUBO LUBO LUCO LUCO EUBO
+     transition 400k -> 600k: LUBO -> EUBO (top machine share 0.14 -> 0.11)
+     transition 600k -> 800k: EUBO -> LUBO (top machine share 0.11 -> 0.17)
+     transition 1400k -> 1600k: LUBO -> LUCO (top machine share 0.45 -> 0.24)
+     transition 1800k -> 2000k: LUCO -> EUBO (top machine share 0.14 -> 0.17)
+  s327: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s328: LUBO LUBO LUBO LUBO LUBO LUBL LUBL LUBO LUBO LUCO
+     transition 1000k -> 1200k: LUBO -> LUBL (top machine share 0.20 -> 0.26)
+     transition 1400k -> 1600k: LUBL -> LUBO (top machine share 0.32 -> 0.31)
+     transition 1800k -> 2000k: LUBO -> LUCO (top machine share 0.09 -> 0.10)
+  s329: LUBO LUBO LTBO HUBO HUBO LTBO HUBO HUBO HUBO HUBO
+     transition 400k -> 600k: LUBO -> LTBO (top machine share 0.17 -> 0.13)
+     transition 600k -> 800k: LTBO -> HUBO (top machine share 0.13 -> 0.21)
+     transition 1000k -> 1200k: HUBO -> LTBO (top machine share 0.12 -> 0.10)
+     transition 1200k -> 1400k: LTBO -> HUBO (top machine share 0.10 -> 0.16)
+  s330: LUBO LUBO LUBO LHCO LHCO LHBO LHBO LHBO LHBO LHBO
+     transition 600k -> 800k: LUBO -> LHCO (top machine share 0.13 -> 0.13)
+     transition 1000k -> 1200k: LHCO -> LHBO (top machine share 0.06 -> 0.09)
+  s331: LUBO LUBO LUBO LUBO HUBO HUBO LUCO LUCO EUBO EUBO
+     transition 800k -> 1000k: LUBO -> HUBO (top machine share 0.10 -> 0.08)
+     transition 1200k -> 1400k: HUBO -> LUCO (top machine share 0.11 -> 0.17)
+     transition 1600k -> 1800k: LUCO -> EUBO (top machine share 0.17 -> 0.11)
+  s332: LUBO LUBO LUBO - LHWO LHBO LHBO LHWO LHWO -
+     transition 1000k -> 1200k: LHWO -> LHBO (top machine share 0.13 -> 0.15)
+     transition 1400k -> 1600k: LHBO -> LHWO (top machine share 0.16 -> 0.11)
+  s333: LUBO LUBO LUBO LUBO LUBO LUBO - LEBO LEBO LEBO
+  s334: LUBO LUBO LUBO LUCO LUCO LUBO LUBO LUBO LUBO LUBO
+     transition 600k -> 800k: LUBO -> LUCO (top machine share 0.12 -> 0.09)
+     transition 1000k -> 1200k: LUCO -> LUBO (top machine share 0.12 -> 0.14)
+  s335: LUBO LUBO LUBO LUBL LUBL LUBL LUBL LUBL LUBL LHBO
+     transition 600k -> 800k: LUBO -> LUBL (top machine share 0.36 -> 0.28)
+     transition 1800k -> 2000k: LUBL -> LHBO (top machine share 0.07 -> 0.12)
+  s336: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s337: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUCO LUCO LUCO
+     transition 1400k -> 1600k: LUBO -> LUCO (top machine share 0.21 -> 0.26)
+  s338: LUBO LUBO LUBO LUBO LUBO LUBO LUB LUB LUBO -
+     transition 1200k -> 1400k: LUBO -> LUB (top machine share 0.12 -> 0.48)
+     transition 1600k -> 1800k: LUB -> LUBO (top machine share 0.15 -> 0.24)
+  s339: LUBO LUBO LUBO OUBO LUBO LUBO LUBO LUBO LUBS LUBS
+     transition 600k -> 800k: LUBO -> OUBO (top machine share 0.13 -> 0.12)
+     transition 800k -> 1000k: OUBO -> LUBO (top machine share 0.12 -> 0.09)
+     transition 1600k -> 1800k: LUBO -> LUBS (top machine share 0.09 -> 0.30)
+  s340: LUBO LUBO LEBO LUBO LUBO EUBO - LTBO LUBO EUBO
+     transition 400k -> 600k: LUBO -> LEBO (top machine share 0.26 -> 0.17)
+     transition 600k -> 800k: LEBO -> LUBO (top machine share 0.17 -> 0.10)
+     transition 1000k -> 1200k: LUBO -> EUBO (top machine share 0.11 -> 0.12)
+     transition 1600k -> 1800k: LTBO -> LUBO (top machine share 0.09 -> 0.08)
+     transition 1800k -> 2000k: LUBO -> EUBO (top machine share 0.08 -> 0.12)
+  52 transitions
+== cf_gmd
+  s311: LUBO LUBO LUBO LUBO EUBO EUBL EUBL EUBL - -
+     transition 800k -> 1000k: LUBO -> EUBO (top machine share 0.10 -> 0.11)
+     transition 1000k -> 1200k: EUBO -> EUBL (top machine share 0.11 -> 0.16)
+  s312: LUBO LUBO LUBO LUBO LUBO LUBO LUBO - - -
+  s313: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO -
+  s314: LUBO LUBO LUBO LUBO LUBO - - - LUCO LUCO
+  s315: LUBO LUBO LUBO LUBO LUBO LUBO LUBO OUBO OUBO -
+     transition 1400k -> 1600k: LUBO -> OUBO (top machine share 0.07 -> 0.09)
+  s316: LUBO LUBO LUBO LUBO LPBO LUBO LPBO LPBO LUBO HUBO
+     transition 800k -> 1000k: LUBO -> LPBO (top machine share 0.24 -> 0.14)
+     transition 1000k -> 1200k: LPBO -> LUBO (top machine share 0.14 -> 0.19)
+     transition 1200k -> 1400k: LUBO -> LPBO (top machine share 0.19 -> 0.16)
+     transition 1600k -> 1800k: LPBO -> LUBO (top machine share 0.16 -> 0.21)
+     transition 1800k -> 2000k: LUBO -> HUBO (top machine share 0.21 -> 0.18)
+  s317: LUBO LUBO LUBO LUBO LUBO LUBO OUBO OUBO OUBO OUBO
+     transition 1200k -> 1400k: LUBO -> OUBO (top machine share 0.26 -> 0.50)
+  s318: LUBO LUBO LUBO LUBL LUBL LUBL LHBL LHBL LHBL LUCO
+     transition 600k -> 800k: LUBO -> LUBL (top machine share 0.10 -> 0.16)
+     transition 1200k -> 1400k: LUBL -> LHBL (top machine share 0.17 -> 0.18)
+     transition 1800k -> 2000k: LHBL -> LUCO (top machine share 0.25 -> 0.22)
+  s319: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s320: LUBO LUBO LUO LUOARB LUORB LUORB - LURB - LURB
+     transition 400k -> 600k: LUBO -> LUO (top machine share 0.12 -> 0.15)
+     transition 600k -> 800k: LUO -> LUOARB (top machine share 0.15 -> 0.11)
+     transition 800k -> 1000k: LUOARB -> LUORB (top machine share 0.11 -> 0.16)
+  s321: LUBO LUBO LUBO LUZL LUZL EUBO OUZL LUZL LPZL LPZL
+     transition 600k -> 800k: LUBO -> LUZL (top machine share 0.19 -> 0.11)
+     transition 1000k -> 1200k: LUZL -> EUBO (top machine share 0.20 -> 0.15)
+     transition 1200k -> 1400k: EUBO -> OUZL (top machine share 0.15 -> 0.27)
+     transition 1400k -> 1600k: OUZL -> LUZL (top machine share 0.27 -> 0.17)
+     transition 1600k -> 1800k: LUZL -> LPZL (top machine share 0.17 -> 0.10)
+  s322: LUBO LUBO LPBO LPBO LPBO LPBO LPBO LPBO - LPBO
+     transition 400k -> 600k: LUBO -> LPBO (top machine share 0.28 -> 0.17)
+  s323: LUBO LUBO LUBO LUBO LUBO LUBO HUBO HUBO HUBO LUBS
+     transition 1200k -> 1400k: LUBO -> HUBO (top machine share 0.14 -> 0.32)
+     transition 1800k -> 2000k: HUBO -> LUBS (top machine share 0.26 -> 0.27)
+  s324: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO HUBO
+     transition 1800k -> 2000k: LUBO -> HUBO (top machine share 0.15 -> 0.11)
+  s325: LUBO LUBO LUBO LUBO LUCO LUCO LUBO LUBO - -
+     transition 800k -> 1000k: LUBO -> LUCO (top machine share 0.20 -> 0.12)
+     transition 1200k -> 1400k: LUCO -> LUBO (top machine share 0.13 -> 0.09)
+  s326: LUBO LUBO LUBO LUBO LUBO - - - - -
+  s327: LUBO LUBO LUBO LUBO LUBO - - LUBO LTBO LTBO
+     transition 1600k -> 1800k: LUBO -> LTBO (top machine share 0.11 -> 0.18)
+  s328: LUBO LUBO - LUBO - - - - - -
+  s329: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s330: LUBO LUBO LUBO LUBO LUBO LPBO LPBO LPBO LUBO LUBO
+     transition 1000k -> 1200k: LUBO -> LPBO (top machine share 0.25 -> 0.15)
+     transition 1600k -> 1800k: LPBO -> LUBO (top machine share 0.18 -> 0.18)
+  s331: LUBO LUBO LUBO LUBO EUBO EEBO EUBO LUBO EEBO LUBO
+     transition 800k -> 1000k: LUBO -> EUBO (top machine share 0.13 -> 0.08)
+     transition 1000k -> 1200k: EUBO -> EEBO (top machine share 0.08 -> 0.17)
+     transition 1200k -> 1400k: EEBO -> EUBO (top machine share 0.17 -> 0.15)
+     transition 1400k -> 1600k: EUBO -> LUBO (top machine share 0.15 -> 0.11)
+     transition 1600k -> 1800k: LUBO -> EEBO (top machine share 0.11 -> 0.16)
+     transition 1800k -> 2000k: EEBO -> LUBO (top machine share 0.16 -> 0.29)
+  s332: LUBO LUBO LUBO LUBO OUBO LUBO LUBO SHBO SHBO SHBO
+     transition 800k -> 1000k: LUBO -> OUBO (top machine share 0.12 -> 0.12)
+     transition 1000k -> 1200k: OUBO -> LUBO (top machine share 0.12 -> 0.12)
+     transition 1400k -> 1600k: LUBO -> SHBO (top machine share 0.18 -> 0.12)
+  s333: LUBO LUBO LUBO LUBO EUBO OEHO OEHO OEHO OEHS OEHS
+     transition 800k -> 1000k: LUBO -> EUBO (top machine share 0.08 -> 0.09)
+     transition 1000k -> 1200k: EUBO -> OEHO (top machine share 0.09 -> 0.19)
+     transition 1600k -> 1800k: OEHO -> OEHS (top machine share 0.16 -> 0.09)
+  s334: LUBO LUBO LUBO - LUBO LUB - LPBO LUX LUX
+     transition 1000k -> 1200k: LUBO -> LUB (top machine share 0.06 -> 0.08)
+     transition 1600k -> 1800k: LPBO -> LUX (top machine share 0.06 -> 0.10)
+  s335: LUBO LUBO LUBO LUBO LUBO LUBO - - - -
+  s336: LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO LUBO
+  s337: LUBO LUBO LUBO LUBO LUBO LUB LUBO LEBO LEBO LEBO
+     transition 1000k -> 1200k: LUBO -> LUB (top machine share 0.07 -> 0.12)
+     transition 1200k -> 1400k: LUB -> LUBO (top machine share 0.12 -> 0.12)
+     transition 1400k -> 1600k: LUBO -> LEBO (top machine share 0.12 -> 0.18)
+  s338: LUBO LUBO LUCO LUBS LHWO LUBS LUBS LUBS LHWO LHWO
+     transition 400k -> 600k: LUBO -> LUCO (top machine share 0.22 -> 0.10)
+     transition 600k -> 800k: LUCO -> LUBS (top machine share 0.10 -> 0.16)
+     transition 800k -> 1000k: LUBS -> LHWO (top machine share 0.16 -> 0.20)
+     transition 1000k -> 1200k: LHWO -> LUBS (top machine share 0.20 -> 0.22)
+     transition 1600k -> 1800k: LUBS -> LHWO (top machine share 0.11 -> 0.12)
+  s339: LUBO LUBO LUBO LUBO LEBO LEBO LEBO LEBO LEBO LEBO
+     transition 800k -> 1000k: LUBO -> LEBO (top machine share 0.07 -> 0.12)
+  s340: LUBO LUBO LUBO LPBO LPBO LPBO LPBO LUBO LHBO LHBO
+     transition 600k -> 800k: LUBO -> LPBO (top machine share 0.20 -> 0.36)
+     transition 1400k -> 1600k: LPBO -> LUBO (top machine share 0.11 -> 0.12)
+     transition 1600k -> 1800k: LUBO -> LHBO (top machine share 0.12 -> 0.27)
+  55 transitions

@@ -1,0 +1,2 @@
+50 transitions (Counter({'cf_gmd': 19, 'cf_gmq': 18, 'cf_gmt': 13})); hybrids 18
+dropped: {'new password not kept': 36, 'hybrid not built (kept main contest)': 32, 'pair does not close a loop': 16}

@@ -1,0 +1,129 @@
+
+== cf_gmt: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.690  arms-race sign 28/30  sign p=8.7e-07  Wilcoxon p=1.2e-06
+  parasite trend (later parasites vs fixed machines)   median +0.539  arms-race sign 26/30  sign p=5.9e-05  Wilcoxon p=3.5e-05
+  gene trend (later machines vs fixed genes)           median -0.699  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=1.9e-08
+  specificity trend (gene minus parasite copying)      median -0.196  arms-race sign 8/30  sign p=0.016  Wilcoxon p=0.02
+  binding trend (later machines binding fixed parasites) median -0.732  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=3.7e-09
+  binding trend (later machines binding fixed genes)   median -0.774  arms-race sign 30/30  sign p=1.9e-09  Wilcoxon p=1.9e-09
+  runs with host trend < 0 and parasite trend > 0: 24/30
+  contemporary exploitation infect[t,t], median over runs: 0.50
+  abundance actually covered (median over runs of each run's median window): machines 0.76  parasites 0.56  genes 0.66
+    s311: host -0.64  para +0.69  gene -0.70  spec -0.64  hbind -0.98  contemp +0.31  covM +0.73  covP +0.60
+    s312: host -0.69  para -0.76  gene -0.70  spec -0.08  hbind -0.38  contemp +0.35  covM +0.76  covP +0.60
+    s313: host -0.79  para +0.11  gene -0.71  spec -0.25  hbind -0.86  contemp +0.49  covM +0.77  covP +0.56
+    s314: host +0.71  para +0.42  gene -0.62  spec -0.66  hbind -0.83  contemp +0.31  covM +0.70  covP +0.62
+    s315: host -0.37  para -0.07  gene -0.96  spec -0.92  hbind -0.69  contemp +0.18  covM +0.78  covP +0.78
+    s316: host -0.69  para +0.87  gene -0.39  spec +0.43  hbind -0.91  contemp +0.67  covM +0.80  covP +0.50
+    s317: host -0.65  para +0.49  gene -0.48  spec -0.00  hbind -0.87  contemp +0.51  covM +0.76  covP +0.55
+    s318: host -0.34  para +0.76  gene -0.06  spec +0.36  hbind -0.85  contemp +0.60  covM +0.76  covP +0.49
+    s319: host -0.48  para +0.92  gene -0.15  spec +0.54  hbind -0.92  contemp +0.63  covM +0.72  covP +0.51
+    s320: host -0.76  para +0.04  gene -0.92  spec -0.94  hbind -0.79  contemp +0.28  covM +0.80  covP +0.68
+    s321: host -0.81  para -0.22  gene -0.79  spec -0.53  hbind -0.31  contemp +0.43  covM +0.78  covP +0.55
+    s322: host -0.89  para +0.74  gene -0.78  spec -0.14  hbind -0.52  contemp +0.58  covM +0.79  covP +0.49
+    s323: host -0.85  para +0.48  gene -0.97  spec -0.75  hbind -0.72  contemp +0.41  covM +0.75  covP +0.52
+    s324: host -0.33  para +0.82  gene -0.04  spec +0.33  hbind -0.47  contemp +0.62  covM +0.78  covP +0.51
+    s325: host -0.69  para +0.27  gene -0.85  spec -0.37  hbind -0.51  contemp +0.60  covM +0.73  covP +0.57
+    s326: host -0.79  para +0.83  gene -0.83  spec -0.51  hbind -0.79  contemp +0.42  covM +0.80  covP +0.48
+    s327: host -0.83  para +0.57  gene -0.74  spec -0.31  hbind -0.98  contemp +0.33  covM +0.76  covP +0.55
+    s328: host -0.96  para +0.87  gene -0.92  spec +0.15  hbind -0.82  contemp +0.62  covM +0.70  covP +0.60
+    s329: host -0.87  para -0.59  gene -0.86  spec -0.60  hbind -0.08  contemp +0.26  covM +0.75  covP +0.61
+    s330: host -0.88  para +0.78  gene -0.75  spec -0.11  hbind -0.71  contemp +0.46  covM +0.74  covP +0.59
+    s331: host -0.45  para +0.40  gene -0.10  spec -0.05  hbind -0.18  contemp +0.55  covM +0.77  covP +0.56
+    s332: host -0.69  para +0.15  gene -0.87  spec -0.62  hbind -0.05  contemp +0.31  covM +0.76  covP +0.60
+    s333: host -0.67  para +0.49  gene -0.60  spec +0.67  hbind -0.88  contemp +0.75  covM +0.79  covP +0.58
+    s334: host -0.72  para +0.92  gene -0.47  spec -0.12  hbind -0.52  contemp +0.62  covM +0.75  covP +0.50
+    s335: host +0.50  para +0.51  gene +0.28  spec -0.32  hbind -0.53  contemp +0.61  covM +0.73  covP +0.56
+    s336: host -0.52  para +0.64  gene -0.58  spec -0.51  hbind -0.75  contemp +0.57  covM +0.79  covP +0.46
+    s337: host -0.43  para +0.15  gene -0.69  spec -0.48  hbind -0.90  contemp +0.47  covM +0.73  covP +0.63
+    s338: host -0.76  para +0.56  gene -0.69  spec -0.10  hbind +0.01  contemp +0.59  covM +0.79  covP +0.57
+    s339: host -0.72  para +0.68  gene -0.39  spec +0.32  hbind -0.98  contemp +0.48  covM +0.80  covP +0.58
+    s340: host -0.89  para +0.92  gene -0.82  spec +0.08  hbind -0.45  contemp +0.60  covM +0.74  covP +0.68
+
+== cf_gmq: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.690  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=3.2e-06
+  parasite trend (later parasites vs fixed machines)   median +0.688  arms-race sign 25/30  sign p=0.00032  Wilcoxon p=1.2e-06
+  gene trend (later machines vs fixed genes)           median -0.493  arms-race sign 26/30  sign p=5.9e-05  Wilcoxon p=5.1e-06
+  specificity trend (gene minus parasite copying)      median -0.020  arms-race sign 14/30  sign p=0.86  Wilcoxon p=0.94
+  binding trend (later machines binding fixed parasites) median -0.788  arms-race sign 30/30  sign p=1.9e-09  Wilcoxon p=1.7e-06
+  binding trend (later machines binding fixed genes)   median -0.718  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=2.9e-06
+  runs with host trend < 0 and parasite trend > 0: 24/30
+  contemporary exploitation infect[t,t], median over runs: 0.64
+  abundance actually covered (median over runs of each run's median window): machines 0.78  parasites 0.68  genes 0.70
+    s311: host +0.54  para +0.83  gene +0.82  spec +0.16  hbind -0.40  contemp +0.76  covM +0.80  covP +0.72
+    s312: host -0.89  para +0.89  gene -0.50  spec -0.12  hbind -0.86  contemp +0.25  covM +0.80  covP +0.74
+    s313: host -0.43  para +0.56  gene -0.20  spec -0.04  hbind -0.51  contemp +0.70  covM +0.80  covP +0.60
+    s314: host -0.54  para +0.91  gene -0.11  spec +0.61  hbind -0.84  contemp +0.71  covM +0.77  covP +0.71
+    s315: host -0.63  para +0.58  gene -0.58  spec -0.53  hbind -0.01  contemp +0.64  covM +0.80  covP +0.59
+    s316: host -0.91  para +0.92  gene -0.85  spec -0.00  hbind -1.00  contemp +0.55  covM +0.69  covP +0.66
+    s317: host -0.60  para +0.78  gene +0.01  spec +0.60  hbind -0.72  contemp +0.70  covM +0.72  covP +0.54
+    s318: host -0.92  para +0.02  gene -0.80  spec -0.67  hbind -0.30  contemp +0.27  covM +0.77  covP +0.71
+    s319: host -0.77  para +0.57  gene +0.05  spec +0.40  hbind -0.93  contemp +0.35  covM +0.80  covP +0.67
+    s320: host -0.80  para +0.90  gene -0.53  spec +0.23  hbind -0.58  contemp +0.80  covM +0.76  covP +0.66
+    s321: host -0.49  para +0.80  gene -0.42  spec -0.20  hbind -0.75  contemp +0.79  covM +0.77  covP +0.72
+    s322: host -0.69  para +0.21  gene -0.67  spec -0.09  hbind -0.83  contemp +0.52  covM +0.78  covP +0.68
+    s323: host -0.49  para -0.00  gene -0.89  spec -0.70  hbind -0.32  contemp +0.31  covM +0.80  covP +0.72
+    s324: host -0.71  para +0.25  gene -0.36  spec +0.01  hbind -0.40  contemp +0.47  covM +0.74  covP +0.71
+    s325: host -0.62  para -0.32  gene -0.43  spec -0.12  hbind -0.88  contemp +0.66  covM +0.81  covP +0.77
+    s326: host -0.78  para +0.64  gene -0.70  spec -0.09  hbind -0.73  contemp +0.58  covM +0.77  covP +0.62
+    s327: host -0.62  para -0.11  gene -0.38  spec +0.02  hbind -0.46  contemp +0.68  covM +0.77  covP +0.58
+    s328: host -0.69  para -0.23  gene -0.83  spec -0.42  hbind -0.51  contemp +0.65  covM +0.80  covP +0.77
+    s329: host -0.71  para +0.30  gene +0.09  spec +0.52  hbind -0.84  contemp +0.37  covM +0.79  covP +0.66
+    s330: host -0.92  para +0.76  gene -0.88  spec +0.43  hbind -0.96  contemp +0.75  covM +0.75  covP +0.70
+    s331: host -0.90  para +0.88  gene -0.54  spec +0.20  hbind -0.73  contemp +0.54  covM +0.78  covP +0.76
+    s332: host -0.68  para +0.86  gene -0.03  spec +0.68  hbind -0.96  contemp +0.73  covM +0.71  covP +0.60
+    s333: host -0.88  para +0.83  gene -0.81  spec -0.29  hbind -0.85  contemp +0.41  covM +0.76  covP +0.51
+    s334: host -0.55  para +0.88  gene -0.48  spec -0.31  hbind -0.73  contemp +0.66  covM +0.80  covP +0.73
+    s335: host -0.27  para +0.67  gene -0.15  spec -0.07  hbind -0.87  contemp +0.47  covM +0.73  covP +0.71
+    s336: host -0.96  para -0.02  gene -0.94  spec -0.75  hbind -0.08  contemp +0.34  covM +0.80  covP +0.66
+    s337: host -0.49  para +0.70  gene -0.12  spec +0.44  hbind -0.99  contemp +0.72  covM +0.80  covP +0.74
+    s338: host -0.83  para +0.76  gene -0.64  spec -0.04  hbind -0.88  contemp +0.40  covM +0.79  covP +0.68
+    s339: host -0.69  para +0.87  gene -0.48  spec +0.45  hbind -0.90  contemp +0.82  covM +0.77  covP +0.64
+    s340: host -0.87  para +0.52  gene -0.83  spec +0.09  hbind -0.84  contemp +0.72  covM +0.79  covP +0.67
+
+== cf_gmd: 30 runs
+  host trend (later machines vs fixed parasites)       median -0.687  arms-race sign 28/30  sign p=8.7e-07  Wilcoxon p=3.2e-06
+  parasite trend (later parasites vs fixed machines)   median +0.562  arms-race sign 29/30  sign p=5.8e-08  Wilcoxon p=4.7e-08
+  gene trend (later machines vs fixed genes)           median -0.695  arms-race sign 28/30  sign p=8.7e-07  Wilcoxon p=3.2e-06
+  specificity trend (gene minus parasite copying)      median +0.104  arms-race sign 23/30  sign p=0.0052  Wilcoxon p=0.0066
+  binding trend (later machines binding fixed parasites) median -0.563  arms-race sign 30/30  sign p=1.9e-09  Wilcoxon p=1.9e-09
+  binding trend (later machines binding fixed genes)   median -0.628  arms-race sign 30/30  sign p=1.9e-09  Wilcoxon p=1.7e-06
+  runs with host trend < 0 and parasite trend > 0: 27/30
+  contemporary exploitation infect[t,t], median over runs: 0.85
+  abundance actually covered (median over runs of each run's median window): machines 0.80  parasites 0.73  genes 0.68
+    s311: host -0.27  para +0.19  gene -0.22  spec +0.22  hbind -0.95  contemp +0.93  covM +0.80  covP +0.78
+    s312: host -0.58  para +0.54  gene -0.57  spec -0.22  hbind -0.95  contemp +0.55  covM +0.79  covP +0.76
+    s313: host -0.31  para +0.47  gene -0.49  spec -0.11  hbind -0.14  contemp +0.88  covM +0.80  covP +0.80
+    s314: host -0.91  para +0.84  gene -0.76  spec +0.85  hbind -0.86  contemp +0.88  covM +0.77  covP +0.72
+    s315: host +0.19  para +0.30  gene +0.20  spec -0.01  hbind -0.02  contemp +0.85  covM +0.73  covP +0.65
+    s316: host -0.24  para +0.84  gene -0.36  spec +0.25  hbind -0.05  contemp +0.87  covM +0.79  covP +0.65
+    s317: host -0.56  para +0.51  gene -0.55  spec +0.03  hbind -0.19  contemp +0.85  covM +0.80  covP +0.80
+    s318: host -0.94  para +0.11  gene -0.94  spec +0.07  hbind -0.30  contemp +0.64  covM +0.80  covP +0.73
+    s319: host -0.94  para +0.78  gene -0.94  spec +0.13  hbind -0.39  contemp +0.67  covM +0.80  covP +0.65
+    s320: host -0.59  para -0.41  gene -0.94  spec -0.79  hbind -0.23  contemp +0.24  covM +0.71  covP +0.80
+    s321: host -0.91  para +0.04  gene -0.89  spec +0.08  hbind -0.56  contemp +0.62  covM +0.79  covP +0.67
+    s322: host -0.63  para +0.80  gene -0.69  spec +0.09  hbind -0.88  contemp +0.90  covM +0.80  covP +0.80
+    s323: host -0.89  para +0.65  gene -0.90  spec +0.27  hbind -0.57  contemp +0.63  covM +0.80  covP +0.67
+    s324: host -0.88  para +0.60  gene -0.70  spec +0.58  hbind -0.81  contemp +0.64  covM +0.80  covP +0.64
+    s325: host -0.81  para +0.71  gene -0.78  spec +0.10  hbind -0.53  contemp +0.83  covM +0.80  covP +0.76
+    s326: host -0.27  para +0.65  gene -0.30  spec -0.20  hbind -0.37  contemp +0.85  covM +0.80  covP +0.70
+    s327: host +0.26  para +0.84  gene +0.33  spec +0.11  hbind -0.39  contemp +0.88  covM +0.80  covP +0.74
+    s328: host -0.82  para +0.89  gene -0.79  spec +0.18  hbind -0.96  contemp +0.86  covM +0.81  covP +0.80
+    s329: host -0.40  para +0.69  gene -0.43  spec +0.06  hbind -0.70  contemp +0.86  covM +0.80  covP +0.67
+    s330: host -0.31  para +0.56  gene -0.32  spec +0.12  hbind -0.68  contemp +0.93  covM +0.81  covP +0.80
+    s331: host -0.98  para +0.74  gene -0.96  spec +0.03  hbind -0.63  contemp +0.63  covM +0.80  covP +0.65
+    s332: host -0.66  para +0.43  gene -0.66  spec +0.50  hbind -0.56  contemp +0.82  covM +0.80  covP +0.73
+    s333: host -0.71  para +0.57  gene -0.69  spec +0.20  hbind -0.50  contemp +0.90  covM +0.80  covP +0.79
+    s334: host -0.18  para +0.43  gene -0.37  spec -0.13  hbind -0.08  contemp +0.88  covM +0.65  covP +0.72
+    s335: host -0.85  para +0.42  gene -0.76  spec +0.32  hbind -0.75  contemp +0.59  covM +0.80  covP +0.66
+    s336: host -0.87  para +0.36  gene -0.85  spec +0.30  hbind -0.75  contemp +0.75  covM +0.80  covP +0.66
+    s337: host -0.97  para +0.08  gene -0.95  spec +0.07  hbind -0.06  contemp +0.53  covM +0.78  covP +0.69
+    s338: host -0.86  para +0.60  gene -0.73  spec +0.19  hbind -0.98  contemp +0.81  covM +0.78  covP +0.77
+    s339: host -0.61  para +0.57  gene -0.47  spec +0.17  hbind -0.85  contemp +0.86  covM +0.79  covP +0.72
+    s340: host -0.76  para +0.18  gene -0.77  spec -0.02  hbind -0.55  contemp +0.92  covM +0.81  covP +0.80
+host trend, cf_gmt vs cf_gmq: medians -0.690 vs -0.690  Mann-Whitney p=0.62  rank-biserial -0.08
+host trend, cf_gmt vs cf_gmd: medians -0.690 vs -0.687  Mann-Whitney p=0.85  rank-biserial -0.03
+para trend, cf_gmt vs cf_gmq: medians +0.539 vs +0.688  Mann-Whitney p=0.35  rank-biserial +0.14
+para trend, cf_gmt vs cf_gmd: medians +0.539 vs +0.562  Mann-Whitney p=0.98  rank-biserial -0.00
+spec trend, cf_gmt vs cf_gmq: medians -0.196 vs -0.020  Mann-Whitney p=0.038  rank-biserial +0.31
+spec trend, cf_gmt vs cf_gmd: medians -0.196 vs +0.104  Mann-Whitney p=0.0021  rank-biserial +0.46

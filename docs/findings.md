@@ -1652,3 +1652,55 @@ treated matrix cells as independent, and a control that came out flat by chance.
 `ts_gm?6.results.txt` first contained only a missing-script error (the pipeline called
 `timeshift_agg.py` from a path where it did not exist); they were regenerated on Nov 23. The
 primary analysis (`confirm_stats.py`) reads the simulation logs directly and was not affected.
+
+## 37. What drives the password turnover? Contests of evolved transitions (Nov 24)
+
+Proposed by an outside review of section 36. Scripts: `pw_scan.py` (`pw_scan.txt`),
+`pw_compete.py`, `pw_pipeline.sh`; results `pwc_find.txt`, `pwc_transitions.json`,
+`pwc_score.txt`. Runs on aida in `~/smol/runs/pwc/`. Exploratory: no thresholds were fixed in
+advance; p values are uncorrected.
+
+**Transitions.** The password is the label after `^F$` in the machine (`LUBO` in the seed); the
+machine starts translating where the gene carries its complement. Across the 90 confirmation runs
+the commonest machine's password changed 136 times between consecutive windows, often back and
+forth. Taking, per run, the first change whose new password was still on top at the next window,
+and whose before and after machines each close a loop with a working gene of their time: 50
+independent transitions (13 cf_gmt, 18 cf_gmq, 19 cf_gmd; 36 candidates dropped because the new
+password did not persist, 16 because a pair did not close a loop).
+
+**Contests.** Fresh 125 x 100 worlds with the run's rules, mutation off, 30k steps: 500 old
+machines + 500 old genes against 500 new machines + 500 new genes, at random cells; with no
+parasites (p0), 1,000 gene-parasites from before the transition (pB) or from after it (pA); 4
+assay seeds. For 18 transitions a **hybrid** could also be built: the old machine and gene with
+only the password changed (label, complement tag and the label's codons), tested the same way
+against the old pair. Score: the new side's share of genes at 30k (mean of the seeds); each
+transition is one replicate. All 816 runs completed.
+
+| contest | p0 | pB | pA | pB - p0 | pA - pB |
+|---|---|---|---|---|---|
+| evolved pairs (50) | 0.65 (47/50 ahead) | 0.71 (48/50) | 0.68 (47/50) | +0.011 (30/50, p = 0.058) | -0.006 (21/50 positive, p = 0.053) |
+| password alone (18) | 0.52 (13/18, p = 0.08) | 0.54 (13/18) | 0.52 (10/18) | +0.025 (14/18, p = 0.043) | -0.014 (6/18 positive, p = 0.15) |
+
+(Shares are medians over transitions; p from Wilcoxon signed-rank. By set, evolved pairs in
+p0: cf_gmt 0.90, cf_gmq 0.58, cf_gmd 0.58.)
+
+**Reading.**
+- The new machine-gene pairs win clearly **without parasites**: a general reproductive advantage
+  is the main reason later pairs replace earlier ones. But the evolved pairs differ in more than
+  the password (200k steps of other changes), so this does not say the password change itself
+  is advantageous.
+- The password change on its own is close to **neutral without parasites** (0.52) and gives a
+  **small advantage against earlier parasites** that later parasites partly remove (+0.025, then
+  -0.014): the pattern of parasite-driven escape, but small, marginal (p = 0.04 and 0.15, 18
+  transitions, uncorrected) and from the subset of transitions where a clean swap was possible.
+- So: turnover is mostly carried by generally better machine-gene pairs, with at most a weak
+  parasite-escape component in the password itself. Parasite selection is not shown to drive the
+  turnover; it is not ruled out either.
+
+**Wider mechanism assay (`mech2.py`, caps raised to 25 machines / 50 parasites / 15 genes;
+`mech2_confirm_wide.txt`).** With the original caps the assay covered only 35-55% of each class's
+molecules (`mech2_confirm_v2.txt`); with wider caps it covers 56-80%. The section 36 results are
+unchanged (host trend -0.69 in all three sets; specificity trend cf_gmt -0.20, cf_gmq -0.02,
+cf_gmd +0.10; cf_gmt vs cf_gmd p = 0.002). Binding, now reported separately, falls with machine
+time for parasites and genes alike (binding trend -0.56 to -0.79 in all sets, 28-30/30 runs): the
+loss of binding is also a compatibility change, not one aimed at parasites.
