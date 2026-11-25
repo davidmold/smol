@@ -1,6 +1,6 @@
 [package]
 name = "smol"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 description = "Stringmol artificial chemistry, reimplemented from a written specification"
 license = "GPL-3.0-or-later"

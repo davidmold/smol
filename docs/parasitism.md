@@ -2,7 +2,7 @@
 
 Nov 17, 2026 · David Mold
 
-> Snapshot of the Claude Doc of the same name, exported 24 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–37) and `experiments/`.
+> Snapshot of the Claude Doc of the same name, exported 25 Nov 2026. The doc is the working version; this copy is re-exported when it changes. Details behind every number are in `findings.md` (sections 17–37) and `experiments/`.
 
 ## Summary
 
@@ -291,6 +291,7 @@ So the way variation is produced does shift, but mostly early, and only slightly
     - **The label itself is close to neutral.** Putting the new label on the earlier pair: −0.03 (CI −0.08 to +0.02; 32 changes). Putting the old label back on the later pair: +0.03 (CI −0.03 to +0.09; 19 changes).
     - **Most label changes are silent in translation.** In 30 of 50, the old and new labels direct translation to the same start, equally reliably, on both genes; in the rest the start moves or becomes less reliable, yet nearly every pair, swapped or not, still makes its working machine.
     - **The parasite part is small and inconsistent.** Against earlier parasites the new label gains about 2–3 points on the earlier pair, but nothing on the later pair, and later parasites don't measurably erode it.
+    - **Lineage replays: the background helps a rare founder establish.** For the 13 changes with all four pairs (each background with each label), 5 founder pairs were put into the run's own earlier world, with mutation on, and their lineage was followed by ancestry for 50k steps (20 replicates each; a silent codon marker made each founder traceable). The evolved background established more often than the ancestral one: +0.24 with the new label (12 of 13 changes) and +0.12 with the old. In the clearest case, a single lineage with a silent label change, the evolved background established in 20 of 20 and 19 of 20 replicates with the new and old labels, the ancestral one in 3 and 2. The label's own effect was smaller and depended on the background: the new label helped slightly on the evolved background and hurt slightly on the ancestral one, and a shorter label helped on both. Lineages established with the label they started with. Details in findings section 37 (`pw_replay.py`, `pwr_score.txt`).
     - **Reading.** Consistent with labels hitchhiking as machine–gene pairs adapt: the label changes, carried along by pairs that are better overall, while what the label does mostly stays the same. Whether parasites contributed to the historical turnover remains unresolved.
     - **Caveats:** contests between two common types from an equal start in a fresh world, not a rare variant establishing in its own neighbourhood; exploratory, with uncorrected p values. An outside review found 5 parasite pools in the first round that contained a competing gene; the second round (reported here) removed them.
 
