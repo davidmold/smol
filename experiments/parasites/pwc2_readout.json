@@ -1,0 +1,2203 @@
+[
+ {
+  "k": 0,
+  "set": "cf_gmt",
+  "run": "s311",
+  "old": "HUBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 1,
+  "set": "cf_gmt",
+  "run": "s312",
+  "old": "LUB",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    13,
+    1.0
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    13,
+    1.0
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 2,
+  "set": "cf_gmt",
+  "run": "s313",
+  "old": "LUBO",
+  "new": "HUBO",
+  "old_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 3,
+  "set": "cf_gmt",
+  "run": "s316",
+  "old": "LUBO",
+  "new": "OUB",
+  "old_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 4,
+  "set": "cf_gmt",
+  "run": "s318",
+  "old": "LUBO",
+  "new": "EUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 5,
+  "set": "cf_gmt",
+  "run": "s319",
+  "old": "LUBO",
+  "new": "OUBO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 6,
+  "set": "cf_gmt",
+  "run": "s323",
+  "old": "HUBO",
+  "new": "OUZO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    19,
+    1.0
+   ],
+   "new_label": [
+    19,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 0.5,
+   "recip": 0.5
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 7,
+  "set": "cf_gmt",
+  "run": "s327",
+  "old": "LUBO",
+  "new": "LEBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    25,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 8,
+  "set": "cf_gmt",
+  "run": "s328",
+  "old": "LUBO",
+  "new": "LHBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 9,
+  "set": "cf_gmt",
+  "run": "s331",
+  "old": "LUBO",
+  "new": "EUBO",
+  "old_gene": {
+   "old_label": [
+    12,
+    1.0
+   ],
+   "new_label": [
+    12,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    11,
+    0.6113
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 10,
+  "set": "cf_gmt",
+  "run": "s333",
+  "old": "LUB",
+  "new": "OUBO",
+  "old_gene": {
+   "old_label": [
+    13,
+    1.0
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 11,
+  "set": "cf_gmt",
+  "run": "s334",
+  "old": "LUBO",
+  "new": "LTBO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 12,
+  "set": "cf_gmt",
+  "run": "s337",
+  "old": "LUBO",
+  "new": "LUCO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 13,
+  "set": "cf_gmq",
+  "run": "s311",
+  "old": "LUCO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.7479
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    64,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 14,
+  "set": "cf_gmq",
+  "run": "s315",
+  "old": "LPBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    18,
+    1.0
+   ],
+   "new_label": [
+    18,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    18,
+    1.0
+   ],
+   "new_label": [
+    18,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 15,
+  "set": "cf_gmq",
+  "run": "s316",
+  "old": "LUBO",
+  "new": "LUB",
+  "old_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 16,
+  "set": "cf_gmq",
+  "run": "s320",
+  "old": "LUBO",
+  "new": "LHBO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 17,
+  "set": "cf_gmq",
+  "run": "s321",
+  "old": "LUBO",
+  "new": "LUZO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    0.9166
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    5,
+    1.0
+   ],
+   "new_label": [
+    5,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 18,
+  "set": "cf_gmq",
+  "run": "s322",
+  "old": "LTBO",
+  "new": "OTBO",
+  "old_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 19,
+  "set": "cf_gmq",
+  "run": "s324",
+  "old": "LUBO",
+  "new": "LHBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 20,
+  "set": "cf_gmq",
+  "run": "s325",
+  "old": "LUBO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.3581
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 21,
+  "set": "cf_gmq",
+  "run": "s326",
+  "old": "EUBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 22,
+  "set": "cf_gmq",
+  "run": "s328",
+  "old": "LUBO",
+  "new": "LUBL",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 23,
+  "set": "cf_gmq",
+  "run": "s330",
+  "old": "LUBO",
+  "new": "LHCO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 24,
+  "set": "cf_gmq",
+  "run": "s331",
+  "old": "LUBO",
+  "new": "HUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 25,
+  "set": "cf_gmq",
+  "run": "s332",
+  "old": "LHWO",
+  "new": "LHBO",
+  "old_gene": {
+   "old_label": [
+    6,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    6,
+    1.0
+   ],
+   "new_label": [
+    6,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 26,
+  "set": "cf_gmq",
+  "run": "s334",
+  "old": "LUBO",
+  "new": "LUCO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 27,
+  "set": "cf_gmq",
+  "run": "s335",
+  "old": "LUBO",
+  "new": "LUBL",
+  "old_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    12,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "recip_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 28,
+  "set": "cf_gmq",
+  "run": "s337",
+  "old": "LUBO",
+  "new": "LUCO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.9586
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    13,
+    1.0
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 29,
+  "set": "cf_gmq",
+  "run": "s339",
+  "old": "OUBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 30,
+  "set": "cf_gmq",
+  "run": "s340",
+  "old": "LEBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    5,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "exact",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": true
+ },
+ {
+  "k": 31,
+  "set": "cf_gmd",
+  "run": "s311",
+  "old": "EUBO",
+  "new": "EUBL",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 32,
+  "set": "cf_gmd",
+  "run": "s315",
+  "old": "LUBO",
+  "new": "OUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 33,
+  "set": "cf_gmd",
+  "run": "s316",
+  "old": "LUBO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 34,
+  "set": "cf_gmd",
+  "run": "s317",
+  "old": "LUBO",
+  "new": "OUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 35,
+  "set": "cf_gmd",
+  "run": "s318",
+  "old": "LUBO",
+  "new": "LUBL",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 36,
+  "set": "cf_gmd",
+  "run": "s321",
+  "old": "LUBO",
+  "new": "LUZL",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "loop fails"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 37,
+  "set": "cf_gmd",
+  "run": "s322",
+  "old": "LUBO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.7479
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 38,
+  "set": "cf_gmd",
+  "run": "s323",
+  "old": "LUBO",
+  "new": "HUBO",
+  "old_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 39,
+  "set": "cf_gmd",
+  "run": "s324",
+  "old": "LUBO",
+  "new": "HUBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 40,
+  "set": "cf_gmd",
+  "run": "s325",
+  "old": "LUBO",
+  "new": "LUCO",
+  "old_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    0.9586
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 41,
+  "set": "cf_gmd",
+  "run": "s327",
+  "old": "LUBO",
+  "new": "LTBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.6113
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    0.6113
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 0.7,
+   "recip": 0.7
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 42,
+  "set": "cf_gmd",
+  "run": "s330",
+  "old": "LUBO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "codons",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 43,
+  "set": "cf_gmd",
+  "run": "s331",
+  "old": "EEBO",
+  "new": "LUBO",
+  "old_gene": {
+   "old_label": [
+    13,
+    1.0
+   ],
+   "new_label": [
+    13,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "recip": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "codons",
+   "ok"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 44,
+  "set": "cf_gmd",
+  "run": "s333",
+  "old": "EUBO",
+  "new": "OEHO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 45,
+  "set": "cf_gmd",
+  "run": "s334",
+  "old": "LPBO",
+  "new": "LUX",
+  "old_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    12,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    12,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 46,
+  "set": "cf_gmd",
+  "run": "s337",
+  "old": "LUBO",
+  "new": "LEBO",
+  "old_gene": {
+   "old_label": [
+    17,
+    1.0
+   ],
+   "new_label": [
+    17,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    14,
+    1.0
+   ],
+   "new_label": [
+    14,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 0.8,
+   "new": 1.0,
+   "fwd": 0.8
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 47,
+  "set": "cf_gmd",
+  "run": "s338",
+  "old": "LHWO",
+  "new": "LUBS",
+  "old_gene": {
+   "old_label": [
+    6,
+    1.0
+   ],
+   "new_label": [
+    15,
+    1.0
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    6,
+    1.0
+   ],
+   "new_label": [
+    12,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0
+  },
+  "fwd_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": false,
+  "exact_tag_new": false
+ },
+ {
+  "k": 48,
+  "set": "cf_gmd",
+  "run": "s339",
+  "old": "LUBO",
+  "new": "LEBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "new_gene": {
+   "old_label": [
+    15,
+    1.0
+   ],
+   "new_label": [
+    5,
+    1.0
+   ],
+   "silent": false
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ },
+ {
+  "k": 49,
+  "set": "cf_gmd",
+  "run": "s340",
+  "old": "LUBO",
+  "new": "LPBO",
+  "old_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    0.7479
+   ],
+   "silent": false
+  },
+  "new_gene": {
+   "old_label": [
+    16,
+    1.0
+   ],
+   "new_label": [
+    16,
+    1.0
+   ],
+   "silent": true
+  },
+  "works": {
+   "old": 1.0,
+   "new": 1.0,
+   "fwd": 1.0
+  },
+  "fwd_attempt": [
+   "exact",
+   "ok"
+  ],
+  "recip_attempt": [
+   "-",
+   "no unique codons"
+  ],
+  "exact_tag_old": true,
+  "exact_tag_new": false
+ }
+]

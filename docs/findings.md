@@ -1784,3 +1784,26 @@ contests; its contribution to the historical turnover remains unresolved. These 
 contests from an equal start in fresh worlds, not the establishment of a rare variant in its
 original neighbourhood; uncorrected p values; exploratory throughout.
 
+
+**Per-transition view and ancestry (Nov 24, after a second review; `pw_plot.py` ->
+`pw_transitions.png`, `pw_ancestry.py` -> `pwc2_ancestry.txt`).**
+- Only 13 transitions have both swaps, and they are enriched for silent label changes (10/13 silent
+  on both genes; reciprocal swaps 15/19, against 30/50 overall), so "small on both backgrounds"
+  rests mostly on silent changes.
+- Within the 13: the whole later pair wins by +0.4 to +0.5 in 7, with both swaps near zero in 5 of
+  those 7. The exceptions are **label-length changes**: LUBO -> LUB gains +0.22 / +0.24 (forward /
+  reciprocal) and LUBO -> OUB +0.08 / +0.07, while LUB -> LUBO costs -0.36 / -0.23 (yet that later
+  pair still wins, +0.17, so its background more than pays for its label). One behaviour-changing
+  case (LUBO -> LTBO, start reliability 0.61) is strongly background-dependent: -0.46 forward,
+  +0.46 reciprocal, i.e. each label works only on the gene it evolved with. Across all swaps,
+  same-length label changes have median effects near 0 (forward +0.004, n = 28; reciprocal +0.002,
+  n = 16, with one outlier each), while a shorter label helps (+0.08 to +0.24, n = 4) and a longer
+  one hurts (-0.23 to -0.48, n = 3): the label's length (and so the machine's) matters, its
+  letters mostly do not.
+- **Ancestry** (species.tsv records each new species' template, so a gene's ancestry is its chain
+  of templates). Of the 13, only 3 are one lineage (the old gene an ancestor of the new); in 10 the
+  old and new genes are on competing branches, whose common ancestor is often the seed itself (4
+  cases) or was born 0.05-0.5M steps earlier. The new label usually arose long before the
+  "transition" between windows (e.g. at 42k for a change seen at 0.8-1M). So most transitions are
+  shifts between coexisting branches, not new mutations sweeping, and the replays need to start
+  where the label arose on its branch.

@@ -1,0 +1,52 @@
+t001 cf_gmt s312 LUB->LUBO (windows 1000k -> 1200k)
+   Go species 135033 born 743356; Gn species 132758 born 732420; competing branches: common ancestor 2 born 1
+   branch from common ancestor to Gn: 9 copying steps; total edits 8
+   new label's codons first on species 2 (born 1), step 0 of 9; edits before it on the branch 0, after it 8
+t003 cf_gmt s316 LUBO->OUB (windows 1400k -> 1600k)
+   Go species 97055 born 546213; Gn species 188903 born 1004094; competing branches: common ancestor 80372 born 465496
+   branch from common ancestor to Gn: 3 copying steps; total edits 3
+   new label's codons first on species 107228 (born 593474), step 1 of 3; edits before it on the branch 1, after it 2
+t005 cf_gmt s319 LUBO->OUBO (windows 1800k -> 2000k)
+   Go species 60030 born 360227; Gn species 323826 born 1560961; competing branches: common ancestor 44659 born 291902
+   branch from common ancestor to Gn: 4 copying steps; total edits 4
+   new label's codons first on species 300657 (born 1453320), step 3 of 4; edits before it on the branch 3, after it 1
+t011 cf_gmt s334 LUBO->LTBO (windows 1000k -> 1200k)
+   Go species 37510 born 254255; Gn species 175452 born 906259; competing branches: common ancestor 2 born 1
+   branch from common ancestor to Gn: 6 copying steps; total edits 6
+   new label's codons first on species 157611 (born 821534), step 4 of 6; edits before it on the branch 5, after it 2
+t015 cf_gmq s316 LUBO->LUB (windows 1200k -> 1400k)
+   Go species 124371 born 689718; Gn species 172194 born 913980; competing branches: common ancestor 38842 born 266473
+   branch from common ancestor to Gn: 5 copying steps; total edits 5
+   new label's codons first on species 38842 (born 266473), step 0 of 5; edits before it on the branch 0, after it 5
+t017 cf_gmq s321 LUBO->LUZO (windows 800k -> 1000k)
+   Go species 56757 born 372265; Gn species 122124 born 753428; competing branches: common ancestor 2 born 1
+   branch from common ancestor to Gn: 8 copying steps; total edits 8
+   new label's codons first on species 1170 (born 41959), step 1 of 8; edits before it on the branch 1, after it 7
+t018 cf_gmq s322 LTBO->OTBO (windows 1800k -> 2000k)
+   Go species 182489 born 1100102; Gn species 241666 born 1461696; competing branches: common ancestor 28097 born 216613
+   branch from common ancestor to Gn: 5 copying steps; total edits 5
+   new label's codons first on species 65882 (born 435155), step 3 of 5; edits before it on the branch 3, after it 2
+t022 cf_gmq s328 LUBO->LUBL (windows 1000k -> 1200k)
+   Go species 23391 born 176550; Gn species 139884 born 974147; competing branches: common ancestor 73 born 6067
+   branch from common ancestor to Gn: 7 copying steps; total edits 7
+   new label's codons first on species 139884 (born 974147), step 7 of 7; edits before it on the branch 7, after it 0
+t029 cf_gmq s339 OUBO->LUBO (windows 800k -> 1000k)
+   Go species 23624 born 174083; Gn species 81621 born 477345; competing branches: common ancestor 2745 born 50824
+   branch from common ancestor to Gn: 3 copying steps; total edits 4
+   new label's codons first on species 2745 (born 50824), step 0 of 3; edits before it on the branch 0, after it 4
+t032 cf_gmd s315 LUBO->OUBO (windows 1400k -> 1600k)
+   Go species 42314 born 333966; Gn species 168809 born 1058781; Go IS an ancestor of Gn (one lineage)
+   branch from Go to Gn: 2 copying steps; total edits 2
+   new label's codons first on species 68691 (born 504542), step 1 of 2; edits before it on the branch 1, after it 1
+t034 cf_gmd s317 LUBO->OUBO (windows 1200k -> 1400k)
+   Go species 68939 born 500469; Gn species 159910 born 1241674; Go IS an ancestor of Gn (one lineage)
+   branch from Go to Gn: 7 copying steps; total edits 7
+   new label's codons first on species 154023 (born 1189390), step 6 of 7; edits before it on the branch 6, after it 1
+t035 cf_gmd s318 LUBO->LUBL (windows 600k -> 800k)
+   Go species 24295 born 226275; Gn species 72206 born 527528; competing branches: common ancestor 2 born 1
+   branch from common ancestor to Gn: 7 copying steps; total edits 7
+   new label's codons first on species 56869 (born 451045), step 6 of 7; edits before it on the branch 6, after it 1
+t041 cf_gmd s327 LUBO->LTBO (windows 1600k -> 1800k)
+   Go species 175027 born 1103055; Gn species 223237 born 1554333; Go IS an ancestor of Gn (one lineage)
+   branch from Go to Gn: 1 copying steps; total edits 2
+   new label's codons first on species 223237 (born 1554333), step 1 of 1; edits before it on the branch 2, after it 0
