@@ -1,0 +1,38 @@
+1040 replays. Established = >= 20 lineage gene-like molecules at +50k (of 20 replicates)
+
+case                               ev_new          ev_old          an_new          an_old
+t001   LUB->LUBO  cf_gmt    0.25 (   2)   0.60 (  48)   0.05 (   0)   0.30 (   0)
+t003  LUBO->OUB   cf_gmt    0.25 (   0)   0.00 (   0)   0.00 (   0)   0.15 (   0)
+t005  LUBO->OUBO  cf_gmt    0.25 (   0)   0.30 (   0)   0.10 (   0)   0.05 (   0)
+t011  LUBO->LTBO  cf_gmt    0.40 (   0)   0.35 (   1)   0.15 (   0)   0.20 (   0)
+t015  LUBO->LUB   cf_gmq    0.30 (   0)   0.20 (   0)   0.20 (   0)   0.15 (   0)
+t017  LUBO->LUZO  cf_gmq    0.55 (  70)   0.40 (   3)   0.05 (   0)   0.05 (   0)
+t018  LTBO->OTBO  cf_gmq    0.25 (   0)   0.20 (   0)   0.10 (   0)   0.25 (   0)
+t022  LUBO->LUBL  cf_gmq    0.50 (  20)   0.10 (   0)   0.10 (   0)   0.15 (   0)
+t029  OUBO->LUBO  cf_gmq    0.20 (   0)   0.15 (   0)   0.15 (   0)   0.20 (   0)
+t032  LUBO->OUBO  cf_gmd    0.05 (   0)   0.05 (   0)   0.05 (   0)   0.05 (   0)
+t034  LUBO->OUBO  cf_gmd    1.00 ( 955)   0.95 (1086)   0.15 (   0)   0.10 (   0)
+t035  LUBO->LUBL  cf_gmd    0.15 (   0)   0.30 (   0)   0.10 (   0)   0.25 (   0)
+t041  LUBO->LTBO  cf_gmd    0.20 (   0)   0.00 (   0)   0.00 (   0)   0.10 (   0)
+
+(share of replicates established, and median lineage gene-like molecules at the end)
+label kept among lineage gene-like molecules at the end (median over established and unestablished):
+  t001 ev_new 1.00  ev_old 0.98  an_new 1.00  an_old 1.00
+  t003 ev_new 1.00  ev_old nan  an_new 1.00  an_old 1.00
+  t005 ev_new 1.00  ev_old 1.00  an_new 1.00  an_old 1.00
+  t011 ev_new 1.00  ev_old 1.00  an_new 0.98  an_old 1.00
+  t015 ev_new 1.00  ev_old 1.00  an_new 1.00  an_old 1.00
+  t017 ev_new 1.00  ev_old 1.00  an_new 1.00  an_old 1.00
+  t018 ev_new 1.00  ev_old 1.00  an_new 1.00  an_old 1.00
+  t022 ev_new 1.00  ev_old 1.00  an_new 0.97  an_old 1.00
+  t029 ev_new 1.00  ev_old 1.00  an_new 0.93  an_old 0.99
+  t032 ev_new 1.00  ev_old 1.00  an_new 1.00  an_old 1.00
+  t034 ev_new 0.98  ev_old 0.98  an_new 1.00  an_old 1.00
+  t035 ev_new 1.00  ev_old 0.98  an_new 0.98  an_old 1.00
+  t041 ev_new 1.00  ev_old nan  an_new 1.00  an_old 1.00
+
+Across the 13 cases with all four types (establishment share, paired by case):
+  evolved vs ancestral background, new label     mean difference +0.24  positive in 12/13  zero in 1  Wilcoxon p=0.00049
+  evolved vs ancestral background, old label     mean difference +0.12  positive in 7/13  zero in 1  Wilcoxon p=0.21
+  new vs old label, evolved background           mean difference +0.06  positive in 9/13  zero in 1  Wilcoxon p=0.14
+  new vs old label, ancestral background         mean difference -0.06  positive in 3/13  zero in 2  Wilcoxon p=0.034

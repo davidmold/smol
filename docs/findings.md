@@ -1807,3 +1807,56 @@ original neighbourhood; uncorrected p values; exploratory throughout.
   "transition" between windows (e.g. at 42k for a change seen at 0.8-1M). So most transitions are
   shifts between coexisting branches, not new mutations sweeping, and the replays need to start
   where the label arose on its branch.
+
+**Lineage replays (Nov 25; `pw_replay.py`, `pw_replay.sh`; results `pwr_score.txt`,
+`pwr_cases.json`).** Proposed by the second review: does a rare founder leave a lineage that
+establishes in the earlier, evolving world, and is that down to its background or its label? For
+each of the 13 transitions with all four reconstructed pairs, the run's own checkpoint at the
+earlier window (old pair dominant), mutation on, 50k steps; founders: 5 machine-gene pairs at 5
+matched sites, each founder gene carrying a synonymous marker (one codon swapped for another coding
+the same symbol; translation and loop closure checked) so it is a new species even where its
+sequence lives in the world; the lineage is everything whose template chain reaches the founder
+gene, mutants included. Established: >= 20 lineage gene-like molecules (>= 90% of the founder's
+length) at +50k; 20 replicates per type; 1,040 replays. A mutation-off validation run found the
+lineage to be exactly the marked founder, as it must be.
+
+*Scoring bug, fixed before these results:* the first scoring counted only letter-only strands as
+gene-like, but evolved genes can carry non-letter symbols, so many lineages were undercounted (one
+founder's own gene grew from 23 to 165 copies yet scored 0). Gene-like is now decided by length;
+the flawed first scores are kept as `pwr_score_v1_lettersonly.txt`.
+
+Share of replicates established (paired by transition, 13 transitions):
+
+| comparison | mean difference | positive / zero | Wilcoxon p |
+|---|---|---|---|
+| evolved vs ancestral background, new label | +0.24 | 12/13, 1 zero | 0.0005 |
+| evolved vs ancestral background, old label | +0.12 | 7/13, 1 zero | 0.21 |
+| new vs old label, evolved background | +0.06 | 9/13, 1 zero | 0.14 |
+| new vs old label, ancestral background | -0.06 | 3/13, 2 zero | 0.034 |
+
+- **The evolved background establishes more often**, clearly with the new label and in the same
+  direction with the old one. The cleanest case is a single-lineage transition (t034, LUBO -> OUBO,
+  silent): the evolved background establishes in 20/20 and 19/20 replicates with the new and the
+  old label, the ancestral one in 3/20 and 2/20 - the telling hitchhiking result. t017 (competing
+  branches, silent) is similar: 11/20 and 8/20 against 1/20 and 1/20.
+- **The label's effect depends on the background**: the new label helps slightly on the evolved
+  background and hurts slightly on the ancestral one (each label fits the genome it evolved with).
+  Label-length cases behave as in the contests: in t001 the shorter old label (LUB) establishes
+  more often on both backgrounds (12/20 vs 5/20 evolved, 6/20 vs 1/20 ancestral). t022 is an
+  exception among silent changes: on the evolved background the new label establishes in 10/20, the
+  old one in 2/20.
+- **Lineages establish with the label they started with**: the share of lineage gene-like
+  molecules still carrying the founder's label codons is 0.93-1.00 in every type.
+- One-lineage cases: t034 as above; t032 rarely establishes in any type (1/20 each); t041 (the
+  behaviour-changing label) at most 4/20 in any type.
+- Rates are informative (mostly 0.05-0.55, with t034 near 1 for the evolved background), not all 0
+  or 1.
+
+**Reading.** In the lineage replays, the evolved machine-gene background helped rare founders
+establish in the earlier world, with either label in the clearest cases; the label's own effect
+was smaller and depended on the background it was paired with, except where it changed length.
+Together with the contests and the translation readout, this is direct support for hitchhiking in
+these cases: the label rose because it was linked to a background that establishes better, not
+because of what the label itself does. What made those backgrounds better was not identified, and
+the role of parasites remains unresolved (they are present in these worlds but were not varied).
+Exploratory; uncorrected p values; 13 transitions.
