@@ -20,9 +20,10 @@ the pair checked to close a loop), so that the founder gene is a new species eve
 sequence lives in the world. The same kind of marker is used for all four types. species.tsv
 records every new species' template, so the founder's lineage is every species whose template
 chain reaches the founder gene. Machines are not attributed (a translated machine may be a
-species that already lives in the world); the lineage is scored by its gene-like strands (letters
-only, at least 90% of the founder's length). Recorded at +10k, +25k, +50k: lineage gene-like
-molecules, all lineage letter strands, and the share of lineage gene-like molecules that still
+species that already lives in the world); the lineage is scored by its gene-like strands (at least
+90% of the founder's length; evolved genes can carry non-letter symbols, so length alone decides).
+Each result also keeps the sequence and counts of every lineage species alive at the record times. Recorded at +10k, +25k, +50k: lineage gene-like
+molecules, all lineage letter-only strands, and the share of lineage gene-like molecules that still
 carry the founder label's codons (label kept) - so establishing with the original label can be
 told from establishing after the label changes.
 Established: >= 20 lineage gene-like molecules at +50k.
@@ -116,7 +117,7 @@ def lineage_scan(d, founder, t0, times):
 def run():
     k, ty, rep = sys.argv[2], sys.argv[3], int(sys.argv[4]); validate = "--validate" in sys.argv
     c = json.load(open(f"{OUT}/cases{'_validate' if validate else ''}.json"))[k]; v = c["types"][ty]
-    d = f"{OUT}{'/validate' if validate else ''}/t{int(k):03d}/{ty}/r{rep}"
+    d = os.environ.get("PWR_DIR") or f"{OUT}{'/validate' if validate else ''}/t{int(k):03d}/{ty}/r{rep}"
     if os.path.exists(f"{d}/result.json"): return
     shutil.rmtree(d, ignore_errors=True)
     t0 = c["t"]; steps = 10000 if validate else STEPS
@@ -136,16 +137,21 @@ def run():
     sp, lin, counts = lineage_scan(d, v["G"], t0, times)
     L0 = len(v["G"]); res = {"case": int(k), "type": ty, "rep": rep, "sites": sites, "lineage_species": len(lin), "at": {}}
     for t in times:
-        gl = {s: n for s, n in counts[t].items() if re.fullmatch(r"[A-Z]+", sp[s][2]) and len(sp[s][2]) >= 0.9 * L0}
+        # gene-like: at least 90% of the founder gene's length (evolved genes can carry non-letter
+        # symbols, so no letters-only test; machines are less than half a gene's length)
+        gl = {s: n for s, n in counts[t].items() if len(sp[s][2]) >= 0.9 * L0}
         letters = sum(n for s, n in counts[t].items() if re.fullmatch(r"[A-Z]+", sp[s][2]))
         kept = sum(n for s, n in gl.items() if v["label_codons"] in sp[s][2])
         exact = counts[t].get(next(iter(i for i in lin if sp[i][2] == v["G"]), -1), 0)
         res["at"][t - t0] = {"genelike": sum(gl.values()), "letters": letters, "label_kept": kept, "exact_founder": exact,
                              "other_lineage": sum(n for s, n in counts[t].items() if sp[s][2] != v["G"])}
+    res["lineage_counts"] = {str(s): [sp[s][2], [counts[t].get(s, 0) for t in times]]
+                             for s in lin if any(counts[t].get(s, 0) for t in times)}
     last = res["at"][steps]; res["established"] = last["genelike"] >= EST
     json.dump(res, open(f"{d}/result.json", "w"))
-    for f in os.listdir(d):
-        if f not in ("result.json", "log.txt"): os.remove(f"{d}/{f}")
+    if not os.environ.get("PWR_KEEP"):
+        for f in os.listdir(d):
+            if f not in ("result.json", "log.txt"): os.remove(f"{d}/{f}")
 
 def score():
     try:
